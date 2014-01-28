@@ -1,305 +1,52 @@
-﻿UPGRADE FROM 2.2 to 2.3
+UPGRADE FROM 2.2 to 2.3
 =======================
 
-Form
-----
+When upgrading Symfony from 2.2 to 2.3, you need to do the following changes
+to the code that came from the Standard Edition:
 
- * Although this was not officially supported nor documented, it was possible to
-   set the option "validation_groups" to false, resulting in the group "Default"
-   being validated. Now, if you set "validation_groups" to false, the validation
-   of a form will be skipped (except for a few integrity checks on the form).
+ * The debugging tools are not enabled by default anymore and should be added
+   to the
+   [`web/app_dev.php`](https://github.com/symfony/symfony-standard/blob/2.3/web/app_dev.php)
+   front controller manually, just after including the bootstrap cache:
 
-   If you want to validate a form in group "Default", you should either
-   explicitly set "validation_groups" to "Default" or alternatively set it to
-   null.
+        use Symfony\Component\Debug\Debug;
 
-   Before:
+        Debug::enable();
 
-   ```
-   // equivalent notations for validating in group "Default"
-   "validation_groups" => null
-   "validation_groups" => "Default"
-   "validation_groups" => false
+   You also need to enable debugging in the
+   [`app/console`](https://github.com/symfony/symfony-standard/blob/2.3/app/console)
+   script, after the `$debug` variable is defined:
 
-   // notation for skipping validation
-   "validation_groups" => array()
-   ```
+        use Symfony\Component\Debug\Debug;
 
-   After:
+        if ($debug) {
+            Debug::enable();
+        }
 
-   ```
-   // equivalent notations for validating in group "Default"
-   "validation_groups" => null
-   "validation_groups" => "Default"
+ * The `parameters.yml` file can now be managed by the
+   `incenteev/composer-parameter-handler` bundle that comes with the 2.3
+   Standard Edition:
 
-   // equivalent notations for skipping validation
-   "validation_groups" => false
-   "validation_groups" => array()
-   ```
- * The array type hint from DataMapperInterface was removed. You should adapt
-   implementations of that interface accordingly.
+    * add `"incenteev/composer-parameter-handler": "~2.0"` to your
+      `composer.json` file;
 
-   Before:
+    * add `/app/config/parameters.yml` to your `.gitignore` file;
 
-   ```
-   use Symfony\Component\Form\DataMapperInterface;
+    * create a
+      [`app/config/parameters.yml.dist`](https://github.com/symfony/symfony-standard/blob/2.3/app/config/parameters.yml.dist)
+      file with sensible values for all your parameters.
 
-   class MyDataMapper
-   {
-       public function mapFormsToData(array $forms, $data)
-       {
-           // ...
-       }
+ * It is highly recommended that you switch the minimum stability to `stable`
+   in your `composer.json` file.
 
-       public function mapDataToForms($data, array $forms)
-       {
-           // ...
-       }
-   }
-   ```
+ * If you are using Apache, have a look at the new
+   [`.htaccess`](https://github.com/symfony/symfony-standard/blob/2.3/web/.htaccess)
+   configuration and change yours accordingly.
 
-   After:
+ * In the
+   [`app/autoload.php`](https://github.com/symfony/symfony-standard/blob/2.3/app/autoload.php)
+   file, the section about `intl` should be removed as it is not needed anymore.
 
-   ```
-   use Symfony\Component\Form\DataMapperInterface;
-
-   class MyDataMapper
-   {
-       public function mapFormsToData($forms, $data)
-       {
-           // ...
-       }
-
-       public function mapDataToForms($data, $forms)
-       {
-           // ...
-       }
-   }
-   ```
-
-   Instead of an array, the methods here are now passed a
-   RecursiveIteratorIterator containing an InheritDataAwareIterator by default,
-   so you don't need to handle forms inheriting their parent data (former
-   "virtual forms") in the data mapper anymore.
-
-   Before:
-
-   ```
-   use Symfony\Component\Form\Util\VirtualFormAwareIterator;
-
-   public function mapFormsToData(array $forms, $data)
-   {
-       $iterator = new \RecursiveIteratorIterator(
-           new VirtualFormAwareIterator($forms)
-       );
-
-       foreach ($iterator as $form) {
-           // ...
-       }
-   }
-   ```
-
-   After:
-
-   ```
-   public function mapFormsToData($forms, $data)
-   {
-       foreach ($forms as $form) {
-           // ...
-       }
-   }
-   ```
-
- * The *_SET_DATA events are now guaranteed to be fired *after* the children
-   were added by the FormBuilder (unless setData() is called manually). Before,
-   the *_SET_DATA events were sometimes thrown before adding child forms,
-   which made it impossible to remove child forms dynamically.
-
-   A consequence of this change is that you need to set the "auto_initialize"
-   option to `false` for `FormInterface` instances that you pass to
-   `FormInterface::add()`:
-
-   Before:
-
-   ```
-   $form = $factory->create('form');
-   $form->add($factory->createNamed('field', 'text'));
-   ```
-
-   This code will now throw an exception with the following message:
-
-   Automatic initialization is only supported on root forms. You should set the
-   "auto_initialize" option to false on the field "field".
-
-   Consequently, you need to set the "auto_initialize" option:
-
-   After (Alternative 1):
-
-   ```
-   $form = $factory->create('form');
-   $form->add($factory->createNamed('field', 'text', array(), array(
-       'auto_initialize' => false,
-   )));
-   ```
-
-   The problem also disappears if you work with `FormBuilder` instances instead
-   of `Form` instances:
-
-   After (Alternative 2):
-
-   ```
-   $builder = $factory->createBuilder('form');
-   $builder->add($factory->createBuilder('field', 'text'));
-   $form = $builder->getForm();
-   ```
-
-   The best solution is in most cases to let `add()` handle the field creation:
-
-   After (Alternative 3):
-
-   ```
-   $form = $factory->create('form');
-   $form->add('field', 'text');
-   ```
-
-   After (Alternative 4):
-
-   ```
-   $builder = $factory->createBuilder('form');
-   $builder->add('field', 'text');
-   $form = $builder->getForm();
-   ```
-
- * Previously, when the "data" option of a field was set to `null` and the
-   containing form was mapped to an object, the field would receive the data
-   from the object as default value. This functionality was unintended and fixed
-   to use `null` as default value in Symfony 2.3.
-
-   In cases where you made use of the previous behavior, you should now remove
-   the "data" option altogether.
-
-   Before:
-
-   ```
-   $builder->add('field', 'text', array(
-      'data' => $defaultData ?: null,
-   ));
-   ```
-
-   After:
-
-   ```
-   $options = array();
-   if ($defaultData) {
-       $options['data'] = $defaultData;
-   }
-   $builder->add('field', 'text', $options);
-   ```
-
-PropertyAccess
---------------
-
- * PropertyAccessor was changed to continue its search for a property or method
-   even if a non-public match was found. This means that the property "author"
-   in the following class will now correctly be found:
-
-   ```
-   class Article
-   {
-       public $author;
-
-       private function getAuthor()
-       {
-           // ...
-       }
-   }
-   ```
-
-   Although this is uncommon, similar cases exist in practice.
-
-   Instead of the PropertyAccessDeniedException that was thrown here, the more
-   generic NoSuchPropertyException is thrown now if no public property nor
-   method are found by the PropertyAccessor. PropertyAccessDeniedException was
-   removed completely.
-
-   Before:
-
-   ```
-   use Symfony\Component\PropertyAccess\Exception\PropertyAccessDeniedException;
-   use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
-
-   try {
-       $value = $accessor->getValue($article, 'author');
-   } catch (PropertyAccessDeniedException $e) {
-       // Method/property was found but not public
-   } catch (NoSuchPropertyException $e) {
-       // Method/property was not found
-   }
-   ```
-
-   After:
-
-   ```
-   use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
-
-   try {
-       $value = $accessor->getValue($article, 'author');
-   } catch (NoSuchPropertyException $e) {
-       // Method/property was not found or not public
-   }
-   ```
-
-DomCrawler
-----------
-
- * `Crawler::each()` and `Crawler::reduce()` now return Crawler instances
-   instead of DomElement instances:
-
-   Before:
-
-   ```
-   $data = $crawler->each(function ($node, $i) {
-       return $node->nodeValue;
-   });
-   ```
-
-   After:
-
-   ```
-   $data = $crawler->each(function ($crawler, $i) {
-       return $crawler->text();
-   });
-   ```
-
-Console
--------
-
- * New verbosity levels have been added, therefore if you used to do check
-   the output verbosity level directly for VERBOSITY_VERBOSE you probably
-   want to update it to a greater than comparison:
-
-   Before:
-
-   ```
-   if (OutputInterface::VERBOSITY_VERBOSE === $output->getVerbosity()) { ... }
-   ```
-
-   After:
-
-   ```
-   if (OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) { ... }
-   ```
-
-BrowserKit
-----------
-
- * If you are receiving responses with non-3xx Status Code and Location header
-   please be aware that you won't be able to use auto-redirects on these kind
-   of responses.
-
-   If you are correctly passing 3xx Status Code with Location header, you
-   don't have to worry about the change.
-
-   If you were using responses with Location header and non-3xx Status Code,
-   you have to update your code to manually create another request to URL
-   grabbed from the Location header.
+You can also have a look at the
+[diff](https://github.com/symfony/symfony-standard/compare/v2.2.0%E2%80%A62.3)
+between the 2.2 version of the Standard Edition and the 2.3 version.
