@@ -118,9 +118,21 @@ hr{
 	color: rgb(204,0,153);
 }
 .art{
-	color:rgb(204,0,153);;
+	color:rgb(204,0,153);
 }
-
+.art2{
+	margin: 0;
+	color:rgb(204,0,153);
+	font-size: 20px;
+	font-weight: bold;
+}
+.bote{
+	margin-left: 10px;
+}
+.foto{
+	border: solid 1px black;
+	margin-left: -50px;
+}
 
 
 
