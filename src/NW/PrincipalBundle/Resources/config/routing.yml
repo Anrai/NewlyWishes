@@ -1,0 +1,35 @@
+nw_principal_homepage:
+    pattern:  /
+    defaults: { _controller: NWPrincipalBundle:Default:index }
+
+nw_principal_edicion1:
+    pattern:  /edicion1
+    defaults: { _controller: NWPrincipalBundle:Default:edicion1 }
+
+nw_principal_edicion2:
+    pattern:  /edicion2
+    defaults: { _controller: NWPrincipalBundle:Default:edicion2 }
+
+nw_principal_edicion3:
+    pattern:  /edicion3
+    defaults: { _controller: NWPrincipalBundle:Default:edicion3 }
+
+nw_principal_planes:
+    pattern:  /planes
+    defaults: { _controller: NWPrincipalBundle:Default:planes }
+
+nw_principal_proveedores_login:
+    pattern:  /proveedores/login
+    defaults: { _controller: NWPrincipalBundle:Proveedores:login }
+
+nw_principal_proveedores_micuenta:
+    pattern:  /proveedores/micuenta
+    defaults: { _controller: NWPrincipalBundle:Proveedores:micuenta }
+
+nw_principal_proveedores_misproductos:
+    pattern:  /proveedores/misproductos
+    defaults: { _controller: NWPrincipalBundle:Proveedores:misproductos }
+
+nw_principal_funcionamiento:
+    pattern:  /funcionamiento
+    defaults: { _controller: NWPrincipalBundle:Default:funcionamiento }

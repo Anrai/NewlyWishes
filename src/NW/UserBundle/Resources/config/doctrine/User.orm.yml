@@ -1,0 +1,9 @@
+# src/NW/UserBundle/Resources/config/doctrine/User.orm.yml
+NW\UserBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

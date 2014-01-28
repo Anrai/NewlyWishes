@@ -1,0 +1,130 @@
+/*Estilos de Rodrigo*/
+
+.planes{
+	font-size: 20px;
+	color: white;
+	background-color: #81807e!important;
+	text-align: center;
+}
+.planes2{
+	background-color: #fff!important;
+}
+.minplanes{
+	min-width: 439px;
+}
+.funcionalidades{
+	margin-left: 60px;
+	color: rgb(204,0,153);
+}
+.contrata{
+	color: rgb(204,0,153);
+}
+.logo{
+margin-top: 80px;
+}
+.ul{
+	color: rgb(204,0,153);
+}
+.term{
+	color: rgb(204,0,153);
+	text-decoration: underline;
+}
+.checkbox-inline{
+	margin-right: 32px;
+}
+.top{
+	vertical-align: middle;
+}
+.cuadro{
+	background-color: rgb(228,228,228);
+	width: 620px;
+	height: 310px;
+	border-radius: 30px;
+	margin-top: auto;
+	margin: auto;
+}
+.proveedores{
+	margin: auto;
+
+}
+.ingreso{
+	margin-top: 40px;
+	margin-left: 15px;
+}
+.olv{
+	color: rgb(204,0,153);
+	text-decoration: underline;
+	margin: auto;
+	margin-top: auto;
+	text-align: center;
+}
+.proveedor{
+	background-color: rgb(204,0,153);
+	width: 220px;
+	height: 70px;
+	border-radius: 15px;
+	margin-top: auto;
+	margin:auto;
+	padding-top: auto;
+	margin-bottom: auto;
+	color: white;
+	padding: 10px;
+
+}
+.table{
+	height: 600px;
+	background-color: rgb(228,228,228);
+	color: rgb(204,0,153);
+	border-radius: 10px;
+}
+.tienes{
+	color: black;
+}
+.esc{
+	color: rgb(204,0,153);
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+	border-top: 0px;
+	vertical-align: middle;
+}
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th{
+	border-radius: 2px;
+}
+.nw2{
+margin-top: 20px;
+}
+hr{
+	margin-top: 5px;
+}
+.ejlogo{
+	border: 1px solid;
+}
+.corrector{
+	margin-top: -30px;
+}
+.puntov{
+	margin-top: 25px;
+}
+.verde{
+	color: rgb(146, 208, 80);
+}
+.verde1{
+	color: rgb(146, 208, 80);
+	margin-top: -15px;
+}
+.mas{
+	margin-top: -10px;
+	font-size: 30px;
+	color: rgb(204,0,153);
+}
+.art{
+	color:rgb(204,0,153);;
+}
+
+
+
+
+
+
+
+

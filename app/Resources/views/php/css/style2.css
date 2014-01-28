@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+
+img{
+	border:none;	
+}
+
+
+.modulo2{
+margin-top: 85px;
+margin-left: -10px;
+}
+
+#total_box{
+	margin:0 auto;
+	width:1000px;
+	height:135px;
+}
+
+#logo_box{
+	margin:0 auto;
+	width:600px;
+	height:135px;	
+}
+
+#menu_box ul{
+	width:100%;
+	height:30px;
+	border-radius:20px;	
+	box-shadow:rgba(0,0,0,0.5) 0px 3px 6px;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0.07, #EDEDED),
+	color-stop(1, #B3B3B3)
+	);
+	background-image: -o-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
+	background-image: -moz-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
+	background-image: -webkit-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
+	background-image: -ms-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
+	background-image: linear-gradient(to bottom, #EDEDED 7%, #B3B3B3 100%);
+}
+
+#menu_box ul li{
+	float:left;
+	padding:0px;
+	margin:0px;
+	width:16%;
+	list-style:none;
+	text-align:center;
+	padding-top:8px;
+	height:22px;
+	font-weight:bold;
+	font-size:12px;
+	border-right:rgba(255,255,255,1) solid 1px;
+}
+
+#registro_box{
+	clear:both;
+	margin:0 auto;
+	border-bottom:solid rgba(0,0,0,1);
+	border-bottom-width:2px;
+}
+
+#seccion_registro{
+	margin:0 auto;
+	margin:10px;
+	position:relative;
+	float:left;
+	width:300px;	
+}
+
+#input_registro_novios{
+	font-size:14px;
+	width:100%;
+	border-radius:5px;
+	border:rgba(216,216,216,1) solid 1px;
+	padding:6px;
+	margin-bottom:10px;
+}
+
+#enviar_form{
+	width:100px;
+	background:rgba(198,41,158,1);
+	color:rgba(255,255,255,1);
+	border:none;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-ms-border-radius:6px;
+	-o-border-radius:6px;
+	-webkit-border-radius:6px;
+	padding:6px;
+}
+
+h2{
+	font-size:2.0em;
+	text-transform:uppercase;	
+}
+
+h3{
+	font-size:1.4em;
+	margin:0px;
+	padding:0px;
+	margin-bottom:10px;	
+}

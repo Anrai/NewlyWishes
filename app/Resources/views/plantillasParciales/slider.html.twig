@@ -1,0 +1,23 @@
+{# app/Resources/views/slider.html.twig #}
+
+<div class="container" style="margin:0 auto;">
+  <div id="bannersCarousel" class="carousel slide">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="{{ asset('img/anillos.jpg') }}" alt="Como escoger los anillos">
+      </div>
+      <div class="item">
+        <img src="{{ asset('img/novios.jpg') }}" alt="">
+      </div>
+      <div class="item">
+        <img src="{{ asset('img/ramo.jpg') }}" alt="">
+      </div>
+    </div>
+  </div>
+</div>

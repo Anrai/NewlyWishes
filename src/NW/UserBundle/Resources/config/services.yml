@@ -1,0 +1,10 @@
+parameters:
+#    nw_user.example.class: NW\UserBundle\Example
+
+services:
+#    nw_user.example:
+#        class: %nw_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+#    nw.security.roles:
+#        class: NW\UserBundle\Services\Roles
+#        arguments: ["%security.role_hierarchy.roles%"]
