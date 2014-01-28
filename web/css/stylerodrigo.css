@@ -133,7 +133,12 @@ hr{
 	border: solid 1px black;
 	margin-left: -50px;
 }
-
+.ma{
+	margin-top: -10px;
+}
+.pad{
+	margin-left: 15px;
+}
 
 
 
