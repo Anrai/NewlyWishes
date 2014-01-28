@@ -1,0 +1,26 @@
+# app/config/security.yml
+security:
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous:  ~
+            form_login:
+                login_path:  login
+                check_path:  login_check
+        admin_area:
+            pattern:    ^/admin
+            http_basic: ~
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
+    providers:
+        main:
+            entity: { class: NW\UserBundle\Entity\usuario, property: username }
+
+    encoders:
+        NW\UserBundle\Entity\usuario: sha512

@@ -1,0 +1,23 @@
+acme_store_create:
+    pattern:  /create
+    defaults: { _controller: AcmeStoreBundle:Default:create }
+
+acme_store_show:
+    pattern:  /show/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:show }
+
+acme_store_update:
+    pattern:  /update/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:update }
+
+acme_store_update:
+    pattern:  /remove/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:remove }
+
+acme_store_find:
+    pattern:  /find
+    defaults: { _controller: AcmeStoreBundle:Default:find }
+
+acme_store_ordenar:
+    pattern:  /ordenar
+    defaults: { _controller: AcmeStoreBundle:Default:ordenar }
