@@ -36,7 +36,7 @@ nw_principal_proveedores_misbanners:
 
 nw_principal_proveedores_misanuncios:
     pattern:  /proveedores/misanuncios
-    defaults: { _controller: NWPrincipalBundle:Proveedores:misanuncios
+    defaults: { _controller: NWPrincipalBundle:Proveedores:misanuncios }
 
 nw_principal_proveedores_misresenas:
     pattern:  /proveedores/misresenas
