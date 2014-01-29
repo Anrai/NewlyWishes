@@ -71,13 +71,25 @@ margin-left: -10px;
 	width:300px;	
 }
 
-#input_registro_novios{
+.input_registro_novios{
 	font-size:14px;
 	width:100%;
 	border-radius:5px;
 	border:rgba(216,216,216,1) solid 1px;
 	padding:6px;
 	margin-bottom:10px;
+}
+
+.input_registro74{
+	width: 74%;
+}
+
+.input_registro70{
+	width: 70%;
+}
+
+.input_registro20{
+	width: 20%;
 }
 
 #enviar_form{
