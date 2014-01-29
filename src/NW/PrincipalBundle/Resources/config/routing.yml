@@ -30,6 +30,34 @@ nw_principal_proveedores_misproductos:
     pattern:  /proveedores/misproductos
     defaults: { _controller: NWPrincipalBundle:Proveedores:misproductos }
 
+nw_principal_proveedores_misbanners:
+    pattern:  /proveedores/misbanners
+    defaults: { _controller: NWPrincipalBundle:Proveedores:misbanners }
+
+nw_principal_proveedores_misanuncios:
+    pattern:  /proveedores/misanuncios
+    defaults: { _controller: NWPrincipalBundle:Proveedores:misanuncios
+
+nw_principal_proveedores_misresenas:
+    pattern:  /proveedores/misresenas
+    defaults: { _controller: NWPrincipalBundle:Proveedores:misresenas }
+
+nw_principal_proveedores_miestadodecuenta:
+    pattern:  /proveedores/miestadodecuenta
+    defaults: { _controller: NWPrincipalBundle:Proveedores:miestadodecuenta }
+
+nw_principal_proveedores_miscodigos:
+    pattern:  /proveedores/miscodigos
+    defaults: { _controller: NWPrincipalBundle:Proveedores:miscodigos }
+
+nw_principal_proveedores_miinformacionbancaria:
+    pattern:  /proveedores/miinformacionbancaria
+    defaults: { _controller: NWPrincipalBundle:Proveedores:miinformacionbancaria }
+
+nw_principal_proveedores_tutoriales:
+    pattern:  /proveedores/tutoriales
+    defaults: { _controller: NWPrincipalBundle:Proveedores:tutoriales }
+
 nw_principal_funcionamiento:
     pattern:  /funcionamiento
     defaults: { _controller: NWPrincipalBundle:Default:funcionamiento }
