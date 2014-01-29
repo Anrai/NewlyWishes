@@ -139,7 +139,16 @@ hr{
 .pad{
 	margin-left: 15px;
 }
-
+.marco{
+	border: 1px solid rgb(127, 127, 127);
+}
+.eliminar{
+	margin-left: -30px;
+}
+.caja{
+	margin-left: 20px;
+	padding-top: 20px;
+}
 
 
 
