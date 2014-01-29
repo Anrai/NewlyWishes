@@ -1,0 +1,65 @@
+{# src/NW/PrincipalBundle/Resources/views/Novios/administrador.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+	{% block body %}
+	<div class="container corrector">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="nw2">
+					<img class="img-responsive" src="{{asset('img/nw2.png')}}">
+				</div>
+			</div>
+			<div class="col-md-6 text-center">
+				<br>
+				<h4>Hoy es <span class="esc">{{"now"|date("m/d/Y")}}</span></h4>
+				<br>
+				<h4 class="esc">¿Qué día es tu boda?</h4>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h4>Bienvenidos <span class="esc">Nombre de la novia</span> y <span class="esc">Nombre del novio</span></h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h4>Saldo de tu mesa de regalos: <span class="esc">$0.00 pesos</span></h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row" style="margin-top:20px;">
+			<div class="col-md-3">
+				
+				<nav class="menu_novios">
+					<ul>
+					  	<a href="{{url('nw_principal_novios_nuestra-boda')}}"><li style="border-radius:10px 10px 0px 0px;">Nuestra Boda </li></a>
+					    <a href="{{url('nw_principal_novios_nuestro-calendario')}}"><li> Nuestro Calendario </li></a>
+					    <a href="{{url('nw_principal_novios_nuestro-checklist')}}"><li> Nuestro Checklist </li></a>
+					    <a href="{{url('nw_principal_novios_nuestra-mesa-de-regalos')}}"><li>Nuestra Mesa de Regalos </li></a>
+					    <a href="{{url('nw_principal_novios_nuestra-lista-de-invitados')}}"><li> Nuestra Lista de Invitados </li></a>
+					    <a href="{{url('nw_principal_novios_nuestra-cuenta')}}"><li>Nuestra Cuenta</li></a>
+					    <a href="{{url('nw_principal_novios_nuestra-informacion-bancaria')}}"><li>Nuestra Información Bancaria </li></a>
+					    <a href="{{url('nw_principal_novios_nuestras-compras')}}"><li> Nuestras Compras </li></a>
+					    <li style="border-radius:0px 0px 10px 10px;">
+					    	<p class="tienes table-hover">Tienes alguna duda, comentario, sugerencia o simplemente quieres decirnos algo, <span class="esc">escríbenos aquí</span>
+					    	</p>
+					    </li>
+					</ul>
+				</nav>
+
+			</div>
+			<div class="col-md-9">
+				{% block partederecha %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}
+	{% block footer %}
+	{% endblock %}
