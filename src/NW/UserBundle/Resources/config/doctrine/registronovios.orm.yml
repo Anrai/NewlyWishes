@@ -1,0 +1,88 @@
+# src/NW/UserBundle/Resources/config/doctrine/registronovios.orm.yml
+NW\UserBundle\Entity\registronovios:
+    type:  entity
+    table: novios
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+		noviaNombre:
+            type: string
+            length: 100
+	    noviaSNombre:
+            type: string
+            length: 100
+	    noviaAPaterno:
+            type: string
+            length: 100
+	    noviaAMaterno:
+            type: string
+            length: 100
+	    noviaEMail:
+            type: string
+            length: 100
+	    noviaLada:
+            type: string
+            length: 100
+	    noviaTelefono:
+            type: string
+            length: 100
+	    noviaCelular:
+            type: string
+            length: 100
+	    noviaDireccion:
+            type: string
+            length: 100
+	    noviaPais:
+            type: string
+            length: 100
+	    noviaEstado:
+            type: string
+            length: 100
+	    noviaCiudad:
+            type: string
+            length: 100
+	    noviaCP:
+            type: string
+            length: 100
+	    novioNombre:
+            type: string
+            length: 100
+	    novioSNombre:
+            type: string
+            length: 100
+	    novioAPaterno:
+            type: string
+            length: 100
+	    novioAMaterno:
+            type: string
+            length: 100
+	    novioEMail:
+            type: string
+            length: 100
+	    novioLada:
+            type: string
+            length: 100
+	    novioTelefono:
+            type: string
+            length: 100
+	    novioCelular:
+            type: string
+            length: 100
+	    novioDireccion:
+            type: string
+            length: 100
+	    novioPais:
+            type: string
+            length: 100
+	    novioEstado:
+            type: string
+            length: 100
+	    novioCiudad:
+            type: string
+            length: 100
+	    novioCP:
+            type: string
+            length: 100
