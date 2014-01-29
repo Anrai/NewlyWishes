@@ -8,6 +8,8 @@ NW\UserBundle\Entity\registronovios:
             generator:
                 strategy: AUTO
     fields:
+        usuarioId:
+            type: integer
         noviaNombre:
             type: string
             length: 100

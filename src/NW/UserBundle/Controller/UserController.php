@@ -12,6 +12,29 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class UserController extends Controller
 {
+
+    public function pruebaRegistroAction()
+    {
+        $user = new User();
+        $user->setUsername('juan23');
+ 
+        //$novios = new registronovios();
+        //$novios->setnoviaNombre('Pancha');;
+        // relaciona este noviazgo con un usuario
+        //$novios->setUser($user);
+ 
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        //$em->persist($novios);
+        $em->flush();
+ 
+        /*return new Response(
+            'Novios creados con ID: '.$novios->getId().' y usuario con ID: '.$user->getId()
+        );*/
+
+        return new Response('Hola!');
+    }
+
     public function registronoviosAction(Request $request)
     {
         // crea un nuevo registro y le asigna algunos datos
