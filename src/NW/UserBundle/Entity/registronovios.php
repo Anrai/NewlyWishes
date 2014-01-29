@@ -82,316 +82,618 @@ class registronovios
     // 
     protected $novioCP;
  
-    // 
-    public function getnoviaNombre()
+ 
+    /**
+     * @var integer
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set noviaNombre
+     *
+     * @param string $noviaNombre
+     * @return registronovios
+     */
+    public function setNoviaNombre($noviaNombre)
+    {
+        $this->noviaNombre = $noviaNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaNombre
+     *
+     * @return string 
+     */
+    public function getNoviaNombre()
     {
         return $this->noviaNombre;
     }
- 
- 	// 
-    public function getnoviaSNombre()
+
+    /**
+     * Set noviaSNombre
+     *
+     * @param string $noviaSNombre
+     * @return registronovios
+     */
+    public function setNoviaSNombre($noviaSNombre)
+    {
+        $this->noviaSNombre = $noviaSNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaSNombre
+     *
+     * @return string 
+     */
+    public function getNoviaSNombre()
     {
         return $this->noviaSNombre;
     }
 
-    // 
-    public function getnoviaAPaterno()
+    /**
+     * Set noviaAPaterno
+     *
+     * @param string $noviaAPaterno
+     * @return registronovios
+     */
+    public function setNoviaAPaterno($noviaAPaterno)
+    {
+        $this->noviaAPaterno = $noviaAPaterno;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaAPaterno
+     *
+     * @return string 
+     */
+    public function getNoviaAPaterno()
     {
         return $this->noviaAPaterno;
     }
 
-    // 
-    public function getnoviaAMaterno()
+    /**
+     * Set noviaAMaterno
+     *
+     * @param string $noviaAMaterno
+     * @return registronovios
+     */
+    public function setNoviaAMaterno($noviaAMaterno)
+    {
+        $this->noviaAMaterno = $noviaAMaterno;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaAMaterno
+     *
+     * @return string 
+     */
+    public function getNoviaAMaterno()
     {
         return $this->noviaAMaterno;
     }
 
-    // 
-    public function getnoviaEMail()
+    /**
+     * Set noviaEMail
+     *
+     * @param string $noviaEMail
+     * @return registronovios
+     */
+    public function setNoviaEMail($noviaEMail)
+    {
+        $this->noviaEMail = $noviaEMail;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaEMail
+     *
+     * @return string 
+     */
+    public function getNoviaEMail()
     {
         return $this->noviaEMail;
     }
 
-    // 
-    public function getnoviaLada()
+    /**
+     * Set noviaLada
+     *
+     * @param string $noviaLada
+     * @return registronovios
+     */
+    public function setNoviaLada($noviaLada)
+    {
+        $this->noviaLada = $noviaLada;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaLada
+     *
+     * @return string 
+     */
+    public function getNoviaLada()
     {
         return $this->noviaLada;
     }
 
-    // 
-    public function getnoviaTelefono()
+    /**
+     * Set noviaTelefono
+     *
+     * @param string $noviaTelefono
+     * @return registronovios
+     */
+    public function setNoviaTelefono($noviaTelefono)
+    {
+        $this->noviaTelefono = $noviaTelefono;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaTelefono
+     *
+     * @return string 
+     */
+    public function getNoviaTelefono()
     {
         return $this->noviaTelefono;
     }
 
-    // 
-    public function getnoviaCelular()
+    /**
+     * Set noviaCelular
+     *
+     * @param string $noviaCelular
+     * @return registronovios
+     */
+    public function setNoviaCelular($noviaCelular)
+    {
+        $this->noviaCelular = $noviaCelular;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaCelular
+     *
+     * @return string 
+     */
+    public function getNoviaCelular()
     {
         return $this->noviaCelular;
     }
 
-    // 
-    public function getnoviaDireccion()
+    /**
+     * Set noviaDireccion
+     *
+     * @param string $noviaDireccion
+     * @return registronovios
+     */
+    public function setNoviaDireccion($noviaDireccion)
+    {
+        $this->noviaDireccion = $noviaDireccion;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaDireccion
+     *
+     * @return string 
+     */
+    public function getNoviaDireccion()
     {
         return $this->noviaDireccion;
     }
 
-    // 
-    public function getnoviaPais()
+    /**
+     * Set noviaPais
+     *
+     * @param string $noviaPais
+     * @return registronovios
+     */
+    public function setNoviaPais($noviaPais)
+    {
+        $this->noviaPais = $noviaPais;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaPais
+     *
+     * @return string 
+     */
+    public function getNoviaPais()
     {
         return $this->noviaPais;
     }
 
-    // 
-    public function getnoviaEstado()
+    /**
+     * Set noviaEstado
+     *
+     * @param string $noviaEstado
+     * @return registronovios
+     */
+    public function setNoviaEstado($noviaEstado)
+    {
+        $this->noviaEstado = $noviaEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaEstado
+     *
+     * @return string 
+     */
+    public function getNoviaEstado()
     {
         return $this->noviaEstado;
     }
 
-    // 
-    public function getnoviaCiudad()
+    /**
+     * Set noviaCiudad
+     *
+     * @param string $noviaCiudad
+     * @return registronovios
+     */
+    public function setNoviaCiudad($noviaCiudad)
+    {
+        $this->noviaCiudad = $noviaCiudad;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaCiudad
+     *
+     * @return string 
+     */
+    public function getNoviaCiudad()
     {
         return $this->noviaCiudad;
     }
 
-    // 
-    public function getnoviaCP()
+    /**
+     * Set noviaCP
+     *
+     * @param string $noviaCP
+     * @return registronovios
+     */
+    public function setNoviaCP($noviaCP)
+    {
+        $this->noviaCP = $noviaCP;
+
+        return $this;
+    }
+
+    /**
+     * Get noviaCP
+     *
+     * @return string 
+     */
+    public function getNoviaCP()
     {
         return $this->noviaCP;
     }
 
-    //
-    public function getnovioNombre()
+    /**
+     * Set novioNombre
+     *
+     * @param string $novioNombre
+     * @return registronovios
+     */
+    public function setNovioNombre($novioNombre)
+    {
+        $this->novioNombre = $novioNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get novioNombre
+     *
+     * @return string 
+     */
+    public function getNovioNombre()
     {
         return $this->novioNombre;
     }
- 
- 	// 
-    public function getnovioSNombre()
+
+    /**
+     * Set novioSNombre
+     *
+     * @param string $novioSNombre
+     * @return registronovios
+     */
+    public function setNovioSNombre($novioSNombre)
+    {
+        $this->novioSNombre = $novioSNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get novioSNombre
+     *
+     * @return string 
+     */
+    public function getNovioSNombre()
     {
         return $this->novioSNombre;
     }
 
-    // 
-    public function getnovioAPaterno()
+    /**
+     * Set novioAPaterno
+     *
+     * @param string $novioAPaterno
+     * @return registronovios
+     */
+    public function setNovioAPaterno($novioAPaterno)
+    {
+        $this->novioAPaterno = $novioAPaterno;
+
+        return $this;
+    }
+
+    /**
+     * Get novioAPaterno
+     *
+     * @return string 
+     */
+    public function getNovioAPaterno()
     {
         return $this->novioAPaterno;
     }
 
-    // 
-    public function getnovioAMaterno()
+    /**
+     * Set novioAMaterno
+     *
+     * @param string $novioAMaterno
+     * @return registronovios
+     */
+    public function setNovioAMaterno($novioAMaterno)
+    {
+        $this->novioAMaterno = $novioAMaterno;
+
+        return $this;
+    }
+
+    /**
+     * Get novioAMaterno
+     *
+     * @return string 
+     */
+    public function getNovioAMaterno()
     {
         return $this->novioAMaterno;
     }
 
-    // 
-    public function getnovioEMail()
+    /**
+     * Set novioEMail
+     *
+     * @param string $novioEMail
+     * @return registronovios
+     */
+    public function setNovioEMail($novioEMail)
+    {
+        $this->novioEMail = $novioEMail;
+
+        return $this;
+    }
+
+    /**
+     * Get novioEMail
+     *
+     * @return string 
+     */
+    public function getNovioEMail()
     {
         return $this->novioEMail;
     }
 
-    // 
-    public function getnovioLada()
+    /**
+     * Set novioLada
+     *
+     * @param string $novioLada
+     * @return registronovios
+     */
+    public function setNovioLada($novioLada)
+    {
+        $this->novioLada = $novioLada;
+
+        return $this;
+    }
+
+    /**
+     * Get novioLada
+     *
+     * @return string 
+     */
+    public function getNovioLada()
     {
         return $this->novioLada;
     }
 
-    // 
-    public function getnovioTelefono()
+    /**
+     * Set novioTelefono
+     *
+     * @param string $novioTelefono
+     * @return registronovios
+     */
+    public function setNovioTelefono($novioTelefono)
+    {
+        $this->novioTelefono = $novioTelefono;
+
+        return $this;
+    }
+
+    /**
+     * Get novioTelefono
+     *
+     * @return string 
+     */
+    public function getNovioTelefono()
     {
         return $this->novioTelefono;
     }
 
-    // 
-    public function getnovioCelular()
+    /**
+     * Set novioCelular
+     *
+     * @param string $novioCelular
+     * @return registronovios
+     */
+    public function setNovioCelular($novioCelular)
+    {
+        $this->novioCelular = $novioCelular;
+
+        return $this;
+    }
+
+    /**
+     * Get novioCelular
+     *
+     * @return string 
+     */
+    public function getNovioCelular()
     {
         return $this->novioCelular;
     }
 
-    // 
-    public function getnovioDireccion()
+    /**
+     * Set novioDireccion
+     *
+     * @param string $novioDireccion
+     * @return registronovios
+     */
+    public function setNovioDireccion($novioDireccion)
+    {
+        $this->novioDireccion = $novioDireccion;
+
+        return $this;
+    }
+
+    /**
+     * Get novioDireccion
+     *
+     * @return string 
+     */
+    public function getNovioDireccion()
     {
         return $this->novioDireccion;
     }
 
-    // 
-    public function getnovioPais()
+    /**
+     * Set novioPais
+     *
+     * @param string $novioPais
+     * @return registronovios
+     */
+    public function setNovioPais($novioPais)
+    {
+        $this->novioPais = $novioPais;
+
+        return $this;
+    }
+
+    /**
+     * Get novioPais
+     *
+     * @return string 
+     */
+    public function getNovioPais()
     {
         return $this->novioPais;
     }
 
-    // 
-    public function getnovioEstado()
+    /**
+     * Set novioEstado
+     *
+     * @param string $novioEstado
+     * @return registronovios
+     */
+    public function setNovioEstado($novioEstado)
+    {
+        $this->novioEstado = $novioEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get novioEstado
+     *
+     * @return string 
+     */
+    public function getNovioEstado()
     {
         return $this->novioEstado;
     }
 
-    // 
-    public function getnovioCiudad()
+    /**
+     * Set novioCiudad
+     *
+     * @param string $novioCiudad
+     * @return registronovios
+     */
+    public function setNovioCiudad($novioCiudad)
+    {
+        $this->novioCiudad = $novioCiudad;
+
+        return $this;
+    }
+
+    /**
+     * Get novioCiudad
+     *
+     * @return string 
+     */
+    public function getNovioCiudad()
     {
         return $this->novioCiudad;
     }
 
-    // 
-    public function getnovioCP()
+    /**
+     * Set novioCP
+     *
+     * @param string $novioCP
+     * @return registronovios
+     */
+    public function setNovioCP($novioCP)
+    {
+        $this->novioCP = $novioCP;
+
+        return $this;
+    }
+
+    /**
+     * Get novioCP
+     *
+     * @return string 
+     */
+    public function getNovioCP()
     {
         return $this->novioCP;
     }
-
-    // 
-    public function setnoviaNombre($noviaNombre)
-    {
-        $this->noviaNombre = $noviaNombre;
-    }
- 
- 	// 
-    public function setnoviaSNombre($noviaSNombre)
-    {
-        $this->noviaSNombre = $noviaSNombre;
-    }
-
-    // 
-    public function setnoviaAPaterno($noviaAPaterno)
-    {
-        $this->noviaAPaterno = $noviaAPaterno;
-    }
-
-    // 
-    public function setnoviaAMaterno($noviaAMaterno)
-    {
-        $this->noviaAMaterno = $noviaAMaterno;
-    }
-
-    // 
-    public function setnoviaEMail($noviaEMail)
-    {
-        $this->noviaEMail = $noviaEMail;
-    }
-
-    // 
-    public function setnoviaLada($noviaLada)
-    {
-        $this->noviaLada = $noviaLada;
-    }
-
-    // 
-    public function setnoviaTelefono($noviaTelefono)
-    {
-        $this->noviaTelefono = $noviaTelefono;
-    }
-
-    // 
-    public function setnoviaCelular($noviaCelular)
-    {
-        $this->noviaCelular = $noviaCelular;
-    }
-
-     // 
-    public function setnoviaDireccion($noviaDireccion)
-    {
-        $this->noviaDireccion = $noviaDireccion;
-    }
-
-    // 
-    public function setnoviaPais($noviaPais)
-    {
-        $this->noviaPais = $noviaPais;
-    }
-
-    // 
-    public function setnoviaEstado($noviaEstado)
-    {
-        $this->noviaEstado = $noviaEstado;
-    }
-
-    // 
-    public function setnoviaCiudad($noviaCiudad)
-    {
-        $this->noviaCiudad = $noviaCiudad;
-    }
-
-    // 
-    public function setnoviaCP($noviaCP)
-    {
-        $this->noviaCP = $noviaCP;
-    }
-
-    //
-    public function setnovioNombre($novioNombre)
-    {
-        $this->novioNombre = $novioNombre;
-    }
- 
- 	// 
-    public function setnovioSNombre($novioSNombre)
-    {
-        $this->novioSNombre = $novioSNombre;
-    }
-
-    // 
-    public function setnovioAPaterno($novioAPaterno)
-    {
-        $this->novioAPaterno = $novioAPaterno;
-    }
-
-    // 
-    public function setnovioAMaterno($novioAMaterno)
-    {
-        $this->novioAMaterno = $novioAMaterno;
-    }
-
-    // 
-    public function setnovioEMail($novioEMail)
-    {
-        $this->novioEMail = $novioEMail;
-    }
-
-    // 
-    public function setnovioLada($novioLada)
-    {
-        $this->novioLada = $novioLada;
-    }
-
-    // 
-    public function setnovioTelefono($novioTelefono)
-    {
-        $this->novioTelefono = $novioTelefono;
-    }
-
-    // 
-    public function setnovioCelular($novioCelular)
-    {
-        $this->novioCelular = $novioCelular;
-    }
-
-    // 
-    public function setnovioDireccion($novioDireccion)
-    {
-        $this->novioDireccion = $novioDireccion;
-    }
-
-    // 
-    public function setnovioPais($novioPais)
-    {
-        $this->novioPais = $novioPais;
-    }
-
-    // 
-    public function setnovioEstado($novioEstado)
-    {
-        $this->novioEstado = $novioEstado;
-    }
-
-    // 
-    public function setnovioCiudad($novioCiudad)
-    {
-        $this->novioCiudad = $novioCiudad;
-    }
-
-    // 
-    public function setnovioCP($novioCP)
-    {
-        $this->novioCP = $novioCP;
-    }
- 
 }

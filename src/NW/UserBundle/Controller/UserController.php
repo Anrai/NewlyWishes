@@ -51,49 +51,6 @@ class UserController extends Controller
             ->add('noviaTelefono', 'text', array('max_length' => 8))
             ->add('noviaCelular', 'text', array('max_length' => 10))
             ->add('noviaDireccion', 'text')
-<<<<<<< HEAD
-
-            ->add('noviaPais', 'choice', array('choices'   => array(
-                    'MX'   => 'México',
-                    'afternoon' => 'Afternoon',
-                    'evening'   => 'Evening',
-                    ), 'multiple'  => false,))
-            ->add('noviaEstado', 'choice', array('choices'   => array(
-                     ''   => 'Aguascalientes',
-                     ''   => 'Baja California',
-                     ''   => 'Baja California Sur',
-                     ''   => 'Campeche',
-                     ''   => 'Chiapas',
-                     ''   => 'Chihuahua',
-                     ''   => 'Coahuila',
-                     ''   => 'Colima',
-                     ''   => 'Distrito Federal',
-                     ''   => 'Durango',
-                     ''   => 'Estado de México',
-                     ''   => 'Guanajuato',
-                     ''   => 'Guerrero',
-                     ''   => 'Hidalgo',
-                     ''   => 'Jalisco',
-                     ''   => 'Michoacán',
-                     ''   => 'Morelos',
-                     ''   => 'Nayarit',
-                     ''   => 'Nuevo León',
-                     ''   => 'Oaxaca',
-                     ''   => 'Puebla',
-                     ''   => 'Querétaro',
-                     ''   => 'Quintana Roo',
-                     ''   => 'San Luis Potosí',
-                     ''   => 'Sinaloa',
-                     ''   => 'Sonora',
-                     ''   => 'Tabasco',
-                     ''   => 'Tamaulipas',
-                     ''   => 'Tlaxcala',
-                     ''   => 'Veracruz',
-                     ''   => 'Yucatán',
-                     ''   => 'Zacatecas',
-                    ), 'multiple'  => false,))
-
-=======
             ->add('noviaPais', 'choice', array('choices' => array(
                     'MX'   => 'México',
                     ), 'multiple'  => false,))
@@ -131,7 +88,6 @@ class UserController extends Controller
                      '30'   => 'Yucatán',
                      '31'   => 'Zacatecas',
                     ), 'multiple'  => false,))
->>>>>>> 348caed2aae16cc314737588a270f50f67ec326d
             ->add('noviaCiudad', 'text')
             ->add('noviaCP', 'text', array('max_length' => 5))
             ->add('novioNombre', 'text')
@@ -143,10 +99,6 @@ class UserController extends Controller
             ->add('novioTelefono', 'text', array('max_length' => 8))
             ->add('novioCelular', 'text', array('max_length' => 10))
             ->add('novioDireccion', 'text')
-<<<<<<< HEAD
-            ->add('novioPais', 'country')
-            ->add('novioEstado', 'text')
-=======
             ->add('novioPais', 'choice', array('choices' => array(
                     'MX'   => 'México',
                     ), 'multiple'  => false,))
@@ -184,7 +136,6 @@ class UserController extends Controller
                      '30'   => 'Yucatán',
                      '31'   => 'Zacatecas',
                     ), 'multiple'  => false,))
->>>>>>> 348caed2aae16cc314737588a270f50f67ec326d
             ->add('novioCiudad', 'text')
             ->add('novioCP', 'text', array('max_length' => 5))
             ->add('userName', 'text', array('mapped' => false, 'required'  => true))

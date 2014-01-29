@@ -13,6 +13,8 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+        // Con esto le asigno un rol por default a un nuevo usuario:
+        //$this->roles = array('ROLE_USER');
     }
     /**
      * @var integer
