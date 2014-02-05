@@ -139,6 +139,18 @@ hr{
 .pad{
 	margin-left: 15px;
 }
+.estrella{
+	margin-left: 40px;
+}
+.estrella2{
+	margin-left: 65px;
+}
+.estrella3{
+	margin-left: 90px;
+}
+.estrella4{
+	margin-left: 115px;
+}
 .marco{
 	border: 1px solid rgb(127, 127, 127);
 }
@@ -155,7 +167,14 @@ hr{
 	border: 1px solid rgb(204,0,153);
 	padding-top: 20px;
 }
-
+.progress{
+	width: 300px;
+	height: 15px;
+	margin-bottom: 5px;
+}
+.progress-bar{
+	background-color: rgb(204,0,153);
+}
 
 
 
