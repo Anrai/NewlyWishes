@@ -15,12 +15,12 @@ class User extends BaseUser
         // your own logic
         // Con esto le asigno un rol por default a un nuevo usuario:
         //$this->roles = array('ROLE_USER');
+        $this->registronovios = new ArrayCollection();
     }
     /**
      * @var integer
      */
     protected $id;
-
 
     /**
      * Get id
@@ -31,4 +31,9 @@ class User extends BaseUser
     {
         return $this->id;
     }
+
+    /**
+     * @OneToOne(targetEntity="\src\NW\UserBundle\Entity\registronovios", mappedBy="user", cascade={"persist"})
+     **/
+    protected $registronovios;
 }

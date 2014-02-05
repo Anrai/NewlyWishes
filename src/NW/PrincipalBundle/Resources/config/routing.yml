@@ -61,3 +61,39 @@ nw_principal_proveedores_tutoriales:
 nw_principal_funcionamiento:
     pattern:  /funcionamiento
     defaults: { _controller: NWPrincipalBundle:Default:funcionamiento }
+
+nw_principal_novios_index:
+    pattern:  /novios/index
+    defaults: { _controller: NWPrincipalBundle:Novios:index }
+
+nw_principal_novios_nuestra-boda:
+    pattern:  /novios/nuestra-boda
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestraBoda }
+
+nw_principal_novios_nuestro-calendario:
+    pattern:  /novios/nuestro-calendario
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestroCalendario }
+
+nw_principal_novios_nuestro-checklist:
+    pattern:  /novios/nuestro-checklist
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestroChecklist }
+
+nw_principal_novios_nuestra-mesa-de-regalos:
+    pattern:  /novios/nuestra-mesa-de-regalos
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestraMesaDeRegalos }
+
+nw_principal_novios_nuestra-lista-de-invitados:
+    pattern:  /novios/nuestra-lista-de-invitados
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestraListaDeInvitados }
+    
+nw_principal_novios_nuestra-cuenta:
+    pattern:  /novios/nuestra-cuenta
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestraCuenta }
+
+nw_principal_novios_nuestra-informacion-bancaria:
+    pattern:  /novios/nuestra-informacion-bancaria
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestraInformacionBancaria }
+
+nw_principal_novios_nuestras-compras:
+    pattern:  /novios/nuestras-compras
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestrasCompras }

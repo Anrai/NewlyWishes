@@ -32,41 +32,23 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<table class="table text-center table-hover">
-				  <tr>
-				    <td> Mi Cuenta </td>
-				  </tr>
-				  <tr>
-				    <td> Mis Productos / Servicios </td>
-				  </tr>
-				  <tr>
-				    <td> Mis Banners Promocionales </td>
-				  </tr>
-				  <tr>
-				    <td> Mis Anuncios </td>
-				  </tr>
-				  <tr>
-				    <td> Mis Reseñas y Opiniones </td>
-				  </tr>
-				  <tr>
-				    <td> Mi Estado de Cuenta </td>
-				  </tr>
-				  <tr>
-				    <td> Mis Códigos de Venta </td>
-				  </tr>
-				  <tr>
-				    <td> Mi Información Bancaria </td>
-				  </tr>
-				  <tr>
-				    <td> Tutoriales </td>
-				  </tr>
-				  <tr>
-				    <p>&nbsp;</p>
-				  </tr>
-				  <tr>
-				    <td><p class="tienes table-hover">Tienes alguna duda, comentario, sugerencia o simplemente quieres decirnos algo, <span class="esc">escríbenos aquí</span></p></td>
-				  </tr>
-				</table>
+				<nav class="menu_novios">
+						<ul>
+						  	<a href="{{url('nw_principal_proveedores_micuenta')}}"><li style="border-radius:10px 10px 0px 0px;">Mi Cuenta </li></a>
+						    <a href="{{url('nw_principal_proveedores_misproductos')}}"><li> Mis Productos / Servicios </li></a>
+						    <a href="{{url('nw_principal_proveedores_misbanners')}}"><li> Mis Banners Promocionales </li></a>
+						    <a href="{{url('nw_principal_proveedores_misanuncios')}}"><li>Mis Anuncios </li></a>
+						    <a href="{{url('nw_principal_proveedores_misresenas')}}"><li> Mis Reseñas y Opiniones </li></a>
+						    <a href="{{url('nw_principal_proveedores_miestadodecuenta')}}"><li>Mi Estado de Cuenta</li></a>
+						    <a href="{{url('nw_principal_proveedores_miscodigos')}}"><li>Mis Códigos de Venta </li></a>
+						    <a href="{{url('nw_principal_proveedores_miinformacionbancaria')}}"><li> Mi Información Bancaria </li></a>
+						    <a href="{{url('nw_principal_proveedores_tutoriales')}}"><li> Tutoriales </li></a>
+						    <li style="border-radius:0px 0px 10px 10px;">
+						    	
+						    </li>
+						</ul>
+				</nav>
+				
 			</div>
 			<div class="col-md-9">
 				{% block partederecha %}

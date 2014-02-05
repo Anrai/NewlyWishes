@@ -58,6 +58,7 @@ margin-top: 80px;
 	margin-top: auto;
 	text-align: center;
 }
+
 .proveedor{
 	background-color: rgb(204,0,153);
 	width: 220px;
@@ -71,12 +72,14 @@ margin-top: 80px;
 	padding: 10px;
 
 }
+
 .table{
-	height: 600px;
+	height: 500px;
 	background-color: rgb(228,228,228);
 	color: rgb(204,0,153);
 	border-radius: 10px;
 }
+
 .tienes{
 	color: black;
 }

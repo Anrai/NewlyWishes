@@ -4,6 +4,11 @@ namespace NW\UserBundle\Entity;
  
 class registronovios
 {
+    /**
+     * @var integer
+     */
+    protected $usuarioId;
+
 	// 
     protected $noviaNombre;
  
@@ -696,4 +701,33 @@ class registronovios
     {
         return $this->novioCP;
     }
+
+    /**
+     * Set usuarioId
+     *
+     * @param integer $usuarioId
+     * @return registronovios
+     */
+    public function setUsuarioId($usuarioId)
+    {
+        $this->usuarioId = $usuarioId;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioId
+     *
+     * @return integer 
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuarioId;
+    }
+
+    /**
+     * @OneToOne(targetEntity="User", inversedBy="registronovios")
+     * @JoinColumn(name="id", referencedColumnName="id")
+     **/
+    protected $user;
 }
