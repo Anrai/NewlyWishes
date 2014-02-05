@@ -2,6 +2,13 @@
 NW\UserBundle\Entity\registronovios:
     type:  entity
     table: novios
+    oneToOne:
+        user:
+            targetEntity: User
+            inversedBy: registronovios
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
     id:
         id:
             type: integer

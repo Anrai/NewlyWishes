@@ -15,8 +15,9 @@ class User extends BaseUser
         // your own logic
         // Con esto le asigno un rol por default a un nuevo usuario:
         //$this->roles = array('ROLE_USER');
-        $this->registronovios = new ArrayCollection();
+        //$this->registronovios = new ArrayCollection();
     }
+
     /**
      * @var integer
      */
@@ -32,8 +33,29 @@ class User extends BaseUser
         return $this->id;
     }
 
-    /**
-     * @OneToOne(targetEntity="\src\NW\UserBundle\Entity\registronovios", mappedBy="user", cascade={"persist"})
-     **/
+    // Tratando de crear una asociación
     protected $registronovios;
+
+    /**
+     * Set registronovios
+     *
+     * @param \NW\UserBundle\Entity\registronovios $registronovios
+     * @return User
+     */
+    public function setRegistronovios(\NW\UserBundle\Entity\registronovios $registronovios = null)
+    {
+        $this->registronovios = $registronovios;
+
+        return $this;
+    }
+
+    /**
+     * Get registronovios
+     *
+     * @return \NW\UserBundle\Entity\registronovios 
+     */
+    public function getRegistronovios()
+    {
+        return $this->registronovios;
+    }
 }
