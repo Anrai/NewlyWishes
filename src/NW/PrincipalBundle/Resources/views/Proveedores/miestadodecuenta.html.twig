@@ -1,0 +1,192 @@
+{# src/NW/PrincipalBundle/Resources/views/Proveedores/miestadodecuenta.html.twig #}
+
+{% extends 'NWPrincipalBundle:Proveedores:administrador.html.twig' %}
+
+{% block partederecha %}
+		
+		<div class="row">
+			<div class="col-md-6">
+			
+			</div>
+			<div class="col-md-1">
+				<img class="puntov" src="{{asset('img/puntov.png')}}">
+			</div>
+			<div class="col-md-5">
+				<h1>Mi Estado de Cuenta</h1>	
+			</div>
+			<div class="art">
+				<h4>Resumen de Ventas</h4>
+			</div>
+			<hr />
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<p>Filtrar movimientos</p>
+					</div>
+					<div class="col-md-3">
+						<p class="verde">Exportar en PDF</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-9">
+						
+					</div>
+					<div class="col-md-3">
+						<p class="verde">Exportar en Excel</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-9">
+						
+					</div>
+					<div class="col-md-3">
+						<p class="verde">Obtener factura</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Productos / servicios vendidos:</p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">##</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Ventas del periodo:  </p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">$100,000.00 </p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Descuentos otorgados:</p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">$2,000.00</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Comisiones pagadas a NW:</p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">$10,000.00</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Cuotas pagadas del plan contratado:</p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">$1,000.00</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Total del periodo:</p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">$87,000.00</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Saldo transferido en el periodo:</p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">$50,000.00</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Saldo remanente del periodo:</p>
+					</div>
+					<div class="col-md-3">
+						<p class="art">$37,000.00</p>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+						<p>Costo del plan contratado: <span class="art">$$</span></p>
+					</div>
+					<div class="col-md-2">
+						<p>Plan: <span class="art">Plus</span></p>
+					</div>
+			</div>
+		</div>
+			<div class="row">
+				<div class="col-md-10">
+					<h4 class="art">Detalle de ventas</h4>
+				</div>
+				<div class="col-md-2">
+					<h4 class="art">
+						<< 1 >>
+					</h4>
+				</div>
+			</div>
+			<hr />
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<p>Produvto: <span class="art">Nombre del producto / servicio</span></p>
+					</div>
+					<div class="col-md-1">
+						<p>Monto:</p>
+					</div>
+					<div class="col-md-3">
+						<span class="art">$100.00</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5">
+						<p>ID: <span class="art">ID del artículo</span></p>
+					</div>
+					<div class="col-md-1">
+						<p>Descuento: </p>
+					</div>
+					<div class="col-md-3">
+						<span class="art">$2.00</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5">
+						<p>Fecha de venta: <span class="art">dd/mm/ año</span></p>
+					</div>
+					<div class="col-md-1">
+						<p>Comisión NW</p>
+					</div>
+					<div class="col-md-3">
+						<span class="art">$3.00</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5">
+						<p>Folio de compra: <span class="art">000000</span></p>
+					</div>
+					<div class="col-md-1">
+						<p>Total:</p>
+					</div>
+					<div class="col-md-3">
+						<span class="art">$95.00</span>
+					</div>
+					<br>
+					<br>
+					<br>
+					
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+	{% endblock %}
