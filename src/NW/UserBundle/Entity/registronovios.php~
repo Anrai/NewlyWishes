@@ -86,19 +86,11 @@ class registronovios
 
     // 
     protected $novioCP;
-
-    /*
-    protected $userName;
-
-    // 
-    protected $userPass;
-    */
  
     /**
      * @var integer
      */
     private $id;
-
 
     /**
      * Get id
@@ -721,19 +713,6 @@ class registronovios
         return $this;
     }
 
-    /*
-
-
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
-    public function getUserPass()
-    {
-        return $this->userPass;
-    }
-*/
     /**
      * Get usuarioId
      *

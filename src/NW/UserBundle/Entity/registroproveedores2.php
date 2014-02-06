@@ -1,8 +1,6 @@
 <?php
-
+// src/NW/UserBundle/Entity/registroproveedores.php
 namespace NW\UserBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * registroproveedores
@@ -12,82 +10,82 @@ class registroproveedores
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      */
-    private $usuarioId;
+    protected $usuarioId;
 
     /**
-     * @var string
+     *  
      */
-    private $nombreRazon;
+    protected $nombreRazon;
 
     /**
-     * @var string
+     *  
      */
-    private $apellidoPaterno;
+    protected $apellidoPaterno;
 
     /**
-     * @var string
+     *  
      */
-    private $apellidoMaterno;
+    protected $apellidoMaterno;
 
     /**
-     * @var string
+     *  
      */
-    private $rfc;
+    protected $rfc;
 
     /**
-     * @var string
+     *  
      */
-    private $email;
+    protected $email;
 
     /**
-     * @var string
+     *  
      */
-    private $lada;
+    protected $lada;
 
     /**
-     * @var string
+     *  
      */
-    private $telefono;
+    protected $telefono;
 
     /**
-     * @var string
+     *  
      */
-    private $celular;
+    protected $celular;
 
     /**
-     * @var string
+     *  
      */
-    private $direccion;
+    protected $direccion;
 
     /**
-     * @var string
+     *  
      */
-    private $pais;
+    protected $pais;
 
     /**
-     * @var string
+     *  
      */
-    private $estado;
+    protected $estado;
 
     /**
-     * @var string
+     *  
      */
-    private $ciudad;
+    protected $ciudad;
 
     /**
-     * @var string
+     *  
      */
-    private $cp;
+    protected $cp;
 
     /**
      * @var \NW\UserBundle\Entity\User
      */
-    private $user;
+    protected $user;
 
 
     /**
@@ -443,33 +441,5 @@ class registroproveedores
     public function getUser()
     {
         return $this->user;
-    }
-    /**
-     * @var string
-     */
-    private $tipoPersona;
-
-
-    /**
-     * Set tipoPersona
-     *
-     * @param string $tipoPersona
-     * @return registroproveedores
-     */
-    public function setTipoPersona($tipoPersona)
-    {
-        $this->tipoPersona = $tipoPersona;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoPersona
-     *
-     * @return string 
-     */
-    public function getTipoPersona()
-    {
-        return $this->tipoPersona;
     }
 }

@@ -1,4 +1,4 @@
-{# src/NW/PrincipalBundle/Resources/views/registronovios.html.twig #}
+{# src/NW/PrincipalBundle/Resources/views/registroproveedores.html.twig #}
 
 {% extends '::base.html.twig' %}
 
@@ -25,95 +25,58 @@
 			    </div>
 			</div>
 			<div class="row" style="margin-top:20px;">
-			    <div class="col-md-8">
-			        <form action="validar_registro_proveedores.php" method="post">
-			        </div>
-			    </div>
-			    <div class="row">
-			        <div class="col-md-12">
-			            <input type="radio" name="tipo_persona" value="fisica"/>&nbsp;&nbsp;Persona Física&nbsp;&nbsp; <input type="radio" name="tipo_persona" value="moral" checked="checked"/>&nbsp;&nbsp;Persona Moral
-			        </div>
-			    </div>
-			    <div class="row" style="margin-top:20px;">
-			        <div class="col-md-4">
-			            <input type="text" name="m_nombre" placeholder="Nombre o razón social" value="" id="input_registro_novios"/>
-			            <input type="text" name="m_apellido_paterno" placeholder="Apellido Paterno" value="" id="input_registro_novios"/>
-			            <input type="text" name="m_apellido_materno" placeholder="Apellido Materno" value="" id="input_registro_novios"/>
-			            <input type="text" name="m_rfc" placeholder="RFC" value="" id="input_registro_novios"/>
-			        </div>
-			        <div class="col-md-4">
-			            <input type="text" name="m_email" placeholder="E-Mail" value="" id="input_registro_novios"/>
-			            <input type="text" name="m_lada" maxlength="3" placeholder="LADA" value="" id="input_registro_novios" style="width:20%;"/>
-			            <input type="text" name="m_telefono_personal" maxlength="8" placeholder="Teléfono de oficina" value="" id="input_registro_novios" style="width:74%;"/>
-			            <input type="text" name="m_celular" maxlength="10" placeholder="Celular" value="" id="input_registro_novios"/>
-			        </div>
-			        <div class="col-md-4">
-			            <input type="text" name="m_direccion" placeholder="Dirección" value="" id="input_registro_novios"/>
-			            País:&nbsp;
-			            <select name="m_pais" id="input_registro_novios" style="width:70%;">
-			                <option value="1" selected>México</option>
-			            </select>
-			            <br/>
-			            Estado:
-			            <select name="m_estado" id="input_registro_novios" style="width:70%;">
-			                <option>Aguascalientes</option>
-			                <option>Baja California</option>
-			                <option>Baja California Sur</option>
-			                <option>Campeche</option>
-			                <option>Coahuila de Zaragoza</option>
-			                <option>Colima</option>
-			                <option>Chiapas</option>
-			                <option>Chihuahua</option>
-			                <option>Distrito Federal</option>
-			                <option>Durango</option>
-			                <option>Guanajuato</option>
-			                <option>Guerrero</option>
-			                <option>Hidalgo</option>
-			                <option>Jalisco</option>
-			                <option>México</option>
-			                <option>Michoacán de Ocampo</option>
-			                <option>Morelos</option>
-			                <option>Nayarit</option>
-			                <option>Nuevo León</option>
-			                <option>Oaxaca</option>
-			                <option>Puebla</option>
-			                <option>Querétaro</option>
-			                <option>Quintana Roo</option>
-			                <option>San Luis Potosí</option>
-			                <option>Sinaloa</option>
-			                <option>Sonora</option>
-			                <option>Tabasco</option>
-			                <option>Tamaulipas</option>
-			                <option>Tlaxcala</option>
-			                <option>Veracruz de Ignacio de la Llave</option>
-			                <option>Yucatán</option>
-			                <option>Zacatecas</option>
-			            </select>
-			            <input type="text" name="m_ciudad" placeholder="Municipio o Delegación" value="" id="input_registro_novios"/>
-			            <input type="text" name="m_cp" placeholder="Código Postal" maxlength="5" value="" id="input_registro_novios"/>
-			        </div>
-			    </div>
-			    <!-- DATOS DEL USUARIO -->
-			    <div class="row" style="margin-top:20px;">
-			        <div class="col-md-10">
-			            <h3>Datos de Usuario:</h3>
-			        </div>
-			    </div>
-			    <div class="row">
-			        <div class="col-md-4">
-			            <input type="text" name="usuario" placeholder="Usuario" value="" id="input_registro_novios"/>
-			            <input type="password" name="password" placeholder="Contraseña" id="input_registro_novios"/>
-			        </div>
-			        <div class="col-md-4">
-			            <input type="text" name="preguntas" placeholder="Pregunta Secreta" value="" id="input_registro_novios"/>
-			            <input type="text" name="respuestas" placeholder="Respuesta Secreta" value="" id="input_registro_novios"/>
-			        </div>
-			        <div class="col-md-4">
-			            <input type="checkbox" name="terminos1" value="1">&nbsp;&nbsp;He leido y acepto los términos y condiciones<br>
-			            <input type="checkbox" name="terminos2" value="1">&nbsp;&nbsp;He leido y acepto los términos de privacidad<br>
-			            <input type="submit" value="enviar" id="enviar_form" style="margin-top:10px;"/>
-			        </div>
-			    </form>
+				{{ form_start(form) }}
+				    <div class="col-md-8">
+				    </div>
+				    <div class="row">
+				        <div class="col-md-12">
+				        	{{ form_widget(form.tipoPersona) }}
+				        </div>
+				    </div>
+				    <div class="row" style="margin-top:20px;">
+				        <div class="col-md-4">
+				        	{{ form_widget(form.nombreRazon, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre o razón social' } }) }}
+				            {{ form_widget(form.apellidoPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
+				            {{ form_widget(form.apellidoMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'pellido Materno' } }) }}
+				            {{ form_widget(form.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
+				        </div>
+				        <div class="col-md-4">
+				        	{{ form_widget(form.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
+				        	{{ form_widget(form.lada, { 'attr': {'class': 'input_registro_novios input_registro20', 'placeholder': 'LADA'} }) }}
+				        	{{ form_widget(form.telefono, { 'attr': {'class': 'input_registro_novios input_registro74', 'placeholder': 'Teléfono de oficina'} }) }}
+				        	{{ form_widget(form.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
+				        </div>
+				        <div class="col-md-4">
+				        	{{ form_widget(form.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
+				            {{ form_label(form.pais, 'País') }}
+					        {{ form_widget(form.pais, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
+				            <br />
+					        {{ form_label(form.estado, 'Estado') }}
+					        {{ form_widget(form.estado, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
+					        {{ form_widget(form.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Municipio o Delegación' } }) }}
+				    		{{ form_widget(form.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
+				        </div>
+				    </div>
+				    <!-- DATOS DEL USUARIO -->
+				    <div class="row" style="margin-top:20px;">
+				        <div class="col-md-10">
+				            <h3>Datos de Usuario:</h3>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="col-md-4">
+				            {{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
+							{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
+				        </div>
+				        <div class="col-md-4">
+				            {{ form_widget(form.terminosCondiciones) }} {{ form_label(form.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
+							{{ form_widget(form.terminosPrivacidad) }} {{ form_label(form.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
+				        </div>
+				        <div class="col-md-4">
+				            {{ form_widget(form.Enviar, { 'attr': {'id': 'enviar_form' } }) }}
+				        </div>
+					</div>
+				{{ form_end(form) }}
 			</div>
 			<div class="container">
 			    <div class="row">

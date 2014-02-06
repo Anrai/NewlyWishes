@@ -17,6 +17,9 @@ NW\UserBundle\Entity\registroproveedores:
     fields:
         usuarioId:
             type: integer
+        tipoPersona:
+            type: string
+            length: 100
         nombreRazon:
             type: string
             length: 100
@@ -50,7 +53,7 @@ NW\UserBundle\Entity\registroproveedores:
         estado:
             type: string
             length: 100
-        municipio:
+        ciudad:
             type: string
             length: 100
         cp:
