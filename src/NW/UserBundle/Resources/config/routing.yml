@@ -5,3 +5,7 @@ nw_user_newuser:
 nw_user_registronovios:
     pattern:  /registronovios
     defaults: { _controller: NWUserBundle:User:registronovios }
+
+nw_user_loginnovios:
+    pattern:  /loginnovios
+    defaults: { _controller: NWUserBundle:User:loginnovios }
