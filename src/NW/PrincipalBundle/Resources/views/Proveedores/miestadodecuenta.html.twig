@@ -4,118 +4,63 @@
 
 {% block partederecha %}
 		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<p>Filtrar movimientos</p>
+				</div>
+				<div class="col-md-3">
+					<p class="verde">Exportar en PDF</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9">
+					
+				</div>
+				<div class="col-md-3">
+					<p class="verde">Exportar en Excel</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9">
+					
+				</div>
+				<div class="col-md-3">
+					<p class="verde">Obtener factura</p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+			<div class="col-md-4">
+				<p>
+					Productos / servicios vendidos: <br>
+					Ventas del periodo: <br>
+					Descuentos otorgados: <br>
+					Comisiones pagadas a NW:  
+					Cuotas pagadas del plan contratado: <br>  
+					Total del periodo: <br>
+					Saldo transferido en el periodo: <br> 
+					Saldo remanente del periodo: <br> 
+				</p>
+			</div>
+			<div class="col-md-8 art">
+				<p>
+					$100,000.00 <br> 
+					$2,000.00 <br> 
+					$1,000.00 <br>  
+					$87,000.00 <br>
+					$50,000.00 <br> 
+					$37,000.00 <br>
+				</p>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-6">
-			
+				<p>Costo del plan contratado: <span class="art">$$</span></p>
 			</div>
-			<div class="col-md-1">
-				<img class="puntov" src="{{asset('img/puntov.png')}}">
-			</div>
-			<div class="col-md-5">
-				<h1>Mi Estado de Cuenta</h1>	
-			</div>
-			<div class="art">
-				<h4>Resumen de Ventas</h4>
-			</div>
-			<hr />
-
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9">
-						<p>Filtrar movimientos</p>
-					</div>
-					<div class="col-md-3">
-						<p class="verde">Exportar en PDF</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-9">
-						
-					</div>
-					<div class="col-md-3">
-						<p class="verde">Exportar en Excel</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-9">
-						
-					</div>
-					<div class="col-md-3">
-						<p class="verde">Obtener factura</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Productos / servicios vendidos:</p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">##</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Ventas del periodo:  </p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">$100,000.00 </p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Descuentos otorgados:</p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">$2,000.00</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Comisiones pagadas a NW:</p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">$10,000.00</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Cuotas pagadas del plan contratado:</p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">$1,000.00</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Total del periodo:</p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">$87,000.00</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Saldo transferido en el periodo:</p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">$50,000.00</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<p>Saldo remanente del periodo:</p>
-					</div>
-					<div class="col-md-3">
-						<p class="art">$37,000.00</p>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-6">
-						<p>Costo del plan contratado: <span class="art">$$</span></p>
-					</div>
-					<div class="col-md-2">
-						<p>Plan: <span class="art">Plus</span></p>
-					</div>
+			<div class="col-md-2">
+				<p>Plan: <span class="art">Plus</span></p>
 			</div>
 		</div>
 			<div class="row">
@@ -129,57 +74,139 @@
 				</div>
 			</div>
 			<hr />
-
+			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-5">
-						<p>Produvto: <span class="art">Nombre del producto / servicio</span></p>
-					</div>
-					<div class="col-md-1">
-						<p>Monto:</p>
-					</div>
-					<div class="col-md-3">
-						<span class="art">$100.00</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-5">
-						<p>ID: <span class="art">ID del artículo</span></p>
-					</div>
-					<div class="col-md-1">
-						<p>Descuento: </p>
+					<div class="col-md-4">
+						<p>
+						Producto: <span class="art">Nombre del producto / servicio</span> <br>
+						ID: <span class="art">ID del artículo</span> <br>
+						Fecha de venta: <span class="art">dd/mm/ año</span> <br>
+						Folio de compra: <span class="art">000000</span> <br>
+						</p>
 					</div>
 					<div class="col-md-3">
-						<span class="art">$2.00</span>
+						<p>
+							Monto: <br>
+							Descuento: <br> 
+							Comisión NW: <br>
+							Total: <br>
+						</p>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-5">
-						<p>Fecha de venta: <span class="art">dd/mm/ año</span></p>
-					</div>
-					<div class="col-md-1">
-						<p>Comisión NW</p>
-					</div>
-					<div class="col-md-3">
-						<span class="art">$3.00</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-5">
-						<p>Folio de compra: <span class="art">000000</span></p>
-					</div>
-					<div class="col-md-1">
-						<p>Total:</p>
-					</div>
-					<div class="col-md-3">
-						<span class="art">$95.00</span>
+					<div class="col-md-5 art">
+						<p>
+							$100.00 <br>
+							$2.00 <br>
+							$3.00 <br>
+							$95.00 <br>
+						</p>
 					</div>
 					<br>
 					<br>
+					<div class="col-md-4">
+						<p>
+						Comprador: <span class="art">Nombre del comprador</span> <br>
+						Email: <span class="art">email del comprador</span> <br>
+						Teléfono: <span class="art">teléfono del comprador</span> <br>
+						Celular: <span class="art">Celular del comprador</span> <br>
+						</p>
+					</div>
+					<div class="col-md-3">
+						<p>
+							Comisión vendedor: <br>
+							<br>
+							Vendedor: <br>
+							Código aplicado: <br>
+						</p>
+					</div>
+					<div class="col-md-4 art">
+						<p>
+							$100.00 <br>
+							<br>
+							12345 <br>
+							AB5023 <br>
+						</p>
+						<br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<strong class="art">
+							Aplica envío
+						</strong>
+					</div>
+				</div>
+				<hr />
+				<div class="row">
+					<div class="col-md-4">
+						<p>
+						Producto: <span class="art">Nombre del producto / servicio</span> <br>
+						ID: <span class="art">ID del artículo</span> <br>
+						Fecha de venta: <span class="art">dd/mm/ año</span> <br>
+						Folio de compra: <span class="art">000000</span> <br>
+						</p>
+					</div>
+					<div class="col-md-3">
+						<p>
+							Monto: <br>
+							Descuento: <br> 
+							Comisión NW: <br>
+							Total: <br>
+						</p>
+					</div>
+					<div class="col-md-5 art">
+						<p>
+							$100.00 <br>
+							$2.00 <br>
+							$3.00 <br>
+							$95.00 <br>
+						</p>
+					</div>
 					<br>
-					
+					<br>
+					<div class="col-md-4">
+						<p>
+						Comprador: <span class="art">Nombre del comprador</span> <br>
+						Email: <span class="art">email del comprador</span> <br>
+						Teléfono: <span class="art">teléfono del comprador</span> <br>
+						Celular: <span class="art">Celular del comprador</span> <br>
+						</p>
+					</div>
+					<div class="col-md-3">
+						<p>
+							Comisión vendedor: <br>
+							<br>
+							Vendedor: <br>
+							Código aplicado: <br>
+						</p>
+					</div>
+					<div class="col-md-4 art">
+						<p>
+							$100.00 <br>
+							<br>
+							12345 <br>
+							AB5023 <br>
+						</p>
+						<br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<strong class="art">
+							No aplica envío
+						</strong>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+					</div>
 				</div>
 			</div>
+
+
+
 
 
 
