@@ -3,12 +3,18 @@
 	{% extends '::base.html.twig' %}
 
 	{% block body %}
-
-	<div class="container corrector">
+	<div class="container" style="padding:0px; margin-top:-30px; box-shadow:rgba(0,0,0,1) 0px 0px 30px;
+  -moz-box-shadow:rgba(0,0,0,1) 0px 0px 30px;
+  -ms-box-shadow:rgba(0,0,0,1) 0px 0px 30px;
+  -o-box-shadow:rgba(0,0,0,1) 0px 0px 30px;
+  -webkit-box-shadow:rgba(0,0,0,1) 0px 0px 30px;">
+	<div class="container corrector" style="padding-top:50px;">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="nw2">
+				<a href="{{url('nw_principal_homepage')}}">
 					<img class="img-responsive" src="{{asset('img/nw2.png')}}">
+					</a>
 				</div>
 			</div>
 			<div class="col-md-6 text-center">
@@ -19,7 +25,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container" style="padding-top:20px;">
 		<div class="row">
 			<div class="col-md-12">
 				<h4>Bienvenidos <span class="esc">Nombre de la novia</span> y <span class="esc">Nombre del novio</span></h4>
@@ -27,18 +33,18 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h4>Saldo de tu mesa de regalos: <span class="esc">$0.00 pesos</span></h4>
+				<h4 style="font-size:16px;">Saldo de tu mesa de regalos: <span class="esc">$0.00 pesos</span></h4>
 			</div>
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container" style="padding-top:10px;">
 		<div class="row" style="margin-top:20px;">
 			<div class="col-md-3">
-				
+
 				<nav class="menu_novios">
 					<ul>
-					  	
+
 					  	<a href="{{url('nw_principal_novios_nuestra-boda')}}">
 					  	<li style="border-radius:10px 10px 0px 0px;">
 					  	<div class="row">
@@ -51,7 +57,7 @@
 					  	</div>
 					  	</li>
 					  	</a>
-					    
+
 					    <a href="{{url('nw_principal_novios_nuestro-calendario')}}">
 					    <li>
 					    <div class="row">
@@ -63,7 +69,7 @@
 							</div>
 						</div>
 					  	</li></a>
-					    
+
 					    <a href="{{url('nw_principal_novios_nuestro-checklist')}}">
 					    <li> 
 					    <div class="row">
@@ -75,7 +81,7 @@
 							</div>
 						</div>
 					  	</li></a>
-					    
+
 					    <a href="{{url('nw_principal_novios_nuestra-mesa-de-regalos')}}">
 					    <li>
 					    <div class="row">
@@ -87,7 +93,7 @@
 							</div>
 						</div>
 					    </li></a>
-					    
+
 					    <a href="{{url('nw_principal_novios_nuestra-lista-de-invitados')}}">
 					    <li> 
 					    <div class="row">
@@ -99,7 +105,7 @@
 							</div>
 						</div>
 					  	</li></a>
-					    
+
 					    <a href="{{url('nw_principal_novios_nuestra-cuenta')}}">
 					    <li>
 					    <div class="row">
@@ -111,7 +117,7 @@
 							</div>
 						</div>
 					  	</li></a>
-					    
+
 					    <a href="{{url('nw_principal_novios_nuestra-informacion-bancaria')}}">
 						<li>
 						<div class="row">
@@ -123,7 +129,7 @@
 						    </div>
 						</div>
 					    </li></a>
-					    
+
 					    <a href="{{url('nw_principal_novios_nuestras-compras')}}">
 					    <li>
 					    <div class="row">
@@ -135,7 +141,7 @@
 						   	</div>
 						</div>
 					    </li></a>
-					    
+
 					    <li style="border-radius:0px 0px 10px 10px;">
 					    	<p class="tienes table-hover">Tienes alguna duda, comentario, sugerencia o simplemente quieres decirnos algo, <span class="esc">escríbenos aquí</span>
 					    	</p>
@@ -151,4 +157,6 @@
 		</div>
 	</div>
 
+	{% endblock %}
+	{% block footer %}
 	{% endblock %}
