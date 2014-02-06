@@ -1,0 +1,126 @@
+{# src/NW/PrincipalBundle/Resources/views/registronovios.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+	{% block body %}
+	
+		{% include ':plantillasParciales:top.html.twig' %}
+
+		<div class="container" style="margin-top:0px; margin-bottom:0px; padding-left:50px; padding-right:50px; background-color:rgba(255,255,255,1);">
+      		<div class="">
+			    <div class="cuadro img-responsive">
+					<br>
+					<img class="img-responsive proveedores" src="{{asset('img/proveedores.png')}}" />
+					
+					{% render controller("FOSUserBundle:Security:login") %}
+
+				</div>
+			    <h4 class="olv" style="text-align:center; margin-top:20px;">Olvidé mi usuario / contraseña</h4>
+			</div>
+			<div class="row" style="margin-top:50px;">
+			    <div class="col-md-12">
+			        <p>
+			            Si eres un proveedor nuevo y deseas anunciarte con nosotros, por favor regístrate.
+			        </p>
+			    </div>
+			</div>
+			<div class="row" style="margin-top:20px;">
+			    <div class="col-md-8">
+			        <form action="validar_registro_proveedores.php" method="post">
+			        </div>
+			    </div>
+			    <div class="row">
+			        <div class="col-md-12">
+			            <input type="radio" name="tipo_persona" value="fisica"/>&nbsp;&nbsp;Persona Física&nbsp;&nbsp; <input type="radio" name="tipo_persona" value="moral" checked="checked"/>&nbsp;&nbsp;Persona Moral
+			        </div>
+			    </div>
+			    <div class="row" style="margin-top:20px;">
+			        <div class="col-md-4">
+			            <input type="text" name="m_nombre" placeholder="Nombre o razón social" value="" id="input_registro_novios"/>
+			            <input type="text" name="m_apellido_paterno" placeholder="Apellido Paterno" value="" id="input_registro_novios"/>
+			            <input type="text" name="m_apellido_materno" placeholder="Apellido Materno" value="" id="input_registro_novios"/>
+			            <input type="text" name="m_rfc" placeholder="RFC" value="" id="input_registro_novios"/>
+			        </div>
+			        <div class="col-md-4">
+			            <input type="text" name="m_email" placeholder="E-Mail" value="" id="input_registro_novios"/>
+			            <input type="text" name="m_lada" maxlength="3" placeholder="LADA" value="" id="input_registro_novios" style="width:20%;"/>
+			            <input type="text" name="m_telefono_personal" maxlength="8" placeholder="Teléfono de oficina" value="" id="input_registro_novios" style="width:74%;"/>
+			            <input type="text" name="m_celular" maxlength="10" placeholder="Celular" value="" id="input_registro_novios"/>
+			        </div>
+			        <div class="col-md-4">
+			            <input type="text" name="m_direccion" placeholder="Dirección" value="" id="input_registro_novios"/>
+			            País:&nbsp;
+			            <select name="m_pais" id="input_registro_novios" style="width:70%;">
+			                <option value="1" selected>México</option>
+			            </select>
+			            <br/>
+			            Estado:
+			            <select name="m_estado" id="input_registro_novios" style="width:70%;">
+			                <option>Aguascalientes</option>
+			                <option>Baja California</option>
+			                <option>Baja California Sur</option>
+			                <option>Campeche</option>
+			                <option>Coahuila de Zaragoza</option>
+			                <option>Colima</option>
+			                <option>Chiapas</option>
+			                <option>Chihuahua</option>
+			                <option>Distrito Federal</option>
+			                <option>Durango</option>
+			                <option>Guanajuato</option>
+			                <option>Guerrero</option>
+			                <option>Hidalgo</option>
+			                <option>Jalisco</option>
+			                <option>México</option>
+			                <option>Michoacán de Ocampo</option>
+			                <option>Morelos</option>
+			                <option>Nayarit</option>
+			                <option>Nuevo León</option>
+			                <option>Oaxaca</option>
+			                <option>Puebla</option>
+			                <option>Querétaro</option>
+			                <option>Quintana Roo</option>
+			                <option>San Luis Potosí</option>
+			                <option>Sinaloa</option>
+			                <option>Sonora</option>
+			                <option>Tabasco</option>
+			                <option>Tamaulipas</option>
+			                <option>Tlaxcala</option>
+			                <option>Veracruz de Ignacio de la Llave</option>
+			                <option>Yucatán</option>
+			                <option>Zacatecas</option>
+			            </select>
+			            <input type="text" name="m_ciudad" placeholder="Municipio o Delegación" value="" id="input_registro_novios"/>
+			            <input type="text" name="m_cp" placeholder="Código Postal" maxlength="5" value="" id="input_registro_novios"/>
+			        </div>
+			    </div>
+			    <!-- DATOS DEL USUARIO -->
+			    <div class="row" style="margin-top:20px;">
+			        <div class="col-md-10">
+			            <h3>Datos de Usuario:</h3>
+			        </div>
+			    </div>
+			    <div class="row">
+			        <div class="col-md-4">
+			            <input type="text" name="usuario" placeholder="Usuario" value="" id="input_registro_novios"/>
+			            <input type="password" name="password" placeholder="Contraseña" id="input_registro_novios"/>
+			        </div>
+			        <div class="col-md-4">
+			            <input type="text" name="preguntas" placeholder="Pregunta Secreta" value="" id="input_registro_novios"/>
+			            <input type="text" name="respuestas" placeholder="Respuesta Secreta" value="" id="input_registro_novios"/>
+			        </div>
+			        <div class="col-md-4">
+			            <input type="checkbox" name="terminos1" value="1">&nbsp;&nbsp;He leido y acepto los términos y condiciones<br>
+			            <input type="checkbox" name="terminos2" value="1">&nbsp;&nbsp;He leido y acepto los términos de privacidad<br>
+			            <input type="submit" value="enviar" id="enviar_form" style="margin-top:10px;"/>
+			        </div>
+			    </form>
+			</div>
+			<div class="container">
+			    <div class="row">
+			        <div class="col-md-12" style="height:30px; background-color:rgba(255,255,255,1);">
+			        </div>
+			    </div>
+			</div>
+		</div><!-- CONTAINER -->
+
+	{% endblock %}

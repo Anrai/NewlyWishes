@@ -18,10 +18,6 @@ nw_principal_planes:
     pattern:  /planes
     defaults: { _controller: NWPrincipalBundle:Default:planes }
 
-nw_principal_proveedores_login:
-    pattern:  /proveedores/login
-    defaults: { _controller: NWPrincipalBundle:Proveedores:login }
-
 nw_principal_proveedores_micuenta:
     pattern:  /proveedores/micuenta
     defaults: { _controller: NWPrincipalBundle:Proveedores:micuenta }
@@ -85,7 +81,7 @@ nw_principal_novios_nuestra-mesa-de-regalos:
 nw_principal_novios_nuestra-lista-de-invitados:
     pattern:  /novios/nuestra-lista-de-invitados
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraListaDeInvitados }
-    
+
 nw_principal_novios_nuestra-cuenta:
     pattern:  /novios/nuestra-cuenta
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraCuenta }

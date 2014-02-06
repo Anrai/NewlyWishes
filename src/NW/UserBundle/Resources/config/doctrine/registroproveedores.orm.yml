@@ -1,0 +1,58 @@
+# src/NW/UserBundle/Resources/config/doctrine/registroproveedores.orm.yml
+NW\UserBundle\Entity\registroproveedores:
+    type:  entity
+    table: proveedores
+    oneToOne:
+        user:
+            targetEntity: User
+            inversedBy: registroproveedores
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        usuarioId:
+            type: integer
+        nombreRazon:
+            type: string
+            length: 100
+        apellidoPaterno:
+            type: string
+            length: 100
+        apellidoMaterno:
+            type: string
+            length: 100
+        rfc:
+            type: string
+            length: 100
+        email:
+            type: string
+            length: 100
+        lada:
+            type: string
+            length: 100
+        telefono:
+            type: string
+            length: 100
+        celular:
+            type: string
+            length: 100
+        direccion:
+            type: string
+            length: 100
+        pais:
+            type: string
+            length: 100
+        estado:
+            type: string
+            length: 100
+        municipio:
+            type: string
+            length: 100
+        cp:
+            type: string
+            length: 100

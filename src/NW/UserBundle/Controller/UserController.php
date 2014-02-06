@@ -12,6 +12,11 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class UserController extends Controller
 {
+    public function registroproveedoresAction()
+    {
+        return $this->render('NWUserBundle:User:registroproveedores.html.twig');
+    }
+
     public function loginnoviosAction()
     {
         $request = $this->getRequest();
