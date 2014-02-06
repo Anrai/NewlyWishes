@@ -86,7 +86,13 @@ class registronovios
 
     // 
     protected $novioCP;
- 
+
+    /*
+    protected $userName;
+
+    // 
+    protected $userPass;
+    */
  
     /**
      * @var integer
@@ -715,6 +721,19 @@ class registronovios
         return $this;
     }
 
+    /*
+
+
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    public function getUserPass()
+    {
+        return $this->userPass;
+    }
+*/
     /**
      * Get usuarioId
      *
@@ -725,9 +744,31 @@ class registronovios
         return $this->usuarioId;
     }
 
-    /**
-     * @OneToOne(targetEntity="User", inversedBy="registronovios")
-     * @JoinColumn(name="id", referencedColumnName="id")
-     **/
+
+    // Tratando de crear una asociación
     protected $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \NW\UserBundle\Entity\User $user
+     * @return registronovios
+     */
+    public function setUser(\NW\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \NW\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

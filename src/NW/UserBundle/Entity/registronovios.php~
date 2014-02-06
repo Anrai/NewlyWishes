@@ -725,9 +725,8 @@ class registronovios
         return $this->usuarioId;
     }
 
-    /**
-     * @OneToOne(targetEntity="User", inversedBy="registronovios")
-     * @JoinColumn(name="id", referencedColumnName="id")
-     **/
+
+    // Tratando de crear una asociación
     protected $user;
+
 }

@@ -7,3 +7,7 @@ NW\UserBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    oneToOne:
+        registronovios:
+            targetEntity: registronovios
+            mappedBy: user

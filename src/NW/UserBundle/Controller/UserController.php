@@ -12,29 +12,6 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class UserController extends Controller
 {
-
-    public function pruebaRegistroAction()
-    {
-        $user = new User();
-        $user->setUsername('juan23');
- 
-        //$novios = new registronovios();
-        //$novios->setnoviaNombre('Pancha');;
-        // relaciona este noviazgo con un usuario
-        //$novios->setUser($user);
- 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        //$em->persist($novios);
-        $em->flush();
- 
-        /*return new Response(
-            'Novios creados con ID: '.$novios->getId().' y usuario con ID: '.$user->getId()
-        );*/
-
-        return new Response('Hola!');
-    }
-
     public function registronoviosAction(Request $request)
     {
         // crea un nuevo registro y le asigna algunos datos
@@ -171,8 +148,34 @@ class UserController extends Controller
         $form->handleRequest($request);
  
         if ($form->isValid()) {
-            // guardar la tarea en la base de datos
-            return $this->redirect($this->generateUrl('task_success'));
+
+            // Recuperando datos del formulario
+            $novios = $form->getData();
+
+            // Agregando Usuario
+            $userManager = $this->get('fos_user.user_manager'); 
+            $user = $userManager->createUser(); 
+
+            $user->setUsername($form["userName"]->getData());
+            $user->setEmail($form["novioEMail"]->getData());
+            $user->setPlainPassword($form["userPass"]->getData());
+            $user->setEnabled(true);
+
+            // Agregando Usuario a la tabla de registronovios
+            
+            $novios->setUser($user);
+            
+            $em = $this->getDoctrine()->getEntityManager(); 
+            $em->persist($user);
+            $em->persist($novios);
+            $em->flush();
+     
+            /*return new Response(
+                'Novios creados con ID: '.$novios->getId().' y usuario con ID: '.$user->getId()
+            );*/
+
+            return new Response('Hola!');
+
         }
         else{
             return $this->render('NWUserBundle:User:registronovios.html.twig', array(
