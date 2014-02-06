@@ -1,148 +1,202 @@
 {# src/NW/PrincipalBundle/Resources/views/Proveedores/misbanners.html.twig #}
 
-{% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
+	{% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
 
 {% block partederecha %}
-		
-			<div class="row">
-				<div class="col-md-6">
 
+			<div class="row">
+				<div class="col-md-8">
 				</div>
-				<div class="col-md-1">
-					<img class="puntov" src="{{asset('img/puntov.png')}}">
-				</div>
-				<div class="col-md-5">
-					<h1>Mis Banners Promocionales</h1>	
+				<div class="col-md-4" style="text-align:right;">
+					<img class="puntov" src="{{asset('img/puntov.png')}}" style="float:left; margin-right:20px;"><h1 style="float:left;">Nuestra Boda</h1>	
 				</div>	
+			</div>
+				
+			<div class="row">
+					<div class="col-md-12">
+						<h5 class="art" style="float:left;">Nuestro Presupuesto</h5><img src="{{asset('img/novios/flecha_abajo.png')}}" class="flecha_abajo">
+					</div>
+			</div>
+
+			<div class="row borde_abajo"><div class="col-md-12"></div></div>
+				
+			<div class="row">
+					<div class="col-md-12">
+					<p>Para administrar correctamente tu presupuesto, puedes descargar el formato que hemos preparado para ti.</p>
+					</div>
+			</div>
+				
+			<div class="row">
+					<div class="col-md-11" style="text-align:right;">
+						<p class="verde">Descargar Excel</p>	
+					</div>
+					<div class="col-md-1"></div>
+			</div>
+					
+				
+	
+			<!-- DATOS DE LA BODA -->
+			<div class="row" style="margin-top:20px;">
+					<div class="col-md-12">
+						<h5 class="art" style="float:left;">Datos de la boda</h5><img src="{{asset('img/novios/flecha_abajo.png')}}" class="flecha_abajo">
+					</div>
+			</div>
+
+			<div class="row borde_abajo"></div>
+			<div class="row">
+					<div class="col-md-12">
+					</div>
+			</div>
+			<div class="row">
+					<div class="col-xs-5">
+						<p class="rosa">Ceremonia religiosa</p>	
+					</div>
+					<div class="col-xs-5">
+						<p class="rosa">Dirección</p>	
+					</div>
+					<div class="col-xs-2" style="text-align:right;">
+					</div>
+			</div>
+
 				<div class="row">
-					<div class="col-md-9">
-						
+					<div class="col-xs-5">
+						<p class="">Iglesia Santa María</p>	
 					</div>
-					<div class="col-md-2">
-						<p class="verde">Nuevo banner</p>	
+					<div class="col-xs-5">
+						<p class="">Avenida 123 Col. etc.</p>	
 					</div>
-					<div class="col-md-1">
-						<p class="mas mas2">+</p>
-					</div>
-					<div class="col-md-10">
-						<h5 class="art">Promocion 1</h5>	
-					</div>
-					<div class="col-md-2">
-						<h5 class="art">Editar</h5>	
+					<div class="col-xs-2" style="text-align:right;">
+						<img src="{{asset('img/novios/direccion_iglesia.png')}}" style="float:left; width:50px; height:50px; ">
 					</div>
 				</div>
-			</div>
-			<hr />
-
-			<div class="row">
-				<div class="col-md-1">
 					
+				<div class="row">
+					<div class="col-md-12">
+						<p class="rosa">Recepción</p>	
+					</div>
 				</div>
-				<dic class="col-md-5">
-					<img src="{{asset('img/marco.png')}}" alt="ejemplo" class="marco"> 
-					<br>
-					<br>
-					<br>
-					<p>ID de artículo relacionado: <span class="art">12345</span></p>
-				</dic>
-				<div class="col-md-2 caja">
-					<img src="{{asset('img/bote.png')}}" alt="bote">
-					<p class="eliminar">Eliminar ese banner</p>
+				
+				<div class="row">
+					<div class="col-xs-5">
+						<input type="text" class="input_registro_novios" placeholder="Lugar">	
+					</div>
+					<div class="col-xs-5">
+						<textarea class="textarea_registro" placeholder="Dirección"></textarea>	
+					</div>
+					<div class="col-xs-2" style="text-align:right;">
+						<img src="{{asset('img/novios/diskette.png')}}" style="float:left; margin-left:6px; width:40px; height:40px; ">
+					</div>
 				</div>
-			</div>
+			
+			<!-- FIN DATOS DE LA BODA -->
 
-			<!Aqui termina el primer bloque->
+			<!-- NUESTROS PADRINOS -->
+			<div class="row" style="margin-top:20px;">
+					<div class="col-md-12">
+						<h5 class="art" style="float:left;">Nuestros Padrinos</h5><img src="{{asset('img/novios/flecha_abajo.png')}}" class="flecha_abajo">
+					</div>
+				</div>
 
-			<div class="row">
-				<div class="col-md-6">
-
+				<div class="row borde_abajo"></div>
+				<div class="row">
+					<div class="col-md-12">
+					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-9">
-						
+					<div class="col-xs-5">
+						<p class="rosa">Nombre</p>	
 					</div>
-					<div class="col-md-10">
-						<h5 class="art">Promocion 2</h5>	
+					<div class="col-xs-5">
+						<p class="rosa">Categoría</p>	
 					</div>
-					<div class="col-md-2">
-						<h5 class="art">Editar</h5>	
+					<div class="col-xs-2">
+						<p class="rosa">Eliminar</p>	
 					</div>
 				</div>
-			</div>
-			<hr />
-			
 
-			<div class="row">
-				<div class="col-md-1">
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="">John Doe</p>	
+					</div>
+					<div class="col-xs-5">
+						<p class="">Iglesia</p>	
+					</div>
+					<div class="col-xs-2">
+						<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
+					</div>
+				</div>
 					
+				<div class="row">
+					<div class="col-xs-5">
+						<input class="input_registro_novios" placeholder="Nuevo Padrino">
+					</div>
+					<div class="col-xs-5">
+						<select name="categoria_padrinos" id="input_registro_novios" style="width:70%;">
+							<option value="categoria" selected>Categoría</option>
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<img src="{{asset('img/novios/mas.png')}}" style="float:left; width:40px; height:60px; margin-top:-14px;">
+					</div>
 				</div>
-				<dic class="col-md-5">
-					<img src="{{asset('img/marco.png')}}" alt="ejemplo" class="marco"> 
-					<br>
-					<br>
-					<br>
-					<p>ID de artículo relacionado: <span class="art">12345</span></p>
-				</dic>
-				<div class="col-md-2 caja">
-					<img src="{{asset('img/bote.png')}}" alt="bote">
-					<p class="eliminar">Eliminar ese banner</p>
+			<!-- FIN NUESTROS PADRINOS -->
+
+
+			<!-- NUESTRAS NOTAS -->
+			<div class="row" style="margin-top:20px;">
+					<div class="col-md-12">
+						<h5 class="art" style="float:left;">Nuestras Notas</h5><img src="{{asset('img/novios/flecha_abajo.png')}}" class="flecha_abajo">
+					</div>
 				</div>
-			</div>
 
-
-			<div class="row">
-				<div class="col-md-6">
-
+				<div class="row borde_abajo"></div>
+				<div class="row">
+					<div class="col-md-12">
+					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-9">
-						
+					<div class="col-xs-5">
+						<p class="rosa">Título</p>	
 					</div>
-					<div class="col-md-10">
-						<h5 class="art">Promocion 3</h5>	
+					<div class="col-xs-5">
+						<p class="rosa">Descripción</p>	
 					</div>
-					<div class="col-md-2">
-						<h5 class="art">Editar</h5>	
+					<div class="col-xs-2">
+						<p class="rosa">Eliminar</p>	
 					</div>
 				</div>
-			</div>
-			<hr />
-			
 
-			<div class="row">
-				<div class="col-md-1">
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="">Nota 1</p>	
+					</div>
+					<div class="col-xs-5">
+						<p class="">Los padrinos estarán de viaje del 12 de agosto al 3 de septiembre</p>	
+					</div>
+					<div class="col-xs-2">
+						<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
+					</div>
+				</div>
 					
+				<div class="row">
+					<div class="col-xs-5">
+						<input class="input_registro_novios" placeholder="Título">
+					</div>
+					<div class="col-xs-5">
+						<textarea class="textarea_registro" placeholder="Descripción"></textarea>
+					</div>
+					<div class="col-xs-2">
+						<img src="{{asset('img/novios/mas.png')}}" style="float:left; width:40px; height:60px; margin-top:-14px;">
+					</div>
 				</div>
-				<dic class="col-md-5">
-					<img src="{{asset('img/marco.png')}}" alt="ejemplo" class="marco"> 
-					<br>
-					<br>
-					<br>
-					<p>ID de artículo relacionado: <span class="art">12345</span></p>
-				</dic>
-				<div class="col-md-2 caja">
-					<img src="{{asset('img/bote.png')}}" alt="bote">
-					<p class="eliminar">Eliminar ese banner</p>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
+			<!-- FIN NUESTRAS NOTAS -->
+
+
 			<br>
 			<br>
 			<br>
 			<br>
 			<br>
 
-		
-			
 
-
-
-
-
-					
-
-	    
-
-	{% endblock %}
+{% endblock %}
