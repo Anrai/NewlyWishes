@@ -35,4 +35,27 @@ class User extends BaseUser
 
     // Tratando de crear una asociación
     protected $registronovios;
+
+    /**
+     * Set registronovios
+     *
+     * @param \NW\UserBundle\Entity\registronovios $registronovios
+     * @return User
+     */
+    public function setRegistronovios(\NW\UserBundle\Entity\registronovios $registronovios = null)
+    {
+        $this->registronovios = $registronovios;
+
+        return $this;
+    }
+
+    /**
+     * Get registronovios
+     *
+     * @return \NW\UserBundle\Entity\registronovios 
+     */
+    public function getRegistronovios()
+    {
+        return $this->registronovios;
+    }
 }
