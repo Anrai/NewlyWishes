@@ -185,3 +185,7 @@ h3{
 	color:rgb(204,0,153);
 	font-weight:bold;	
 }
+
+.cuadro_confirmacion{
+	float:left; margin-right:10px; width:16px; height:16px; border:rgba(0,0,0,0.5) solid 1px; border-radius:2px;
+}
