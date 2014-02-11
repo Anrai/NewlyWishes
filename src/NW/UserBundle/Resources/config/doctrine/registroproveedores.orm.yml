@@ -9,6 +9,13 @@ NW\UserBundle\Entity\registroproveedores:
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
+    manyToOne:
+        estados:
+            targetEntity: NW\PrincipalBundle\Entity\Estados
+            inversedBy: registroproveedores
+            joinColumn:
+                name: estado
+                referencedColumnName: id
     id:
         id:
             type: integer
@@ -47,12 +54,8 @@ NW\UserBundle\Entity\registroproveedores:
         direccion:
             type: string
             length: 100
-        pais:
-            type: string
-            length: 100
         estado:
-            type: string
-            length: 100
+            type: integer
         ciudad:
             type: string
             length: 100
