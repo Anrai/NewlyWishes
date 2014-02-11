@@ -195,8 +195,8 @@ class UserController extends Controller
             $user->setEnabled(true);
 
             // Obteniendo el Estado de procedencia de los novios
-            $noviaEstado = $this->getDoctrine()->getRepository('NWUserBundle:Estados')->find(13);
-            $novioEstado = $this->getDoctrine()->getRepository('NWUserBundle:Estados')->find(12);
+            $noviaEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find(13);
+            $novioEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find(12);
             $novios->setEstados($noviaEstado);
             $novios->setEstados($novioEstado);
 
