@@ -115,6 +115,11 @@ hr{
 	color: rgb(146, 208, 80);
 	margin-top: -15px;
 }
+.verde2{
+	color: rgb(146, 208, 80);
+	font-size: 15px;
+	margin-left: 70px;
+}
 .mas{
 	margin-top: -10px;
 	font-size: 30px;
@@ -131,6 +136,10 @@ hr{
 }
 .bote{
 	margin-left: 10px;
+}
+.bote2{
+	
+	margin-top: 25px;
 }
 .foto{
 	border: solid 1px black;
@@ -178,6 +187,48 @@ hr{
 .progress-bar{
 	background-color: rgb(204,0,153);
 }
+.minest {
+	min-width: 156px!important;
+}
+.minest2 {
+	margin-top: 10px;
+	min-width: 156px!important;
+}
+.bar{
+	height: 12px;
+	margin-top: 15px;
+	width: 1000px;
+}
+.bar2{
+	height: 11px;
+	margin-top: 15px;
+width: 1000px;
+}
+.martgin_top{
+	margin-top: 10px;
+}
+.margin_top2{
+	font-size: 20px;
+	margin-top: 5px;
+}
+.justify{
+	text-align: justify;
+}
+.pargin_estrellas{
+	margin-top: 5px;
+}
+.big{
+	margin-top: -12px;
+	font-size: 35px;
+	margin-left: -30px;
+}
+.columna_dos{
+	margin-top: 25px;
+	font-size: 15px;
+}
+
+
+
 
 
 
