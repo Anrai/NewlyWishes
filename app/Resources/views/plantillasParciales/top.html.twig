@@ -23,7 +23,7 @@
 		</div>
 		{% if app.user %}
 		  	<div class="cont_top">
-		    	Mi lista de deseos &nbsp;-&nbsp; Mi cuenta
+		    	Mi lista de deseos &nbsp;-&nbsp; <a href="{{ path('nw_principal_novios_nuestra-boda') }}">Mi cuenta</a>
 		  	</div>
 			<div class="cont_top" style="float:right; clear:both;">
 		    	<strong>{{ app.user.username }}</strong> &nbsp;-&nbsp; <a href="{{ path('fos_user_security_logout') }}">Salir</a>
@@ -100,7 +100,7 @@
 						</div>
 					</div>
         		</li>
-				<li><a href="{{ url('nw_user_registronovios') }}">Ingreso a tu página</a></li>
+				<li><a href="{{ url('nw_user_loginnovios') }}">Ingreso a tu página</a></li>
 				<li><a href="#">Búsqueda de novios</a></li>
 				<li><a href="#">Anúnciate aquí</a></li>
 				<li class="visible-md visible-lg">
