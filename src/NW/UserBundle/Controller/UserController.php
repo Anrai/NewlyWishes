@@ -51,7 +51,6 @@ class UserController extends Controller
         $registro->setnoviaLada('');
         $registro->setnoviaTelefono('');
         $registro->setnoviaCelular('');
-        $registro->setnoviaPais('');
         $registro->setnoviaEstado('');
         $registro->setnoviaCiudad('');
         $registro->setnoviaCP('');
@@ -63,7 +62,6 @@ class UserController extends Controller
         $registro->setnovioLada('');
         $registro->setnovioTelefono('');
         $registro->setnovioCelular('');
-        $registro->setnovioPais('');
         $registro->setnovioEstado('');
         $registro->setnovioCiudad('');
         $registro->setnovioCP('');
@@ -78,43 +76,47 @@ class UserController extends Controller
             ->add('noviaTelefono', 'text', array('max_length' => 8))
             ->add('noviaCelular', 'text', array('max_length' => 10))
             ->add('noviaDireccion', 'text')
-            ->add('noviaPais', 'choice', array('choices' => array(
-                    'MX'   => 'México',
-                    ), 'multiple'  => false,))
-            ->add('noviaEstado', 'choice', array('choices' => array(
-                     '0'   => 'Aguascalientes',
-                     '1'   => 'Baja California',
-                     '2'   => 'Baja California Sur',
-                     '3'   => 'Campeche',
-                     '4'   => 'Chiapas',
-                     '5'   => 'Chihuahua',
-                     '6'   => 'Coahuila',
-                     '7'   => 'Colima',
-                     '8'   => 'Distrito Federal',
-                     '9'   => 'Durango',
-                     '10'   => 'Estado de México',
-                     '11'   => 'Guanajuato',
-                     '12'   => 'Guerrero',
-                     '13'   => 'Hidalgo',
-                     '14'   => 'Jalisco',
-                     '15'   => 'Michoacán',
-                     '16'   => 'Morelos',
-                     '17'   => 'Nayarit',
-                     '18'   => 'Nuevo León',
-                     '19'   => 'Oaxaca',
-                     '20'   => 'Puebla',
-                     '21'   => 'Querétaro',
-                     '22'   => 'Quintana Roo',
-                     '23'   => 'San Luis Potosí',
-                     '24'   => 'Sinaloa',
-                     '25'   => 'Sonora',
-                     '26'   => 'Tabasco',
-                     '27'   => 'Tamaulipas',
-                     '28'   => 'Tlaxcala',
-                     '29'   => 'Veracruz',
-                     '30'   => 'Yucatán',
-                     '31'   => 'Zacatecas',
-                    ), 'multiple'  => false,))
+            ->add('noviaPais', 'choice', array(
+                    'choices' => array(
+                        'MX' => 'México',),
+                    'multiple' => false,
+                    'mapped' => false,))
+            ->add('noviaEstado2', 'choice', array(
+                    'choices' => array(
+                        '0'   => 'Aguascalientes',
+                        '1'   => 'Baja California',
+                        '2'   => 'Baja California Sur',
+                        '3'   => 'Campeche',
+                        '4'   => 'Chiapas',
+                        '5'   => 'Chihuahua',
+                        '6'   => 'Coahuila',
+                        '7'   => 'Colima',
+                        '8'   => 'Distrito Federal',
+                        '9'   => 'Durango',
+                        '10'   => 'Estado de México',
+                        '11'   => 'Guanajuato',
+                        '12'   => 'Guerrero',
+                        '13'   => 'Hidalgo',
+                        '14'   => 'Jalisco',
+                        '15'   => 'Michoacán',
+                        '16'   => 'Morelos',
+                        '17'   => 'Nayarit',
+                        '18'   => 'Nuevo León',
+                        '19'   => 'Oaxaca',
+                        '20'   => 'Puebla',
+                        '21'   => 'Querétaro',
+                        '22'   => 'Quintana Roo',
+                        '23'   => 'San Luis Potosí',
+                        '24'   => 'Sinaloa',
+                        '25'   => 'Sonora',
+                        '26'   => 'Tabasco',
+                        '27'   => 'Tamaulipas',
+                        '28'   => 'Tlaxcala',
+                        '29'   => 'Veracruz',
+                        '30'   => 'Yucatán',
+                        '31'   => 'Zacatecas',),
+                    'multiple'  => false,
+                    'mapped' => false,))
             ->add('noviaCiudad', 'text')
             ->add('noviaCP', 'text', array('max_length' => 5))
             ->add('novioNombre', 'text')
@@ -126,43 +128,47 @@ class UserController extends Controller
             ->add('novioTelefono', 'text', array('max_length' => 8))
             ->add('novioCelular', 'text', array('max_length' => 10))
             ->add('novioDireccion', 'text')
-            ->add('novioPais', 'choice', array('choices' => array(
-                    'MX'   => 'México',
-                    ), 'multiple'  => false,))
-            ->add('novioEstado', 'choice', array('choices' => array(
-                     '0'   => 'Aguascalientes',
-                     '1'   => 'Baja California',
-                     '2'   => 'Baja California Sur',
-                     '3'   => 'Campeche',
-                     '4'   => 'Chiapas',
-                     '5'   => 'Chihuahua',
-                     '6'   => 'Coahuila',
-                     '7'   => 'Colima',
-                     '8'   => 'Distrito Federal',
-                     '9'   => 'Durango',
-                     '10'   => 'Estado de México',
-                     '11'   => 'Guanajuato',
-                     '12'   => 'Guerrero',
-                     '13'   => 'Hidalgo',
-                     '14'   => 'Jalisco',
-                     '15'   => 'Michoacán',
-                     '16'   => 'Morelos',
-                     '17'   => 'Nayarit',
-                     '18'   => 'Nuevo León',
-                     '19'   => 'Oaxaca',
-                     '20'   => 'Puebla',
-                     '21'   => 'Querétaro',
-                     '22'   => 'Quintana Roo',
-                     '23'   => 'San Luis Potosí',
-                     '24'   => 'Sinaloa',
-                     '25'   => 'Sonora',
-                     '26'   => 'Tabasco',
-                     '27'   => 'Tamaulipas',
-                     '28'   => 'Tlaxcala',
-                     '29'   => 'Veracruz',
-                     '30'   => 'Yucatán',
-                     '31'   => 'Zacatecas',
-                    ), 'multiple'  => false,))
+            ->add('novioPais', 'choice', array(
+                    'choices' => array(
+                        'MX' => 'México',),
+                    'multiple' => false,
+                    'mapped' => false,))
+            ->add('novioEstado2', 'choice', array(
+                    'choices' => array(
+                        '0'   => 'Aguascalientes',
+                        '1'   => 'Baja California',
+                        '2'   => 'Baja California Sur',
+                        '3'   => 'Campeche',
+                        '4'   => 'Chiapas',
+                        '5'   => 'Chihuahua',
+                        '6'   => 'Coahuila',
+                        '7'   => 'Colima',
+                        '8'   => 'Distrito Federal',
+                        '9'   => 'Durango',
+                        '10'   => 'Estado de México',
+                        '11'   => 'Guanajuato',
+                        '12'   => 'Guerrero',
+                        '13'   => 'Hidalgo',
+                        '14'   => 'Jalisco',
+                        '15'   => 'Michoacán',
+                        '16'   => 'Morelos',
+                        '17'   => 'Nayarit',
+                        '18'   => 'Nuevo León',
+                        '19'   => 'Oaxaca',
+                        '20'   => 'Puebla',
+                        '21'   => 'Querétaro',
+                        '22'   => 'Quintana Roo',
+                        '23'   => 'San Luis Potosí',
+                        '24'   => 'Sinaloa',
+                        '25'   => 'Sonora',
+                        '26'   => 'Tabasco',
+                        '27'   => 'Tamaulipas',
+                        '28'   => 'Tlaxcala',
+                        '29'   => 'Veracruz',
+                        '30'   => 'Yucatán',
+                        '31'   => 'Zacatecas',),
+                    'multiple'  => false,
+                    'mapped' => false,))
             ->add('novioCiudad', 'text')
             ->add('novioCP', 'text', array('max_length' => 5))
             ->add('userName', 'text', array('mapped' => false, 'required'  => true))
@@ -181,15 +187,20 @@ class UserController extends Controller
 
             // Agregando Usuario
             $userManager = $this->get('fos_user.user_manager'); 
-            $user = $userManager->createUser(); 
+            $user = $userManager->createUser();
 
             $user->setUsername($form["userName"]->getData());
             $user->setEmail($form["novioEMail"]->getData());
             $user->setPlainPassword($form["userPass"]->getData());
             $user->setEnabled(true);
 
+            // Obteniendo el Estado de procedencia de los novios
+            $noviaEstado = $this->getDoctrine()->getRepository('NWUserBundle:Estados')->find(13);
+            $novioEstado = $this->getDoctrine()->getRepository('NWUserBundle:Estados')->find(12);
+            $novios->setEstados($noviaEstado);
+            $novios->setEstados($novioEstado);
+
             // Agregando Usuario a la tabla de registronovios
-            
             $novios->setUser($user);
             
             $em = $this->getDoctrine()->getEntityManager(); 
@@ -247,38 +258,38 @@ class UserController extends Controller
                     'MX'   => 'México',
                     ), 'multiple'  => false,))
             ->add('estado', 'choice', array('choices' => array(
-                     '0'   => 'Aguascalientes',
-                     '1'   => 'Baja California',
-                     '2'   => 'Baja California Sur',
-                     '3'   => 'Campeche',
-                     '4'   => 'Chiapas',
-                     '5'   => 'Chihuahua',
-                     '6'   => 'Coahuila',
-                     '7'   => 'Colima',
-                     '8'   => 'Distrito Federal',
-                     '9'   => 'Durango',
-                     '10'   => 'Estado de México',
-                     '11'   => 'Guanajuato',
-                     '12'   => 'Guerrero',
-                     '13'   => 'Hidalgo',
-                     '14'   => 'Jalisco',
-                     '15'   => 'Michoacán',
-                     '16'   => 'Morelos',
-                     '17'   => 'Nayarit',
-                     '18'   => 'Nuevo León',
-                     '19'   => 'Oaxaca',
-                     '20'   => 'Puebla',
-                     '21'   => 'Querétaro',
-                     '22'   => 'Quintana Roo',
-                     '23'   => 'San Luis Potosí',
-                     '24'   => 'Sinaloa',
-                     '25'   => 'Sonora',
-                     '26'   => 'Tabasco',
-                     '27'   => 'Tamaulipas',
-                     '28'   => 'Tlaxcala',
-                     '29'   => 'Veracruz',
-                     '30'   => 'Yucatán',
-                     '31'   => 'Zacatecas',
+                     '1'   => 'Aguascalientes',
+                     '2'   => 'Baja California',
+                     '3'   => 'Baja California Sur',
+                     '4'   => 'Campeche',
+                     '5'   => 'Chiapas',
+                     '6'   => 'Chihuahua',
+                     '7'   => 'Coahuila',
+                     '8'   => 'Colima',
+                     '9'   => 'Distrito Federal',
+                     '10'   => 'Durango',
+                     '11'   => 'Estado de México',
+                     '12'   => 'Guanajuato',
+                     '13'   => 'Guerrero',
+                     '14'   => 'Hidalgo',
+                     '15'   => 'Jalisco',
+                     '16'   => 'Michoacán',
+                     '17'   => 'Morelos',
+                     '18'   => 'Nayarit',
+                     '19'   => 'Nuevo León',
+                     '20'   => 'Oaxaca',
+                     '21'   => 'Puebla',
+                     '22'   => 'Querétaro',
+                     '23'   => 'Quintana Roo',
+                     '24'   => 'San Luis Potosí',
+                     '25'   => 'Sinaloa',
+                     '26'   => 'Sonora',
+                     '27'   => 'Tabasco',
+                     '28'   => 'Tamaulipas',
+                     '29'   => 'Tlaxcala',
+                     '30'   => 'Veracruz',
+                     '31'   => 'Yucatán',
+                     '32'   => 'Zacatecas',
                     ), 'multiple'  => false,))
             ->add('ciudad', 'text')
             ->add('cp', 'text', array('max_length' => 5))

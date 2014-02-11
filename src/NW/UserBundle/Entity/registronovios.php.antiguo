@@ -1,154 +1,90 @@
 <?php
-
+// src/NW/UserBundle/Entity/registronovios.php
 namespace NW\UserBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * registronovios
- */
+ 
 class registronovios
 {
     /**
      * @var integer
      */
+    protected $usuarioId;
+
+	// 
+    protected $noviaNombre;
+ 
+ 	// 
+    protected $noviaSNombre;
+
+    // 
+    protected $noviaAPaterno;
+
+    // 
+    protected $noviaAMaterno;
+
+    // 
+    protected $noviaEMail;
+
+    // 
+    protected $noviaLada;
+
+    // 
+    protected $noviaTelefono;
+
+    // 
+    protected $noviaCelular;
+
+    // 
+    protected $noviaDireccion;
+
+    // 
+    protected $noviaEstado;
+
+    // 
+    protected $noviaCiudad;
+
+    // 
+    protected $noviaCP;
+
+    //
+    protected $novioNombre;
+ 
+ 	// 
+    protected $novioSNombre;
+
+    // 
+    protected $novioAPaterno;
+
+    // 
+    protected $novioAMaterno;
+
+    // 
+    protected $novioEMail;
+
+    // 
+    protected $novioLada;
+
+    // 
+    protected $novioTelefono;
+
+    // 
+    protected $novioCelular;
+
+    // 
+    protected $novioDireccion;
+
+    // 
+    protected $novioEstado;
+
+    // 
+    protected $novioCiudad;
+
+    // 
+    protected $novioCP;
+ 
+    /**
+     * @var integer
+     */
     private $id;
-
-    /**
-     * @var integer
-     */
-    private $usuarioId;
-
-    /**
-     * @var string
-     */
-    private $noviaNombre;
-
-    /**
-     * @var string
-     */
-    private $noviaSNombre;
-
-    /**
-     * @var string
-     */
-    private $noviaAPaterno;
-
-    /**
-     * @var string
-     */
-    private $noviaAMaterno;
-
-    /**
-     * @var string
-     */
-    private $noviaEMail;
-
-    /**
-     * @var string
-     */
-    private $noviaLada;
-
-    /**
-     * @var string
-     */
-    private $noviaTelefono;
-
-    /**
-     * @var string
-     */
-    private $noviaCelular;
-
-    /**
-     * @var string
-     */
-    private $noviaDireccion;
-
-    /**
-     * @var integer
-     */
-    private $noviaEstado;
-
-    /**
-     * @var string
-     */
-    private $noviaCiudad;
-
-    /**
-     * @var string
-     */
-    private $noviaCP;
-
-    /**
-     * @var string
-     */
-    private $novioNombre;
-
-    /**
-     * @var string
-     */
-    private $novioSNombre;
-
-    /**
-     * @var string
-     */
-    private $novioAPaterno;
-
-    /**
-     * @var string
-     */
-    private $novioAMaterno;
-
-    /**
-     * @var string
-     */
-    private $novioEMail;
-
-    /**
-     * @var string
-     */
-    private $novioLada;
-
-    /**
-     * @var string
-     */
-    private $novioTelefono;
-
-    /**
-     * @var string
-     */
-    private $novioCelular;
-
-    /**
-     * @var string
-     */
-    private $novioDireccion;
-
-    /**
-     * @var string
-     */
-    private $novioEstado;
-
-    /**
-     * @var string
-     */
-    private $novioCiudad;
-
-    /**
-     * @var string
-     */
-    private $novioCP;
-
-    /**
-     * @var \NW\UserBundle\Entity\User
-     */
-    private $user;
-
-    /**
-     * @var \NW\UserBundle\Entity\Estados
-     */
-    private $estados;
-
 
     /**
      * Get id
@@ -158,29 +94,6 @@ class registronovios
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set usuarioId
-     *
-     * @param integer $usuarioId
-     * @return registronovios
-     */
-    public function setUsuarioId($usuarioId)
-    {
-        $this->usuarioId = $usuarioId;
-
-        return $this;
-    }
-
-    /**
-     * Get usuarioId
-     *
-     * @return integer 
-     */
-    public function getUsuarioId()
-    {
-        return $this->usuarioId;
     }
 
     /**
@@ -406,7 +319,7 @@ class registronovios
     /**
      * Get noviaEstado
      *
-     * @return integer 
+     * @return integer
      */
     public function getNoviaEstado()
     {
@@ -669,7 +582,7 @@ class registronovios
     /**
      * Set novioEstado
      *
-     * @param string $novioEstado
+     * @param integer $novioEstado
      * @return registronovios
      */
     public function setNovioEstado($novioEstado)
@@ -682,7 +595,7 @@ class registronovios
     /**
      * Get novioEstado
      *
-     * @return string 
+     * @return integer 
      */
     public function getNovioEstado()
     {
@@ -736,6 +649,34 @@ class registronovios
     }
 
     /**
+     * Set usuarioId
+     *
+     * @param integer $usuarioId
+     * @return registronovios
+     */
+    public function setUsuarioId($usuarioId)
+    {
+        $this->usuarioId = $usuarioId;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioId
+     *
+     * @return integer 
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuarioId;
+    }
+
+
+    // Tratando de crear una asociación
+    protected $user;
+
+
+    /**
      * Set user
      *
      * @param \NW\UserBundle\Entity\User $user
@@ -757,6 +698,11 @@ class registronovios
     {
         return $this->user;
     }
+    /**
+     * @var \NW\UserBundle\Entity\Estados
+     */
+    private $estados;
+
 
     /**
      * Set estados

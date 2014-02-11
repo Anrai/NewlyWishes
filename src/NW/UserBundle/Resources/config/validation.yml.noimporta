@@ -19,8 +19,6 @@ NW\UserBundle\Entity\registronovios:
             - NotBlank: ~
         noviaDireccion:
             - NotBlank: ~
-        noviaPais:
-            - NotBlank: ~
         noviaEstado:
             - NotBlank: ~
         noviaCiudad:
@@ -44,8 +42,6 @@ NW\UserBundle\Entity\registronovios:
         novioCelular:
             - NotBlank: ~
         novioDireccion:
-            - NotBlank: ~
-        novioPais:
             - NotBlank: ~
         novioEstado:
             - NotBlank: ~
