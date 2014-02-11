@@ -5,6 +5,10 @@ img{
 	border:none;	
 }
 
+textarea{
+	resize:none;
+}
+
 
 .modulo2{
 margin-top: 85px;
@@ -80,6 +84,15 @@ margin-left: -10px;
 	margin-bottom:10px;
 }
 
+.input_small{
+	font-size:12px;
+	width:100%;
+	border-radius:5px;
+	border:rgba(216,216,216,1) solid 1px;
+	padding:3px;
+	margin-bottom:10px;
+}
+
 .textarea_registro{
 	font-size:14px;
 	width:100%;
@@ -87,6 +100,16 @@ margin-left: -10px;
 	border-radius:5px;
 	border:rgba(216,216,216,1) solid 1px;
 	padding:6px;
+	margin-bottom:10px;
+}
+
+.textarea_small{
+	font-size:12px;
+	width:100%;
+	height:80px;
+	border-radius:5px;
+	border:rgba(216,216,216,1) solid 1px;
+	padding:3px;
 	margin-bottom:10px;
 }
 
@@ -188,4 +211,12 @@ h3{
 
 .cuadro_confirmacion{
 	float:left; margin-right:10px; width:16px; height:16px; border:rgba(0,0,0,0.5) solid 1px; border-radius:2px;
+}
+
+.cuadro_foto_principal {
+	border: rgba(0,0,0,0.4) solid 1px; border-radius:4px;
+}
+
+.cuadro_upload_foto {
+	height:50px; width:90%; border:rgba(0,0,0,0.4) solid 1px; border-radius:4px;"
 }

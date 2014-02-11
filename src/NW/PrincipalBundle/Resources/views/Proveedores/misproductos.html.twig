@@ -14,11 +14,167 @@
 					<div class="col-md-5">
 						<h1>Mis Productos / Servicios</h1>	
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-3">
 					<p class="verde">Carga masiva</p>	
 					</div>
-					<div class="col-md-5">
-						<p class="mas">+</p>
+					<div class="col-md-4">
+						
+						<!-- CARGA DE ARTICULOS -->
+						<!-- Button trigger modal -->
+						<input type="image" src="{{asset('img/novios/mas.png')}}" data-toggle="modal" data-target="#myModal" style="width:40px; height:60px; margin-top:-24px; margin-left:-20px;">
+						 
+
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <h4 class="modal-title rosa" id="myModalLabel">Nuevo Artículo</h4>
+						      </div>
+						      
+						      <div class="modal-body">
+						      	<div class="row">
+						      		<div class="col-xs-6">
+
+						      			<div class="row">
+						      			<div class="col-xs-10">
+						      				<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+							        		<input type="text" class="input_small" placeholder="Nombre del artículo">
+							        	</div>
+							        	<div class="col-xs-2">
+							        		<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
+							        	</div>
+							        	</div>
+
+							        	<div class="row">
+						      			<div class="col-xs-10">
+						      			<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+							        		<textarea class="textarea_small" placeholder="Descripción"></textarea>
+							        	</div>
+							        	<div class="col-xs-2">
+							        	</div>
+							        	</div>
+							        	
+							        	<div class="row">
+						      			<div class="col-xs-10">
+						      				<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+							        		<input type="text" class="input_small" placeholder="ID (Asignar uno)">
+							        	</div>
+							        	<div class="col-xs-2">
+							        	</div>
+							        	</div>
+
+							        	<div class="row">
+						      			<div class="col-xs-10">
+						      				<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+							        		<input type="text" class="input_small" placeholder="Inventario Disponible">
+							        	</div>
+							        	<div class="col-xs-2">
+							        	</div>
+							        	</div>
+
+							        	<div class="row">
+						      			<div class="col-xs-10">
+						      				<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+							        		<input type="text" class="input_small" placeholder="Valor">
+							        	</div>
+							        	<div class="col-xs-2">
+							        	</div>
+							        	</div>
+
+							        	<div class="row">
+						      			<div class="col-xs-10">
+							        		<input type="text" class="input_small" placeholder="Valor Promoción">
+							        	</div>
+							        	<div class="col-xs-2">
+							        		<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
+							        	</div>
+							        	</div>
+
+							        	<div class="row">
+						      			<div class="col-xs-10">
+							        		<br><br>
+							        		Tamaños disponibles (sepáralos por una coma “,” y sin espacios)
+							        		<br>
+							        	</div>
+							        	<div class="col-xs-2">
+							        	</div>
+							        	</div>
+
+							        	<div class="row">
+						      			<div class="col-xs-10">
+							        		<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+							        		<input type="text" class="input_small">
+							        	</div>
+							        	<div class="col-xs-2">
+							        	</div>
+							        	</div>
+
+							        		<br><img src="{{asset('img/punto.png')}}" style="margin-top:5px; margin-left:-8px; position:absolute; width:5px; height:5px;">Tipo <img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:-3px; margin-left:30px;"><br>
+							        		<input type="radio" name="tipo" value="producto"> Producto<br>
+											<input type="radio" name="tipo" value="servicio"> Servicio
+											<br><br>
+											<img src="{{asset('img/punto.png')}}" style="margin-top:5px; margin-left:-8px; position:absolute; width:5px; height:5px;">Estatus <img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:-3px; margin-left:14px;"><br>
+							        		<input type="radio" name="estatus" value="activo"> Activo<br>
+											<input type="radio" name="estatus" value="inactivo"> Inactivo<br>
+											<br>
+											<img src="{{asset('img/punto.png')}}" style="margin-top:8px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+											<input type="checkbox" name="terminos" value="terminos"> He leído y acepto los términos y condiciones<br>
+											<img src="{{asset('img/punto.png')}}" style="margin-top:8px; margin-left:-8px; position:absolute; width:5px; height:5px;">
+											<input type="checkbox" name="terminos" value="terminos"> He leído y acepto los términos de privacidad<br><br>
+											<img src="{{asset('img/punto.png')}}" style="margin-top:5px; margin-left:-8px; position:absolute; width:5px; height:5px;"> Datos obligatorios
+									</div>
+									<div class="col-xs-6">
+									<div class="row">
+										<div class="col-md-12">
+											<img src="{{asset('img/nw.png')}}" width="100%">
+										</div>
+									</div>
+									<div class="row" style="margin-top:30px;">
+										<div class="col-xs-6">
+											<img class="cuadro_foto_principal" src="{{asset('img/foto.png')}}" width="100%">
+										</div>
+										<div class="col-xs-6" style="padding-top:10px;">
+											<img src="{{asset('img/bote.png')}}" width="40px" height="40%" style="margin-left:20%;"><br><br>
+											Eliminar esta foto
+										</div>
+									</div>
+									<div class="row" style="margin-top:10px;">
+										<div class="col-xs-4">
+											<div class="cuadro_upload_foto"></div>
+										</div>
+										<div class="col-xs-4">
+											<div class="cuadro_upload_foto"></div>
+										</div>
+										<div class="col-xs-4">
+											<div class="cuadro_upload_foto"></div>
+										</div>
+										
+									</div>
+									<div class="row" style="margin-top:20px;">
+										<div class="col-xs-12">
+											<input type="submit" id="enviar_form" value="Seleccionar Foto" style="width:120px;">
+											<br><br><br>
+											Has cargado la siguiente foto:
+										</div>
+									</div>
+
+									</div>
+								</div>
+
+						      </div>
+
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						        <button type="button" class="btn btn-primary">Guardar</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- FIN CARGA DE ARTICULOS -->
+						
+
 					</div>
 					<div class="col-md-10">
 						<h5 class="art">Articulo 1</h5>	
