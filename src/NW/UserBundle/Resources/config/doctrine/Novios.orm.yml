@@ -1,0 +1,61 @@
+# src/NW/UserBundle/Resources/config/doctrine/Novios.orm.yml
+NW\UserBundle\Entity\Novios:
+    type:  entity
+    table: novios
+    oneToOne:
+        user:
+            targetEntity: User
+            inversedBy: novios
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+    manyToOne:
+        estados:
+            targetEntity: NW\PrincipalBundle\Entity\Estados
+            inversedBy: novios
+            joinColumn:
+                name: estado
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        usuarioId:
+            type: integer
+        nombre:
+            type: string
+            length: 100
+        sNombre:
+            type: string
+            length: 100
+        aPaterno:
+            type: string
+            length: 100
+        aMaterno:
+            type: string
+            length: 100
+        eMail:
+            type: string
+            length: 100
+        lada:
+            type: string
+            length: 100
+        telefono:
+            type: string
+            length: 100
+        celular:
+            type: string
+            length: 100
+        direccion:
+            type: string
+            length: 100
+        estado:
+            type: integer
+        ciudad:
+            type: string
+            length: 100
+        cp:
+            type: string
+            length: 100

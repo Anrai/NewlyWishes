@@ -4,8 +4,12 @@ namespace NW\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use NW\UserBundle\Entity\usuario;
-use NW\UserBundle\Entity\registronovios;
+//use NW\UserBundle\Entity\Novias;
+use NW\UserBundle\Entity\Novios;
 use NW\UserBundle\Entity\registroproveedores;
+
+use NW\UserBundle\Form\Type\RegistroType;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -41,147 +45,20 @@ class UserController extends Controller
 
     public function registronoviosAction(Request $request)
     {
-        // crea un nuevo registro y le asigna algunos datos
-        $registro = new registronovios();
-        $registro->setnoviaNombre('');
-        $registro->setnoviaSNombre('');
-        $registro->setnoviaAPaterno('');
-        $registro->setnoviaAMaterno('');
-        $registro->setnoviaEMail('');
-        $registro->setnoviaLada('');
-        $registro->setnoviaTelefono('');
-        $registro->setnoviaCelular('');
-        $registro->setnoviaEstado('');
-        $registro->setnoviaCiudad('');
-        $registro->setnoviaCP('');
-        $registro->setnovioNombre('');
-        $registro->setnovioSNombre('');
-        $registro->setnovioAPaterno('');
-        $registro->setnovioAMaterno('');
-        $registro->setnovioEMail('');
-        $registro->setnovioLada('');
-        $registro->setnovioTelefono('');
-        $registro->setnovioCelular('');
-        $registro->setnovioEstado('');
-        $registro->setnovioCiudad('');
-        $registro->setnovioCP('');
- 
-        $form = $this->createFormBuilder($registro)
-            ->add('noviaNombre', 'text')
-            ->add('noviaSNombre', 'text')
-            ->add('noviaAPaterno', 'text')
-            ->add('noviaAMaterno', 'text')
-            ->add('noviaEMail', 'email')
-            ->add('noviaLada', 'text', array('max_length' => 3))
-            ->add('noviaTelefono', 'text', array('max_length' => 8))
-            ->add('noviaCelular', 'text', array('max_length' => 10))
-            ->add('noviaDireccion', 'text')
-            ->add('noviaPais', 'choice', array(
-                    'choices' => array(
-                        'MX' => 'México',),
-                    'multiple' => false,
-                    'mapped' => false,))
-            ->add('noviaEstado2', 'choice', array(
-                    'choices' => array(
-                        '1'   => 'Aguascalientes',
-                        '2'   => 'Baja California',
-                        '3'   => 'Baja California Sur',
-                        '4'   => 'Campeche',
-                        '5'   => 'Chiapas',
-                        '6'   => 'Chihuahua',
-                        '7'   => 'Coahuila',
-                        '8'   => 'Colima',
-                        '9'   => 'Distrito Federal',
-                        '10'   => 'Durango',
-                        '11'   => 'Estado de México',
-                        '12'   => 'Guanajuato',
-                        '13'   => 'Guerrero',
-                        '14'   => 'Hidalgo',
-                        '15'   => 'Jalisco',
-                        '16'   => 'Michoacán',
-                        '17'   => 'Morelos',
-                        '18'   => 'Nayarit',
-                        '19'   => 'Nuevo León',
-                        '20'   => 'Oaxaca',
-                        '21'   => 'Puebla',
-                        '22'   => 'Querétaro',
-                        '23'   => 'Quintana Roo',
-                        '24'   => 'San Luis Potosí',
-                        '25'   => 'Sinaloa',
-                        '26'   => 'Sonora',
-                        '27'   => 'Tabasco',
-                        '28'   => 'Tamaulipas',
-                        '29'   => 'Tlaxcala',
-                        '30'   => 'Veracruz',
-                        '31'   => 'Yucatán',
-                        '32'   => 'Zacatecas',),
-                    'multiple'  => false,
-                    'mapped' => false,))
-            ->add('noviaCiudad', 'text')
-            ->add('noviaCP', 'text', array('max_length' => 5))
-            ->add('novioNombre', 'text')
-            ->add('novioSNombre', 'text')
-            ->add('novioAPaterno', 'text')
-            ->add('novioAMaterno', 'text')
-            ->add('novioEMail', 'email')
-            ->add('novioLada', 'text', array('max_length' => 3))
-            ->add('novioTelefono', 'text', array('max_length' => 8))
-            ->add('novioCelular', 'text', array('max_length' => 10))
-            ->add('novioDireccion', 'text')
-            ->add('novioPais', 'choice', array(
-                    'choices' => array(
-                        'MX' => 'México',),
-                    'multiple' => false,
-                    'mapped' => false,))
-            ->add('novioEstado2', 'choice', array(
-                    'choices' => array(
-                        '1'   => 'Aguascalientes',
-                        '2'   => 'Baja California',
-                        '3'   => 'Baja California Sur',
-                        '4'   => 'Campeche',
-                        '5'   => 'Chiapas',
-                        '6'   => 'Chihuahua',
-                        '7'   => 'Coahuila',
-                        '8'   => 'Colima',
-                        '9'   => 'Distrito Federal',
-                        '10'   => 'Durango',
-                        '11'   => 'Estado de México',
-                        '12'   => 'Guanajuato',
-                        '13'   => 'Guerrero',
-                        '14'   => 'Hidalgo',
-                        '15'   => 'Jalisco',
-                        '16'   => 'Michoacán',
-                        '17'   => 'Morelos',
-                        '18'   => 'Nayarit',
-                        '19'   => 'Nuevo León',
-                        '20'   => 'Oaxaca',
-                        '21'   => 'Puebla',
-                        '22'   => 'Querétaro',
-                        '23'   => 'Quintana Roo',
-                        '24'   => 'San Luis Potosí',
-                        '25'   => 'Sinaloa',
-                        '26'   => 'Sonora',
-                        '27'   => 'Tabasco',
-                        '28'   => 'Tamaulipas',
-                        '29'   => 'Tlaxcala',
-                        '30'   => 'Veracruz',
-                        '31'   => 'Yucatán',
-                        '32'   => 'Zacatecas',),
-                    'multiple'  => false,
-                    'mapped' => false,))
-            ->add('novioCiudad', 'text')
-            ->add('novioCP', 'text', array('max_length' => 5))
-            ->add('userName', 'text', array('mapped' => false, 'required'  => true))
-            ->add('userPass', 'password', array('mapped' => false, 'required'  => true))
-            ->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true))
-            ->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true))
-            ->add('Enviar', 'submit')
-            ->getForm();
+           
+        /* Formulario individual para Novias (ejemplo)
+        $noviasClass = 'Acme\TaskBundle\Entity\Novias';
+        $form = $this->createForm(new NoviazgoType(), $noviasClass);
+        */
+
+        //$formData['novias'] = new Novias();
+        $formData['novios'] = new Novios();
+        $form = $this->createForm(new RegistroType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
 
         $form->handleRequest($request);
  
         if ($form->isValid()) {
-
+/*
             // Recuperando datos del formulario
             $novios = $form->getData();
 

@@ -25,10 +25,22 @@ class Estados
     private $estado;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $registroproveedores;
+
+    /**
      * @var \NW\PrincipalBundle\Entity\Paises
      */
     private $pais;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->registroproveedores = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -87,6 +99,39 @@ class Estados
     }
 
     /**
+     * Add registroproveedores
+     *
+     * @param \NW\UserBundle\Entity\registroproveedores $registroproveedores
+     * @return Estados
+     */
+    public function addRegistroproveedore(\NW\UserBundle\Entity\registroproveedores $registroproveedores)
+    {
+        $this->registroproveedores[] = $registroproveedores;
+
+        return $this;
+    }
+
+    /**
+     * Remove registroproveedores
+     *
+     * @param \NW\UserBundle\Entity\registroproveedores $registroproveedores
+     */
+    public function removeRegistroproveedore(\NW\UserBundle\Entity\registroproveedores $registroproveedores)
+    {
+        $this->registroproveedores->removeElement($registroproveedores);
+    }
+
+    /**
+     * Get registroproveedores
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRegistroproveedores()
+    {
+        return $this->registroproveedores;
+    }
+
+    /**
      * Set pais
      *
      * @param \NW\PrincipalBundle\Entity\Paises $pais
@@ -107,50 +152,5 @@ class Estados
     public function getPais()
     {
         return $this->pais;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $registroproveedores;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->registroproveedores = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add registroproveedores
-     *
-     * @param \NW\PrincipalBundle\Entity\registroproveedores $registroproveedores
-     * @return Estados
-     */
-    public function addRegistroproveedore(\NW\PrincipalBundle\Entity\registroproveedores $registroproveedores)
-    {
-        $this->registroproveedores[] = $registroproveedores;
-
-        return $this;
-    }
-
-    /**
-     * Remove registroproveedores
-     *
-     * @param \NW\PrincipalBundle\Entity\registroproveedores $registroproveedores
-     */
-    public function removeRegistroproveedore(\NW\PrincipalBundle\Entity\registroproveedores $registroproveedores)
-    {
-        $this->registroproveedores->removeElement($registroproveedores);
-    }
-
-    /**
-     * Get registroproveedores
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRegistroproveedores()
-    {
-        return $this->registroproveedores;
     }
 }

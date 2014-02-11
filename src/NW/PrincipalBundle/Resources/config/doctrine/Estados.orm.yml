@@ -10,8 +10,12 @@ NW\PrincipalBundle\Entity\Estados:
                 name: paisId
                 referencedColumnName: id
     oneToMany:
-        registronovios:
-            targetEntity: NW\UserBundle\Entity\registronovios
+        novios:
+            targetEntity: NW\UserBundle\Entity\Novios
+            mappedBy: Estados 
+    oneToMany:
+        novias:
+            targetEntity: NW\UserBundle\Entity\Novias
             mappedBy: Estados 
     oneToMany:
         registroproveedores:
