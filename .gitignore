@@ -7,6 +7,6 @@ composer.phar
 !app/logs/.gitkeep
 autoload.php
 /vendor/
-/app/config/parameters.yml
+app/config/parameters.yml
 /web/bundles/
 /app/bootstrap*
