@@ -472,4 +472,32 @@ class registroproveedores
     {
         return $this->tipoPersona;
     }
+    /**
+     * @var \NW\UserBundle\Entity\Estados
+     */
+    private $estados;
+
+
+    /**
+     * Set estados
+     *
+     * @param \NW\UserBundle\Entity\Estados $estados
+     * @return registroproveedores
+     */
+    public function setEstados(\NW\UserBundle\Entity\Estados $estados = null)
+    {
+        $this->estados = $estados;
+
+        return $this;
+    }
+
+    /**
+     * Get estados
+     *
+     * @return \NW\UserBundle\Entity\Estados 
+     */
+    public function getEstados()
+    {
+        return $this->estados;
+    }
 }

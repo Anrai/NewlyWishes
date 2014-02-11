@@ -1,0 +1,17 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Paises.orm.yml
+NW\PrincipalBundle\Entity\Paises:
+    type: entity
+    table: paises 
+    oneToMany:
+        estados:
+            targetEntity: Estados 
+            mappedBy: Paises 
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        pais:
+            type: string
+            length: 100

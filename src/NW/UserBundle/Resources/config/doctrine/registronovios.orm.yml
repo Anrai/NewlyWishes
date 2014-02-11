@@ -9,6 +9,13 @@ NW\UserBundle\Entity\registronovios:
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
+    manyToOne:
+        estados:
+            targetEntity: NW\PrincipalBundle\Entity\Estados
+            inversedBy: registronovios
+            joinColumn:
+                name: noviaEstado
+                referencedColumnName: id
     id:
         id:
             type: integer
@@ -44,12 +51,8 @@ NW\UserBundle\Entity\registronovios:
         noviaDireccion:
             type: string
             length: 100
-        noviaPais:
-            type: string
-            length: 100
         noviaEstado:
-            type: string
-            length: 100
+            type: integer
         noviaCiudad:
             type: string
             length: 100
@@ -83,12 +86,8 @@ NW\UserBundle\Entity\registronovios:
         novioDireccion:
             type: string
             length: 100
-        novioPais:
-            type: string
-            length: 100
         novioEstado:
-            type: string
-            length: 100
+            type: integer
         novioCiudad:
             type: string
             length: 100

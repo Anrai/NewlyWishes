@@ -11,6 +11,7 @@ NW\UserBundle\Entity\User:
         registronovios:
             targetEntity: registronovios
             mappedBy: user
-        registronovios:
+    oneToOne:
+        registroproveedores:
             targetEntity: registroproveedores
             mappedBy: user
