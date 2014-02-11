@@ -1,3 +1,4 @@
+/app/config/parameters.yml
 phpunit.xml
 composer.lock
 composer.phar
@@ -7,6 +8,5 @@ composer.phar
 !app/logs/.gitkeep
 autoload.php
 /vendor/
-app/config/parameters.yml
 /web/bundles/
 /app/bootstrap*
