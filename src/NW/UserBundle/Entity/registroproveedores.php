@@ -22,6 +22,11 @@ class registroproveedores
     /**
      * @var string
      */
+    private $tipoPersona;
+
+    /**
+     * @var string
+     */
     private $nombreRazon;
 
     /**
@@ -65,12 +70,7 @@ class registroproveedores
     private $direccion;
 
     /**
-     * @var string
-     */
-    private $pais;
-
-    /**
-     * @var string
+     * @var integer
      */
     private $estado;
 
@@ -88,6 +88,11 @@ class registroproveedores
      * @var \NW\UserBundle\Entity\User
      */
     private $user;
+
+    /**
+     * @var \NW\PrincipalBundle\Entity\Estados
+     */
+    private $estados;
 
 
     /**
@@ -121,6 +126,29 @@ class registroproveedores
     public function getUsuarioId()
     {
         return $this->usuarioId;
+    }
+
+    /**
+     * Set tipoPersona
+     *
+     * @param string $tipoPersona
+     * @return registroproveedores
+     */
+    public function setTipoPersona($tipoPersona)
+    {
+        $this->tipoPersona = $tipoPersona;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoPersona
+     *
+     * @return string 
+     */
+    public function getTipoPersona()
+    {
+        return $this->tipoPersona;
     }
 
     /**
@@ -331,32 +359,9 @@ class registroproveedores
     }
 
     /**
-     * Set pais
-     *
-     * @param string $pais
-     * @return registroproveedores
-     */
-    public function setPais($pais)
-    {
-        $this->pais = $pais;
-
-        return $this;
-    }
-
-    /**
-     * Get pais
-     *
-     * @return string 
-     */
-    public function getPais()
-    {
-        return $this->pais;
-    }
-
-    /**
      * Set estado
      *
-     * @param string $estado
+     * @param integer $estado
      * @return registroproveedores
      */
     public function setEstado($estado)
@@ -369,7 +374,7 @@ class registroproveedores
     /**
      * Get estado
      *
-     * @return string 
+     * @return integer 
      */
     public function getEstado()
     {
@@ -444,47 +449,14 @@ class registroproveedores
     {
         return $this->user;
     }
-    /**
-     * @var string
-     */
-    private $tipoPersona;
-
-
-    /**
-     * Set tipoPersona
-     *
-     * @param string $tipoPersona
-     * @return registroproveedores
-     */
-    public function setTipoPersona($tipoPersona)
-    {
-        $this->tipoPersona = $tipoPersona;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoPersona
-     *
-     * @return string 
-     */
-    public function getTipoPersona()
-    {
-        return $this->tipoPersona;
-    }
-    /**
-     * @var \NW\UserBundle\Entity\Estados
-     */
-    private $estados;
-
 
     /**
      * Set estados
      *
-     * @param \NW\UserBundle\Entity\Estados $estados
+     * @param \NW\PrincipalBundle\Entity\Estados $estados
      * @return registroproveedores
      */
-    public function setEstados(\NW\UserBundle\Entity\Estados $estados = null)
+    public function setEstados(\NW\PrincipalBundle\Entity\Estados $estados = null)
     {
         $this->estados = $estados;
 
@@ -494,7 +466,7 @@ class registroproveedores
     /**
      * Get estados
      *
-     * @return \NW\UserBundle\Entity\Estados 
+     * @return \NW\PrincipalBundle\Entity\Estados 
      */
     public function getEstados()
     {

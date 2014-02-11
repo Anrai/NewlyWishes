@@ -125,7 +125,7 @@ class registronovios
     private $novioDireccion;
 
     /**
-     * @var string
+     * @var integer
      */
     private $novioEstado;
 
@@ -145,7 +145,7 @@ class registronovios
     private $user;
 
     /**
-     * @var \NW\UserBundle\Entity\Estados
+     * @var \NW\PrincipalBundle\Entity\Estados
      */
     private $estados;
 
@@ -669,7 +669,7 @@ class registronovios
     /**
      * Set novioEstado
      *
-     * @param string $novioEstado
+     * @param integer $novioEstado
      * @return registronovios
      */
     public function setNovioEstado($novioEstado)
@@ -682,7 +682,7 @@ class registronovios
     /**
      * Get novioEstado
      *
-     * @return string 
+     * @return integer 
      */
     public function getNovioEstado()
     {
@@ -761,10 +761,10 @@ class registronovios
     /**
      * Set estados
      *
-     * @param \NW\UserBundle\Entity\Estados $estados
+     * @param \NW\PrincipalBundle\Entity\Estados $estados
      * @return registronovios
      */
-    public function setEstados(\NW\UserBundle\Entity\Estados $estados = null)
+    public function setEstados(\NW\PrincipalBundle\Entity\Estados $estados = null)
     {
         $this->estados = $estados;
 
@@ -774,7 +774,7 @@ class registronovios
     /**
      * Get estados
      *
-     * @return \NW\UserBundle\Entity\Estados 
+     * @return \NW\PrincipalBundle\Entity\Estados 
      */
     public function getEstados()
     {
