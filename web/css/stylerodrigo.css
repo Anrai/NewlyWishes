@@ -120,6 +120,12 @@ hr{
 	font-size: 15px;
 	margin-left: 70px;
 }
+.verde3{
+	color: rgb(146, 208, 80);
+	font-size: 13px;
+	margin-left: 220px;
+}
+
 .mas{
 	margin-top: -10px;
 	font-size: 30px;
@@ -226,7 +232,6 @@ width: 1000px;
 	margin-top: 25px;
 	font-size: 15px;
 }
-
 
 
 
