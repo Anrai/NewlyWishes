@@ -1,12 +1,12 @@
 <?php
-// src/NW/UserBundle/Form/Type/Noviazgo.php
+// src/NW/UserBundle/Form/Type/NoviaType.php
 namespace NW\UserBundle\Form\Type;
  
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  
-class NoviazgoType extends AbstractType
+class NoviaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

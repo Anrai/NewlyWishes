@@ -4,7 +4,7 @@ namespace NW\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use NW\UserBundle\Entity\usuario;
-//use NW\UserBundle\Entity\Novias;
+use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
 use NW\UserBundle\Entity\registroproveedores;
 
@@ -51,7 +51,7 @@ class UserController extends Controller
         $form = $this->createForm(new NoviazgoType(), $noviasClass);
         */
 
-        //$formData['novias'] = new Novias();
+        $formData['novias'] = new Novias();
         $formData['novios'] = new Novios();
         $form = $this->createForm(new RegistroType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
 
