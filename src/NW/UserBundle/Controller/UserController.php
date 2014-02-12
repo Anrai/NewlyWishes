@@ -84,6 +84,7 @@ class UserController extends Controller
             
             $em = $this->getDoctrine()->getEntityManager(); 
             $em->persist($user);
+            $em->persist($novias);
             $em->persist($novios);
             $em->flush();
      
@@ -92,7 +93,7 @@ class UserController extends Controller
             );*/
 
             return new Response(
-                'Estado de la novia: '.$form["novios"]["estado2"]->getData()
+                'Nombre de usuario: '.$form["userName"]->getData()
             );
 
         }

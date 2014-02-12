@@ -10,12 +10,12 @@ NW\UserBundle\Entity\User:
     oneToOne:
         novios:
             targetEntity: Novios
-            mappedBy: user
+            mappedBy: User
     oneToOne:
         novias:
             targetEntity: Novias
-            mappedBy: user
+            mappedBy: User
     oneToOne:
         registroproveedores:
             targetEntity: registroproveedores
-            mappedBy: user
+            mappedBy: User
