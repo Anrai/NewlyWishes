@@ -8,8 +8,12 @@ NW\UserBundle\Entity\User:
             generator:
                 strategy: AUTO
     oneToOne:
-        registronovios:
-            targetEntity: registronovios
+        novios:
+            targetEntity: Novios
+            mappedBy: user
+    oneToOne:
+        novias:
+            targetEntity: Novias
             mappedBy: user
     oneToOne:
         registroproveedores:

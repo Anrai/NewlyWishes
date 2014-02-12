@@ -1,27 +1,24 @@
 <?php
-// src/NW/UserBundle/Entity/usuario.php
+
 namespace NW\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  */
-class User extends BaseUser
+class User
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-        // Con esto le asigno un rol por default a un nuevo usuario:
-        //$this->roles = array('ROLE_USER');
-        //$this->registronovios = new ArrayCollection();
-    }
-
     /**
      * @var integer
      */
-    protected $id;
+    private $id;
+
+    /**
+     * @var \NW\UserBundle\Entity\registroproveedores
+     */
+    private $registroproveedores;
+
 
     /**
      * Get id
@@ -32,37 +29,6 @@ class User extends BaseUser
     {
         return $this->id;
     }
-
-    // Tratando de crear una asociación
-    protected $registronovios;
-
-    /**
-     * Set registronovios
-     *
-     * @param \NW\UserBundle\Entity\registronovios $registronovios
-     * @return User
-     */
-    public function setRegistronovios(\NW\UserBundle\Entity\registronovios $registronovios = null)
-    {
-        $this->registronovios = $registronovios;
-
-        return $this;
-    }
-
-    /**
-     * Get registronovios
-     *
-     * @return \NW\UserBundle\Entity\registronovios 
-     */
-    public function getRegistronovios()
-    {
-        return $this->registronovios;
-    }
-    /**
-     * @var \NW\UserBundle\Entity\registroproveedores
-     */
-    private $registroproveedores;
-
 
     /**
      * Set registroproveedores

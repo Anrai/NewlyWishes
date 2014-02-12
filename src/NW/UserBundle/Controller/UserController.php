@@ -58,26 +58,28 @@ class UserController extends Controller
         $form->handleRequest($request);
  
         if ($form->isValid()) {
-/*
-            // Recuperando datos del formulario
-            $novios = $form->getData();
+
+            // Recuperando datos de los novios
+            $novias = $form["novias"]->getData();
+            $novios = $form["novios"]->getData();
 
             // Agregando Usuario
             $userManager = $this->get('fos_user.user_manager'); 
             $user = $userManager->createUser();
 
             $user->setUsername($form["userName"]->getData());
-            $user->setEmail($form["novioEMail"]->getData());
+            $user->setEmail($form["novios"]["eMail"]->getData());
             $user->setPlainPassword($form["userPass"]->getData());
             $user->setEnabled(true);
 
             // Obteniendo el Estado de procedencia de los novios
-            $noviaEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["noviaEstado2"]->getData());
-            $novioEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novioEstado2"]->getData());
-            $novios->setEstados($noviaEstado);
-            $novios->setEstados($novioEstado);
+            $noviaEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novias"]["estado2"]->getData());
+            $novioEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novios"]["estado2"]->getData());
+            $novias->setEstado($noviaEstado);
+            $novios->setEstado($novioEstado);
 
             // Agregando Usuario a la tabla de registronovios
+            $novias->setUser($user);
             $novios->setUser($user);
             
             $em = $this->getDoctrine()->getEntityManager(); 
@@ -89,7 +91,9 @@ class UserController extends Controller
                 'Novios creados con ID: '.$novios->getId().' y usuario con ID: '.$user->getId()
             );*/
 
-            return new Response('Hola!');
+            return new Response(
+                'Estado de la novia: '.$form["novios"]["estado2"]->getData()
+            );
 
         }
         else{
