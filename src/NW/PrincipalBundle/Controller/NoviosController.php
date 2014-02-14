@@ -118,8 +118,22 @@ class NoviosController extends Controller
 
         if($form->isValid())
         {
-            // Ya se actualizó la contraseña
-            $statusForm=true;
+            // Codificando la contraseña escrita para después compararla con la original
+            $encoder_service = $this->get('security.encoder_factory');
+            $encoder = $encoder_service->getEncoder($user);
+            $encoder_pass = $encoder->encodePassword($form["oldPass"]->getData(), $user->getSalt());
+
+            // Verificar que la contraseña escrita sea correcta
+            if($encoder_pass === $user->getPassword())
+            {
+                // Cambiar contraseña del usuario
+                $user->setPlainPassword($form["newPass"]->getData());
+                $this->get('fos_user.user_manager')->updateUser($user,false);
+                $this->getDoctrine()->getEntityManager()->flush();
+                
+                // Ya se actualizó la contraseña
+                $statusForm=true;
+            }            
         }
 
         // Renderear la plantilla con la información necesaria
