@@ -17,18 +17,76 @@
 							Nuestro Checklist
 						</h1>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						
 					</div>
-					<div class="col-md-7">
-						<p class=" verde3">
+					<div class="col-md-8">
+						<p class=" verde3" style="margin-top:12px;">
 							Agrega una nueva tarea
 						</p>
 					</div>
 					<div class="col-md-1">
-						<h1 class="art big">
-							+
-						</h1>
+						
+						<!-- CHECKLIST -->
+						<!-- Button trigger modal -->
+						<input type="image" src="{{asset('img/novios/mas.png')}}" data-toggle="modal" data-target="#myModal" style="width:40px; height:60px; margin-top:-10px; margin-left:-30px;">
+						 
+
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+						      <div class="modal-header">
+						      	<div class="row">
+						      		<div class="col-xs-5">
+							        	<h4 class="modal-title rosa" id="myModalLabel">Mi Checklist<br>Agrega/Modifica Tarea</h4>
+						        	</div>
+						        	<div class="col-xs-1">
+										
+						        	</div>
+						        	<div class="col-xs-5">
+										<img src="{{asset('img/nw.png')}}" width="100%">
+						        	</div>
+						        	<div class="col-xs-1">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        	</div>
+						        </div>
+						      </div>
+						      
+						      <div class="modal-body">
+						      	<div class="row">
+						      		<div class="col-md-9">
+
+						      			<div class="row">
+						      			<div class="col-xs-12">
+							        		<input type="text" class="input_small" placeholder="Nombre de la tarea">
+							        		<br>
+							        		<select class="input_small">
+						      					<option>Categoría</option>
+							        		</select>
+							        		<br>
+							        		<textarea class="textarea_small" placeholder="Descripción"></textarea>
+							        	</div>
+							        	</div>
+	
+									</div>
+									<div class="col-md-3">
+									
+									<div class="row" style="margin-top:0px;">
+										<div class="col-md-12">
+											<input type="submit" id="enviar_form" value="Agregar tarea" style="width:120px; margin-right:50px; bottom:0px;">	
+										</div>
+									</div>
+
+									</div>
+
+								</div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- FIN AGREGAR CHECKLIST -->
+						
 					</div>
 				</div>
 			</div>
