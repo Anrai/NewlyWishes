@@ -3,13 +3,303 @@
 {% extends 'NWPrincipalBundle:Proveedores:administrador.html.twig' %}
 
 {% block partederecha %}
+
+
+				<div class="row">
+					<div class="col-md-9">
+						
+					</div>
+					<div class="col-md-3">
+						<a class="art3" data-toggle="modal" data-target="#miCuenta"><h1>Mi Cuenta</h1></a>
+					</div>
+					<!-- Modal -->
+						<div class="modal fade" id="miCuenta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+						      <div class="modal-header3">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <div class="col-xs-7">
+						        	<h4 class="modal-title rosa" id="myModalLabel">Actualiza tus datos</h4>
+						        </div>
+						        <div class="col-xs-5">
+					        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+						        </div>
+						      </div>
+
+						      
+						      
+						      <div class="modal-body">
+						      	<div class="row">
+						    		<div class="col-xs-12 left">
+						    			<img src="{{asset('img/mini-punto.png')}}">
+						      			<label class="radio-inline">
+								          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2"> Persona física
+								        </label>
+								        <label class="radio-inline">
+								          <input name="radioGroup" id="radio2" value="option2" checked="checked" type="radio" class="input2"> Persona moral
+								        </label>
+								        <br><br>
+								        <div class="row left">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input class="input5" type="text" placeholder="nombreo razónsocial" name="nombreo razónsocial">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input class="input5" type="text" placeholder="dirección(calley número)" name="dirección(calley número)">
+								        </div>
+								        <br>
+								        <div class="row left2">
+								        	<input class="input5" type="text" placeholder="apellido paterno" name="apellidopaterno">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+									        <select class="select1">
+											  <option value="país">país</option>
+											  <option value="México">México</option>
+											</select>
+								        </div>
+								        <br>
+								        <div class="row left2">
+								        	<input class="input5" type="text" placeholder="apellido materno" name="apellidomaterno">
+											<img src="{{asset('img/mini-punto.png')}}">
+									        <select class="select1">
+											  <option value="Estado">Estado</option>
+											  <option value="Aguascalientes">Aguascalientes</option>
+											</select>
+								        </div>
+								        <br>
+								        <div class="row left">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input class="input5" type="text" placeholder="RFC" name="RFC">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input class="input5" type="text" placeholder="municipio/ delegación" name="municipio/ delegación">
+								        </div>
+								        <br>
+								        <div class="row left">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input class="input5 input3" type="text" placeholder="email" name="email">
+								        	<input class="input5" type="text" placeholder="ciudad" name="ciudad" class="miniinput3">
+								        </div>
+								        <br>
+								        <div class="row left">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input type="text" placeholder="LADA" name="LADA" class="miniinput">
+								        	<input type="text" placeholder="teléfono oficina" name="teléfono oficina" class="miniinput2">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input class="input5" type="text" placeholder="código postal" name="código postal">
+								        </div>
+								        <br>
+								        <div class="row left">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	<input class="input5" type="text" placeholder="teléfono celular" name="teléfono celular">
+								        </div>
+								        <br>
+								        <br>
+								        <div class="row">
+							        		<div class="col-xs-12">
+								        		<label class="radio-inline">
+										          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
+										        </label>
+										        <br>
+										        <label class="radio-inline">
+										          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
+										        </label>
+							        		</div>
+								        </div>
+								        <br>
+								        <div class="row left">
+							        			<img src="{{asset('img/mini-punto.png')}}">
+							        			<span>Datos obligatorios</span>	
+							        		</div>
+							      	</div>
+						    	</div>
+						      </div>
+								
+						    </div>
+						  </div>
+						</div>
+						<!-- FIN CARGA DE ARTICULOS -->
+				</div>
 				<div class="row">
 					<div class="col-md-4">
 						<h4>Plan contratado:<span class="esc">Básico</span></h4>
 					</div>
+					<!--Inicia primer Modal-->
 					<div class="col-md-3">
-						<h5><span class="esc">Editar</span></h5>
+						<a class="art3" data-toggle="modal" data-target="#myModal"><h5 class="art">Editar</h5></a>
 					</div>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+						    	<div class="modal-header2">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					        </div>
+							    <div class="container contrata corrector minplanes">
+								<div class="row">
+									<div class="col-md-6">
+										<h1>Contrata tu plan</h1>
+									</div>
+									<div class="col-md-6">
+										<img class="img-responsive logo" src="{{asset('img/nw.png')}}"></div>
+									</div>
+									<br>
+									<br>
+									<br>
+									<div class="usuario">
+										<h3>Usuario:</h3>
+									</div>
+									<br>
+									<br>
+
+								</div>
+									<div class="container minplanes">
+										<table class="table table-striped">
+											<tr height="20px">
+												<td class="planes2"></td>
+												<td class="planes" colspan="5">Planes</td>
+											</tr>
+										  <tr>
+										    <th class="funcionalidades"> Funcionalidades </th>
+										    <th> Anuncio <br> especial </th>
+										    <th> Anuncio <br> Plus </th>
+										    <th class="top"> Básico </th>
+										    <th class="top"> Estándar </th>
+										    <th class="top"> Plus </th>
+										  </tr>
+										  <tbody>
+											  <tr>
+											    <td> Anuncio en la página principal </td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Anuncio especial en el costado de la página </td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Micrositio con mi catálogo de productos / servicios </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Cargar / modificar artículos </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Incluir promociones en página principal </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Vender a través de la plataforma </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Transferir ventas a mi cuenta bancaria </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Modificar / actualizar información bancaria </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Incluir banners promocionales </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Administración de inventario por producto </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Conocer opiniones de clientes </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Estado de cuenta detallado </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+											  <tr>
+											    <td> Cargar / modificar códigos de venta </td>
+											    <td>&nbsp;</td>
+											    <td>&nbsp;</td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											    <td><img src="{{asset('img/punto.png')}}"></td>
+											  </tr>
+										  </tbody>
+										  <tr>
+										    <td class="funcionalidades"> Costo mensual (3 meses gratis al registrarte) </td>
+										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $299 </label></td>
+										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $599 </label></td>
+										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $299 </label></td>
+										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $499 </label></td>
+										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked>$999 </label></td>
+										  </tr>
+										</table>
+
+										<div class="container">
+											<div class="radio">
+										  		<label>
+										    		<input type="checkbox">He leído y acepto los <span class="term">términos y condiciones</span>
+										  		</label>
+											</div>
+											<div class="radio">
+										  		<label>
+										    		<input type="checkbox">He leído y acepto los <span class="term">términos de privacidad</span>
+										  		</label>
+											</div>
+										</div>
+										<br>
+										<div class="container center">
+											<h6>Datos obligatorios</h6>
+										</div>
+									</div>	
+			      			</div>
+					      <div class="modal-body">
+					      	
+					      </div>
+			        </div>
 				</div>
 				<div class="row">
 					<div class="col-md-9">
@@ -19,6 +309,10 @@
 						<span class="esc"> Editar </span>
 					</div>
 				</div>
+
+				
+
+
 				<hr />
 				<h5>Tipo de persona:<span class="esc"> Persona física </span></h5>
 				<h5>Nombre / Razón social:<span class="esc"> Empresa, S.A. de C.V. </span></h5>

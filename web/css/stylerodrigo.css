@@ -106,7 +106,7 @@ hr{
 	margin-top: -30px;
 }
 .puntov{
-	margin-top: 25px;
+	margin-right: 10px;
 }
 .verde{
 	color: rgb(146, 208, 80);
@@ -139,6 +139,14 @@ hr{
 	color:rgb(204,0,153);
 	font-size: 20px;
 	font-weight: bold;
+}
+.art3{
+	text-decoration: none;
+	cursor: pointer;
+}
+.art3:hover{
+	color: red!important;
+	text-decoration: none;
 }
 .bote{
 	margin-left: 10px;
@@ -208,7 +216,7 @@ hr{
 .bar2{
 	height: 11px;
 	margin-top: 15px;
-width: 1000px;
+	width: 1000px;
 }
 .martgin_top{
 	margin-top: 10px;
@@ -232,6 +240,65 @@ width: 1000px;
 	margin-top: 25px;
 	font-size: 15px;
 }
+.modal-header2{
+	min-height: 16.428571429px;
+	padding: 15px;
+}
+.modal-header3{
+	border-bottom: none;
+}
+.modal-content{
+	width: 750px;
+}
+.logo-modal{
+	width: 250px;
+	height: 90px;
+}
+.left{
+	margin-left: 6px;
+}
+.left2{
+	margin-left: 15px;
+}
+.datosobligatorios{
+	color: rgb(204,0,153);
+}
+.miniinput{
+	width: 50px;
+}
+.miniinput2{
+	width: 246px;
+	margin-right: 15px;
+}
+.miniinput3{
+	margin-left: 9px;
+}
+.select1{
+	width: 300px;
+}
+.input5{
+	width: 300px;
+	margin-right: 15px;
+}
+.input2{
+	width: 20px;
+}
+.input3{
+	width: 300px;
+	margin-right: 23px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
