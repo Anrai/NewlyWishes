@@ -82,7 +82,7 @@ class Novios
     /**
      * @var \NW\UserBundle\Entity\User
      */
-    private $user;
+    protected $user;
 
     /**
      * @var \NW\PrincipalBundle\Entity\Estados

@@ -23,7 +23,12 @@
 		</div>
 		{% if app.user %}
 		  	<div class="cont_top">
-		    	Mi lista de deseos &nbsp;-&nbsp; <a href="{{ path('nw_principal_novios_nuestra-boda') }}">Mi cuenta</a>
+		  		{% if is_granted('ROLE_NOVIO') %}
+		    		Mi lista de deseos &nbsp;-&nbsp; <a href="{{ path('nw_principal_novios_nuestra-boda') }}">Nuestra Boda</a>
+		    	{% endif %}
+		    	{% if is_granted('ROLE_PROVEEDOR') %}
+		    		<a href="{{ path('nw_principal_proveedores_micuenta') }}">Mi cuenta</a>
+		    	{% endif %}
 		  	</div>
 			<div class="cont_top" style="float:right; clear:both;">
 		    	<strong>{{ app.user.username }}</strong> &nbsp;-&nbsp; <a href="{{ path('fos_user_security_logout') }}">Salir</a>

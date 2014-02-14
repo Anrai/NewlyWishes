@@ -12,15 +12,13 @@ NW\PrincipalBundle\Entity\Estados:
     oneToMany:
         novios:
             targetEntity: NW\UserBundle\Entity\Novios
-            mappedBy: Estados 
-    oneToMany:
+            mappedBy: Estados
         novias:
             targetEntity: NW\UserBundle\Entity\Novias
-            mappedBy: Estados 
-    oneToMany:
+            mappedBy: Estados
         registroproveedores:
             targetEntity: NW\UserBundle\Entity\registroproveedores
-            mappedBy: Estados 
+            mappedBy: Estados
     id:
         id:
             type: integer

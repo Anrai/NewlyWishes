@@ -1,5 +1,5 @@
 <?php
-// src/NW/UserBundle/Form/Type/NoviaType.php
+// src/NW/UserBundle/Form/Type/Novia.php
 namespace NW\UserBundle\Form\Type;
  
 use Symfony\Component\Form\AbstractType;
@@ -24,7 +24,7 @@ class NoviaType extends AbstractType
                     'MX' => 'México',),
                 'multiple' => false,
                 'mapped' => false,));
-        $builder->add('estado2', 'choice', array(
+        $builder->add('estado', 'choice', array(
                 'choices' => array(
                     '1'   => 'Aguascalientes',
                     '2'   => 'Baja California',
@@ -58,8 +58,7 @@ class NoviaType extends AbstractType
                     '30'   => 'Veracruz',
                     '31'   => 'Yucatán',
                     '32'   => 'Zacatecas',),
-                'multiple'  => false,
-                'mapped' => false,));
+                'multiple'  => false,));
         $builder->add('ciudad', 'text');
         $builder->add('cp', 'text', array('max_length' => 5));
     }

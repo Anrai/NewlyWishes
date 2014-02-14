@@ -27,6 +27,16 @@ class Estados
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
+    private $novios;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $novias;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
     private $registroproveedores;
 
     /**
@@ -39,6 +49,8 @@ class Estados
      */
     public function __construct()
     {
+        $this->novios = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->novias = new \Doctrine\Common\Collections\ArrayCollection();
         $this->registroproveedores = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -96,6 +108,72 @@ class Estados
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * Add novios
+     *
+     * @param \NW\UserBundle\Entity\Novios $novios
+     * @return Estados
+     */
+    public function addNovio(\NW\UserBundle\Entity\Novios $novios)
+    {
+        $this->novios[] = $novios;
+
+        return $this;
+    }
+
+    /**
+     * Remove novios
+     *
+     * @param \NW\UserBundle\Entity\Novios $novios
+     */
+    public function removeNovio(\NW\UserBundle\Entity\Novios $novios)
+    {
+        $this->novios->removeElement($novios);
+    }
+
+    /**
+     * Get novios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNovios()
+    {
+        return $this->novios;
+    }
+
+    /**
+     * Add novias
+     *
+     * @param \NW\UserBundle\Entity\Novias $novias
+     * @return Estados
+     */
+    public function addNovia(\NW\UserBundle\Entity\Novias $novias)
+    {
+        $this->novias[] = $novias;
+
+        return $this;
+    }
+
+    /**
+     * Remove novias
+     *
+     * @param \NW\UserBundle\Entity\Novias $novias
+     */
+    public function removeNovia(\NW\UserBundle\Entity\Novias $novias)
+    {
+        $this->novias->removeElement($novias);
+    }
+
+    /**
+     * Get novias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNovias()
+    {
+        return $this->novias;
     }
 
     /**

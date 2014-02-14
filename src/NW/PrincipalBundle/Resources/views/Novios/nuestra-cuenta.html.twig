@@ -63,16 +63,15 @@
 			<div class="row" style="margin-top:20px;">
 					<div class="col-md-12">
 						<p class="rosa"><i>La novia</i></p>
-						Nombre: <span class="rosa">Nombre completo de la novia</span><br>
-						E-mail: <span class="rosa">correo@electronico.com</span><br>
-						Teléfono Oficina: <span class="rosa">(555) 555 555</span><br>
-						Teléfono Celular: <span class="rosa">55 55 55 55</span><br>
-						Dirección: <span class="rosa">Calle y número</span><br>
+						Nombre: <span class="rosa">{{ noviaInfo.nombreCompleto }}</span><br>
+						E-mail: <span class="rosa">{{ noviaInfo.email }}</span><br>
+						Teléfono Oficina: <span class="rosa">{{ noviaInfo.telefono }}</span><br>
+						Teléfono Celular: <span class="rosa">{{ noviaInfo.celular }}</span><br>
+						Dirección: <span class="rosa">{{ noviaInfo.direccion }}</span><br>
 						País: <span class="rosa">México</span><br>
-						Estado: <span class="rosa">D.F.</span><br>
-						Municipio / Delegación: <span class="rosa">Municipio</span><br>
-						Ciudad: <span class="rosa">Ciudad</span><br>
-						Código Postal: <span class="rosa">12345</span><br>
+						Estado: <span class="rosa">{{ noviaInfo.estado }}</span><br>
+						Ciudad: <span class="rosa">{{ noviaInfo.ciudad }}</span><br>
+						Código Postal: <span class="rosa">{{ noviaInfo.cp }}</span><br>
 					</div>
 			</div>
 			<!-- FIN DATOS DE LA NOVIA -->
@@ -81,16 +80,15 @@
 			<div class="row" style="margin-top:20px;">
 					<div class="col-md-12">
 						<p class="rosa"><i>El novio</i></p>
-						Nombre: <span class="rosa">Nombre completo del novio</span><br>
-						E-mail: <span class="rosa">correo@electronico.com</span><br>
-						Teléfono Oficina: <span class="rosa">(555) 555 555</span><br>
-						Teléfono Celular: <span class="rosa">55 55 55 55</span><br>
-						Dirección: <span class="rosa">Calle y número</span><br>
+						Nombre: <span class="rosa">{{ novioInfo.nombreCompleto }}</span><br>
+						E-mail: <span class="rosa">{{ novioInfo.email }}</span><br>
+						Teléfono Oficina: <span class="rosa">{{ novioInfo.telefono }}</span><br>
+						Teléfono Celular: <span class="rosa">{{ novioInfo.celular }}</span><br>
+						Dirección: <span class="rosa">{{ novioInfo.direccion }}</span><br>
 						País: <span class="rosa">México</span><br>
-						Estado: <span class="rosa">D.F.</span><br>
-						Municipio / Delegación: <span class="rosa">Municipio</span><br>
-						Ciudad: <span class="rosa">Ciudad</span><br>
-						Código Postal: <span class="rosa">12345</span><br>
+						Estado: <span class="rosa">{{ novioInfo.estado }}</span><br>
+						Ciudad: <span class="rosa">{{ novioInfo.ciudad }}</span><br>
+						Código Postal: <span class="rosa">{{ novioInfo.cp }}</span><br>
 					</div>
 			</div>
 			<!-- FIN DATOS DEL NOVIO -->
@@ -98,7 +96,12 @@
 			<!-- NUESTRA CONTRASEÑA -->
 			<div class="row" style="margin-top:20px;">
 					<div class="col-xs-12">
-						<h5 class="art" style="float:left;">Nuestra contraseña</h5>
+						<h5 class="art" style="float:left;">
+							Nuestra contraseña
+							{% if statusForm %}
+								(Se ha actualizado satisfactoriamente)
+							{% endif %}
+						</h5>
 					</div>
 			</div>
 			<div class="row borde_abajo"></div>
@@ -109,20 +112,22 @@
 			</div>
 
 			<div class="row" style="margin-top:10px;">
+				{{ form_start(form) }}
 					<div class="col-md-4">
-						<input type="text" class="input_registro_novios" placeholder="Contraseña actual">
+						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña actual' } }) }}
 					</div>
 					<div class="col-md-4">
-						<input type="text" class="input_registro_novios" placeholder="Nueva contraseña">
+						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nueva Contraseña' } }) }}
 					</div>
 					<div class="col-md-4">
-						<input type="submit" id="enviar_form" value="Cambiar">
+						{{ form_widget(form.Cambiar) }}
 					</div>
+				{{ form_end(form) }}
 			</div>
 
 			<div class="row" style="margin-top:10px;">
 					<div class="col-xs-12">
-						<p>Define contraseña; ésta debe estar compuesta por 8 números y/o letras y NO debe haber 3 dígitos consecutivos (p.ej. 987 ó 123) ni repetidos (p.ej. 333)</p>
+						<p>Define contraseña; ésta debe estar compuesta por 8 caracteres.</p>
 					</div>
 			</div>
 			<!-- FIN NUESTROS DATOS -->

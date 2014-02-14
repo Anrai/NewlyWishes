@@ -51,10 +51,12 @@ class UserController extends Controller
         $form = $this->createForm(new NoviazgoType(), $noviasClass);
         */
 
+        // Generando el formulario de registro de los novios y usuario
         $formData['novias'] = new Novias();
         $formData['novios'] = new Novios();
         $form = $this->createForm(new RegistroType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
 
+        // Solicitando datos del formulario para ver si recuperar los datos, mostrar error o mostrar formulario
         $form->handleRequest($request);
  
         if ($form->isValid()) {
@@ -63,41 +65,45 @@ class UserController extends Controller
             $novias = $form["novias"]->getData();
             $novios = $form["novios"]->getData();
 
-            // Agregando Usuario
+            // Agregando Usuario y sus datos
             $userManager = $this->get('fos_user.user_manager'); 
             $user = $userManager->createUser();
 
             $user->setUsername($form["userName"]->getData());
             $user->setEmail($form["novios"]["eMail"]->getData());
             $user->setPlainPassword($form["userPass"]->getData());
+            $user->addRole('ROLE_NOVIO');
             $user->setEnabled(true);
 
-            // Obteniendo el Estado de procedencia de los novios
-            $noviaEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novias"]["estado2"]->getData());
-            $novioEstado = $this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novios"]["estado2"]->getData());
-            $novias->setEstado($noviaEstado);
-            $novios->setEstado($novioEstado);
+            // Agregando Estado de la novia
+            $estadoNovia=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novias"]["estado"]->getData());
+            $estadoNovia->addNovia($novias);
+            $novias->setEstados($estadoNovia);
 
-            // Agregando Usuario a la tabla de registronovios
+            // Agregando Estado del novio
+            $estadoNovio=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novios"]["estado"]->getData());
+            $estadoNovio->addNovio($novios);
+            $novios->setEstados($estadoNovio);
+
+            // Agregando Usuario a los novios
             $novias->setUser($user);
             $novios->setUser($user);
-            
+
+            // Persistiendo los datos en la base de datos
             $em = $this->getDoctrine()->getEntityManager(); 
             $em->persist($user);
             $em->persist($novias);
             $em->persist($novios);
             $em->flush();
-     
-            /*return new Response(
-                'Novios creados con ID: '.$novios->getId().' y usuario con ID: '.$user->getId()
-            );*/
 
+            // El registro del formulario fue exitoso y se muestra lo siguiente al usuario
             return new Response(
-                'Nombre de usuario: '.$form["userName"]->getData()
+                'Novios registrados con éxisto'
             );
 
         }
         else{
+            // Si no se ha ocupado el formulario (o contiene errores) se le muestra al usuario
             return $this->render('NWUserBundle:User:registronovios.html.twig', array(
                 'form' => $form->createView(),
             ));
@@ -108,20 +114,19 @@ class UserController extends Controller
     {
         // crea un nuevo registro y le asigna algunos datos
         $registro = new registroproveedores();
-        $registro->settipoPersona('');
-        $registro->setnombreRazon('');
-        $registro->setapellidoPaterno('');
-        $registro->setapellidoMaterno('');
-        $registro->setrfc('');
-        $registro->setemail('');
-        $registro->setlada('');
-        $registro->settelefono('');
-        $registro->setcelular('');
-        $registro->setdireccion('');
-        $registro->setpais('');
-        $registro->setestado('');
-        $registro->setciudad('');
-        $registro->setcp('');
+        $registro->setTipoPersona('');
+        $registro->setNombreRazon('');
+        $registro->setApellidoPaterno('');
+        $registro->setApellidoMaterno('');
+        $registro->setRfc('');
+        $registro->setEmail('');
+        $registro->setLada('');
+        $registro->setTelefono('');
+        $registro->setCelular('');
+        $registro->setDireccion('');
+        $registro->setEstado('');
+        $registro->setCiudad('');
+        $registro->setCp('');
  
         $form = $this->createFormBuilder($registro)
             ->add('tipoPersona', 'choice', array('choices' => 
@@ -138,7 +143,7 @@ class UserController extends Controller
             ->add('direccion', 'text')
             ->add('pais', 'choice', array('choices' => array(
                     'MX'   => 'México',
-                    ), 'multiple'  => false,))
+                    ), 'mapped' => false, 'multiple'  => false,))
             ->add('estado', 'choice', array('choices' => array(
                      '1'   => 'Aguascalientes',
                      '2'   => 'Baja California',
@@ -196,10 +201,15 @@ class UserController extends Controller
             $user->setUsername($form["userName"]->getData());
             $user->setEmail($form["email"]->getData());
             $user->setPlainPassword($form["userPass"]->getData());
+            $user->addRole('ROLE_PROVEEDOR');
             $user->setEnabled(true);
 
+            // Agregando Estado del proveedor
+            $estado=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["estado"]->getData());
+            $estado->addRegistroproveedore($proveedor);
+            $proveedor->setEstados($estado);
+
             // Agregando Usuario a la tabla de registroproveedor
-            
             $proveedor->setUser($user);
             
             $em = $this->getDoctrine()->getEntityManager(); 
@@ -225,9 +235,9 @@ class UserController extends Controller
     {
 
         $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->findUserBy(array('username' => 'Docser'));
+        $user = $userManager->findUserBy(array('username' => 'docsernovios'));
         //$user->addRole('ROLE_ONE');
-        $user->setRoles(array('ROLE_USER1','ROLE_USER2','ROLE_USER3'));
+        $user->setRoles(array('ROLE_USER1','ROLE_NOVIOS'));
         $userManager->updateUser($user);
 
         return new Response('Nuevo rol asignado correctamente al usuario '.$user->getId());
