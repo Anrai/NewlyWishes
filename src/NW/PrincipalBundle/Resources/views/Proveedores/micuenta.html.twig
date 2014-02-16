@@ -314,18 +314,17 @@
 
 
 				<hr />
-				<h5>Tipo de persona:<span class="esc"> Persona física </span></h5>
-				<h5>Nombre / Razón social:<span class="esc"> Empresa, S.A. de C.V. </span></h5>
-				<h5>Email:<span class="esc"> empresa@email.com </span></h5>
-				<h5>Teléfono oficina:<span class="esc"> (55) 5555 5555 </span></h5>
-				<h5>Teléfono celular:<span class="esc"> 5555 5555 </span></h5>
-				<h5>RFC:<span class="esc"> ABCD023456123 </span></h5>
-				<h5>Dirección:<span class="esc"> calle y número </span></h5>
+				<h5>Tipo de persona:<span class="esc"> {{ proveedor.tipoPersona }} </span></h5>
+				<h5>Nombre / Razón social:<span class="esc"> {{ proveedor.nombre }} </span></h5>
+				<h5>Email:<span class="esc"> {{ proveedor.email }} </span></h5>
+				<h5>Teléfono oficina:<span class="esc"> ({{ proveedor.lada }}) {{ proveedor.telefono }} </span></h5>
+				<h5>Teléfono celular:<span class="esc"> {{ proveedor.celular }} </span></h5>
+				<h5>RFC:<span class="esc"> {{ proveedor.rfc }} </span></h5>
+				<h5>Dirección:<span class="esc"> {{ proveedor.direccion }} </span></h5>
 				<h5>País:<span class="esc"> México </span></h5>
-				<h5>Estado:<span class="esc"> D.F. </span></h5>
-				<h5>Municipio / Delegación:<span class="esc"> Municipio </span></h5>
-				<h5>Ciudad:<span class="esc"> Ciudad </span></h5>
-				<h5>Código postal:<span class="esc"> 12345 </span></h5>
+				<h5>Estado:<span class="esc"> {{ proveedor.estado }} </span></h5>
+				<h5>Ciudad:<span class="esc"> {{ proveedor.ciudad }} </span></h5>
+				<h5>Código postal:<span class="esc"> {{ proveedor.cp }} </span></h5>
 				<div class="row">
 					<div class="col-md-9">
 						<strong class="esc"> Mi Imagen </strong>
@@ -362,14 +361,32 @@
 				<br>
 				<br>
 				<br>
-				<h4 class="esc"> Mi Contraseña </h4>
+				<h4 class="esc"> 
+					Mi Contraseña
+					{% if statusForm %}
+						(Se ha actualizado satisfactoriamente)
+					{% endif %}
+				</h4>
 				<hr />
 				<span class="esc"> Cambiar contraseña </span >
 				<br>
+				<div class="row" style="margin-top:10px;">
+				<!-- <form action="{{ path('nw_principal_changepass') }}" method="post"> -->
+				{{ form_start(form) }}
+					<div class="col-md-4">
+						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña actual' } }) }}
+					</div>
+					<div class="col-md-4">
+						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nueva Contraseña' } }) }}
+					</div>
+					<div class="col-md-4">
+						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
+						{{ form_widget(form.Cambiar) }}
+					</div>
+				{{ form_end(form) }}
+			</div>
 				<br>
-				<br>
-				<br>
-				Define contraseña; ésta debe estar compuesta por 8 números y/o letras y NO debe haber 3 dígitos consecutivos (p.ej. 987 ó 123) ni repetidos (p.ej. 333)
+				Define contraseña; ésta debe estar compuesta por 8 caracteres.
 				<br>
 				<br>
 				<br>

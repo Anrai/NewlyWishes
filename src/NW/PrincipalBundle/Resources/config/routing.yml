@@ -18,6 +18,10 @@ nw_principal_planes:
     pattern:  /planes
     defaults: { _controller: NWPrincipalBundle:Default:planes }
 
+nw_principal_changepass:
+    pattern:  /changePass
+    defaults: { _controller: NWPrincipalBundle:Default:changePass }
+
 nw_principal_proveedores_micuenta:
     pattern:  /proveedores/micuenta
     defaults: { _controller: NWPrincipalBundle:Proveedores:micuenta }
