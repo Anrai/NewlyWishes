@@ -10,7 +10,7 @@
 						
 					</div>
 					<div class="col-md-3">
-						<a class="art3" data-toggle="modal" data-target="#miCuenta"><h1>Mi Cuenta</h1></a>
+						<h1>Mi Cuenta</h1>
 					</div>
 					<!-- Modal -->
 						<div class="modal fade" id="miCuenta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -29,86 +29,72 @@
 						      
 						      
 						      <div class="modal-body">
+						      	{{ form_start(formProveedor) }}
 						      	<div class="row">
 						    		<div class="col-xs-12 left">
 						    			<img src="{{asset('img/mini-punto.png')}}">
-						      			<label class="radio-inline">
-								          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2"> Persona física
-								        </label>
-								        <label class="radio-inline">
-								          <input name="radioGroup" id="radio2" value="option2" checked="checked" type="radio" class="input2"> Persona moral
-								        </label>
+						      			{{ form_widget(formProveedor.tipoPersona) }}
 								        <br><br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="nombreo razónsocial" name="nombreo razónsocial">
+								        	{{ form_widget(formProveedor.nombreRazon, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Nombre o Razón Social' } }) }}
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="dirección(calley número)" name="dirección(calley número)">
+								        	{{ form_widget(formProveedor.direccion, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Dirección completa' } }) }}
 								        </div>
 								        <br>
 								        <div class="row left2">
-								        	<input class="input5" type="text" placeholder="apellido paterno" name="apellidopaterno">
+								        	{{ form_widget(formProveedor.apellidoPaterno, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Apellido Paterno' } }) }}
 								        	<img src="{{asset('img/mini-punto.png')}}">
-									        <select class="select1">
-											  <option value="país">país</option>
-											  <option value="México">México</option>
-											</select>
+											  {{ form_label(formProveedor.pais, 'País') }}
+											  {{ form_widget(formProveedor.pais, { 'attr': {'class': 'input_registro_novios select1'} }) }}
 								        </div>
 								        <br>
 								        <div class="row left2">
-								        	<input class="input5" type="text" placeholder="apellido materno" name="apellidomaterno">
+								        	{{ form_widget(formProveedor.apellidoMaterno, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Apellido Materno' } }) }}
 											<img src="{{asset('img/mini-punto.png')}}">
-									        <select class="select1">
-											  <option value="Estado">Estado</option>
-											  <option value="Aguascalientes">Aguascalientes</option>
-											</select>
+									        {{ form_label(formProveedor.estado, 'Estado') }}
+				        					{{ form_widget(formProveedor.estado, { 'attr': {'class': 'input_registro_novios select2'} }) }}
 								        </div>
 								        <br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="RFC" name="RFC">
+								        	{{ form_widget(formProveedor.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="municipio/ delegación" name="municipio/ delegación">
+								        	{{ form_widget(formProveedor.ciudad, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Ciudad' } }) }}
 								        </div>
 								        <br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5 input3" type="text" placeholder="email" name="email">
-								        	<input class="input5" type="text" placeholder="ciudad" name="ciudad" class="miniinput3">
+								        	{{ form_widget(formProveedor.email, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'E-Mail' } }) }}
+								        	{{ form_widget(formProveedor.cp, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Código postal' } }) }}
 								        </div>
 								        <br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input type="text" placeholder="LADA" name="LADA" class="miniinput">
-								        	<input type="text" placeholder="teléfono oficina" name="teléfono oficina" class="miniinput2">
-								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="código postal" name="código postal">
+								        	{{ form_widget(formProveedor.lada, { 'attr': {'class': 'input_registro_novios miniinput', 'placeholder': 'LADA' } }) }}
+								        	{{ form_widget(formProveedor.telefono, { 'attr': {'class': 'input_registro_novios miniinput2', 'placeholder': 'Teléfono de casa u oficina' } }) }}
 								        </div>
 								        <br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="teléfono celular" name="teléfono celular">
+								        	{{ form_widget(formProveedor.celular, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Teléfono celular' } }) }}
 								        </div>
 								        <br>
 								        <br>
 								        <div class="row">
 							        		<div class="col-xs-12">
-								        		<label class="radio-inline">
-										          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
-										        </label>
-										        <br>
-										        <label class="radio-inline">
-										          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
-										        </label>
+						        			{{ form_widget(formProveedor.terminosCondiciones) }} {{ form_label(formProveedor.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
+											{{ form_widget(formProveedor.terminosPrivacidad) }} {{ form_label(formProveedor.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
 							        		</div>
 								        </div>
 								        <br>
 								        <div class="row left">
 							        			<img src="{{asset('img/mini-punto.png')}}">
-							        			<span>Datos obligatorios</span>	
+							        			<span>Datos obligatorios</span>	<br />
 							        		</div>
 							      	</div>
 						    	</div>
+						    	{{ form_end(formProveedor) }}
 						      </div>
 								
 						    </div>
