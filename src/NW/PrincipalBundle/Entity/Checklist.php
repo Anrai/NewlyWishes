@@ -196,6 +196,7 @@ class Checklist
     // Función que me regresa mis valores en forma de array
     public function getValues(){
         return array(
+        'id' => $this->getId(),
         'status' => $this->getStatus(),
         'tarea' => $this->getTarea(),
         'categoria' => $this->getCategoria(),
