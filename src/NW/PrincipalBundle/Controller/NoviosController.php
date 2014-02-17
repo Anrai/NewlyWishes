@@ -86,7 +86,9 @@ class NoviosController extends Controller
         $novio=$user->getNovios();
 
         // Formulario de edición de datos de los novios
-        $formData['novias'] = new Novias();
+        $NoviasObject=new Novias();
+            $NoviasObject->setNombre('');// Con esto se muestra el nombre que se quiera en el formulario renderizado
+        $formData['novias'] = $NoviasObject;
         $formData['novios'] = new Novios();
         $formNovios = $this->createForm(new EdicionNoviosType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
 
