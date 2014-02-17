@@ -1,0 +1,29 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Cheklist.orm.yml
+NW\PrincipalBundle\Entity\Checklist:
+    type: entity 
+    table: Checklist
+    manyToOne:
+        user:
+            targetEntity: NW\UserBundle\Entity\User
+            inversedBy: Checklist
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        usuarioId:
+            type: integer
+        status:
+            type: boolean
+        tarea:
+            type: string
+            length: 100
+        categoria:
+            type: string
+            length: 100
+        descripcion:
+            type: text

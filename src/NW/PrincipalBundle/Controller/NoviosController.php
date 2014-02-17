@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 use NW\PrincipalBundle\Form\Type\EdicionNoviosType;
+use NW\PrincipalBundle\Form\Type\ChecklistType;
+
+use NW\PrincipalBundle\Entity\Checklist;
 
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
@@ -42,15 +45,62 @@ class NoviosController extends Controller
         ));
     }
 	
-	public function nuestroChecklistAction()
+	public function nuestroChecklistAction(Request $request)
     {
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
 
+        $formAgregarData = new Checklist();
+        $formAgregar = $this->createForm(new ChecklistType(), $formAgregarData);
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+ 
+            // ¿El formulario que se envió es el de cambio de contraseña?
+            if ($request->request->has($formAgregar->getName())) {
+                // Recuperando datos del formulario de cambio de contraseña
+                $formAgregar->handleRequest($request);
+
+                if($formAgregar->isValid())
+                {
+                    $newTask=$formAgregar->getData();
+                    $newTask->setUser($user);
+                    $newTask->setStatus(false);
+
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $em->persist($newTask);
+                    $em->flush();
+                }
+            }
+            // Se administra el otro formulario
+            /*else if ($request->request->has($formNovios->getName())) {
+                // handle the second form
+                $formNovios->handleRequest($request);
+         
+                if ($formNovios->isValid()) {
+
+                    //Contenido
+                }
+            }*/
+        }
+
+        // Obteniendo la lista de tareas en un arreglo de objectos
+        $em = $this->getDoctrine()->getEntityManager();
+        $tasks = $em->getRepository('NWPrincipalBundle:Checklist')->findBy(array('usuarioId' => $user->getId()));
+
+        // Convirtiendo los resultados en arrays
+        foreach($tasks as $index=>$value)
+        {
+            $objetoenArray=$tasks[$index]->getValues();
+            $tasks[$index]=$objetoenArray;
+        }
+
         return $this->render('NWPrincipalBundle:Novios:nuestro-checklist.html.twig', array(
+            'formAgregar' => $formAgregar->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'tasks'=>$tasks,
         ));
     }
 	
