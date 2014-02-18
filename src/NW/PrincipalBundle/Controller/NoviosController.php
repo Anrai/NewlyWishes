@@ -103,6 +103,16 @@ class NoviosController extends Controller
             'tasks'=>$tasks,
         ));
     }
+
+    public function TaskDeleteAction($id) // Controlador que borra una tarea según el id pasado
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $task = $em->getRepository('NWPrincipalBundle:Checklist')->find($id);
+        $em->remove($task);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-checklist'));
+    }
 	
 	public function nuestraMesaDeRegalosAction()
     {
