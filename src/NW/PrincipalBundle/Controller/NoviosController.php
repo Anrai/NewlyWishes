@@ -171,16 +171,24 @@ class NoviosController extends Controller
         $invitados = $em->getRepository('NWPrincipalBundle:ListaInvitados')->findBy(array('usuarioId' => $user->getId()));
 
         // Convirtiendo los resultados en arrays
+        $confirmadosInvitados=0;
         foreach($invitados as $index=>$value)
         {
             $objetoenArray=$invitados[$index]->getValues();
             $invitados[$index]=$objetoenArray;
+
+            if($invitados[$index]['status'])
+            {
+                $confirmadosInvitados++;
+            }
         }
 
         return $this->render('NWPrincipalBundle:Novios:nuestra-lista-de-invitados.html.twig', array(
             'formAgregar' => $formAgregar->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'totalInvitados' => count($invitados),
+            'confirmadosInvitados' => $confirmadosInvitados,
             'invitados'=>$invitados,
         ));
     }
