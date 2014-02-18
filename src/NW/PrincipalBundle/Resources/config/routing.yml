@@ -90,6 +90,10 @@ nw_principal_novios_nuestra-lista-de-invitados:
     pattern:  /novios/nuestra-lista-de-invitados
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraListaDeInvitados }
 
+nw_principal_novios_invitado_delete:
+    pattern:  /novios/invitado/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Novios:InvitadoDelete }
+
 nw_principal_novios_nuestra-cuenta:
     pattern:  /novios/nuestra-cuenta
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraCuenta }

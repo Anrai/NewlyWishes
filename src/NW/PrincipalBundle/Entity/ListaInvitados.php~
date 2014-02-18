@@ -5,9 +5,9 @@ namespace NW\PrincipalBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Checklist
+ * ListaInvitados
  */
-class Checklist
+class ListaInvitados
 {
     /**
      * @var integer
@@ -27,17 +27,17 @@ class Checklist
     /**
      * @var string
      */
-    private $tarea;
+    private $nombre;
 
     /**
      * @var string
      */
-    private $categoria;
+    private $familia;
 
     /**
      * @var string
      */
-    private $descripcion;
+    private $telefono;
 
     /**
      * @var \NW\UserBundle\Entity\User
@@ -59,7 +59,7 @@ class Checklist
      * Set usuarioId
      *
      * @param integer $usuarioId
-     * @return Checklist
+     * @return ListaInvitados
      */
     public function setUsuarioId($usuarioId)
     {
@@ -82,7 +82,7 @@ class Checklist
      * Set status
      *
      * @param boolean $status
-     * @return Checklist
+     * @return ListaInvitados
      */
     public function setStatus($status)
     {
@@ -102,79 +102,79 @@ class Checklist
     }
 
     /**
-     * Set tarea
+     * Set nombre
      *
-     * @param string $tarea
-     * @return Checklist
+     * @param string $nombre
+     * @return ListaInvitados
      */
-    public function setTarea($tarea)
+    public function setNombre($nombre)
     {
-        $this->tarea = $tarea;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get tarea
+     * Get nombre
      *
      * @return string 
      */
-    public function getTarea()
+    public function getNombre()
     {
-        return $this->tarea;
+        return $this->nombre;
     }
 
     /**
-     * Set categoria
+     * Set familia
      *
-     * @param string $categoria
-     * @return Checklist
+     * @param string $familia
+     * @return ListaInvitados
      */
-    public function setCategoria($categoria)
+    public function setFamilia($familia)
     {
-        $this->categoria = $categoria;
+        $this->familia = $familia;
 
         return $this;
     }
 
     /**
-     * Get categoria
+     * Get familia
      *
      * @return string 
      */
-    public function getCategoria()
+    public function getFamilia()
     {
-        return $this->categoria;
+        return $this->familia;
     }
 
     /**
-     * Set descripcion
+     * Set telefono
      *
-     * @param string $descripcion
-     * @return Checklist
+     * @param string $telefono
+     * @return ListaInvitados
      */
-    public function setDescripcion($descripcion)
+    public function setTelefono($telefono)
     {
-        $this->descripcion = $descripcion;
+        $this->telefono = $telefono;
 
         return $this;
     }
 
     /**
-     * Get descripcion
+     * Get telefono
      *
      * @return string 
      */
-    public function getDescripcion()
+    public function getTelefono()
     {
-        return $this->descripcion;
+        return $this->telefono;
     }
 
     /**
      * Set user
      *
      * @param \NW\UserBundle\Entity\User $user
-     * @return Checklist
+     * @return ListaInvitados
      */
     public function setUser(\NW\UserBundle\Entity\User $user = null)
     {
@@ -191,16 +191,5 @@ class Checklist
     public function getUser()
     {
         return $this->user;
-    }
-
-    // Función que me regresa mis valores en forma de array
-    public function getValues(){
-        return array(
-        'id' => $this->getId(),
-        'status' => $this->getStatus(),
-        'tarea' => $this->getTarea(),
-        'categoria' => $this->getCategoria(),
-        'descripcion' => $this->getDescripcion()
-        );
     }
 }

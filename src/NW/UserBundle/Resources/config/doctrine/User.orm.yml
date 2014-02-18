@@ -20,3 +20,6 @@ NW\UserBundle\Entity\User:
         checklist:
             targetEntity:  NW\PrincipalBundle\Entity\Checklist
             mappedBy: user
+        checklist:
+            targetEntity:  NW\PrincipalBundle\Entity\ListaInvitados
+            mappedBy: user

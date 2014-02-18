@@ -8,8 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 use NW\PrincipalBundle\Form\Type\EdicionNoviosType;
 use NW\PrincipalBundle\Form\Type\ChecklistType;
+use NW\PrincipalBundle\Form\Type\ListaInvitadosType;
 
 use NW\PrincipalBundle\Entity\Checklist;
+use NW\PrincipalBundle\Entity\ListaInvitados;
 
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
@@ -126,16 +128,71 @@ class NoviosController extends Controller
         ));
     }
 	
-	public function nuestraListaDeInvitadosAction()
+	public function nuestraListaDeInvitadosAction(Request $request)
     {
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
 
+        $formAgregarData = new ListaInvitados();
+        $formAgregar = $this->createForm(new ListaInvitadosType(), $formAgregarData);
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+ 
+            if ($request->request->has($formAgregar->getName())) {
+                $formAgregar->handleRequest($request);
+
+                if($formAgregar->isValid())
+                {
+                    $newInvitado=$formAgregar->getData();
+                    $newInvitado->setUser($user);
+                    $newInvitado->setStatus(false);
+
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $em->persist($newInvitado);
+                    $em->flush();
+                }
+            }
+            // Se administra el otro formulario
+            /*else if ($request->request->has($formNovios->getName())) {
+                // handle the second form
+                $formNovios->handleRequest($request);
+         
+                if ($formNovios->isValid()) {
+
+                    //Contenido
+                }
+            }*/
+        }
+
+        // Obteniendo la lista de invitados en un arreglo de objetos
+        $em = $this->getDoctrine()->getEntityManager();
+        $invitados = $em->getRepository('NWPrincipalBundle:ListaInvitados')->findBy(array('usuarioId' => $user->getId()));
+
+        // Convirtiendo los resultados en arrays
+        foreach($invitados as $index=>$value)
+        {
+            $objetoenArray=$invitados[$index]->getValues();
+            $invitados[$index]=$objetoenArray;
+        }
+
         return $this->render('NWPrincipalBundle:Novios:nuestra-lista-de-invitados.html.twig', array(
+            'formAgregar' => $formAgregar->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'invitados'=>$invitados,
         ));
+    }
+
+    public function InvitadoDeleteAction($id) // Controlador que borra una tarea según el id pasado
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $invitado = $em->getRepository('NWPrincipalBundle:ListaInvitados')->find($id);
+        $em->remove($invitado);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-lista-de-invitados'));
     }
 	
 	public function nuestraCuentaAction(Request $request)
