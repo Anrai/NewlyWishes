@@ -14,10 +14,10 @@
 					<div class="col-md-5">
 						<h1>Mis Productos / Servicios</h1>	
 					</div>
-					<div class="col-md-3">
-					<p class="verde">Carga masiva</p>	
+					<div class="col-md-5">
+					<p class="verde">Agrega un nuevo producto /servicio</p>	
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-7">
 						
 						<!-- CARGA DE ARTICULOS -->
 						<!-- Button trigger modal -->
@@ -176,6 +176,62 @@
 						
 
 					</div>
+					<div class="col-md-5">
+					<p class="verde">Carga masiva</p>	
+					</div>
+					<!-- CARGA MASIVA DE ARTICULOS -->
+						<!-- Button trigger modal -->
+						<input type="image" src="{{asset('img/novios/mas.png')}}" data-toggle="modal" data-target="#masiva" style="width:40px; height:60px; margin-top:-24px; margin-left:-20px;">
+						 
+
+						<!-- Modal -->
+						<div class="modal fade" id="masiva" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+						      <div class="modal-header2">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <div class="col-xs-7">
+						        	<h4 class="modal-title rosa" id="masiva">Actualiza tus datos</h4>
+						        </div>
+						        <div class="col-xs-5">
+					        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+						        </div>
+						      </div>
+						      
+						      <div class="modal-body">
+						      	<div class="row">
+						      		<div class="col-xs-12 ingreso">
+						      			<input type="submit" id="enviar_form" value="Seleccionar Archivo" style="width:120px;">
+						      		</div>
+						      		<div class="col-xs-9">
+										<label for="ejemplo_archivo_1" class="cargar">Haz cargado el siguiente archivo</label>
+    									<input type="file" id="ejemplo_archivo_1" class="cargar2">
+						      		</div>
+						      		<div class="col-xs-3 verde parrafito">
+						      			<p>Descargar formato para carga masiva de artículos (Excel)</p>
+						      		</div>
+						      		<div class="row left">
+										<label class="radio-inline">
+											<img src="{{asset('img/mini-punto.png')}}">
+								          	<input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
+									        </label>
+									        <br>
+									        <label class="radio-inline">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								          	<input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
+								        </label>
+									</div>
+									<br>
+									<div class="row left3">
+					        			<img src="{{asset('img/mini-punto.png')}}">
+					        			<span>Datos obligatorios</span>	
+					        		</div>
+						      	</div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- FIN CARGA DE ARTICULOS -->
 					<div class="col-md-10">
 						<h5 class="art">Articulo 1</h5>	
 					</div>
