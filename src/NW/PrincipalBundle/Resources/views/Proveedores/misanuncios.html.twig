@@ -33,7 +33,7 @@
 					
 			</div>
 			<div class="col-md-2">
-				<h5 class="art">Editar</h5>	
+				<a class="art3" data-toggle="modal" data-target="#anuncio"><h5 class="art">Editar</h5></a>
 			</div>
 			<div class="col-md-6">
 				<br>
@@ -51,5 +51,40 @@
 		<br>
 		<br>
 		<br>
+
+
+		<!-- Editar anuncio-->
+		<!-- Button trigger modal -->
+		<!-- Modal -->
+		<div class="modal fade" id="anuncio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+		      <div class="modal-header2">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <div class="col-xs-7">
+		        	<h4 class="modal-title rosa" id="anuncio">Editar anuncio</h4>
+		        </div>
+		        <div class="col-xs-5">
+	        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+		        </div>
+		      </div>
+		      
+		      <div class="modal-body">
+		      	<div class="row">
+		      		<div class="col-xs-9 left3">
+		      			<input type="submit" id="enviar_form" value="Seleccionar Archivo" style="width:120px;"> <br>
+		      		</div>
+		      		<div class="col-xs-8">
+		      			<input type="text" id="EdicionProveedor_cp" name="EdicionProveedor[cp]" required="required" maxlength="5" class="input_registro_novios input5 left4" placeholder="www.sitio externo.com">
+		      		</div>
+		      		<div class="col-xs-2">
+		      			<input class="logo2" type="submit" id="enviar_form" value="Aceptar" style="width:120px;">
+		      		</div>
+		      	</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+			<!-- FIN CARGA DE ARTICULOS -->
 
 	{% endblock %}

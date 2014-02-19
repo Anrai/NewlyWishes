@@ -28,43 +28,11 @@
 						<h5 class="art">Promocion 1</h5>	
 					</div>
 					<div class="col-md-2">
-						<a class="art3" data-toggle="modal" data-target="#myModal"><h5 class="art">Editar</h5></a>
+						<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
 					</div>
-					<!-- CARGA DE ARTICULOS -->
-						<!-- Button trigger modal -->
-						<!-- Modal -->
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h4 class="modal-title rosa" id="myModalLabel">Nuevo Artículo</h4>
-						      </div>
-						      
-						      <div class="modal-body">
-						      	<div class="row">
-						      		<div class="col-xs-6">
-
-						      			<div class="row">
-						      			<div class="col-xs-10">
-						      				<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
-							        		<input type="text" class="input_small" placeholder="Nombre del artículo">
-							        	</div>
-							        	<div class="col-xs-2">
-							        		<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
-							        	</div>
-							        	</div>
-
-							        	
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						<!-- FIN CARGA DE ARTICULOS -->
 				</div>
 			</div>
 			<hr />
-
 			<div class="row">
 				<div class="col-md-1">
 					
@@ -96,7 +64,7 @@
 						<h5 class="art">Promocion 2</h5>	
 					</div>
 					<div class="col-md-2">
-						<h5 class="art">Editar</h5>	
+						<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
 					</div>
 				</div>
 			</div>
@@ -133,7 +101,7 @@
 						<h5 class="art">Promocion 3</h5>	
 					</div>
 					<div class="col-md-2">
-						<h5 class="art">Editar</h5>	
+						<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
 					</div>
 				</div>
 			</div>
@@ -164,7 +132,40 @@
 			<br>
 			<br>
 			<br>
-
+			
+			<!-- Editar promocion 1 -->
+			<!-- Button trigger modal -->
+			<!-- Modal -->
+			<div class="modal fade" id="promocion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+			      <div class="modal-header2">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <div class="col-xs-7">
+			        	<h4 class="modal-title rosa" id="promocion">Editar promocion 1</h4>
+			        </div>
+			        <div class="col-xs-5">
+		        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+			        </div>
+			      </div>
+			      
+			      <div class="modal-body">
+			      	<div class="row">
+			      		<div class="col-xs-9 left3">
+			      			<input type="submit" id="enviar_form" value="Subir Imagen del Banner" style="width:160px;"> <br>
+			      		</div>
+			      		<div class="col-xs-8">
+			      			<input type="text" id="EdicionProveedor_cp" name="EdicionProveedor[cp]" required="required" maxlength="5" class="input_registro_novios input5 left4" placeholder="ID de artículo relacionado">
+			      		</div>
+			      		<div class="col-xs-2">
+			      			<input class="logo2" type="submit" id="enviar_form" value="Aceptar" style="width:120px;">
+			      		</div>
+			      	</div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- FIN CARGA DE ARTICULOS -->
 		
 			
 

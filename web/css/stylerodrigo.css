@@ -22,6 +22,9 @@
 .logo{
 margin-top: 80px;
 }
+.logo2{
+margin-top: 20px;
+}
 .ul{
 	color: rgb(204,0,153);
 }
@@ -263,6 +266,11 @@ hr{
 .left3{
 	margin-left: 26px;
 }
+.left4{
+	margin-left: 26px;
+	width: 200px!important;
+	margin-top: 20px;
+}
 .datosobligatorios{
 	color: rgb(204,0,153);
 }
@@ -292,6 +300,14 @@ hr{
 .input3{
 	width: 300px;
 	margin-right: 23px;
+}
+.input8{
+	height: 40px;
+	width: 350px;
+	border-radius: 5px;
+	text-align: center;
+	margin-left: 23%;
+	font-size: 25px;
 }
 .aceptar{
 	margin-top: -60px;
@@ -354,8 +370,16 @@ hr{
 	margin-top: 25px;
 	margin-left: -70px;
 }
-
-
+.pon{
+	text-align: center;
+	text-decoration: bold;
+	margin-top: 100px;
+	padding: 0px;
+}
+.enviar{
+	margin-left: 40%;
+	margin-top: 20px;
+}
 
 
 

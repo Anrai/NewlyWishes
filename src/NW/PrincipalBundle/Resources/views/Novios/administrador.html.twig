@@ -21,7 +21,7 @@
 				<br>
 				<h4>Hoy es <span class="esc">{{"now"|date("m/d/Y")}}</span></h4>
 				<br>
-				<h4 class="esc">¿Qué día es tu boda?</h4>
+				<a class="art3" data-toggle="modal" data-target="#dia"><h4 class="esc">¿Qué día es tu boda?</h4></a>
 			</div>
 		</div>
 	</div>
@@ -156,6 +156,36 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Editar anuncio-->
+	<!-- Button trigger modal -->
+	<!-- Modal -->
+	<div class="modal fade" id="dia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+	      <div class="modal-header2">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <div class="col-xs-7">
+	        	<h4 class="modal-title rosa" id="dia">¿Qué día es tu boda?</h4>
+	        </div>
+	        <div class="col-xs-5">
+        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+	        </div>
+	      </div>
+	      <div class="modal-body">
+	      	<h3 class="pon">Pon la fecha de tu boda</h3>
+	      </div>
+	      <div>
+	      	<input type="text" id="Checklist_tarea" name="Checklist[tarea]" required="required" class="input8" placeholder="dd/mm/aaaa">
+	      </div>
+	      <div>
+	      	<input class="enviar" type="submit" id="enviar_form" value="Guardar" style="width:120px;"> <br>
+	      </div>
+	      <br><br>
+	    </div>
+	  </div>
+	</div>
+			<!-- FIN CARGA DE ARTICULOS -->
 
 	{% endblock %}
 	{% block footer %}
