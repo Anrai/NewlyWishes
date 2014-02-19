@@ -1,0 +1,30 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/ListaInvitados.orm.yml
+NW\PrincipalBundle\Entity\ListaInvitados:
+    type: entity 
+    table: lista_invitados
+    manyToOne:
+        user:
+            targetEntity: NW\UserBundle\Entity\User
+            inversedBy: ListaInvitados
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        usuarioId:
+            type: integer
+        status:
+            type: boolean
+        nombre:
+            type: string
+            length: 100
+        familia:
+            type: string
+            length: 100
+        telefono:
+            type: string
+            length: 13

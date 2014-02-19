@@ -112,4 +112,60 @@ class User extends BaseUser
     {
         return $this->registroproveedores;
     }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Cheklist
+     */
+    private $cheklist;
+
+
+    /**
+     * Set cheklist
+     *
+     * @param \NW\PrincipalBundle\Entity\Cheklist $cheklist
+     * @return User
+     */
+    public function setCheklist(\NW\PrincipalBundle\Entity\Cheklist $cheklist = null)
+    {
+        $this->cheklist = $cheklist;
+
+        return $this;
+    }
+
+    /**
+     * Get cheklist
+     *
+     * @return \NW\PrincipalBundle\Entity\Cheklist 
+     */
+    public function getCheklist()
+    {
+        return $this->cheklist;
+    }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Checklist
+     */
+    private $checklist;
+
+
+    /**
+     * Set checklist
+     *
+     * @param \NW\PrincipalBundle\Entity\Checklist $checklist
+     * @return User
+     */
+    public function setChecklist(\NW\PrincipalBundle\Entity\Checklist $checklist = null)
+    {
+        $this->checklist = $checklist;
+
+        return $this;
+    }
+
+    /**
+     * Get checklist
+     *
+     * @return \NW\PrincipalBundle\Entity\Checklist 
+     */
+    public function getChecklist()
+    {
+        return $this->checklist;
+    }
 }

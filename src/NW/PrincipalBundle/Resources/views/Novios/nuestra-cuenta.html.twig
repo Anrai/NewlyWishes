@@ -1,4 +1,4 @@
-{# src/NW/PrincipalBundle/Resources/views/Proveedores/misbanners.html.twig #}
+{# src/NW/PrincipalBundle/Resources/views/Novios/nuestra-cuenta.html.twig #}
 
 	{% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
 
@@ -46,137 +46,111 @@
 
 						      
 						      <div class="modal-body">
+						      	{{ form_start(formNovios) }}
 						      			<p>La novia</p>
-										<div class="row left">
+																<div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="nombreo razónsocial" name="nombreo razónsocial">
+								        	{{ form_widget(formNovios.novias.nombre, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Nombre' } }) }}
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="dirección(calley número)" name="dirección(calley número)">
+								        	{{ form_widget(formNovios.novias.direccion, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Dirección completa' } }) }}
 								        </div>
 								        <br>
 								        <div class="row left2">
-								        	<input class="input5" type="text" placeholder="apellido paterno" name="apellidopaterno">
+								        	{{ form_widget(formNovios.novias.sNombre, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Segundo Nombre' } }) }}
 								        	<img src="{{asset('img/mini-punto.png')}}">
-									        <select class="select1">
-											  <option value="país">país</option>
-											  <option value="México">México</option>
-											</select>
+								        	{{ form_widget(formNovios.novias.eMail, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'E-Mail' } }) }}
 								        </div>
 								        <br>
 								        <div class="row left2">
-								        	<input class="input5" type="text" placeholder="apellido materno" name="apellidomaterno">
+								        	{{ form_widget(formNovios.novias.aPaterno, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Apellido Paterno' } }) }}
+								        	<img src="{{asset('img/mini-punto.png')}}">
+									        {{ form_label(formNovios.novias.pais, 'País') }}
+				        					{{ form_widget(formNovios.novias.pais, { 'attr': {'class': 'input_registro_novios select1'} }) }}
+								        </div>
+								        <br>
+								        <div class="row left2">
+								        	{{ form_widget(formNovios.novias.aMaterno, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Apellido Materno' } }) }}
 											<img src="{{asset('img/mini-punto.png')}}">
-									        <select class="select1">
-											  <option value="Estado">Estado</option>
-											  <option value="Aguascalientes">Aguascalientes</option>
-											</select>
+									        {{ form_label(formNovios.novias.estado, 'Estado') }}
+				        					{{ form_widget(formNovios.novias.estado, { 'attr': {'class': 'input_registro_novios select2'} }) }}
 								        </div>
 								        <br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="RFC" name="RFC">
+								        	{{ form_widget(formNovios.novias.lada, { 'attr': {'class': 'input_registro_novios miniinput', 'placeholder': 'LADA' } }) }}
+								        	{{ form_widget(formNovios.novias.telefono, { 'attr': {'class': 'input_registro_novios miniinput2', 'placeholder': 'Teléfono de casa u oficina' } }) }}
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="municipio/ delegación" name="municipio/ delegación">
+								        	{{ form_widget(formNovios.novias.ciudad, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Ciudad' } }) }}
 								        </div>
 								        <br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5 input3" type="text" placeholder="email" name="email">
-								        	<input class="input5" type="text" placeholder="ciudad" name="ciudad" class="miniinput3">
+								        	{{ form_widget(formNovios.novias.celular, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Teléfono celular' } }) }}
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novias.cp, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Código postal' } }) }}
 								        </div>
 								        <br>
-								        <div class="row left">
-								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input type="text" placeholder="LADA" name="LADA" class="miniinput">
-								        	<input type="text" placeholder="teléfono oficina" name="teléfono oficina" class="miniinput2">
-								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="código postal" name="código postal">
-								        </div>
-								        <br>
-								        <div class="row left">
-								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	<input class="input5" type="text" placeholder="teléfono celular" name="teléfono celular">
-								        </div>
-								        <br>
+								        <!-- No mames
 								        <input type="checkbox" name="opciones" id="opciones_1" value="opcion_1" checked>
-									    ¿La dirección del novio es la misma que de la novia?
-									  </label>
+									    ¿La dirección del novio es la misma que de la novia?-->
 								        <br>
-							      	</div>
 							      	<label>
 							      	<p>El novio</p>
 							      	<div class="row left">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input class="input5" type="text" placeholder="nombreo razónsocial" name="nombreo razónsocial">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input class="input5" type="text" placeholder="dirección(calley número)" name="dirección(calley número)">
-						          	</div>
-							        <br>
-							        <div class="row left2">
-							        	<input class="input5" type="text" placeholder="apellido paterno" name="apellidopaterno">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-								        <select class="select1">
-										  <option value="país">país</option>
-										  <option value="México">México</option>
-										</select>
-							        </div>
-							        <br>
-							        <div class="row left2">
-							        	<input class="input5" type="text" placeholder="apellido materno" name="apellidomaterno">
-										<img src="{{asset('img/mini-punto.png')}}">
-								        <select class="select1">
-										  <option value="Estado">Estado</option>
-										  <option value="Aguascalientes">Aguascalientes</option>
-										</select>
-							        </div>
-							        <br>
-							        <div class="row left">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input class="input5" type="text" placeholder="RFC" name="RFC">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input class="input5" type="text" placeholder="municipio/ delegación" name="municipio/ delegación">
-							        </div>
-							        <br>
-							        <div class="row left">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input class="input5 input3" type="text" placeholder="email" name="email">
-							        	<input class="input5" type="text" placeholder="ciudad" name="ciudad" class="miniinput3">
-							        </div>
-							        <br>
-							        <div class="row left">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input type="text" placeholder="LADA" name="LADA" class="miniinput">
-							        	<input type="text" placeholder="teléfono oficina" name="teléfono oficina" class="miniinput2">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input class="input5" type="text" placeholder="código postal" name="código postal">
-							        </div>
-							        <br>
-							        <div class="row left">
-							        	<img src="{{asset('img/mini-punto.png')}}">
-							        	<input class="input5" type="text" placeholder="teléfono celular" name="teléfono celular">
-							        </div>
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novios.nombre, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Nombre' } }) }}
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novios.direccion, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Dirección completa' } }) }}
+								        </div>
+								        <br>
+								        <div class="row left2">
+								        	{{ form_widget(formNovios.novios.sNombre, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Segundo Nombre' } }) }}
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novios.eMail, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'E-Mail' } }) }}
+								        </div>
+								        <br>
+								        <div class="row left2">
+								        	{{ form_widget(formNovios.novios.aPaterno, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Apellido Paterno' } }) }}
+								        	<img src="{{asset('img/mini-punto.png')}}">
+									        {{ form_label(formNovios.novios.pais, 'País') }}
+				        					{{ form_widget(formNovios.novios.pais, { 'attr': {'class': 'input_registro_novios select1'} }) }}
+								        </div>
+								        <br>
+								        <div class="row left2">
+								        	{{ form_widget(formNovios.novios.aMaterno, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Apellido Materno' } }) }}
+											<img src="{{asset('img/mini-punto.png')}}">
+									        {{ form_label(formNovios.novios.estado, 'Estado') }}
+				        					{{ form_widget(formNovios.novios.estado, { 'attr': {'class': 'input_registro_novios select2'} }) }}
+								        </div>
+								        <br>
+								        <div class="row left">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novios.lada, { 'attr': {'class': 'input_registro_novios miniinput', 'placeholder': 'LADA' } }) }}
+								        	{{ form_widget(formNovios.novios.telefono, { 'attr': {'class': 'input_registro_novios miniinput2', 'placeholder': 'Teléfono de casa u oficina' } }) }}
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novios.ciudad, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Ciudad' } }) }}
+								        </div>
+								        <br>
+								        <div class="row left">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novios.celular, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Teléfono celular' } }) }}
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								        	{{ form_widget(formNovios.novios.cp, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Código postal' } }) }}
+								        </div>
 							        <br><br>
 							        <div class="row">
-						        		<div class="col-xs-12">
-							        		<label class="radio-inline">
-									          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
-									        </label>
-									        <br>
-									        <label class="radio-inline">
-									          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
-									        </label>
-						        		</div>
+	 														<div class="col-xs-9">
+								       	{{ form_widget(formNovios.terminosCondiciones) }} {{ form_label(formNovios.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
+										      {{ form_widget(formNovios.terminosPrivacidad) }} {{ form_label(formNovios.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
+								        </div>
+								        <div class="col-xs-3">
+								        <img src="{{asset('img/mini-punto.png')}}">
+						        		<span>Datos obligatorios</span>	<br />
+						        		{{ form_end(formNovios) }}
+								        </div>
 							        </div>
-									<div class="row left">
-					        			<img src="{{asset('img/mini-punto.png')}}">
-					        			<span>Datos obligatorios</span>	
-					        		</div>
-							        <div class="col-xs-9">
-							        	
-							        </div>
-							        <div class="col-xs-3">
-							        	<input type="submit" id="enviar_form" value="Aceptar" style="width:120px;" class="aceptar">
-							        </div>
+
+							       
 						      	</div>
 
 
@@ -200,7 +174,7 @@
 						<p class="rosa"><i>La novia</i></p>
 						Nombre: <span class="rosa">{{ noviaInfo.nombreCompleto }}</span><br>
 						E-mail: <span class="rosa">{{ noviaInfo.email }}</span><br>
-						Teléfono Oficina: <span class="rosa">{{ noviaInfo.telefono }}</span><br>
+						Teléfono Oficina: <span class="rosa">({{ noviaInfo.lada }}) {{ noviaInfo.telefono }}</span><br>
 						Teléfono Celular: <span class="rosa">{{ noviaInfo.celular }}</span><br>
 						Dirección: <span class="rosa">{{ noviaInfo.direccion }}</span><br>
 						País: <span class="rosa">México</span><br>
@@ -217,7 +191,7 @@
 						<p class="rosa"><i>El novio</i></p>
 						Nombre: <span class="rosa">{{ novioInfo.nombreCompleto }}</span><br>
 						E-mail: <span class="rosa">{{ novioInfo.email }}</span><br>
-						Teléfono Oficina: <span class="rosa">{{ novioInfo.telefono }}</span><br>
+						Teléfono Oficina: <span class="rosa">({{ novioInfo.lada }}) {{ novioInfo.telefono }}</span><br>
 						Teléfono Celular: <span class="rosa">{{ novioInfo.celular }}</span><br>
 						Dirección: <span class="rosa">{{ novioInfo.direccion }}</span><br>
 						País: <span class="rosa">México</span><br>
@@ -255,6 +229,7 @@
 						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nueva Contraseña' } }) }}
 					</div>
 					<div class="col-md-4">
+						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
 						{{ form_widget(form.Cambiar) }}
 					</div>
 				{{ form_end(form) }}

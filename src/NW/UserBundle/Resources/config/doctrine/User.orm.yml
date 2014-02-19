@@ -17,3 +17,9 @@ NW\UserBundle\Entity\User:
         registroproveedores:
             targetEntity: registroproveedores
             mappedBy: user
+        checklist:
+            targetEntity:  NW\PrincipalBundle\Entity\Checklist
+            mappedBy: user
+        checklist:
+            targetEntity:  NW\PrincipalBundle\Entity\ListaInvitados
+            mappedBy: user

@@ -14,8 +14,8 @@
 				
 			<div class="row" style="margin-top:10px;">
 					<div class="col-md-8">
-						Total de invitados: <span class="rosa">#</span>
-						<br>Total de confirmados: <span class="rosa">#</span>
+						Total de invitados: <span class="rosa">{{ totalInvitados }}</span>
+						<br>Total de confirmados: <span class="rosa">{{ confirmadosInvitados }}</span>
 					</div>
 					<div class="col-md-4">
 						<span class="verde">Generar lista en PDF o Excel</span>
@@ -56,15 +56,15 @@
 						      
 						      <div class="modal-body">
 						      	<div class="row">
+						      		{{ form_start(formAgregar) }}
 						      		<div class="col-md-9">
-
 						      			<div class="row">
 						      			<div class="col-xs-12">
-							        		<input type="text" class="input_small" placeholder="Nombre del invitado">
+						      				{{ form_widget(formAgregar.nombre, { 'attr': {'class': 'input_small', 'placeholder': 'Nombre del invitado' } }) }}
 							        		<br>
-							        		<input type="text" class="input_small" placeholder="Familia">
+							        		{{ form_widget(formAgregar.familia, { 'attr': {'class': 'input_small', 'placeholder': 'Apellido de la familia' } }) }}
 							        		<br>
-							        		<input type="text" class="input_small" placeholder="Teléfono">
+							        		{{ form_widget(formAgregar.telefono, { 'attr': {'class': 'input_small', 'placeholder': 'Teléfono' } }) }}
 							        	</div>
 							        	</div>
 	
@@ -73,12 +73,11 @@
 									
 									<div class="row" style="margin-top:0px;">
 										<div class="col-md-12">
-											<input type="submit" id="enviar_form" value="Agregar invitado" style="width:120px; margin-right:50px; bottom:0px;">	
+											{{ form_widget(formAgregar.Agregar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:120px; margin-right:50px; bottom:0px;' } }) }}
 										</div>
 									</div>
-
-									</div>
-
+								  </div>
+								  {{ form_end(formAgregar) }}
 								</div>
 						      </div>
 						    </div>
@@ -105,41 +104,31 @@
 			</div>
 
 			<!-- INVITADO -->
+			{% for invitado in invitados %}
 			<div class="row borde_abajo"></div>
 			<div class="row" style="margin-bottom:20px;">
 					<div class="col-xs-5">
-						<p class="rosa" style="font-size:14px;">Nombre del invitado</p>	
-						Familia: <span class="rosa">apellido de la familia</span><br>
-						Teléfono: <span class="rosa">55 555 555</span>
+						<p class="rosa" style="font-size:14px;">{{ invitado.nombre }}</p>	
+						Familia: <span class="rosa">{{ invitado.familia }}</span><br>
+						Teléfono: <span class="rosa">{{ invitado.telefono }}</span>
 					</div>
 					<div class="col-xs-5">
-						
-						<div class="cuadro_confirmacion"></div><span class="rosa">Confirmado</span>	
-					</div>
-					<div class="col-xs-2" style="text-align:right;">
-					<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
-					</div>
-			</div>
-			<!-- FIN INVITADO -->
+						<div class="cuadro_confirmacion">
+						{% if invitado.status %}
+							✓
+						{% endif %}
+						</div>
 
-			<!-- INVITADO -->
-			<div class="row borde_abajo"></div>
-			<div class="row" style="margin-bottom:20px;">
-					<div class="col-xs-5">
-						<p class="rosa" style="font-size:14px;">Nombre del invitado</p>	
-						Familia: <span class="rosa">apellido de la familia</span><br>
-						Teléfono: <span class="rosa">55 555 555</span>
-					</div>
-					<div class="col-xs-5">
-						
-						<div class="cuadro_confirmacion"></div><span class="rosa">Confirmado</span>	
+						<span class="rosa">Confirmado</span>	
 					</div>
 					<div class="col-xs-2" style="text-align:right;">
-					<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
+					<a href="{{url('nw_principal_novios_invitado_delete', {'id': invitado.id})}}">
+						<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
+					</a>
 					</div>
 			</div>
+			{% endfor %}
 			<!-- FIN INVITADO -->
-				
 			
 			<!-- FIN DATOS DE LA BODA -->
 

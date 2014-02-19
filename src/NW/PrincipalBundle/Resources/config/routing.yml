@@ -18,6 +18,10 @@ nw_principal_planes:
     pattern:  /planes
     defaults: { _controller: NWPrincipalBundle:Default:planes }
 
+nw_principal_changepass:
+    pattern:  /changePass
+    defaults: { _controller: NWPrincipalBundle:Default:changePass }
+
 nw_principal_proveedores_micuenta:
     pattern:  /proveedores/micuenta
     defaults: { _controller: NWPrincipalBundle:Proveedores:micuenta }
@@ -74,6 +78,10 @@ nw_principal_novios_nuestro-checklist:
     pattern:  /novios/nuestro-checklist
     defaults: { _controller: NWPrincipalBundle:Novios:nuestroChecklist }
 
+nw_principal_novios_task_delete:
+    pattern:  /novios/task/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Novios:TaskDelete }
+
 nw_principal_novios_nuestra-mesa-de-regalos:
     pattern:  /novios/nuestra-mesa-de-regalos
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraMesaDeRegalos }
@@ -81,6 +89,10 @@ nw_principal_novios_nuestra-mesa-de-regalos:
 nw_principal_novios_nuestra-lista-de-invitados:
     pattern:  /novios/nuestra-lista-de-invitados
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraListaDeInvitados }
+
+nw_principal_novios_invitado_delete:
+    pattern:  /novios/invitado/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Novios:InvitadoDelete }
 
 nw_principal_novios_nuestra-cuenta:
     pattern:  /novios/nuestra-cuenta
