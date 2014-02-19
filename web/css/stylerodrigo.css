@@ -260,6 +260,9 @@ hr{
 .left2{
 	margin-left: 15px;
 }
+.left3{
+	margin-left: 26px;
+}
 .datosobligatorios{
 	color: rgb(204,0,153);
 }
@@ -290,11 +293,64 @@ hr{
 .aceptar{
 	margin-top: -60px;
 }
-
-
-
-
-
+.boton-seleccionar{
+	width:120px;
+	background:rgba(198,41,158,1);
+	color:rgba(255,255,255,1);
+	border:none;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-ms-border-radius:6px;
+	-o-border-radius:6px;
+	-webkit-border-radius:6px;
+	padding:6px;
+	margin-top: -550px!important;
+	margin-left: 30px!important;
+	margin-top: 10px!important;
+}
+.cargar{
+	margin-left: 15px;
+	margin-top: 40px!important;
+}
+.cargar2{
+	margin-left: 15px;
+}
+.input6{
+	width: 700px;
+	height: 150px;
+	border-radius: 5px;
+}
+.input7{
+	height: 40px;
+	width: 700px;
+	border-radius: 5px;
+}
+.bote_top{
+	margin-top: 20px!important;
+	margin-left: 20px;
+}
+.foto1{
+	font-family: Arial;
+	font-size:40px;
+	margin-left: 105px;
+	margin-top: 100px;
+	font-style: bold;
+	color: rgb(204,0,153);
+}
+.foto2{
+	width: 290px;
+	height: 120px;
+	border: 1px solid black;
+	margin-top: 10px;
+	margin-left: -40px;
+}
+.leftnegativo{
+	margin-left: -80px;
+}
+.parrafito{
+	margin-top: 25px;
+	margin-left: -70px;
+}
 
 
 

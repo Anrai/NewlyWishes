@@ -10,13 +10,13 @@
 						
 					</div>
 					<div class="col-md-3">
-						<a class="art3" data-toggle="modal" data-target="#miCuenta"><h1>Mi Cuenta</h1></a>
+						<h1>Mi Cuenta</h1>
 					</div>
 					<!-- Modal -->
 						<div class="modal fade" id="miCuenta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">
 						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
-						      <div class="modal-header3">
+						      <div class="modal-header2">
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						        <div class="col-xs-7">
 						        	<h4 class="modal-title rosa" id="myModalLabel">Actualiza tus datos</h4>
@@ -94,19 +94,21 @@
 								        <div class="row">
 							        		<div class="col-xs-12">
 								        		<label class="radio-inline">
+								        			<img src="{{asset('img/mini-punto.png')}}">
 										          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
 										        </label>
 										        <br>
 										        <label class="radio-inline">
+										        	<img src="{{asset('img/mini-punto.png')}}">
 										          <input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
 										        </label>
 							        		</div>
 								        </div>
 								        <br>
 								        <div class="row left">
-							        			<img src="{{asset('img/mini-punto.png')}}">
-							        			<span>Datos obligatorios</span>	
-							        		</div>
+						        			<img src="{{asset('img/mini-punto.png')}}">
+						        			<span>Datos obligatorios</span>	
+						        		</div>
 							      	</div>
 						    	</div>
 						      </div>
@@ -331,8 +333,90 @@
 						<strong class="esc"> Mi Imagen </strong>
 					</div>
 					<div class="col-md-3">
-						<span class="esc"> Editar </span>
+						<a class="art3" data-toggle="modal" data-target="#imagen"><span class="esc"><span class="esc"> Editar </span></a>
 					</div>
+					<!-- Modal -->
+						<div class="modal fade" id="imagen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+						      <div class="modal-header2">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <div class="col-xs-7">
+						        	<h4 class="modal-title rosa" id="imagen">Actualiza tu imagen</h4>
+						        </div>
+						        <div class="col-xs-5">
+					        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+						        </div>
+						      </div>
+
+						      
+						      
+						     <div class="modal-body">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span> Logo </span>
+								<div class="row">
+									<div class="col-xs-3">
+										<img class="ejlogo" src="{{asset('img/ejlogo.jpg')}}">
+									</div>
+									<div class="col-xs-4">
+										<input type="submit" value="Seleccionar Archivo" class="boton-seleccionar"> <br>
+										<label for="ejemplo_archivo_1" class="cargar">Haz cargado el siguiente archivo</label>
+    									<input type="file" id="ejemplo_archivo_1" class="cargar2">
+									</div>
+								</div>
+								<h1>Nombre comercial</h1>
+								<input class="input7" type="text" placeholder="nombre de la empresa" name="nombre de la empresa">
+								<h1>Descripción de los que ofreces</h1>
+								<input class="input6" type="text" placeholder="" name="">
+								<h1>Galería de imágenes</h1>
+								<div class="row">
+									<div class="col-xs-3">
+									<input type="submit" value="Añadir foto nueva" class="boton-seleccionar"> <br>
+								</div>
+								<div class="col-xs-9">
+									<label for="ejemplo_archivo_1">Haz cargado el siguiente archivo</label>
+									<input type="file" id="ejemplo_archivo_1" >
+								</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-4">
+										
+									</div>
+									<div class="col-xs-3">
+										<img class="bote_top" src="{{asset('img/bote.png')}}">
+										<p>Eliminar esta foto</p>	
+									</div>
+									<div class="col-xs-5">
+										<div>
+											<div class="foto2">
+												<span class="foto1">Foto</span>
+											</div>
+										</div>
+									</div>
+									<div class="row left">
+										<label class="radio-inline">
+											<img src="{{asset('img/mini-punto.png')}}">
+								          	<input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
+									        </label>
+									        <br>
+									        <label class="radio-inline">
+								        	<img src="{{asset('img/mini-punto.png')}}">
+								          	<input name="radioGroup" id="radio1" value="option1" type="radio" class="input2">He leído y acepto los <span class="art">términos y condiciones</span>
+								        </label>
+									</div>
+									<br>
+									<div class="row left3">
+					        			<img src="{{asset('img/mini-punto.png')}}">
+					        			<span>Datos obligatorios</span>	
+					        		</div>
+								</div>
+
+						    	
+						    </div>
+								
+						    </div>
+						  </div>
+						</div>
+						<!-- FIN CARGA DE ARTICULOS -->
 				</div>
 				<hr />
 				<div class="row">
