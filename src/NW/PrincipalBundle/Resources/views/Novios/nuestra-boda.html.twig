@@ -31,8 +31,7 @@
 						<p class="verde">Descargar Excel</p>	
 					</div>
 					<div class="col-md-1"></div>
-			</div>
-					
+			</div>				
 				
 	
 			<!-- DATOS DE LA BODA -->
@@ -58,12 +57,13 @@
 					</div>
 			</div>
 
+			{{ form_start(formBoda) }}
 				<div class="row">
 					<div class="col-xs-5">
-						<p class="">Iglesia Santa María</p>	
+						{{ form_widget(formBoda.ceremonia, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Iglesia' } }) }}
 					</div>
 					<div class="col-xs-5">
-						<p class="">Avenida 123 Col. etc.</p>	
+						{{ form_widget(formBoda.ceremonia_direccion, { 'attr': {'class': 'textarea_registro', 'placeholder': 'Dirección' } }) }}	
 					</div>
 					<div class="col-xs-2" style="text-align:right;">
 						<img src="{{asset('img/novios/direccion_iglesia.png')}}" style="float:left; width:50px; height:50px; ">
@@ -78,15 +78,16 @@
 				
 				<div class="row">
 					<div class="col-xs-5">
-						<input type="text" class="input_registro_novios" placeholder="Lugar">	
+						{{ form_widget(formBoda.recepcion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Lugar' } }) }}	
 					</div>
 					<div class="col-xs-5">
-						<textarea class="textarea_registro" placeholder="Dirección"></textarea>	
+						{{ form_widget(formBoda.recepcion_direccion, { 'attr': {'class': 'textarea_registro', 'placeholder': 'Dirección' } }) }}	
 					</div>
 					<div class="col-xs-2" style="text-align:right;">
-						<img src="{{asset('img/novios/diskette.png')}}" style="float:left; margin-left:6px; width:40px; height:40px; ">
+						<input type="image" src="{{asset('img/novios/diskette.png')}}" name="image" style="float:left; margin-left:6px; width:40px; height:40px; ">
 					</div>
 				</div>
+			{{ form_end(formBoda) }}
 			
 			<!-- FIN DATOS DE LA BODA -->
 
@@ -104,91 +105,101 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-5">
-						<p class="rosa">Nombre</p>	
+						<p class="rosa">Nombre</p>
 					</div>
 					<div class="col-xs-5">
-						<p class="rosa">Categoría</p>	
+						<p class="rosa">Categoría</p>
 					</div>
 					<div class="col-xs-2">
-						<p class="rosa">Eliminar</p>	
+						<p class="rosa">Eliminar</p>
 					</div>
 				</div>
 
+				{% for padrino in padrinos %}
 				<div class="row">
 					<div class="col-xs-5">
-						<p class="">John Doe</p>	
+						<p class="">{{ padrino.padrino }}</p>	
 					</div>
 					<div class="col-xs-5">
-						<p class="">Iglesia</p>	
+						<p class="">{{ padrino.categoria }}</p>	
 					</div>
 					<div class="col-xs-2">
-						<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
+						<a href="{{url('nw_principal_novios_padrino_delete', {'id': padrino.id})}}">
+							<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
+						</a>
 					</div>
 				</div>
+				{% endfor %}
 					
 				<div class="row">
+				{{ form_start(formPadrinos) }}
 					<div class="col-xs-5">
-						<input class="input_registro_novios" placeholder="Nuevo Padrino">
+						{{ form_widget(formPadrinos.padrino, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nuevo Padrino' } }) }}
 					</div>
 					<div class="col-xs-5">
-						<select name="categoria_padrinos" id="input_registro_novios" style="width:70%;">
-							<option value="categoria" selected>Categoría</option>
-						</select>
+						{{ form_widget(formPadrinos.categoria, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Padrino de...' } }) }}
 					</div>
 					<div class="col-xs-2">
-						<img src="{{asset('img/novios/mas.png')}}" style="float:left; width:40px; height:60px; margin-top:-14px;">
+						<input type="image" src="{{asset('img/novios/mas.png')}}" name="image" style="float:left; width:40px; height:60px; margin-top:-14px;">
 					</div>
+				{{ form_end(formPadrinos) }}
 				</div>
 			<!-- FIN NUESTROS PADRINOS -->
 
 
 			<!-- NUESTRAS NOTAS -->
 			<div class="row" style="margin-top:20px;">
-					<div class="col-md-12">
-						<h5 class="art" style="float:left;">Nuestras Notas</h5><img src="{{asset('img/novios/flecha_abajo.png')}}" class="flecha_abajo">
-					</div>
+				<div class="col-md-12">
+					<h5 class="art" style="float:left;">Nuestras Notas</h5><img src="{{asset('img/novios/flecha_abajo.png')}}" class="flecha_abajo">
 				</div>
+			</div>
 
-				<div class="row borde_abajo"></div>
-				<div class="row">
-					<div class="col-md-12">
-					</div>
+			<div class="row borde_abajo"></div>
+			<div class="row">
+				<div class="col-md-12">
 				</div>
-				<div class="row">
-					<div class="col-xs-5">
-						<p class="rosa">Título</p>	
-					</div>
-					<div class="col-xs-5">
-						<p class="rosa">Descripción</p>	
-					</div>
-					<div class="col-xs-2">
-						<p class="rosa">Eliminar</p>	
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-5">
+					<p class="rosa">Título</p>	
 				</div>
+				<div class="col-xs-5">
+					<p class="rosa">Descripción</p>	
+				</div>
+				<div class="col-xs-2">
+					<p class="rosa">Eliminar</p>	
+				</div>
+			</div>
 
-				<div class="row">
-					<div class="col-xs-5">
-						<p class="">Nota 1</p>	
-					</div>
-					<div class="col-xs-5">
-						<p class="">Los padrinos estarán de viaje del 12 de agosto al 3 de septiembre</p>	
-					</div>
-					<div class="col-xs-2">
-						<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
-					</div>
+			{% for nota in notas %}
+			<div class="row">
+				<div class="col-xs-5">
+					<p class="">{{ nota.titulo }}</p>
 				</div>
+				<div class="col-xs-5">
+					<p class="">{{ nota.descripcion }}</p>	
+				</div>
+				<div class="col-xs-2">
+				<a href="{{url('nw_principal_novios_nota_delete', {'id': nota.id})}}">
+					<img src="{{asset('img/bote.png')}}" style="float:left; width:40px; height:40px; ">
+				</a>
+				</div>
+			</div>
+			{% endfor %}
 					
-				<div class="row">
-					<div class="col-xs-5">
-						<input class="input_registro_novios" placeholder="Título">
-					</div>
-					<div class="col-xs-5">
-						<textarea class="textarea_registro" placeholder="Descripción"></textarea>
-					</div>
-					<div class="col-xs-2">
-						<img src="{{asset('img/novios/mas.png')}}" style="float:left; width:40px; height:60px; margin-top:-14px;">
-					</div>
+			<div class="row">
+			{{ form_start(formNotas) }}
+				<div class="col-xs-5">
+					{{ form_widget(formNotas.titulo, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Título' } }) }}
 				</div>
+				<div class="col-xs-5">
+					{{ form_widget(formNotas.descripcion, { 'attr': {'class': 'textarea_registro', 'placeholder': 'Descripción' } }) }}
+				</div>
+				<div class="col-xs-2">
+					<input type="image" src="{{asset('img/novios/mas.png')}}" name="formNotasSubmit" style="float:left; width:40px; height:60px; margin-top:-14px;">
+				</div>
+			{{ form_end(formNotas) }}
+			</div>
 			<!-- FIN NUESTRAS NOTAS -->
 
 

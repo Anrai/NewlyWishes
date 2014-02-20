@@ -192,4 +192,15 @@ class ListaInvitados
     {
         return $this->user;
     }
+
+    // Función que me regresa mis valores en forma de array
+    public function getValues(){
+        return array(
+        'id' => $this->getId(),
+        'status' => $this->getStatus(),
+        'nombre' => $this->getNombre(),
+        'familia' => $this->getFamilia(),
+        'telefono' => $this->getTelefono()
+        );
+    }
 }

@@ -1,11 +1,11 @@
-# src/NW/PrincipalBundle/Resources/config/doctrine/Cheklist.orm.yml
-NW\PrincipalBundle\Entity\Checklist:
+# src/NW/PrincipalBundle/Resources/config/doctrine/Padrinos.orm.yml
+NW\PrincipalBundle\Entity\Padrinos:
     type: entity 
-    table: checklist
+    table: padrinos 
     manyToOne:
         user:
             targetEntity: NW\UserBundle\Entity\User
-            inversedBy: Checklist
+            inversedBy: Padrinos
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
@@ -17,13 +17,9 @@ NW\PrincipalBundle\Entity\Checklist:
     fields:
         usuarioId:
             type: integer
-        status:
-            type: boolean
-        tarea:
+        padrino:
             type: string
             length: 100
         categoria:
             type: string
             length: 100
-        descripcion:
-            type: text

@@ -168,4 +168,179 @@ class User extends BaseUser
     {
         return $this->checklist;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $listainvitados;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $bodas;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $padrinos;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $notas;
+
+
+    /**
+     * Add checklist
+     *
+     * @param \NW\PrincipalBundle\Entity\Checklist $checklist
+     * @return User
+     */
+    public function addChecklist(\NW\PrincipalBundle\Entity\Checklist $checklist)
+    {
+        $this->checklist[] = $checklist;
+
+        return $this;
+    }
+
+    /**
+     * Remove checklist
+     *
+     * @param \NW\PrincipalBundle\Entity\Checklist $checklist
+     */
+    public function removeChecklist(\NW\PrincipalBundle\Entity\Checklist $checklist)
+    {
+        $this->checklist->removeElement($checklist);
+    }
+
+    /**
+     * Add listainvitados
+     *
+     * @param \NW\PrincipalBundle\Entity\ListaInvitados $listainvitados
+     * @return User
+     */
+    public function addListainvitado(\NW\PrincipalBundle\Entity\ListaInvitados $listainvitados)
+    {
+        $this->listainvitados[] = $listainvitados;
+
+        return $this;
+    }
+
+    /**
+     * Remove listainvitados
+     *
+     * @param \NW\PrincipalBundle\Entity\ListaInvitados $listainvitados
+     */
+    public function removeListainvitado(\NW\PrincipalBundle\Entity\ListaInvitados $listainvitados)
+    {
+        $this->listainvitados->removeElement($listainvitados);
+    }
+
+    /**
+     * Get listainvitados
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getListainvitados()
+    {
+        return $this->listainvitados;
+    }
+
+    /**
+     * Add bodas
+     *
+     * @param \NW\PrincipalBundle\Entity\Bodas $bodas
+     * @return User
+     */
+    public function addBoda(\NW\PrincipalBundle\Entity\Bodas $bodas)
+    {
+        $this->bodas[] = $bodas;
+
+        return $this;
+    }
+
+    /**
+     * Remove bodas
+     *
+     * @param \NW\PrincipalBundle\Entity\Bodas $bodas
+     */
+    public function removeBoda(\NW\PrincipalBundle\Entity\Bodas $bodas)
+    {
+        $this->bodas->removeElement($bodas);
+    }
+
+    /**
+     * Get bodas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBodas()
+    {
+        return $this->bodas;
+    }
+
+    /**
+     * Add padrinos
+     *
+     * @param \NW\PrincipalBundle\Entity\Padrinos $padrinos
+     * @return User
+     */
+    public function addPadrino(\NW\PrincipalBundle\Entity\Padrinos $padrinos)
+    {
+        $this->padrinos[] = $padrinos;
+
+        return $this;
+    }
+
+    /**
+     * Remove padrinos
+     *
+     * @param \NW\PrincipalBundle\Entity\Padrinos $padrinos
+     */
+    public function removePadrino(\NW\PrincipalBundle\Entity\Padrinos $padrinos)
+    {
+        $this->padrinos->removeElement($padrinos);
+    }
+
+    /**
+     * Get padrinos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPadrinos()
+    {
+        return $this->padrinos;
+    }
+
+    /**
+     * Add notas
+     *
+     * @param \NW\PrincipalBundle\Entity\Notas $notas
+     * @return User
+     */
+    public function addNota(\NW\PrincipalBundle\Entity\Notas $notas)
+    {
+        $this->notas[] = $notas;
+
+        return $this;
+    }
+
+    /**
+     * Remove notas
+     *
+     * @param \NW\PrincipalBundle\Entity\Notas $notas
+     */
+    public function removeNota(\NW\PrincipalBundle\Entity\Notas $notas)
+    {
+        $this->notas->removeElement($notas);
+    }
+
+    /**
+     * Get notas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNotas()
+    {
+        return $this->notas;
+    }
 }

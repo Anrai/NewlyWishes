@@ -1,11 +1,11 @@
-# src/NW/PrincipalBundle/Resources/config/doctrine/Cheklist.orm.yml
-NW\PrincipalBundle\Entity\Checklist:
+# src/NW/PrincipalBundle/Resources/config/doctrine/Bodas.orm.yml
+NW\PrincipalBundle\Entity\Bodas:
     type: entity 
-    table: checklist
+    table: bodas
     manyToOne:
         user:
             targetEntity: NW\UserBundle\Entity\User
-            inversedBy: Checklist
+            inversedBy: Bodas
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
@@ -17,13 +17,17 @@ NW\PrincipalBundle\Entity\Checklist:
     fields:
         usuarioId:
             type: integer
-        status:
-            type: boolean
-        tarea:
+        ceremonia:
             type: string
             length: 100
-        categoria:
+        ceremonia_direccion:
+            type: string
+            length: 200
+        recepcion:
             type: string
             length: 100
-        descripcion:
-            type: text
+        recepcion_direccion:
+            type: string
+            length: 200
+        fecha_boda:
+            type: datetime

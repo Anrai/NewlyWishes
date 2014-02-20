@@ -1,11 +1,11 @@
-# src/NW/PrincipalBundle/Resources/config/doctrine/Cheklist.orm.yml
-NW\PrincipalBundle\Entity\Checklist:
+# src/NW/PrincipalBundle/Resources/config/doctrine/Notas.orm.yml
+NW\PrincipalBundle\Entity\Notas:
     type: entity 
-    table: checklist
+    table: notas
     manyToOne:
         user:
             targetEntity: NW\UserBundle\Entity\User
-            inversedBy: Checklist
+            inversedBy: Notas
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
@@ -17,12 +17,7 @@ NW\PrincipalBundle\Entity\Checklist:
     fields:
         usuarioId:
             type: integer
-        status:
-            type: boolean
-        tarea:
-            type: string
-            length: 100
-        categoria:
+        titulo:
             type: string
             length: 100
         descripcion:

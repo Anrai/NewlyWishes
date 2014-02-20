@@ -70,6 +70,14 @@ nw_principal_novios_nuestra-boda:
     pattern:  /novios/nuestra-boda
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraBoda }
 
+nw_principal_novios_padrino_delete:
+    pattern:  /novios/padrino/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Novios:PadrinoDelete }
+
+nw_principal_novios_nota_delete:
+    pattern:  /novios/nota/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Novios:NotaDelete }
+
 nw_principal_novios_nuestro-calendario:
     pattern:  /novios/nuestro-calendario
     defaults: { _controller: NWPrincipalBundle:Novios:nuestroCalendario }

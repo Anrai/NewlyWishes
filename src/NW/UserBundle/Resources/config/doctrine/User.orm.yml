@@ -17,9 +17,19 @@ NW\UserBundle\Entity\User:
         registroproveedores:
             targetEntity: registroproveedores
             mappedBy: user
+    oneToMany:
         checklist:
             targetEntity:  NW\PrincipalBundle\Entity\Checklist
             mappedBy: user
-        checklist:
+        listainvitados:
             targetEntity:  NW\PrincipalBundle\Entity\ListaInvitados
+            mappedBy: user
+        bodas:
+            targetEntity:  NW\PrincipalBundle\Entity\Bodas
+            mappedBy: user
+        padrinos:
+            targetEntity:  NW\PrincipalBundle\Entity\Padrinos
+            mappedBy: user
+        notas:
+            targetEntity:  NW\PrincipalBundle\Entity\Notas
             mappedBy: user

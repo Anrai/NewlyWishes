@@ -9,9 +9,16 @@ use Symfony\Component\HttpFoundation\Request;
 use NW\PrincipalBundle\Form\Type\EdicionNoviosType;
 use NW\PrincipalBundle\Form\Type\ChecklistType;
 use NW\PrincipalBundle\Form\Type\ListaInvitadosType;
+use NW\PrincipalBundle\Form\Type\DatosBodaType;
+use NW\PrincipalBundle\Form\Type\PadrinosType;
+use NW\PrincipalBundle\Form\Type\NotasType;
 
 use NW\PrincipalBundle\Entity\Checklist;
 use NW\PrincipalBundle\Entity\ListaInvitados;
+use NW\PrincipalBundle\Entity\Bodas;
+use NW\PrincipalBundle\Entity\Padrinos;
+use NW\PrincipalBundle\Entity\Notas;
+
 
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
@@ -23,16 +30,133 @@ class NoviosController extends Controller
         return $this->render('NWPrincipalBundle:Novios:index.html.twig');
     }
 	
-	public function nuestraBodaAction()
+	public function nuestraBodaAction(Request $request)
     {
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getEntityManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
 
+        // Recuperar datos de la boda que ya existen (si es que existen)
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
+
+        $formBodaData = new Bodas();
+        if($BodaVieja)
+        {
+            $formBodaData->setCeremonia($BodaVieja->getCeremonia());
+            $formBodaData->setCeremoniaDireccion($BodaVieja->getCeremoniaDireccion());
+            $formBodaData->setRecepcion($BodaVieja->getRecepcion());
+            $formBodaData->setRecepcionDireccion($BodaVieja->getRecepcionDireccion());
+        }
+         
+        // Generar Formularios   
+        $formBoda = $this->createForm(new DatosBodaType(), $formBodaData);
+        $formPadrinosData = new Padrinos();
+        $formPadrinos = $this->createForm(new PadrinosType(), $formPadrinosData);
+        $formNotasData = new Notas();
+        $formNotas = $this->createForm(new NotasType(), $formNotasData);
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+ 
+            // Formulario para agregar datos de la boda
+            if ($request->request->has($formBoda->getName())) {
+                // Recuperando datos del formulario
+                $formBoda->handleRequest($request);
+
+                if($formBoda->isValid())
+                {
+                    // Borrar registros de la boda antiguos (si es que existen)
+                    if($BodaVieja)
+                        {$em->remove($BodaVieja);}
+
+                    $newBoda=$formBoda->getData();
+                    $newBoda->setUser($user);
+                    $newBoda->setFechaBoda(new \DateTime());
+
+                    $em->persist($newBoda);
+                    $em->flush();
+                }
+            }
+            // Formulario de agregar padrino
+            else if ($request->request->has($formPadrinos->getName())) {
+                // Recuperando datos del formulario
+                $formPadrinos->handleRequest($request);
+
+                if($formPadrinos->isValid())
+                {
+                    $newPadrino=$formPadrinos->getData();
+                    $newPadrino->setUser($user);
+
+                    $em->persist($newPadrino);
+                    $em->flush();
+                }
+            }
+            // Formulario de agregar nota
+            else if ($request->request->has($formNotas->getName())) {
+                // Recuperando datos del formulario
+                $formNotas->handleRequest($request);
+
+                if($formNotas->isValid())
+                {
+                    $newNota=$formNotas->getData();
+                    $newNota->setUser($user);
+
+                    $em->persist($newNota);
+                    $em->flush();
+                }
+            }
+        }
+
+        // Obteniendo la lista de padrinos y notas en sus respectivos arreglos de objetos
+        $padrinos = $em->getRepository('NWPrincipalBundle:Padrinos')->findBy(array('usuarioId' => $user->getId()));
+        $notas = $em->getRepository('NWPrincipalBundle:Notas')->findBy(array('usuarioId' => $user->getId()));
+
+        // Convirtiendo los resultados de padrinos en arrays
+        foreach($padrinos as $index=>$value)
+        {
+            $objetoenArray=$padrinos[$index]->getValues();
+            $padrinos[$index]=$objetoenArray;
+        }
+
+        // Convirtiendo los resultados de notas en arrays
+        foreach($notas as $index=>$value)
+        {
+            $objetoenArray=$notas[$index]->getValues();
+            $notas[$index]=$objetoenArray;
+        }
+
         return $this->render('NWPrincipalBundle:Novios:nuestra-boda.html.twig', array(
+            'formBoda' => $formBoda->createView(),
+            'formPadrinos' => $formPadrinos->createView(),
+            'formNotas' => $formNotas->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'padrinos' => $padrinos,
+            'notas' => $notas,
         ));
+    }
+
+    public function PadrinoDeleteAction($id) // Controlador que borra un padrino según el id pasado
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $padrino = $em->getRepository('NWPrincipalBundle:Padrinos')->find($id);
+        $em->remove($padrino);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-boda'));
+    }
+
+    public function NotaDeleteAction($id) // Controlador que borra una nota según el id pasado
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $nota = $em->getRepository('NWPrincipalBundle:Notas')->find($id);
+        $em->remove($nota);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-boda'));
     }
 	
 	public function nuestroCalendarioAction()
@@ -59,7 +183,7 @@ class NoviosController extends Controller
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
  
-            // ¿El formulario que se envió es el de cambio de contraseña?
+            // Formulario de agregar tarea
             if ($request->request->has($formAgregar->getName())) {
                 // Recuperando datos del formulario de cambio de contraseña
                 $formAgregar->handleRequest($request);
@@ -193,7 +317,7 @@ class NoviosController extends Controller
         ));
     }
 
-    public function InvitadoDeleteAction($id) // Controlador que borra una tarea según el id pasado
+    public function InvitadoDeleteAction($id) // Controlador que borra un invitado según el id pasado
     {
         $em = $this->getDoctrine()->getEntityManager();
         $invitado = $em->getRepository('NWPrincipalBundle:ListaInvitados')->find($id);
@@ -320,7 +444,6 @@ class NoviosController extends Controller
 
         // Datos del novio para plantilla
         $novioInfo['nombreCompleto']=$novio->getNombre().' '.$novio->getSNombre().' '.$novio->getAPaterno().' '.$novio->getAMaterno();
-        $novioInfo['nombreCompleto']=$novio->getNombre().' '.$novio->getSNombre().' '.$novio->getAPaterno().' '.$novio->getAMaterno();
         $novioInfo['email']=$novio->getEMail();
         $novioInfo['lada']=$novio->getLada();
         $novioInfo['telefono']=$novio->getTelefono();
@@ -365,6 +488,7 @@ class NoviosController extends Controller
             'novio' => $novio->getNombre(),
         ));
     }
+
 
   
 }
