@@ -108,6 +108,10 @@ hr{
 .corrector{
 	margin-top: -30px;
 }
+.puntov2{
+	margin-right: 60px;
+	margin-top: 25px;
+}
 .puntov{
 	margin-right: 10px;
 }
@@ -309,6 +313,15 @@ hr{
 	margin-left: 23%;
 	font-size: 25px;
 }
+.input9{
+	width: 370px;
+	border-radius: 4px!important;
+}
+.input10{
+	margin-top: 10px;
+	width: 180px;
+	border-radius: 3px;
+}
 .aceptar{
 	margin-top: -60px;
 }
@@ -363,6 +376,10 @@ hr{
 	margin-top: 10px;
 	margin-left: -40px;
 }
+.foto3{
+	border: 1px solid #dcdcdc;
+	margin-top: 10px;
+}
 .leftnegativo{
 	margin-left: -80px;
 }
@@ -380,6 +397,59 @@ hr{
 	margin-left: 40%;
 	margin-top: 20px;
 }
+.enviar2{
+	margin-left: -66px;
+	margin-top: 25px;
+	background-color: rgb(146, 208, 80)!important;
+}
+.enviar3{
+	width: 85px!important;
+	margin-left: -40px;
+	margin-top: 2px;
+	background-color: rgb(146, 208, 80)!important;
+}
+.caja.gris{
+	margin-top: 60px;
+	margin-left: 56px;
+	background-color: #dcdcdc;
+	width: 750px;
+	height: 180px;
+	border-radius: 6px;
+	padding: 15px;
+}
+.carrito{
+	margin-top: 20px;
+	width: 54px;
+	height: 45px;
+}
+.artcarrito{
+	margin-top: 20px;
+	font-size: 15px;
+	margin-left: -50px;
+}
+.botoon{
+	margin-left: 150px;
+}
+.producto{
+	padding: 80px;
+}
+.col{
+	margin-top: 90px;
+}
+.tama{
+	height: 20px;
+	width: 130px;
+}
+.uno{
+	height: 20px;
+	width: 40px;
+}
+
+
+
+
+
+
 
 
 
