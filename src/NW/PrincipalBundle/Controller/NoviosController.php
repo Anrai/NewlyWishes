@@ -489,6 +489,4 @@ class NoviosController extends Controller
         ));
     }
 
-
-  
 }

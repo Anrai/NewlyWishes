@@ -229,4 +229,5 @@ class ProveedoresController extends Controller
             'proveedor' => $proveedor,
         ));
     }
+
 }
