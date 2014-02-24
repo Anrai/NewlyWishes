@@ -5,20 +5,20 @@ NW\PrincipalBundle\Entity\Estados:
     manyToOne:
         pais:
             targetEntity: Paises
-            inversedBy: Estados
+            inversedBy: estados
             joinColumn:
                 name: paisId
                 referencedColumnName: id
     oneToMany:
         novios:
             targetEntity: NW\UserBundle\Entity\Novios
-            mappedBy: Estados
+            mappedBy: estados
         novias:
             targetEntity: NW\UserBundle\Entity\Novias
-            mappedBy: Estados
+            mappedBy: estados
         registroproveedores:
             targetEntity: NW\UserBundle\Entity\registroproveedores
-            mappedBy: Estados
+            mappedBy: estados
     id:
         id:
             type: integer

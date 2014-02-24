@@ -5,7 +5,7 @@ NW\UserBundle\Entity\Novias:
     oneToOne:
         user:
             targetEntity: User
-            inversedBy: Novias
+            inversedBy: novias
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id

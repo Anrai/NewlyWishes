@@ -33,3 +33,6 @@ NW\UserBundle\Entity\User:
         notas:
             targetEntity:  NW\PrincipalBundle\Entity\Notas
             mappedBy: user
+        mesaregalos:
+            targetEntity:  NW\PrincipalBundle\Entity\MesaRegalos
+            mappedBy: user

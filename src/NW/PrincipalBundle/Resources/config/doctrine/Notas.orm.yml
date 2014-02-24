@@ -5,7 +5,7 @@ NW\PrincipalBundle\Entity\Notas:
     manyToOne:
         user:
             targetEntity: NW\UserBundle\Entity\User
-            inversedBy: Notas
+            inversedBy: notas
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id

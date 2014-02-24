@@ -18,6 +18,8 @@ use NW\PrincipalBundle\Entity\ListaInvitados;
 use NW\PrincipalBundle\Entity\Bodas;
 use NW\PrincipalBundle\Entity\Padrinos;
 use NW\PrincipalBundle\Entity\Notas;
+use NW\PrincipalBundle\Entity\MesaRegalos;
+use NW\PrincipalBundle\Entity\CatRegalos;
 
 
 use NW\UserBundle\Entity\Novias;
@@ -33,7 +35,7 @@ class NoviosController extends Controller
 	public function nuestraBodaAction(Request $request)
     {
         // Manejador de Doctrine
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $user=$this->getUser();
         $novia=$user->getNovias();
@@ -141,7 +143,7 @@ class NoviosController extends Controller
 
     public function PadrinoDeleteAction($id) // Controlador que borra un padrino según el id pasado
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $padrino = $em->getRepository('NWPrincipalBundle:Padrinos')->find($id);
         $em->remove($padrino);
         $em->flush();
@@ -151,7 +153,7 @@ class NoviosController extends Controller
 
     public function NotaDeleteAction($id) // Controlador que borra una nota según el id pasado
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $nota = $em->getRepository('NWPrincipalBundle:Notas')->find($id);
         $em->remove($nota);
         $em->flush();
@@ -194,7 +196,7 @@ class NoviosController extends Controller
                     $newTask->setUser($user);
                     $newTask->setStatus(false);
 
-                    $em = $this->getDoctrine()->getEntityManager();
+                    $em = $this->getDoctrine()->getManager();
                     $em->persist($newTask);
                     $em->flush();
                 }
@@ -212,7 +214,7 @@ class NoviosController extends Controller
         }
 
         // Obteniendo la lista de tareas en un arreglo de objectos
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $tasks = $em->getRepository('NWPrincipalBundle:Checklist')->findBy(array('usuarioId' => $user->getId()));
 
         // Convirtiendo los resultados en arrays
@@ -232,7 +234,7 @@ class NoviosController extends Controller
 
     public function TaskDeleteAction($id) // Controlador que borra una tarea según el id pasado
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $task = $em->getRepository('NWPrincipalBundle:Checklist')->find($id);
         $em->remove($task);
         $em->flush();
@@ -246,9 +248,23 @@ class NoviosController extends Controller
         $novia=$user->getNovias();
         $novio=$user->getNovios();
 
+        $em = $this->getDoctrine()->getManager();
+
+        // Obteniendo la lista de articulos de la mesa de regalos
+        $regalos = $em->getRepository('NWPrincipalBundle:MesaRegalos')->findBy(array('usuarioId' => $user->getId()));
+
+        // Convirtiendo los resultados en arrays
+        foreach($regalos as $index=>$value)
+        {
+            $objetoenArray=$regalos[$index]->getValues();
+            $regalos[$index]=$objetoenArray;
+            $regalos[$index]['categoria']=$em->getRepository('NWPrincipalBundle:CatRegalos')->find($regalos[$index]['categoria'])->getCategoriaName();
+        }
+
         return $this->render('NWPrincipalBundle:Novios:nuestra-mesa-de-regalos.html.twig', array(
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'regalos' => $regalos,
         ));
     }
 	
@@ -273,7 +289,7 @@ class NoviosController extends Controller
                     $newInvitado->setUser($user);
                     $newInvitado->setStatus(false);
 
-                    $em = $this->getDoctrine()->getEntityManager();
+                    $em = $this->getDoctrine()->getManager();
                     $em->persist($newInvitado);
                     $em->flush();
                 }
@@ -291,7 +307,7 @@ class NoviosController extends Controller
         }
 
         // Obteniendo la lista de invitados en un arreglo de objetos
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $invitados = $em->getRepository('NWPrincipalBundle:ListaInvitados')->findBy(array('usuarioId' => $user->getId()));
 
         // Convirtiendo los resultados en arrays
@@ -319,7 +335,7 @@ class NoviosController extends Controller
 
     public function InvitadoDeleteAction($id) // Controlador que borra un invitado según el id pasado
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $invitado = $em->getRepository('NWPrincipalBundle:ListaInvitados')->find($id);
         $em->remove($invitado);
         $em->flush();
@@ -372,7 +388,7 @@ class NoviosController extends Controller
                         // Cambiar contraseña del usuario
                         $user->setPlainPassword($form["newPass"]->getData());
                         $this->get('fos_user.user_manager')->updateUser($user,false);
-                        $this->getDoctrine()->getEntityManager()->flush();
+                        $this->getDoctrine()->getManager()->flush();
                         
                         // Ya se actualizó la contraseña
                         $statusForm=true;
@@ -423,7 +439,7 @@ class NoviosController extends Controller
                     $novio->setCp($formNovios["novios"]["cp"]->getData());
 
                     // Persistiendo los datos en la base de datos
-                    $em = $this->getDoctrine()->getEntityManager();
+                    $em = $this->getDoctrine()->getManager();
                     $em->persist($novia);
                     $em->persist($novio);
                     $em->flush();

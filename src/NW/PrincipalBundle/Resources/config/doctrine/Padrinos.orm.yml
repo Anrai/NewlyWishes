@@ -5,7 +5,7 @@ NW\PrincipalBundle\Entity\Padrinos:
     manyToOne:
         user:
             targetEntity: NW\UserBundle\Entity\User
-            inversedBy: Padrinos
+            inversedBy: padrinos
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id

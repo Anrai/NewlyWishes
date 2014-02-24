@@ -5,7 +5,7 @@ NW\PrincipalBundle\Entity\ListaInvitados:
     manyToOne:
         user:
             targetEntity: NW\UserBundle\Entity\User
-            inversedBy: ListaInvitados
+            inversedBy: listainvitados
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id

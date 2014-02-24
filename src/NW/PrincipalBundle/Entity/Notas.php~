@@ -136,4 +136,13 @@ class Notas
     {
         return $this->user;
     }
+
+    // Función que me regresa mis valores en forma de array
+    public function getValues(){
+        return array(
+        'id' => $this->getId(),
+        'titulo' => $this->getTitulo(),
+        'descripcion' => $this->getDescripcion()
+        );
+    }
 }

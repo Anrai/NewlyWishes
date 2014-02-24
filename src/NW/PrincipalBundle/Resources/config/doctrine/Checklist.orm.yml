@@ -5,7 +5,7 @@ NW\PrincipalBundle\Entity\Checklist:
     manyToOne:
         user:
             targetEntity: NW\UserBundle\Entity\User
-            inversedBy: Checklist
+            inversedBy: checklist
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id

@@ -5,7 +5,7 @@ NW\PrincipalBundle\Entity\Paises:
     oneToMany:
         estados:
             targetEntity: Estados 
-            mappedBy: Paises 
+            mappedBy: pais
     id:
         id:
             type: integer

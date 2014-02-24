@@ -158,134 +158,51 @@
 					</div>
 				</div>
 				<hr/>
+
+				{% for regalo in regalos %}
+				<!-- Nuevo artículo -->
 				<div class="row">
 					<div class="col-xs-7">
 						<h1 class="art">
-							Artículo1 –Categoría
+							{{ regalo.regalo }} – {{ regalo.categoria }}
 						</h1> <br>
 						<p>
-							Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes,
+							{{ regalo.descripcion }}
 						</p> 
 					</div>
 					<div class="col-xs-3">
 						<p class="columna_dos">
 							Valor <br>
-							<span class="art">$7,000</span> <br>
-							Artículo dividido en <br>
-							<span class="art"># partes</span>
+							<span class="art">${{ regalo.precioTotal }}</span> <br>
+							{{ regalo.cantidad }} Artículo(s) dividido(s) en 
+							<span class="art">{{ regalo.horcruxes }}</span> partes c/u
 						</p>
 					</div>
 					<div class="col-xs-2 bote2">
 							<img class="img-responsive" src="{{asset('img/bote.png')}}">	
 					</div>
 				</div>
-					<div class="row">
-						<div class="col-xs-3">
-							<p>Artículos comprados: <span class="art">#</span></p>	
-						</div>
-						<div class="col-xs-5">
-							<p>Partes faltantes para completar el precio: <span class="art">#</span></p>
-						</div>
-					</div>
-					<hr />
-					<div class="row">
-					<div class="col-xs-7">
-						<h1 class="art">
-							Artículo2 –Categoría
-						</h1> <br>
-						<p>
-							Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes,
-						</p> 
-					</div>
+				<div class="row">
 					<div class="col-xs-3">
-						<p class="columna_dos">
-							Valor <br>
-							<span class="art">$7,000</span> <br>
-							Artículo dividido en <br>
-							<span class="art"># partes</span>
-						</p>
+						<p>Artículos completados: <span class="art">{{ regalo.completados }}</span></p>	
 					</div>
-					<div class="col-xs-2 bote2">
-							<img class="img-responsive" src="{{asset('img/bote.png')}}">	
+					<div class="col-xs-5">
+						<p>Partes faltantes para completar el regalo: <span class="art">{{ regalo.horcruxesFaltantes }}</span></p>
 					</div>
 				</div>
-					<div class="row">
-						<div class="col-xs-3">
-							<p>Artículos comprados: <span class="art">#</span></p>	
-						</div>
-						<div class="col-xs-5">
-							<p>Partes faltantes para completar el precio: <span class="art">#</span></p>
-						</div>
-					</div>
-					<hr />
-					<div class="row">
-					<div class="col-xs-7">
-						<h1 class="art">
-							Artículo3 –Categoría
-						</h1> <br>
-						<p>
-							Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes,
-						</p> 
-					</div>
-					<div class="col-xs-3">
-						<p class="columna_dos">
-							Valor <br>
-							<span class="art">$7,000</span> <br>
-							Artículo dividido en <br>
-							<span class="art"># partes</span>
-						</p>
-					</div>
-					<div class="col-xs-2 bote2">
-							<img class="img-responsive" src="{{asset('img/bote.png')}}">	
-					</div>
-				</div>
-					<div class="row">
-						<div class="col-xs-3">
-							<p>Artículos comprados: <span class="art">#</span></p>	
-						</div>
-						<div class="col-xs-5">
-							<p>Partes faltantes para completar el precio: <span class="art">#</span></p>
-						</div>
-					</div>
-					<hr />
-					<div class="row">
-					<div class="col-xs-7">
-						<h1 class="art">
-							Artículo4 –Categoría
-						</h1> <br>
-						<p>
-							Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes,
-						</p> 
-					</div>
-					<div class="col-xs-3">
-						<p class="columna_dos">
-							Valor <br>
-							<span class="art">$7,000</span> <br>
-							Artículo dividido en <br>
-							<span class="art"># partes</span>
-						</p>
-					</div>
-					<div class="col-xs-2 bote2">
-							<img class="img-responsive" src="{{asset('img/bote.png')}}">	
-					</div>
-				</div>
-					<div class="row">
-						<div class="col-xs-3">
-							<p>Artículos comprados: <span class="art">#</span></p>	
-						</div>
-						<div class="col-xs-5">
-							<p>Partes faltantes para completar el precio: <span class="art">#</span></p>
-						</div>
-					</div>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-				</div>
+				<hr />
+				<!-- Fin de artículo -->
+				{% endfor %}
+
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 			</div>
-			
+		</div>
+		
 
 
 				

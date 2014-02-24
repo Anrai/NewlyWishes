@@ -112,39 +112,11 @@ class User extends BaseUser
     {
         return $this->registroproveedores;
     }
-    /**
-     * @var \NW\PrincipalBundle\Entity\Cheklist
-     */
-    private $cheklist;
 
-
-    /**
-     * Set cheklist
-     *
-     * @param \NW\PrincipalBundle\Entity\Cheklist $cheklist
-     * @return User
-     */
-    public function setCheklist(\NW\PrincipalBundle\Entity\Cheklist $cheklist = null)
-    {
-        $this->cheklist = $cheklist;
-
-        return $this;
-    }
-
-    /**
-     * Get cheklist
-     *
-     * @return \NW\PrincipalBundle\Entity\Cheklist 
-     */
-    public function getCheklist()
-    {
-        return $this->cheklist;
-    }
     /**
      * @var \NW\PrincipalBundle\Entity\Checklist
      */
     private $checklist;
-
 
     /**
      * Set checklist
@@ -342,5 +314,43 @@ class User extends BaseUser
     public function getNotas()
     {
         return $this->notas;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $mesaregalos;
+
+
+    /**
+     * Add mesaregalos
+     *
+     * @param \NW\PrincipalBundle\Entity\MesaRegalos $mesaregalos
+     * @return User
+     */
+    public function addMesaregalo(\NW\PrincipalBundle\Entity\MesaRegalos $mesaregalos)
+    {
+        $this->mesaregalos[] = $mesaregalos;
+
+        return $this;
+    }
+
+    /**
+     * Remove mesaregalos
+     *
+     * @param \NW\PrincipalBundle\Entity\MesaRegalos $mesaregalos
+     */
+    public function removeMesaregalo(\NW\PrincipalBundle\Entity\MesaRegalos $mesaregalos)
+    {
+        $this->mesaregalos->removeElement($mesaregalos);
+    }
+
+    /**
+     * Get mesaregalos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMesaregalos()
+    {
+        return $this->mesaregalos;
     }
 }

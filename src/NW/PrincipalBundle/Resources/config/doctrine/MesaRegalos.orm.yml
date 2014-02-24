@@ -1,0 +1,42 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/MesaRegalos.orm.yml
+NW\PrincipalBundle\Entity\MesaRegalos:
+    type: entity 
+    table: regalos 
+    manyToOne:
+        user:
+            targetEntity: NW\UserBundle\Entity\User
+            inversedBy: mesaregalos
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+        catregalos:
+            targetEntity: CatRegalos
+            inversedBy: mesaregalos
+            joinColumn:
+                name: categoria
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator: 
+                strategy: AUTO
+    fields:
+        usuarioId:
+            type: integer
+        categoria:
+            type: integer
+        regalo:
+            type: string
+            length: 100
+        precioTotal:  
+            type: integer
+        cantidad:
+            type: integer
+        horcruxes:
+            type: integer
+        horcruxesPagados:
+            type: integer
+        descripcion:
+            type: text
+        absorberComision:
+            type: boolean
