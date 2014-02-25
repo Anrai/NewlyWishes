@@ -242,6 +242,28 @@ class NoviosController extends Controller
 
         return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-checklist'));
     }
+
+    public function TaskCompletarAction($id) // Controlador que completa una tarea según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $task = $em->getRepository('NWPrincipalBundle:Checklist')->find($id);
+        $task->setStatus(true);
+        $em->persist($task);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-checklist'));
+    }
+
+    public function TaskDescompletarAction($id) // Controlador que descompleta una tarea según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $task = $em->getRepository('NWPrincipalBundle:Checklist')->find($id);
+        $task->setStatus(false);
+        $em->persist($task);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-checklist'));
+    }
 	
 	public function nuestraMesaDeRegalosAction(Request $request)
     {
@@ -315,33 +337,18 @@ class NoviosController extends Controller
         $formAgregarData = new ListaInvitados();
         $formAgregar = $this->createForm(new ListaInvitadosType(), $formAgregarData);
 
-        // Recuperando formularios
-        if('POST' === $request->getMethod()) {
- 
-            if ($request->request->has($formAgregar->getName())) {
-                $formAgregar->handleRequest($request);
+        // Manejo de los datos del formulario
+        $formAgregar->handleRequest($request);
 
-                if($formAgregar->isValid())
-                {
-                    $newInvitado=$formAgregar->getData();
-                    $newInvitado->setUser($user);
-                    $newInvitado->setStatus(false);
+        if($formAgregar->isValid())
+        {
+            $newInvitado=$formAgregar->getData();
+            $newInvitado->setUser($user);
+            $newInvitado->setStatus(false);
 
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($newInvitado);
-                    $em->flush();
-                }
-            }
-            // Se administra el otro formulario
-            /*else if ($request->request->has($formNovios->getName())) {
-                // handle the second form
-                $formNovios->handleRequest($request);
-         
-                if ($formNovios->isValid()) {
-
-                    //Contenido
-                }
-            }*/
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newInvitado);
+            $em->flush();
         }
 
         // Obteniendo la lista de invitados en un arreglo de objetos
@@ -376,6 +383,28 @@ class NoviosController extends Controller
         $em = $this->getDoctrine()->getManager();
         $invitado = $em->getRepository('NWPrincipalBundle:ListaInvitados')->find($id);
         $em->remove($invitado);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-lista-de-invitados'));
+    }
+
+    public function InvitadoConfirmarAction($id) // Controlador que confirma un invitado según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $invitado = $em->getRepository('NWPrincipalBundle:ListaInvitados')->find($id);
+        $invitado->setStatus(true);
+        $em->persist($invitado);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-lista-de-invitados'));
+    }
+
+    public function InvitadoDesconfirmarAction($id) // Controlador que confirma un invitado según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $invitado = $em->getRepository('NWPrincipalBundle:ListaInvitados')->find($id);
+        $invitado->setStatus(false);
+        $em->persist($invitado);
         $em->flush();
 
         return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-lista-de-invitados'));

@@ -4,18 +4,70 @@
 		"selected_items":
 		[
 			[
+				"array",
+				"array"
+			],
+			[
+				"inpu",
+				"input_small"
+			],
+			[
+				"NW",
+				"NWPrincipalBundle"
+			],
+			[
 				"sfrepo",
-				"sfrepository	Symfony2 / Doctrine / Repository"
+				"sfrepo	Symfony2 / Controller / Get Repository"
+			],
+			[
+				"create",
+				"createView"
+			],
+			[
+				"a",
+				"add"
+			],
+			[
+				"ad",
+				"add"
+			],
+			[
+				"sff",
+				"sfform	Symfony2 / Controller / Form Type"
+			],
+			[
+				"cat",
+				"categoria"
+			],
+			[
+				"in",
+				"inversedBy"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"file": "src/NW/PrincipalBundle/Resources/config/routing.yml",
+			"settings":
+			{
+				"buffer_size": 4467,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "src/NW/PrincipalBundle/Controller/NoviosController.php",
 			"settings":
 			{
-				"buffer_size": 19706,
+				"buffer_size": 21775,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/NW/PrincipalBundle/Resources/views/Novios/nuestra-lista-de-invitados.html.twig",
+			"settings":
+			{
+				"buffer_size": 5340,
 				"line_ending": "Windows"
 			}
 		}
@@ -23,16 +75,48 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 127.0,
+		"height": 81.0,
 		"selected_items":
 		[
 			[
-				"git pull",
-				"Git: Pull"
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pac}",
+				"Snippet: Wrap in try { … } catch (…) { … }"
+			],
+			[
+				"git push ",
+				"Git: Push"
 			],
 			[
 				"git q",
 				"Git: Quick Commit"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git add .",
+				"Git: Add..."
+			],
+			[
+				"git qu",
+				"Git: Quick Add"
+			],
+			[
+				"git pu",
+				"Git: Pull"
+			],
+			[
+				"git pull",
+				"Git: Pull"
 			],
 			[
 				"git add.",
@@ -40,10 +124,6 @@
 			],
 			[
 				"git statu",
-				"Git: Status"
-			],
-			[
-				"git status",
 				"Git: Status"
 			],
 			[
@@ -135,7 +215,7 @@
 				"SublimeGit: Version"
 			]
 		],
-		"width": 496.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -170,12 +250,102 @@
 	},
 	"file_history":
 	[
-		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Controller/DefaultController.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Form/Type/ListaInvitadosType.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/views/Novios/nuestra-lista-de-invitados.html.twig",
+		"/C/wamp/www/NewlyWishes/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/invoker.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Config/Definition/IntegerNode.php",
+		"/C/wamp/www/NewlyWishes/vendor/composer/installed.json",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/ListaInvitados.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/ListaInvitados.php~",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/ListaInvitados.orm.yml",
+		"/C/wamp/www/NewlyWishes/LICENSE",
+		"/C/wamp/www/NewlyWishes/src/Acme/StoreBundle/Resources/config/routing.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/routing.yml",
+		"/C/wamp/www/NewlyWishes/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/skeleton/bundle/routing.php.twig",
+		"/C/wamp/www/NewlyWishes/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/skeleton/bundle/routing.xml.twig",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/DependencyInjection/Compiler/RoutingResolverPass.php",
+		"/C/wamp/www/NewlyWishes/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/routing/profile.xml",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Routing/RouteCompilerInterface.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Routing/Exception/RouteNotFoundException.php",
+		"/C/wamp/www/NewlyWishes/README.md",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Form/Type/RegaloType.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/views/Novios/nuestra-mesa-de-regalos.html.twig",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/MesaRegalos.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/CatRegalos.php~",
+		"/C/wamp/www/NewlyWishes/src/NW/SecurityBundle/Resources/config/routing.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Resources/config/routing.yml",
+		"/C/wamp/www/NewlyWishes/src/Acme/DemoBundle/Resources/config/routing.yml",
+		"/C/wamp/www/NewlyWishes/app/cache/dev/assetic/routing.yml",
+		"/C/wamp/www/NewlyWishes/app/config/routing.yml",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Bridge/Propel1/Tests/Fixtures/ReadOnlyItem.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/MesaRegalos.php~",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/MesaRegalos.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/CatRegalos.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/CatRegalos.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/Acme/StoreBundle/Entity/Category.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Console/Tests/Fixtures/command_astext.txt",
+		"/C/wamp/www/NewlyWishes/composer.json",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Entity/registronovios.php~",
+		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/User/SymfonyTwigFormWidget.sublime-snippet",
+		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/wamp/www/NewlyWishes/vendor/jdorn/sql-formatter/lib/SqlFormatter.php",
+		"/C/wamp/www/NewlyWishes/app/SymfonyRequirements.php",
+		"/C/wamp/www/NewlyWishes/vendor/swiftmailer/swiftmailer/test-suite/templates/sweety/suite-ui.tpl.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Form/SubmitButton.php",
+		"/C/wamp/www/NewlyWishes/vendor/jdorn/sql-formatter/tests/format.html",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Config/Definition/Exception/ForbiddenOverwriteException.php",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Entity/Novias.php",
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Controller/NoviosController.php",
+		"/C/wamp/www/NewlyWishes/vendor/kriswallsmith/assetic/package.json",
+		"/C/wamp/www/NewlyWishes/app/config/parameters.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/Paises.php",
+		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/User/cargarFormularioSymfony.sublime-snippet",
+		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Installed Packages/Symfony2 Snippets.sublime-package",
+		"/C/wamp/www/NewlyWishes/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/BigIntType.php",
+		"/C/wamp/www/NewlyWishes/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Model/GroupInterface.php",
+		"/C/wamp/www/NewlyWishes/vendor/kriswallsmith/assetic/Gemfile",
+		"/C/Users/Sergio Enrique/Downloads/newlywishes (10).sql",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/ExpressionLanguage/Resources/bin/generate_operator_regex.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Templating/TemplateReference.php",
+		"/C/wamp/www/NewlyWishes/app/cache/dev/annotations/999fc79ae0c12e6f555d4a8f985378eadc87fa5e#nuestraMesaDeRegalosAction.cache.php",
+		"/C/wamp/www/NewlyWishes/app/Resources/views/php/lista_ciudades.php",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Entity/User.php",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Resources/config/doctrine/User.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Resources/config/doctrine/Novios.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Resources/config/doctrine/Novias.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Entity/Novios.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/Padrinos.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/Estados.php",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/Paises.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/Estados.orm.yml",
+		"/C/wamp/www/NewlyWishes/vendor/doctrine/common/lib/Doctrine/Common/EventSubscriber.php",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Resources/config/doctrine/registroproveedores.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/Padrinos.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Entity/registroproveedores.php",
+		"/C/wamp/www/NewlyWishes/vendor/psr/log/Psr/Log/InvalidArgumentException.php",
+		"/C/wamp/www/NewlyWishes/UPGRADE.md",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/Notas.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/Bodas.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/Checklist.orm.yml",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/Bodas.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Authentication/Provider/RememberMeAuthenticationProvider.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Component/Security/Http/RememberMe/RememberMeServicesInterface.php",
+		"/C/wamp/www/NewlyWishes/vendor/doctrine/orm/docs/en/cookbook/mysql-enums.rst",
+		"/C/wamp/www/NewlyWishes/vendor/doctrine/orm/docs/en/Makefile",
+		"/C/wamp/www/NewlyWishes/vendor/monolog/monolog/src/Monolog/Handler/SyslogUdp/UdpSocket.php",
+		"/C/wamp/www/NewlyWishes/vendor/doctrine/orm/lib/Doctrine/ORM/ORMException.php",
+		"/C/wamp/www/NewlyWishes/vendor/doctrine/common/lib/Doctrine/Common/Persistence/ObjectRepository.php",
+		"/C/wamp/www/NewlyWishes/vendor/swiftmailer/swiftmailer/doc/overview.rst",
+		"/C/wamp/www/NewlyWishes/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/orm.xml",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/Tests/DoctrineOrmTestCase.php",
+		"/C/wamp/www/NewlyWishes/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/test/site/form.html",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views/Form/form.html.php",
+		"/C/wamp/www/NewlyWishes/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/Form/ChoiceList/ORMQueryBuilderLoader.php",
+		"/C/wamp/www/NewlyWishes/vendor/doctrine/orm/docs/en/reference/yaml-mapping.rst",
+		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Controller/DefaultController.php",
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Controller/ProveedoresController.php",
 		"/C/wamp/www/NewlyWishes/ProyectoSublime.sublime-project",
 		"/C/wamp/www/NewlyWishes/src/Acme/StoreBundle/Entity/ProductRepository.php",
-		"/C/wamp/www/NewlyWishes/app/config/parameters.yml",
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/views/Proveedores/administrador.html.twig",
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/views/Novios/administrador.html.twig",
 		"/C/wamp/www/NewlyWishes/app/cache/dev/appDevUrlMatcher.php",
@@ -184,10 +354,7 @@
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/views/Novios/nuestra-boda.html.twig",
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Form/Type/NotasType.php",
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Entity/Notas.php",
-		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/Resources/config/doctrine/Notas.orm.yml",
 		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Entity/Novios.php",
-		"/C/wamp/www/NewlyWishes/src/NW/UserBundle/Entity/Novias.php",
 		"/C/wamp/www/NewlyWishes/vendor/twig/twig/lib/Twig/NodeOutputInterface.php",
 		"/C/wamp/www/NewlyWishes/src/NW/PrincipalBundle/NWPrincipalBundle.php",
 		"/C/wamp/www/NewlyWishes/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/Headers/ParameterizedHeaderTest.php",
@@ -206,7 +373,6 @@
 		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/SublimeGit/SublimeGit.sublime-settings",
 		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
 		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/User/SublimeGit.sublime-settings",
-		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/Sergio Enrique/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings"
 	],
 	"find":
@@ -215,9 +381,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -225,6 +392,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"div",
+			"nw_principal_novios_padrino_delete",
+			"Invitado",
+			"invitado",
+			"Regalo",
+			"$builder->add(",
+			"getdata",
+			"$builder->add(",
+			"class",
+			"Task",
+			"Agregar",
+			"newlywishes",
+			"getEntityManager",
+			"regalos",
 			"encoder",
 			"')\n",
 			"getId",
@@ -251,6 +432,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"getManager"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -261,24 +443,54 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/NW/PrincipalBundle/Controller/NoviosController.php",
+					"file": "src/NW/PrincipalBundle/Resources/config/routing.yml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19706,
+						"buffer_size": 4467,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								813,
-								813
+								3825,
+								3825
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1445.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/NW/PrincipalBundle/Controller/NoviosController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13717,
+								13717
 							]
 						],
 						"settings":
@@ -288,7 +500,36 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6148.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/NW/PrincipalBundle/Resources/views/Novios/nuestra-lista-de-invitados.html.twig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5340,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4541,
+								4541
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1890.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -355,7 +596,7 @@
 	"project": "ProyectoSublime.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -363,6 +604,138 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"invitadotwi",
+				"src\\NW\\PrincipalBundle\\Resources\\views\\Novios\\nuestra-lista-de-invitados.html.twig"
+			],
+			[
+				"listainvi",
+				"src\\NW\\PrincipalBundle\\Entity\\ListaInvitados.php"
+			],
+			[
+				"routing.yml",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\routing.yml"
+			],
+			[
+				"regalo",
+				"src\\NW\\PrincipalBundle\\Entity\\MesaRegalos.php"
+			],
+			[
+				"mesareg",
+				"src\\NW\\PrincipalBundle\\Entity\\MesaRegalos.php"
+			],
+			[
+				"catreg",
+				"src\\NW\\PrincipalBundle\\Entity\\CatRegalos.php"
+			],
+			[
+				"listatype",
+				"src\\NW\\PrincipalBundle\\Form\\Type\\ListaInvitadosType.php"
+			],
+			[
+				"mesarega",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\MesaRegalos.orm.yml"
+			],
+			[
+				"regaloorm",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\MesaRegalos.orm.yml"
+			],
+			[
+				"invitadost",
+				"src\\NW\\PrincipalBundle\\Form\\Type\\ListaInvitadosType.php"
+			],
+			[
+				"regalot",
+				"src\\NW\\PrincipalBundle\\Form\\Type\\RegaloType.php"
+			],
+			[
+				"noviosc",
+				"src\\NW\\PrincipalBundle\\Controller\\NoviosController.php"
+			],
+			[
+				"cateregalos.orm",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\CatRegalos.orm.yml"
+			],
+			[
+				"mesaregalo",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\MesaRegalos.orm.yml"
+			],
+			[
+				"mesaregalos.",
+				"src\\NW\\PrincipalBundle\\Resources\\views\\Novios\\nuestra-mesa-de-regalos.html.twig"
+			],
+			[
+				"noviosco",
+				"src\\NW\\PrincipalBundle\\Controller\\NoviosController.php"
+			],
+			[
+				"mesa",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\MesaRegalos.orm.yml"
+			],
+			[
+				"catrega",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\CatRegalos.orm.yml"
+			],
+			[
+				"novios.orm",
+				"src\\NW\\UserBundle\\Resources\\config\\doctrine\\Novios.orm.yml"
+			],
+			[
+				"user.orm",
+				"src\\NW\\UserBundle\\Resources\\config\\doctrine\\User.orm.yml"
+			],
+			[
+				"novias.o",
+				"src\\NW\\UserBundle\\Resources\\config\\doctrine\\Novias.orm.yml"
+			],
+			[
+				"novia",
+				"src\\NW\\UserBundle\\Entity\\Novias.php"
+			],
+			[
+				"estados",
+				"src\\NW\\PrincipalBundle\\Entity\\Estados.php"
+			],
+			[
+				"paises.orm",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\Paises.orm.yml"
+			],
+			[
+				"paises",
+				"src\\NW\\PrincipalBundle\\Entity\\Paises.php"
+			],
+			[
+				"pai",
+				"src\\NW\\PrincipalBundle\\Entity\\Paises.php"
+			],
+			[
+				"user.php",
+				"src\\NW\\UserBundle\\Entity\\User.php"
+			],
+			[
+				"padrinos.php",
+				"src\\NW\\PrincipalBundle\\Entity\\Padrinos.php"
+			],
+			[
+				"mearegalos",
+				"src\\NW\\PrincipalBundle\\Entity\\MesaRegalos.php"
+			],
+			[
+				"mesaregalos.php",
+				"src\\NW\\PrincipalBundle\\Entity\\MesaRegalos.php"
+			],
+			[
+				"user.orm.yml",
+				"src\\NW\\UserBundle\\Resources\\config\\doctrine\\User.orm.yml"
+			],
+			[
+				"orm.yml",
+				"src\\NW\\PrincipalBundle\\Resources\\config\\doctrine\\Bodas.orm.yml"
+			],
+			[
+				"paramet",
+				"app\\config\\parameters.yml"
+			],
 			[
 				"novios",
 				"src\\NW\\PrincipalBundle\\Controller\\NoviosController.php"
@@ -412,7 +785,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 272.0,
 	"status_bar_visible": true,
 	"template_settings":

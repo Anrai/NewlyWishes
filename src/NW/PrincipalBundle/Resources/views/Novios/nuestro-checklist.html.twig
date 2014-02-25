@@ -117,9 +117,15 @@
 				<div class="row">
 					<div class="col-xs-2">
 						{% if task.status %}
-							palomita
+							<a href="{{url('nw_principal_novios_task_descompletar', {'id': task.id})}}">
+								<span class="cuadro_confirmacion">&nbsp;✓</span>
+								<span class="rosa">Completado</span>
+							</a>
 						{% else %}
-							tache
+							<a href="{{url('nw_principal_novios_task_completar', {'id': task.id})}}">
+								<span class="cuadro_confirmacion"></span>
+								<span class="rosa">Sin Completar</span>
+							</a>
 						{% endif %}
 					</div>
 					<div class="col-xs-3">
@@ -143,9 +149,6 @@
 						</div>
 					</div>
 				</div>
-				<p class="art">
-					Editar
-				</p>
 				<hr />
 
 				{% endfor %}

@@ -113,13 +113,17 @@
 						Teléfono: <span class="rosa">{{ invitado.telefono }}</span>
 					</div>
 					<div class="col-xs-5">
-						<div class="cuadro_confirmacion">
 						{% if invitado.status %}
-							✓
+							<a href="{{url('nw_principal_novios_invitado_desconfirmar', {'id': invitado.id})}}">
+								<span class="cuadro_confirmacion">&nbsp;✓</span>
+								<span class="rosa">Confirmado</span>
+							</a>
+						{% else %}
+							<a href="{{url('nw_principal_novios_invitado_confirmar', {'id': invitado.id})}}">
+								<span class="cuadro_confirmacion"></span>
+								<span class="rosa">No ha confirmado</span>
+							</a>
 						{% endif %}
-						</div>
-
-						<span class="rosa">Confirmado</span>	
 					</div>
 					<div class="col-xs-2" style="text-align:right;">
 					<a href="{{url('nw_principal_novios_invitado_delete', {'id': invitado.id})}}">

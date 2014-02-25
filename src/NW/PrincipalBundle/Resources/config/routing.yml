@@ -90,6 +90,14 @@ nw_principal_novios_task_delete:
     pattern:  /novios/task/{id}/delete
     defaults: { _controller: NWPrincipalBundle:Novios:TaskDelete }
 
+nw_principal_novios_task_completar:
+    pattern:  /novios/task/{id}/completar
+    defaults: { _controller: NWPrincipalBundle:Novios:TaskCompletar }
+
+nw_principal_novios_task_descompletar:
+    pattern:  /novios/task/{id}/descompletar
+    defaults: { _controller: NWPrincipalBundle:Novios:TaskDescompletar }
+
 nw_principal_novios_nuestra-mesa-de-regalos:
     pattern:  /novios/nuestra-mesa-de-regalos
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraMesaDeRegalos }
@@ -105,6 +113,14 @@ nw_principal_novios_nuestra-lista-de-invitados:
 nw_principal_novios_invitado_delete:
     pattern:  /novios/invitado/{id}/delete
     defaults: { _controller: NWPrincipalBundle:Novios:InvitadoDelete }
+
+nw_principal_novios_invitado_confirmar:
+    pattern:  /novios/padrino/{id}/confirmar
+    defaults: { _controller: NWPrincipalBundle:Novios:InvitadoConfirmar }
+
+nw_principal_novios_invitado_desconfirmar:
+    pattern:  /novios/padrino/{id}/desconfirmar
+    defaults: { _controller: NWPrincipalBundle:Novios:InvitadoDesconfirmar }
 
 nw_principal_novios_nuestra-cuenta:
     pattern:  /novios/nuestra-cuenta
