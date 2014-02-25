@@ -12,6 +12,7 @@ use NW\PrincipalBundle\Form\Type\ListaInvitadosType;
 use NW\PrincipalBundle\Form\Type\DatosBodaType;
 use NW\PrincipalBundle\Form\Type\PadrinosType;
 use NW\PrincipalBundle\Form\Type\NotasType;
+use NW\PrincipalBundle\Form\Type\RegaloType;
 
 use NW\PrincipalBundle\Entity\Checklist;
 use NW\PrincipalBundle\Entity\ListaInvitados;
@@ -242,13 +243,39 @@ class NoviosController extends Controller
         return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-checklist'));
     }
 	
-	public function nuestraMesaDeRegalosAction()
+	public function nuestraMesaDeRegalosAction(Request $request)
     {
+        // Recuperando datos del usuario y novios
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
 
+        // Estableciendo Manejador de entidades
         $em = $this->getDoctrine()->getManager();
+
+        // Nuevo objeto regalo para el formulario
+        $formRegaloData = new MesaRegalos();
+        $formRegalo = $this->createForm(new RegaloType(), $formRegaloData);
+        
+        // Manipuando formulario enviado
+        $formRegalo->handleRequest($request);
+
+        if($formRegalo->isValid())
+        {
+            // Obtener datos del formulario
+            $newRegalo = $formRegalo->getData();
+
+            // Se recupera la categoria original
+            $categoria = $em->getRepository('NWPrincipalBundle:CatRegalos')->find($formRegalo['categoria']->getData());
+
+            // Asignar valores inexistentes en la nueva clase regalo: usuario, partes pagadas y categoría
+            $newRegalo->setUser($user);
+            $newRegalo->setHorcruxesPagados(0);
+            $newRegalo->setCatregalos($categoria);
+
+            $em->persist($newRegalo);
+            $em->flush();
+        }
 
         // Obteniendo la lista de articulos de la mesa de regalos
         $regalos = $em->getRepository('NWPrincipalBundle:MesaRegalos')->findBy(array('usuarioId' => $user->getId()));
@@ -265,7 +292,18 @@ class NoviosController extends Controller
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'regalos' => $regalos,
+            'formRegalo' => $formRegalo->createView(),
         ));
+    }
+
+     public function RegaloDeleteAction($id) // Controlador que borra un regalo según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $regalo = $em->getRepository('NWPrincipalBundle:MesaRegalos')->find($id);
+        $em->remove($regalo);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-mesa-de-regalos'));
     }
 	
 	public function nuestraListaDeInvitadosAction(Request $request)

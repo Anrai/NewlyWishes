@@ -94,6 +94,10 @@ nw_principal_novios_nuestra-mesa-de-regalos:
     pattern:  /novios/nuestra-mesa-de-regalos
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraMesaDeRegalos }
 
+nw_principal_novios_regalo_delete:
+    pattern:  /novios/regalo/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Novios:RegaloDelete }
+
 nw_principal_novios_nuestra-lista-de-invitados:
     pattern:  /novios/nuestra-lista-de-invitados
     defaults: { _controller: NWPrincipalBundle:Novios:nuestraListaDeInvitados }

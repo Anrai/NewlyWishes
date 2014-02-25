@@ -61,95 +61,89 @@
 						      </div>
 						      
 						      <div class="modal-body">
+						      	{{ form_start(formRegalo) }}
 						      	<div class="row">
 						      		<div class="col-md-6">
 
 						      			<div class="row">
-						      			<div class="col-xs-12">
-							        		<input type="text" class="input_small" placeholder="Nombre del artículo">
-							        		<br>
-							        		<textarea class="textarea_small" placeholder="Descripción" style="height:200px;"></textarea>
-							        	</div>
-							        	</div>
-	
-									</div>
-									<div class="col-md-6">
-										<div class="row">
-										<div class="col-xs-10">
-											<input type="text" class="input_small" placeholder="Valor del artículo">
-										<div class="col-xs-2">
-										</div>
-										</div>
-										</div>
+						      				<div class="col-xs-12">
+						      					{{ form_widget(formRegalo.regalo, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Nombre del artículo' } }) }}
+						      					<br>
+						      					{{ form_widget(formRegalo.descripcion, { 'attr': {'class': 'textarea_small', 'style': 'height:200px;', 'placeholder': 'Descripción' } }) }}
+						      				</div>
+						      			</div>
 
-										<div class="row">
-										<div class="col-xs-2">
-											<input type="checkbox" name="comision" value="absorber"> 
-										</div>
-										<div class="col-xs-8">
-											<i>¿Deseas absorber la comisión de la compra?</i>
-										</div>
-										<div class="col-xs-2">
-							        		<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
-							        	</div>
-							        	</div>
+						      		</div>
+						      		<div class="col-md-6">
+						      			<div class="row">
+						      				<div class="col-xs-10">
+						      					{{ form_widget(formRegalo.precioTotal, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Valor del artículo' } }) }}
+						      					<div class="col-xs-2">
+						      					</div>
+						      				</div>
+						      			</div>
 
-							        	<div class="row" style="margin-top:20px;">
-											<div class="col-xs-6">
-												Número de artículos
-											</div>
-											<div class="col-xs-4">
-												<select class="input_registro_novios">
-													<option>1</option>
-													<option>2</option>
-												</select>
-											</div>
-											<div class="col-xs-2">
-							        			
-							        		</div>											
-										</div>
+						      			<div class="row">
+						      				<div class="col-xs-2">
+						      					{{ form_widget(formRegalo.absorberComision) }}
+						      				</div>
+						      				<div class="col-xs-8">
+						      					<i>¿Deseas absorber la comisión de la compra?</i>
+						      				</div>
+						      				<div class="col-xs-2">
+						      					<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
+						      				</div>
+						      			</div>
+
+						      			<div class="row" style="margin-top:20px;">
+						      				<div class="col-xs-6">
+						      					Número de artículos
+						      				</div>
+						      				<div class="col-xs-4">
+						      					{{ form_widget(formRegalo.cantidad, { 'attr': {'class': 'input_registro_novios'} }) }}
+						      				</div>
+						      				<div class="col-xs-2">
+
+						      				</div>											
+						      			</div>
 
 
-										<div class="row" style="margin-top:20px;">
-											<div class="col-xs-6">
-												¿En cuántas partes desea dividir este artículo?
-											</div>
-											<div class="col-xs-4">
-												<select class="input_registro_novios">
-													<option>1</option>
-													<option>2</option>
-												</select>
-											</div>
-											<div class="col-xs-2">
-							        			<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
-							        		</div>											
-										</div>
+						      			<div class="row" style="margin-top:20px;">
+						      				<div class="col-xs-6">
+						      					¿En cuántas partes desea dividir este artículo?
+						      				</div>
+						      				<div class="col-xs-4">
+						      					{{ form_widget(formRegalo.horcruxes, { 'attr': {'class': 'input_registro_novios'} }) }}
+						      				</div>
+						      				<div class="col-xs-2">
+						      					<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
+						      				</div>											
+						      			</div>
 
-										<div class="row" style="margin-top:20px;">
-											
-											<div class="col-xs-10">
-												<select class="input_registro_novios">
-													<option>categoría</option>
-												</select>
-											</div>
+						      			<div class="row" style="margin-top:20px;">
 
-											<div class="col-xs-2">
-							        			
-							        		</div>											
-										</div>
-									</div>
+						      				<div class="col-xs-10">
+						      					{{ form_widget(formRegalo.categoria, { 'attr': {'class': 'input_registro_novios'} }) }}
+						      				</div>
 
-									<div class="row">
+						      				<div class="col-xs-2">
 
-									<div class="row" style="margin-top:30px;">
-										<div class="col-md-12">
-											<input type="submit" id="enviar_form" value="Agregar artículo" style="width:120px; float:right; margin-right:50px; margin-top:30px;">	
-										</div>
-									</div>
+						      				</div>											
+						      			</div>
+						      		</div>
 
-									</div>
+						      		<div class="row">
 
+						      			<div class="row" style="margin-top:30px;">
+						      				<div class="col-md-12">
+						      					{{ form_widget(formRegalo.Agregar, { 'attr': {'style': 'width:120px; float:right; margin-right:50px; margin-top:30px;' } }) }}
+						      				</div>
+						      			</div>
+
+						      		</div>
+								{{ form_end(formRegalo) }}
 								</div>
+
 						      </div>
 						    </div>
 						  </div>
@@ -179,7 +173,9 @@
 						</p>
 					</div>
 					<div class="col-xs-2 bote2">
-							<img class="img-responsive" src="{{asset('img/bote.png')}}">	
+						<a href="{{url('nw_principal_novios_regalo_delete', {'id': regalo.id})}}">
+							<img class="img-responsive" src="{{asset('img/bote.png')}}">
+						</a>
 					</div>
 				</div>
 				<div class="row">
