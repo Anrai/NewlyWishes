@@ -57,18 +57,24 @@ class DefaultController extends Controller
         );
     }
 
-    public function edicion1Action()
+    public function noticiasAction()
     {
-        return $this->render('NWPrincipalBundle:Default:edicion1.html.twig');
+        return $this->render('NWPrincipalBundle:Default:noticias.html.twig');
     }
 
-    public function edicion2Action()
+    public function noticiaAction()
     {
-        return $this->render('NWPrincipalBundle:Default:edicion2.html.twig');
+        return $this->render('NWPrincipalBundle:Default:noticia.html.twig');
     }
 
-    public function edicion3Action()
+    public function resultadosAction()
     {
-        return $this->render('NWPrincipalBundle:Default:edicion3.html.twig');
+        return $this->render('NWPrincipalBundle:Default:resultados.html.twig');
     }
+
+    public function empresaAction()
+    {
+        return $this->render('NWPrincipalBundle:Default:empresa.html.twig');
+    }
+
 }

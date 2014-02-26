@@ -1,7 +1,8 @@
-parameters:
-#    nw_principal.example.class: NW\PrincipalBundle\Example
-
+#parameters:
+#    nw_principal.controller.forms.class: NW\PrincipalBundle\Controller\FormsController
+#services:
+#    nw_principal.forms.controller:
+#        class: "%nw_principal.controller.forms.class%"
 services:
-#    nw_principal.example:
-#        class: %nw_principal.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    nw_principal.forms.controller:
+        class: NW\PrincipalBundle\Controller\FormsController

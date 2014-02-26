@@ -99,4 +99,9 @@ class DefaultController extends Controller
 
         return $this->render('AcmeStoreBundle:Default:find.html.twig', array('products' => $products ));
 	}
+
+	public function indexAction($name)
+    {
+        return $this->render('AcmeStoreBundle:Default:index.html.twig', array('name' => $name));
+    }
 }

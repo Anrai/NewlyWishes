@@ -173,14 +173,16 @@
 	        </div>
 	      </div>
 	      <div class="modal-body">
-	      	<h3 class="pon">Pon la fecha de tu boda</h3>
+	      	<h3 class="pon">Escribe la fecha de tu boda</h3>
 	      </div>
-	      <div>
-	      	<input type="text" id="Checklist_tarea" name="Checklist[tarea]" required="required" class="input8" placeholder="dd/mm/aaaa">
-	      </div>
-	      <div>
-	      	<input class="enviar" type="submit" id="enviar_form" value="Guardar" style="width:120px;"> <br>
-	      </div>
+	      {{ form_start(formDiaBoda) }}
+		      <div>
+		      	{{ form_widget(formDiaBoda.fecha, { 'attr': {'class': 'input8'} }) }}
+		      </div>
+		      <div>
+		      	{{ form_widget(formDiaBoda.Guardar, { 'attr': {'class': '', 'style': 'width:120px;', 'placeholder': '' } }) }}
+		      </div>
+	      {{ form_end(formDiaBoda) }}
 	      <br><br>
 	    </div>
 	  </div>

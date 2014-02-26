@@ -2,17 +2,21 @@ nw_principal_homepage:
     pattern:  /
     defaults: { _controller: NWPrincipalBundle:Default:index }
 
-nw_principal_edicion1:
-    pattern:  /edicion1
-    defaults: { _controller: NWPrincipalBundle:Default:edicion1 }
+nw_principal_noticias:
+    pattern:  /noticias
+    defaults: { _controller: NWPrincipalBundle:Default:noticias }
 
-nw_principal_edicion2:
-    pattern:  /edicion2
-    defaults: { _controller: NWPrincipalBundle:Default:edicion2 }
+nw_principal_noticia_completa:
+    pattern:  /noticia
+    defaults: { _controller: NWPrincipalBundle:Default:noticia }
 
-nw_principal_edicion3:
-    pattern:  /edicion3
-    defaults: { _controller: NWPrincipalBundle:Default:edicion3 }
+nw_principal_resultados:
+    pattern:  /resultados
+    defaults: { _controller: NWPrincipalBundle:Default:resultados }
+
+nw_principal_empresa:
+    pattern:  /empresa
+    defaults: { _controller: NWPrincipalBundle:Default:empresa }
 
 nw_principal_planes:
     pattern:  /planes

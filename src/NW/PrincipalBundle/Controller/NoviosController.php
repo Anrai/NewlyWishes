@@ -13,6 +13,7 @@ use NW\PrincipalBundle\Form\Type\DatosBodaType;
 use NW\PrincipalBundle\Form\Type\PadrinosType;
 use NW\PrincipalBundle\Form\Type\NotasType;
 use NW\PrincipalBundle\Form\Type\RegaloType;
+use NW\PrincipalBundle\Form\Type\DiaBodaType;
 
 use NW\PrincipalBundle\Entity\Checklist;
 use NW\PrincipalBundle\Entity\ListaInvitados;
@@ -35,6 +36,10 @@ class NoviosController extends Controller
 	
 	public function nuestraBodaAction(Request $request)
     {
+        //$this->forward('nw_principal.forms.controller:manyForms');
+
+        //return $this->get('nw_principal.forms.controller:manyFormsAction');
+
         // Manejador de Doctrine
         $em = $this->getDoctrine()->getManager();
 
@@ -60,6 +65,7 @@ class NoviosController extends Controller
         $formPadrinos = $this->createForm(new PadrinosType(), $formPadrinosData);
         $formNotasData = new Notas();
         $formNotas = $this->createForm(new NotasType(), $formNotasData);
+        $formDiaBoda = $this->createForm(new DiaBodaType());
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
@@ -135,6 +141,7 @@ class NoviosController extends Controller
             'formBoda' => $formBoda->createView(),
             'formPadrinos' => $formPadrinos->createView(),
             'formNotas' => $formNotas->createView(),
+            'formDiaBoda' => $formDiaBoda->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'padrinos' => $padrinos,
