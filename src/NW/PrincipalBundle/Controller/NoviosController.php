@@ -36,10 +36,6 @@ class NoviosController extends Controller
 	
 	public function nuestraBodaAction(Request $request)
     {
-        //$this->forward('nw_principal.forms.controller:manyForms');
-
-        //return $this->get('nw_principal.forms.controller:manyFormsAction');
-
         // Manejador de Doctrine
         $em = $this->getDoctrine()->getManager();
 
@@ -114,6 +110,20 @@ class NoviosController extends Controller
                     $newNota->setUser($user);
 
                     $em->persist($newNota);
+                    $em->flush();
+                }
+            }
+            // Formulario para cambiar la fecha de la boda
+            else if ($request->request->has($formDiaBoda->getName())) {
+                // Recuperando datos del formulario
+                $formDiaBoda->handleRequest($request);
+
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
+
+                    $em->persist($BodaVieja);
                     $em->flush();
                 }
             }

@@ -8,6 +8,6 @@ class FormsController
 {
     public function manyFormsAction()
     {
-        return new Response('Oliwis');
+        return 'Oliwis';
     }
 }

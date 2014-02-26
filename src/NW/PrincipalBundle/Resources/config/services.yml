@@ -4,5 +4,5 @@
 #    nw_principal.forms.controller:
 #        class: "%nw_principal.controller.forms.class%"
 services:
-    nw_principal.forms.controller:
-        class: NW\PrincipalBundle\Controller\FormsController
+    nw_principal.forms.controller.manyForms:
+        class: NW\PrincipalBundle\Controller\FormsController\manyFormsAction
