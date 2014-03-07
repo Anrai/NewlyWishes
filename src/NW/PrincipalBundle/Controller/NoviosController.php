@@ -79,7 +79,7 @@ class NoviosController extends Controller
 
                     $newBoda=$formBoda->getData();
                     $newBoda->setUser($user);
-                    $newBoda->setFechaBoda(new \DateTime());
+                    $newBoda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
 
                     $em->persist($newBoda);
                     $em->flush();
@@ -152,6 +152,7 @@ class NoviosController extends Controller
             'formPadrinos' => $formPadrinos->createView(),
             'formNotas' => $formNotas->createView(),
             'formDiaBoda' => $formDiaBoda->createView(),
+            'fechaBoda' => $BodaVieja->getFechaBoda()->format("Y"),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'padrinos' => $padrinos,
