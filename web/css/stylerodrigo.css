@@ -112,6 +112,10 @@ hr{
 	margin-right: 60px;
 	margin-top: 25px;
 }
+.puntov3{
+	margin-left: 80px;
+	margin-top: 25px;
+}
 .puntov{
 	margin-right: 10px;
 }
@@ -322,6 +326,11 @@ hr{
 	width: 180px;
 	border-radius: 3px;
 }
+.input11{
+	border-radius: 4px;
+	width: 400px;
+
+}
 .aceptar{
 	margin-top: -60px;
 }
@@ -408,6 +417,10 @@ hr{
 	margin-top: 2px;
 	background-color: rgb(146, 208, 80)!important;
 }
+.enviar4{
+	margin-left: 180%;
+	margin-top: 20px;
+}
 .caja.gris{
 	margin-top: 60px;
 	margin-left: 56px;
@@ -417,18 +430,52 @@ hr{
 	border-radius: 6px;
 	padding: 15px;
 }
+.caja.gris2{
+	margin-top: 60px;
+	margin-left: 70px;
+	background-color: #dcdcdc;
+	width: 1100px;
+	height: 180px;
+	border-radius: 6px;
+	padding: 20px;
+}
+.caja.gris3{
+	margin-top: 60px;
+	background-color: #dcdcdc;
+	width: 1100px;
+	height: 150px;
+	border-radius: 6px;
+	padding: 20px;
+}
+.caja.gris3 h1{
+	font-size: 30px;
+}
 .carrito{
 	margin-top: 20px;
 	width: 54px;
 	height: 45px;
+}
+.carrito2{
+	margin-top: 20px;
+	width: 54px;
+	height: 45px;
+	margin-left: 180px;
 }
 .artcarrito{
 	margin-top: 20px;
 	font-size: 15px;
 	margin-left: -50px;
 }
+.artcarrito2{
+	margin-top: 20px;
+	font-size: 15px;
+	margin-left: 50px;
+}
 .botoon{
 	margin-left: 150px;
+}
+.botoon2{
+	margin-left: 260px;
 }
 .producto{
 	padding: 80px;
@@ -444,10 +491,39 @@ hr{
 	height: 20px;
 	width: 40px;
 }
-
-
-
-
+.noticia1{
+	width: 100%;
+	margin: 10px 0 0 45px;
+	border: solid 1px grey;
+	padding: 30px;
+	float: left;
+}
+.noticia2{
+	width: 100%;
+	margin: 10px 0 0 45px;
+	padding: 30px;
+	float: left;
+}
+.noticia2 p{
+	font-size: 15px;
+}
+.derecha img{
+	border: solid 1px grey;
+	margin: 10px 0 0 40px;
+	float: left;
+}
+.resultados{
+	width: 100%;
+	margin:0 0 40px;
+	padding: 0px;
+	float: right;
+}
+.resultados2{
+	border: solid 1px grey;
+}
+.estrellitas{
+	margin-top: 20px;
+}
 
 
 
