@@ -220,4 +220,33 @@ class Bodas
     {
         return $this->user;
     }
+
+    public function contadorFechaBoda()
+    {
+        $date1 = new \DateTime();
+        $date2 = $this->getFechaBoda();
+
+        $interval = $date1->diff($date2);
+
+        if ($date2->format("Y")<=$date1->format("Y") and $date2->format("M")<=$date1->format("M") and $date2->format("D")<=$date1->format("D"))
+        {
+            return "¡Felicidades!";
+        }
+        else
+        {
+            return $interval->format('Faltan %m meses y %d días para tu boda');
+        }
+    }
+
+    public function hayFechaBoda()
+    {
+        if($this->getFechaBoda()->format("Y") == 2000)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }

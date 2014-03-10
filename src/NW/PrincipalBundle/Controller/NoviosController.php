@@ -79,7 +79,15 @@ class NoviosController extends Controller
 
                     $newBoda=$formBoda->getData();
                     $newBoda->setUser($user);
-                    $newBoda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
+                    // Recordar la fecha de la boda o setear en el 2000 si no hay fecha
+                    if($BodaVieja->hayFechaBoda())
+                    {
+                        $newBoda->setFechaBoda($BodaVieja->getFechaBoda());
+                    }
+                    else
+                    {
+                        $newBoda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
+                    }
 
                     $em->persist($newBoda);
                     $em->flush();
@@ -152,7 +160,8 @@ class NoviosController extends Controller
             'formPadrinos' => $formPadrinos->createView(),
             'formNotas' => $formNotas->createView(),
             'formDiaBoda' => $formDiaBoda->createView(),
-            'fechaBoda' => $BodaVieja->getFechaBoda()->format("Y"),
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'padrinos' => $padrinos,
@@ -180,26 +189,60 @@ class NoviosController extends Controller
         return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-boda'));
     }
 	
-	public function nuestroCalendarioAction()
+	public function nuestroCalendarioAction(Request $request)
     {
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
+
+        // Formularios
+        $formDiaBoda = $this->createForm(new DiaBodaType());
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1
+            if ($request->request->has($formDiaBoda->getName())) {
+                // handle the first form
+                $formDiaBoda->handleRequest($request);
+
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
+
+                    $em->persist($BodaVieja);
+                    $em->flush();
+                }
+            }
+        }
 
         return $this->render('NWPrincipalBundle:Novios:nuestro-calendario.html.twig', array(
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
+            'formDiaBoda' => $formDiaBoda->createView(),
         ));
     }
 	
 	public function nuestroChecklistAction(Request $request)
     {
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
         $formAgregarData = new Checklist();
         $formAgregar = $this->createForm(new ChecklistType(), $formAgregarData);
+        $formDiaBoda = $this->createForm(new DiaBodaType());
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
@@ -220,16 +263,19 @@ class NoviosController extends Controller
                     $em->flush();
                 }
             }
-            // Se administra el otro formulario
-            /*else if ($request->request->has($formNovios->getName())) {
-                // handle the second form
-                $formNovios->handleRequest($request);
-         
-                if ($formNovios->isValid()) {
+            else if ($request->request->has($formDiaBoda->getName())) {
+                // handle the first form
+                $formDiaBoda->handleRequest($request);
 
-                    //Contenido
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
+
+                    $em->persist($BodaVieja);
+                    $em->flush();
                 }
-            }*/
+            }
         }
 
         // Obteniendo la lista de tareas en un arreglo de objectos
@@ -245,9 +291,12 @@ class NoviosController extends Controller
 
         return $this->render('NWPrincipalBundle:Novios:nuestro-checklist.html.twig', array(
             'formAgregar' => $formAgregar->createView(),
+            'formDiaBoda' => $formDiaBoda->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'tasks'=>$tasks,
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
         ));
     }
 
@@ -285,36 +334,57 @@ class NoviosController extends Controller
 	
 	public function nuestraMesaDeRegalosAction(Request $request)
     {
-        // Recuperando datos del usuario y novios
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
-
-        // Estableciendo Manejador de entidades
-        $em = $this->getDoctrine()->getManager();
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
         // Nuevo objeto regalo para el formulario
         $formRegaloData = new MesaRegalos();
         $formRegalo = $this->createForm(new RegaloType(), $formRegaloData);
+        $formDiaBoda = $this->createForm(new DiaBodaType());
         
-        // Manipuando formulario enviado
-        $formRegalo->handleRequest($request);
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1
+            if ($request->request->has($formDiaBoda->getName())) {
+                // handle the first form
+                $formDiaBoda->handleRequest($request);
 
-        if($formRegalo->isValid())
-        {
-            // Obtener datos del formulario
-            $newRegalo = $formRegalo->getData();
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
 
-            // Se recupera la categoria original
-            $categoria = $em->getRepository('NWPrincipalBundle:CatRegalos')->find($formRegalo['categoria']->getData());
+                    $em->persist($BodaVieja);
+                    $em->flush();
+                }
+            }
+            else if ($request->request->has($formRegalo->getName()))
+            {
+                $formRegalo->handleRequest($request);
 
-            // Asignar valores inexistentes en la nueva clase regalo: usuario, partes pagadas y categoría
-            $newRegalo->setUser($user);
-            $newRegalo->setHorcruxesPagados(0);
-            $newRegalo->setCatregalos($categoria);
+                if($formRegalo->isValid())
+                {
+                    // Obtener datos del formulario
+                    $newRegalo = $formRegalo->getData();
 
-            $em->persist($newRegalo);
-            $em->flush();
+                    // Se recupera la categoria original
+                    $categoria = $em->getRepository('NWPrincipalBundle:CatRegalos')->find($formRegalo['categoria']->getData());
+
+                    // Asignar valores inexistentes en la nueva clase regalo: usuario, partes pagadas y categoría
+                    $newRegalo->setUser($user);
+                    $newRegalo->setHorcruxesPagados(0);
+                    $newRegalo->setCatregalos($categoria);
+
+                    $em->persist($newRegalo);
+                    $em->flush();
+                }
+            }
         }
 
         // Obteniendo la lista de articulos de la mesa de regalos
@@ -333,6 +403,9 @@ class NoviosController extends Controller
             'novio' => $novio->getNombre(),
             'regalos' => $regalos,
             'formRegalo' => $formRegalo->createView(),
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
+            'formDiaBoda' => $formDiaBoda->createView(),
         ));
     }
 
@@ -348,25 +421,50 @@ class NoviosController extends Controller
 	
 	public function nuestraListaDeInvitadosAction(Request $request)
     {
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
         $formAgregarData = new ListaInvitados();
         $formAgregar = $this->createForm(new ListaInvitadosType(), $formAgregarData);
+        $formDiaBoda = $this->createForm(new DiaBodaType());
 
-        // Manejo de los datos del formulario
-        $formAgregar->handleRequest($request);
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1
+            if ($request->request->has($formDiaBoda->getName())) {
+                // handle the first form
+                $formDiaBoda->handleRequest($request);
 
-        if($formAgregar->isValid())
-        {
-            $newInvitado=$formAgregar->getData();
-            $newInvitado->setUser($user);
-            $newInvitado->setStatus(false);
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($newInvitado);
-            $em->flush();
+                    $em->persist($BodaVieja);
+                    $em->flush();
+                }
+            }
+            else if($request->request->has($formAgregar->getName())) {
+                // Manejo de los datos del formulario
+                $formAgregar->handleRequest($request);
+
+                if($formAgregar->isValid())
+                {
+                    $newInvitado=$formAgregar->getData();
+                    $newInvitado->setUser($user);
+                    $newInvitado->setStatus(false);
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($newInvitado);
+                    $em->flush();
+                }
+            }
         }
 
         // Obteniendo la lista de invitados en un arreglo de objetos
@@ -388,11 +486,14 @@ class NoviosController extends Controller
 
         return $this->render('NWPrincipalBundle:Novios:nuestra-lista-de-invitados.html.twig', array(
             'formAgregar' => $formAgregar->createView(),
+            'formDiaBoda' => $formDiaBoda->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'totalInvitados' => count($invitados),
             'confirmadosInvitados' => $confirmadosInvitados,
             'invitados'=>$invitados,
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
         ));
     }
 
@@ -430,10 +531,13 @@ class NoviosController extends Controller
 	
 	public function nuestraCuentaAction(Request $request)
     {
-        // Obtener usuario y novios
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
         // Formulario de edición de datos de los novios
         $NoviasObject=new Novias();
@@ -441,6 +545,7 @@ class NoviosController extends Controller
         $formData['novias'] = $NoviasObject;
         $formData['novios'] = new Novios();
         $formNovios = $this->createForm(new EdicionNoviosType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
+        $formDiaBoda = $this->createForm(new DiaBodaType());
 
         // Formulario de cambio de contraseña
         $form=$this->createFormBuilder()
@@ -524,9 +629,21 @@ class NoviosController extends Controller
                     $novio->setCp($formNovios["novios"]["cp"]->getData());
 
                     // Persistiendo los datos en la base de datos
-                    $em = $this->getDoctrine()->getManager();
                     $em->persist($novia);
                     $em->persist($novio);
+                    $em->flush();
+                }
+            }
+            else if ($request->request->has($formDiaBoda->getName())) {
+                // handle the first form
+                $formDiaBoda->handleRequest($request);
+
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
+
+                    $em->persist($BodaVieja);
                     $em->flush();
                 }
             }
@@ -558,35 +675,94 @@ class NoviosController extends Controller
         return $this->render('NWPrincipalBundle:Novios:nuestra-cuenta.html.twig', array(
             'form' => $form->createView(),
             'formNovios' => $formNovios->createView(),
+            'formDiaBoda' => $formDiaBoda->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'noviaInfo' => $noviaInfo,
             'novioInfo' => $novioInfo,
-            'statusForm' => $statusForm
+            'statusForm' => $statusForm,
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
         ));
     }
 	
-	public function nuestraInformacionBancariaAction()
+	public function nuestraInformacionBancariaAction(Request $request)
     {
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
+
+        $formDiaBoda = $this->createForm(new DiaBodaType());
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1
+            if ($request->request->has($formDiaBoda->getName())) {
+                // handle the first form
+                $formDiaBoda->handleRequest($request);
+
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
+
+                    $em->persist($BodaVieja);
+                    $em->flush();
+                }
+            }
+        }
 
         return $this->render('NWPrincipalBundle:Novios:nuestra-informacion-bancaria.html.twig', array(
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
+            'formDiaBoda' => $formDiaBoda->createView(),
         ));
     }
 	
-	public function nuestrasComprasAction()
+	public function nuestrasComprasAction(Request $request)
     {
+        // Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $novia=$user->getNovias();
         $novio=$user->getNovios();
+        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
+
+        $formDiaBoda = $this->createForm(new DiaBodaType());
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1
+            if ($request->request->has($formDiaBoda->getName())) {
+                // handle the first form
+                $formDiaBoda->handleRequest($request);
+
+                if($formDiaBoda->isValid())
+                {
+                    $DiaBoda=$formDiaBoda['fecha']->getData();
+                    $BodaVieja->setFechaBoda($DiaBoda);
+
+                    $em->persist($BodaVieja);
+                    $em->flush();
+                }
+            }
+        }
 
         return $this->render('NWPrincipalBundle:Novios:nuestras-compras.html.twig', array(
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
+            'formDiaBoda' => $formDiaBoda->createView(),
         ));
     }
 

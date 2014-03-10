@@ -21,10 +21,10 @@
 				<br>
 				<h4>Hoy es <span class="esc">{{"now"|date("m/d/Y")}}</span></h4>
 				<br>
-				{% if fechaBoda==2000 %}
-					<a class="art3" data-toggle="modal" data-target="#dia"><h4 class="esc">¿Qué día es tu boda?</h4></a>
+				{% if hayFechaBoda %}
+					<h4 class="esc">{{ contadorFechaBoda }}</h4>
 				{% else %}
-					<h4 class="esc">Ya merito es tu boda</h4>
+					<a class="art3" data-toggle="modal" data-target="#dia"><h4 class="esc">¿Qué día es tu boda?</h4></a>
 				{% endif %}
 			</div>
 		</div>
