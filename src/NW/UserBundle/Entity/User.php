@@ -353,4 +353,42 @@ class User extends BaseUser
     {
         return $this->mesaregalos;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $articulos;
+
+
+    /**
+     * Add articulos
+     *
+     * @param \NW\PrincipalBundle\Entity\Articulos $articulos
+     * @return User
+     */
+    public function addArticulo(\NW\PrincipalBundle\Entity\Articulos $articulos)
+    {
+        $this->articulos[] = $articulos;
+
+        return $this;
+    }
+
+    /**
+     * Remove articulos
+     *
+     * @param \NW\PrincipalBundle\Entity\Articulos $articulos
+     */
+    public function removeArticulo(\NW\PrincipalBundle\Entity\Articulos $articulos)
+    {
+        $this->articulos->removeElement($articulos);
+    }
+
+    /**
+     * Get articulos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticulos()
+    {
+        return $this->articulos;
+    }
 }

@@ -7,7 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 use NW\PrincipalBundle\Form\Type\EdicionProveedorType;
+use NW\PrincipalBundle\Form\Type\ArticuloType;
 
+use NW\PrincipalBundle\Entity\Articulos;
 use NW\UserBundle\Entity\registroproveedores;
 
 class ProveedoresController extends Controller
@@ -126,16 +128,70 @@ class ProveedoresController extends Controller
         ));
     }
 
-    public function misproductosAction()
+    public function misproductosAction(Request $request)
     {
+    	// Manejador de Doctrine
+        $em = $this->getDoctrine()->getManager();
+		
+		// Obtener Datos del proveedor
         $user=$this->getUser();
         $proveedorObject=$user->getRegistroproveedores();
-
         $proveedor['nombre']=$proveedorObject->getNombreRazon();
         $proveedor['cuenta']=$proveedorObject->getId();
 
+        // Formulario de nuevo artículo
+        $formArticuloData = new Articulos();
+        $formArticulo = $this->createForm(new ArticuloType(), $formArticuloData);
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1 (Artículo nuevo)
+            if ($request->request->has($formArticulo->getName())) {
+                // handle the first form
+                $formArticulo->handleRequest($request);
+         
+                if ($formArticulo->isValid()) {
+        
+        			// Convirtiendo a array los tamaños y las fotos
+                	$tamanos = explode(',', $formArticulo["tamanos"]->getData());
+                	$fotos = explode(',', $formArticulo["fotos"]->getData());
+
+                	$newArticulo=$formArticulo->getData();
+                	$newArticulo->setUser($user);
+                	$newArticulo->setTamanos($tamanos);
+                	$newArticulo->setFotos($fotos);
+
+                    $em->persist($newArticulo);
+                    $em->flush();
+                }
+            }
+            // Formulario2
+            /*else if ($request->request->has($formOtro->getName())) {
+                // handle the second form
+                $formOtro->handleRequest($request);
+         
+                if ($formOtro->isValid()) {
+        
+                    //Contenido
+                }
+            }*/
+        }
+
+        // Obteniendo la lista de artículos en un arreglo de objetos
+        $articulos = $em->getRepository('NWPrincipalBundle:Articulos')->findBy(array('usuarioId' => $user->getId()));
+
+        // Convirtiendo los resultados en arrays
+        foreach($articulos as $index=>$value)
+        {
+            $objetoenArray=$articulos[$index]->getValues();
+            $articulos[$index]=$objetoenArray;
+        }
+
         return $this->render('NWPrincipalBundle:Proveedores:misproductos.html.twig', array(
             'proveedor' => $proveedor,
+            'formArticulo' => $formArticulo->createView(),
+            'articulos' => $articulos,
         ));
     }
 

@@ -1,0 +1,42 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Articulos.orm.yml
+NW\PrincipalBundle\Entity\Articulos:
+    type: entity
+    table: articulos
+    manyToOne:
+        user:
+            targetEntity: NW\UserBundle\Entity\User
+            inversedBy: articulos
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        usuarioId:
+            type: integer
+        idInterno:
+            type: string
+            length: 30
+        nombre:
+            type: string
+            length: 100
+        descripcion:
+            type: text
+        stock:
+            type: integer
+        precio:
+            type: integer
+        precioPromocion:
+            type: integer
+        tamanos:
+            type: simple_array
+        tipo:
+            type: string
+            length: 15
+        estatus:
+            type: boolean
+        fotos:
+            type: simple_array

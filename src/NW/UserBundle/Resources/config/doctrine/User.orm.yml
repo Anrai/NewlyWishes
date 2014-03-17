@@ -36,3 +36,6 @@ NW\UserBundle\Entity\User:
         mesaregalos:
             targetEntity:  NW\PrincipalBundle\Entity\MesaRegalos
             mappedBy: user
+        articulos:
+            targetEntity:  NW\PrincipalBundle\Entity\Articulos
+            mappedBy: user
