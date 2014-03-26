@@ -18,9 +18,10 @@ class RegistroType extends AbstractType
         // Se genera el formulario para el registro de usuarios
         $builder->add('userName', 'text', array('mapped' => false, 'required'  => true));
         $builder->add('userPass', 'password', array('mapped' => false, 'required'  => true));
+        $builder->add('mismaDireccion', 'checkbox', array('mapped' => false, 'required'  => false));
         $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));
-        $builder->add('enviar', 'submit');
+        $builder->add('aceptar', 'submit');
     }
 
     public function getName()

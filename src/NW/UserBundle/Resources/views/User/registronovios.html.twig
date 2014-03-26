@@ -46,8 +46,14 @@
 			        </div>
 			    </div>
 
+			    <div class="row">
+			    	<div class="col-md-12">
+				        {{ form_widget(form.mismaDireccion) }} {{ form_label(form.mismaDireccion, '¿La dirección del novio es la misma que de la novia?') }}
+			    	</div>
+
 				<div class="row" style="margin-top:20px;">
 					<div class="col-md-12">
+						<br />
 						<h3>Datos del Novio:</h3>
 					</div>
 				</div>  
@@ -93,7 +99,7 @@
 						{{ form_widget(form.terminosPrivacidad) }} {{ form_label(form.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
 					</div>
 					<div class="col-md-4">
-						{{ form_widget(form.enviar) }}
+						{{ form_widget(form.aceptar) }}
 					</div>
 				</div>
 			{{ form_end(form) }}
