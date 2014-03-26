@@ -358,7 +358,7 @@ hr{
 }
 .input6{
 	width: 700px;
-	height: 150px;
+	height: 40px;
 	border-radius: 5px;
 }
 .input7{
@@ -405,6 +405,34 @@ hr{
 .enviar{
 	margin-left: 40%;
 	margin-top: 20px;
+}
+#enviar_form2{
+	width:100px;
+	background:rgba(198,41,158,1);
+	color:rgba(255,255,255,1);
+	border:none;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-ms-border-radius:6px;
+	-o-border-radius:6px;
+	-webkit-border-radius:6px;
+	padding:6px;
+	margin-left: 33px;
+	margin-top: 15px;
+}
+.enviar_form2{
+	width:100px;
+	background:rgba(198,41,158,1);
+	color:rgba(255,255,255,1);
+	border:none;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-ms-border-radius:6px;
+	-o-border-radius:6px;
+	-webkit-border-radius:6px;
+	padding:6px;
+	margin-left: 33px;
+	margin-top: 15px;
 }
 .enviar2{
 	margin-left: -66px;
@@ -524,7 +552,14 @@ hr{
 .estrellitas{
 	margin-top: 20px;
 }
-
+.input_registro_novios2{
+	font-size:14px;
+	width:45%;
+	border-radius:5px;
+	border:rgba(216,216,216,1) solid 1px;
+	padding:6px;
+	margin-bottom:10px;
+}
 
 
 

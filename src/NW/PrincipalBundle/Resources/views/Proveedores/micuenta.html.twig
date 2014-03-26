@@ -58,7 +58,7 @@
 								        <br>
 								        <div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
-								        	{{ form_widget(formProveedor.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
+								        	{{ form_widget(formProveedor.rfc, { 'attr': {'class': 'input_registro_novios2', 'placeholder': 'RFC' } }) }}
 								        	<img src="{{asset('img/mini-punto.png')}}">
 								        	{{ form_widget(formProveedor.ciudad, { 'attr': {'class': 'input_registro_novios input5 ', 'placeholder': 'Ciudad' } }) }}
 								        </div>
@@ -83,8 +83,8 @@
 								        <br>
 								        <div class="row">
 							        		<div class="col-xs-12">
-						        			{{ form_widget(formProveedor.terminosCondiciones) }} {{ form_label(formProveedor.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
-											{{ form_widget(formProveedor.terminosPrivacidad) }} {{ form_label(formProveedor.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
+						        			 {{ form_label(formProveedor.terminosCondiciones, 'Acepto los términos y condiciones') }}&nbsp;&nbsp;{{ form_widget(formProveedor.terminosCondiciones) }}<br />
+											{{ form_label(formProveedor.terminosPrivacidad, 'Acepto los términos de privacidad') }}&nbsp;&nbsp;{{ form_widget(formProveedor.terminosPrivacidad) }} <br />
 							        		</div>
 								        </div>
 								        <br>
@@ -94,6 +94,7 @@
 							        		</div>
 							      	</div>
 						    	</div>
+						    	{{ form_widget(formProveedor.Enviar, { 'attr': {'class': 'btn btn-default enviar_form2'}}) }}
 						    	{{ form_end(formProveedor) }}
 						      </div>
 								
@@ -256,30 +257,32 @@
 										  </tbody>
 										  <tr>
 										    <td class="funcionalidades"> Costo mensual (3 meses gratis al registrarte) </td>
-										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $299 </label></td>
-										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $599 </label></td>
-										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $299 </label></td>
-										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked> $499 </label></td>
-										    <td class="term"><label><input type="radio" name="optionsRadios" id="optionsRadios1" checked>$999 </label></td>
+										    <td class="term"><label> $299&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
+										    <td class="term"><label> $599&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
+										    <td class="term"><label> $299&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
+										    <td class="term"><label> $499&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
+										    <td class="term"><label>$999&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
 										  </tr>
 										</table>
+											<div class="row">
+												<div class="col-xs-9">
+														<div class="radio">
+													  		<label>
+													    		He leído y acepto los <span class="term">términos y condiciones</span>&nbsp;&nbsp;&nbsp;<input type="checkbox">
+													  		</label>
+														</div>
+														<div class="radio">
+													  		<label>
+													    		He leído y acepto los <span class="term">términos de privacidad</span>&nbsp;&nbsp;&nbsp;<input type="checkbox">
+													  		</label>
+														</div>
+												</div>
+												<div class="col-xs-3">
+													<button id="enviar_form2" name="" class="btn btn-default">Enviar</button>
+												</div>
+											</div>
 
-										<div class="container">
-											<div class="radio">
-										  		<label>
-										    		<input type="checkbox">He leído y acepto los <span class="term">términos y condiciones</span>
-										  		</label>
-											</div>
-											<div class="radio">
-										  		<label>
-										    		<input type="checkbox">He leído y acepto los <span class="term">términos de privacidad</span>
-										  		</label>
-											</div>
-										</div>
 										<br>
-										<div class="container center">
-											<h6>Datos obligatorios</h6>
-										</div>
 									</div>	
 			      			</div>
 					      <div class="modal-body">
@@ -341,7 +344,6 @@
 										<img class="ejlogo" src="{{asset('img/ejlogo.jpg')}}">
 									</div>
 									<div class="col-xs-4">
-										<input type="submit" value="Seleccionar Archivo" class="boton-seleccionar"> <br>
 										<label for="ejemplo_archivo_1" class="cargar">Haz cargado el siguiente archivo</label>
     									<input type="file" id="ejemplo_archivo_1" class="cargar2">
 									</div>
@@ -392,7 +394,7 @@
 					        			<span>Datos obligatorios</span>	
 					        		</div>
 								</div>
-
+									
 						    	
 						    </div>
 								
