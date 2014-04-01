@@ -22,7 +22,7 @@
 						<p class="verde">Nuevo banner</p>	
 					</div>
 					<div class="col-md-1">
-						<p class="mas mas2">+</p>
+						<p data-toggle="modal" data-target="#modalMas" class="mas mas2">+</p>
 					</div>
 					<div class="col-md-10">
 						<h5 class="art">Promocion 1</h5>	
@@ -142,7 +142,7 @@
 			      <div class="modal-header2">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			        <div class="col-xs-7">
-			        	<h4 class="modal-title rosa" id="promocion">Editar promocion 1</h4>
+			        	<h4 class="modal-title rosa" id="promocion">Editar promocion</h4>
 			        </div>
 			        <div class="col-xs-5">
 		        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
@@ -165,6 +165,40 @@
 			    </div>
 			  </div>
 			</div>
+
+
+			<!--Modal + -->
+
+			<div class="modal fade" id="modalMas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+			      <div class="modal-header2">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <div class="col-xs-7">
+			        	<h4 class="modal-title rosa" id="modalMas">Agregar Banner</h4>
+			        </div>
+			        <div class="col-xs-5">
+		        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+			        </div>
+			      </div>
+			      
+			      <div class="modal-body">
+			      	<div class="row">
+			      		<div class="col-xs-9 left3">
+			      			<input type="submit" id="enviar_form" value="Subir Imagen del Banner" style="width:160px;"> <br>
+			      		</div>
+			      		<div class="col-xs-8">
+			      			<input type="text" id="EdicionProveedor_cp" name="EdicionProveedor[cp]" required="required" maxlength="5" class="input_registro_novios input5 left4" placeholder="ID de artículo relacionado">
+			      		</div>
+			      		<div class="col-xs-2">
+			      			<input class="logo2" type="submit" id="enviar_form" value="Aceptar" style="width:120px;">
+			      		</div>
+			      	</div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
 			<!-- FIN CARGA DE ARTICULOS -->
 		
 			
