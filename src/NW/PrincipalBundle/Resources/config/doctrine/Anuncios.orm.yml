@@ -1,0 +1,16 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Anuncios.orm.yml
+NW\PrincipalBundle\Entity\Anuncios:
+    type: entity
+    table: anuncios
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        webpage:
+            type: string   
+            length: 255
+        path:
+            type: string
+            length: 255

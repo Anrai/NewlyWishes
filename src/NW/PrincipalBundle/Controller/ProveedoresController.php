@@ -8,8 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 use NW\PrincipalBundle\Form\Type\EdicionProveedorType;
 use NW\PrincipalBundle\Form\Type\ArticuloType;
+use NW\PrincipalBundle\Form\Type\AnuncioType;
 
 use NW\PrincipalBundle\Entity\Articulos;
+use NW\PrincipalBundle\Entity\Anuncios;
 use NW\UserBundle\Entity\registroproveedores;
 
 class ProveedoresController extends Controller
@@ -216,7 +218,12 @@ class ProveedoresController extends Controller
         $proveedor['nombre']=$proveedorObject->getNombreRazon();
         $proveedor['cuenta']=$proveedorObject->getId();
 
+        // Formulario del anuncio
+        $formAnuncioData = new Anuncios();
+        $formAnuncio = $this->createForm(new AnuncioType(), $formAnuncioData);
+
         return $this->render('NWPrincipalBundle:Proveedores:misanuncios.html.twig', array(
+        	'formAnuncio' => $formAnuncio->createView(),
             'proveedor' => $proveedor,
         ));
     }
