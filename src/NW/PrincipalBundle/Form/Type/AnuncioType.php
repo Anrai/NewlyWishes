@@ -13,6 +13,7 @@ class AnuncioType extends AbstractType
     {
         $builder->add('webpage', 'text');
         $builder->add('Agregar', 'submit');
+        $builder->add('file', 'file');
     }
 
     /**

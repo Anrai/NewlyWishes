@@ -210,8 +210,10 @@ class ProveedoresController extends Controller
         ));
     }
 
-    public function misanunciosAction()
+    public function misanunciosAction(Request $request)
     {
+    	$em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $proveedorObject=$user->getRegistroproveedores();
 
@@ -221,6 +223,36 @@ class ProveedoresController extends Controller
         // Formulario del anuncio
         $formAnuncioData = new Anuncios();
         $formAnuncio = $this->createForm(new AnuncioType(), $formAnuncioData);
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1 (Editar Anuncio)
+            if ($request->request->has($formAnuncio->getName())) {
+                // handle the first form
+                $formAnuncio->handleRequest($request);
+         
+                if ($formAnuncio->isValid()) {
+      
+      				$formAnuncioData->upload();
+
+      				$formAnuncioData->setUser($user);
+
+                    $em->persist($formAnuncioData);
+                    $em->flush();
+                }
+            }
+            // Formulario2
+            /*else if ($request->request->has($formOtro->getName())) {
+                // handle the second form
+                $formOtro->handleRequest($request);
+         
+                if ($formOtro->isValid()) {
+        
+                    //Contenido
+                }
+            }*/
+        }
 
         return $this->render('NWPrincipalBundle:Proveedores:misanuncios.html.twig', array(
         	'formAnuncio' => $formAnuncio->createView(),

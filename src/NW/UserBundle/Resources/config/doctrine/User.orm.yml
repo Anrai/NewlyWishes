@@ -17,6 +17,9 @@ NW\UserBundle\Entity\User:
         registroproveedores:
             targetEntity: registroproveedores
             mappedBy: user
+        anuncios:
+            targetEntity:  NW\PrincipalBundle\Entity\Anuncios
+            mappedBy: user
     oneToMany:
         checklist:
             targetEntity:  NW\PrincipalBundle\Entity\Checklist

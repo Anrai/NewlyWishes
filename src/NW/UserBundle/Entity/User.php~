@@ -353,4 +353,70 @@ class User extends BaseUser
     {
         return $this->mesaregalos;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $articulos;
+
+
+    /**
+     * Add articulos
+     *
+     * @param \NW\PrincipalBundle\Entity\Articulos $articulos
+     * @return User
+     */
+    public function addArticulo(\NW\PrincipalBundle\Entity\Articulos $articulos)
+    {
+        $this->articulos[] = $articulos;
+
+        return $this;
+    }
+
+    /**
+     * Remove articulos
+     *
+     * @param \NW\PrincipalBundle\Entity\Articulos $articulos
+     */
+    public function removeArticulo(\NW\PrincipalBundle\Entity\Articulos $articulos)
+    {
+        $this->articulos->removeElement($articulos);
+    }
+
+    /**
+     * Get articulos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticulos()
+    {
+        return $this->articulos;
+    }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Anuncios
+     */
+    private $anuncios;
+
+
+    /**
+     * Set anuncios
+     *
+     * @param \NW\PrincipalBundle\Entity\Anuncios $anuncios
+     * @return User
+     */
+    public function setAnuncios(\NW\PrincipalBundle\Entity\Anuncios $anuncios = null)
+    {
+        $this->anuncios = $anuncios;
+
+        return $this;
+    }
+
+    /**
+     * Get anuncios
+     *
+     * @return \NW\PrincipalBundle\Entity\Anuncios 
+     */
+    public function getAnuncios()
+    {
+        return $this->anuncios;
+    }
 }

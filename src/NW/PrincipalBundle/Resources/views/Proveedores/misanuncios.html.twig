@@ -57,7 +57,7 @@
 		<!-- Button trigger modal -->
 		<!-- Modal -->
 		<div class="modal fade" id="anuncio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		{{ form_start(formAnuncio) }}
+		
 		  <div class="modal-dialog">
 		    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
 		      <div class="modal-header2">
@@ -71,21 +71,24 @@
 		      </div>
 		      
 		      <div class="modal-body">
+		      {{ form_start(formAnuncio) }}
 		      	<div class="row">
 		      		<div class="col-xs-9 left3">
-		      			<input type="submit" id="enviar_form" value="Seleccionar Archivo" style="width:120px;"> <br>
+		      			{{ form_widget(formAnuncio.file, { 'attr': {'class': '', 'style': '', 'placeholder': '' } }) }}
+		      			<br>
 		      		</div>
 		      		<div class="col-xs-8">
-		      			<input type="text" id="EdicionProveedor_cp" name="EdicionProveedor[cp]" required="required" maxlength="5" class="input_registro_novios input5 left4" placeholder="www.sitio externo.com">
+		      			{{ form_widget(formAnuncio.webpage, { 'attr': {'class': 'input_registro_novios input5 left4', 'style': '', 'placeholder': 'www.misitio.com' } }) }}
 		      		</div>
 		      		<div class="col-xs-2">
-		      			<input class="logo2" type="submit" id="enviar_form" value="Aceptar" style="width:120px;">
+		      			{{ form_widget(formAnuncio.Agregar, { 'attr': {'class': 'logo2 enviar_form', 'style': 'width:120px', 'placeholder': '' } }) }}
 		      		</div>
 		      	</div>
+		      {{ form_end(formAnuncio) }}
 		      </div>
 		    </div>
 		  </div>
-		{{ form_end(formAnuncio) }}
+		
 		</div>
 			<!-- FIN CARGA DE ARTICULOS -->
 

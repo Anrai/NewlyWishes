@@ -305,15 +305,46 @@ class MesaRegalos
         return $this->catregalos;
     }
 
+    /**
+     * @var integer
+     */
+    private $cantidad;
+
+
+    /**
+     * Set cantidad
+     *
+     * @param integer $cantidad
+     * @return MesaRegalos
+     */
+    public function setCantidad($cantidad)
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidad
+     *
+     * @return integer 
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
+    }
+
     // Método que regresa mis valores en forma de array
     public function getValues(){
         return array(
         'id' => $this->getId(),
         'categoria' => $this->getCategoria(),
         'regalo' => $this->getRegalo(),
+        'cantidad' => $this->getCantidad(),
         'precioTotal' => $this->getPrecioTotal(),
         'horcruxes' => $this->getHorcruxes(),
-        'horcruxesFaltantes' => $this->getHorcruxes()-$this->getHorcruxesPagados(),
+        'horcruxesFaltantes' => $this->getCantidad()*$this->getHorcruxes()-$this->getHorcruxesPagados(),
+        'completados' =>  floor($this->getHorcruxesPagados()/$this->getHorcruxes()),
         'descripcion' => $this->getDescripcion(),
         );
     }

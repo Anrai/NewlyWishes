@@ -391,4 +391,32 @@ class User extends BaseUser
     {
         return $this->articulos;
     }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Anuncios
+     */
+    private $anuncios;
+
+
+    /**
+     * Set anuncios
+     *
+     * @param \NW\PrincipalBundle\Entity\Anuncios $anuncios
+     * @return User
+     */
+    public function setAnuncios(\NW\PrincipalBundle\Entity\Anuncios $anuncios = null)
+    {
+        $this->anuncios = $anuncios;
+
+        return $this;
+    }
+
+    /**
+     * Get anuncios
+     *
+     * @return \NW\PrincipalBundle\Entity\Anuncios 
+     */
+    public function getAnuncios()
+    {
+        return $this->anuncios;
+    }
 }
