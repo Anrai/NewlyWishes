@@ -4,200 +4,132 @@
 
 {% block partederecha %}
 		
-			<div class="row">
-				<div class="col-md-6">
+<div class="row">
+	<div class="col-md-6">
 
+	</div>
+	<div class="col-md-1">
+		<img class="puntov" src="{{asset('img/puntov.png')}}">
+	</div>
+	<div class="col-md-5">
+		<h1>Mis Banners Promocionales</h1>	
+	</div>	
+	<div class="row">
+		<div class="col-md-9">
+
+		</div>
+		<div class="col-md-2">
+			<p class="verde">Nuevo banner</p>	
+		</div>
+		<div class="col-md-1">
+			<p data-toggle="modal" data-target="#modalMas" class="mas mas2">+</p>
+		</div>
+	</div>
+</div>
+
+{% for banner in banners %}
+<div class="row">
+	<div class="col-md-6">
+
+	</div>
+	<div class="row">
+		<div class="col-md-9">
+
+		</div>
+		<div class="col-md-10">
+			<h5 class="art">Promocion {{loop.index}}</h5>	
+		</div>
+		<div class="col-md-2">
+			<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
+		</div>
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-1">
+
+	</div>
+	<dic class="col-md-5">
+		<img src="{{asset(banner.imageWebPath)}}" alt="ejemplo" class="marco"> 
+		<br>
+		<br>
+		<br>
+		<p>ID de artículo relacionado: <span class="art">{{banner.name}}</span></p>
+	</dic>
+	<div class="col-md-2 caja">
+		<img src="{{asset('img/bote.png')}}" alt="bote">
+		<p class="eliminar">Eliminar ese banner</p>
+	</div>
+</div>
+{% endfor %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Editar promocion 1 -->
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="promocion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+			<div class="modal-header2">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<div class="col-xs-7">
+					<h4 class="modal-title rosa" id="promocion">Editar promocion</h4>
 				</div>
-				<div class="col-md-1">
-					<img class="puntov" src="{{asset('img/puntov.png')}}">
+				<div class="col-xs-5">
+					<img class="logo-modal" src="{{asset('img/nw.png')}}">	
 				</div>
-				<div class="col-md-5">
-					<h1>Mis Banners Promocionales</h1>	
-				</div>	
+			</div>
+
+			<div class="modal-body">
+				editar
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--Modal + -->
+
+<div class="modal fade" id="modalMas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+			<div class="modal-header2">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<div class="col-xs-7">
+					<h4 class="modal-title rosa" id="modalMas">Agregar Promoción</h4>
+				</div>
+				<div class="col-xs-5">
+					<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+				</div>
+			</div>
+
+			<div class="modal-body">
+				{{ form_start(formBanner) }}
 				<div class="row">
-					<div class="col-md-9">
-						
+					<div class="col-xs-9 left3">
+						{{ form_widget(formBanner.file, { 'attr': {'class': '', 'style': '', 'placeholder': '' } }) }}
+						<br>
 					</div>
-					<div class="col-md-2">
-						<p class="verde">Nuevo banner</p>	
+					<div class="col-xs-8">
+						{{ form_widget(formBanner.name, { 'attr': {'class': 'input_registro_novios input5 left4', 'style': '', 'placeholder': 'ID de artículo relacionado' } }) }}
 					</div>
-					<div class="col-md-1">
-						<p data-toggle="modal" data-target="#modalMas" class="mas mas2">+</p>
-					</div>
-					<div class="col-md-10">
-						<h5 class="art">Promocion 1</h5>	
-					</div>
-					<div class="col-md-2">
-						<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
+					<div class="col-xs-2">
+						{{ form_widget(formBanner.Agregar, { 'attr': {'class': 'logo2 enviar_form', 'style': 'width:120px', 'placeholder': '' } }) }}
 					</div>
 				</div>
+				{{ form_end(formBanner) }}
 			</div>
-			<hr />
-			<div class="row">
-				<div class="col-md-1">
-					
-				</div>
-				<dic class="col-md-5">
-					<img src="{{asset('img/marco.png')}}" alt="ejemplo" class="marco"> 
-					<br>
-					<br>
-					<br>
-					<p>ID de artículo relacionado: <span class="art">12345</span></p>
-				</dic>
-				<div class="col-md-2 caja">
-					<img src="{{asset('img/bote.png')}}" alt="bote">
-					<p class="eliminar">Eliminar ese banner</p>
-				</div>
-			</div>
-
-			<!Aqui termina el primer bloque->
-
-			<div class="row">
-				<div class="col-md-6">
-
-				</div>
-				<div class="row">
-					<div class="col-md-9">
-						
-					</div>
-					<div class="col-md-10">
-						<h5 class="art">Promocion 2</h5>	
-					</div>
-					<div class="col-md-2">
-						<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
-					</div>
-				</div>
-			</div>
-			<hr />
-			
-
-			<div class="row">
-				<div class="col-md-1">
-					
-				</div>
-				<dic class="col-md-5">
-					<img src="{{asset('img/marco.png')}}" alt="ejemplo" class="marco"> 
-					<br>
-					<br>
-					<br>
-					<p>ID de artículo relacionado: <span class="art">12345</span></p>
-				</dic>
-				<div class="col-md-2 caja">
-					<img src="{{asset('img/bote.png')}}" alt="bote">
-					<p class="eliminar">Eliminar ese banner</p>
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-6">
-
-				</div>
-				<div class="row">
-					<div class="col-md-9">
-						
-					</div>
-					<div class="col-md-10">
-						<h5 class="art">Promocion 3</h5>	
-					</div>
-					<div class="col-md-2">
-						<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
-					</div>
-				</div>
-			</div>
-			<hr />
-			
-
-			<div class="row">
-				<div class="col-md-1">
-					
-				</div>
-				<dic class="col-md-5">
-					<img src="{{asset('img/marco.png')}}" alt="ejemplo" class="marco"> 
-					<br>
-					<br>
-					<br>
-					<p>ID de artículo relacionado: <span class="art">12345</span></p>
-				</dic>
-				<div class="col-md-2 caja">
-					<img src="{{asset('img/bote.png')}}" alt="bote">
-					<p class="eliminar">Eliminar ese banner</p>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			
-			<!-- Editar promocion 1 -->
-			<!-- Button trigger modal -->
-			<!-- Modal -->
-			<div class="modal fade" id="promocion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
-			      <div class="modal-header2">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <div class="col-xs-7">
-			        	<h4 class="modal-title rosa" id="promocion">Editar promocion</h4>
-			        </div>
-			        <div class="col-xs-5">
-		        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
-			        </div>
-			      </div>
-			      
-			      <div class="modal-body">
-			      	<div class="row">
-			      		<div class="col-xs-9 left3">
-			      			<input type="submit" id="enviar_form" value="Subir Imagen del Banner" style="width:160px;"> <br>
-			      		</div>
-			      		<div class="col-xs-8">
-			      			<input type="text" id="EdicionProveedor_cp" name="EdicionProveedor[cp]" required="required" maxlength="5" class="input_registro_novios input5 left4" placeholder="ID de artículo relacionado">
-			      		</div>
-			      		<div class="col-xs-2">
-			      			<input class="logo2" type="submit" id="enviar_form" value="Aceptar" style="width:120px;">
-			      		</div>
-			      	</div>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-
-
-			<!--Modal + -->
-
-			<div class="modal fade" id="modalMas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
-			      <div class="modal-header2">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <div class="col-xs-7">
-			        	<h4 class="modal-title rosa" id="modalMas">Agregar Promoción</h4>
-			        </div>
-			        <div class="col-xs-5">
-		        		<img class="logo-modal" src="{{asset('img/nw.png')}}">	
-			        </div>
-			      </div>
-			      
-			      <div class="modal-body">
-			      	<div class="row">
-			      		<div class="col-xs-9 left3">
-			      			<input type="submit" id="enviar_form" value="Subir Imagen del Banner" style="width:160px;"> <br>
-			      		</div>
-			      		<div class="col-xs-8">
-			      			<input type="text" id="EdicionProveedor_cp" name="EdicionProveedor[cp]" required="required" maxlength="5" class="input_registro_novios input5 left4" placeholder="ID de artículo relacionado">
-			      		</div>
-			      		<div class="col-xs-2">
-			      			<input class="logo2" type="submit" id="enviar_form" value="Aceptar" style="width:120px;">
-			      		</div>
-			      	</div>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+		</div>
+	</div>
+</div>
 
 			<!-- FIN CARGA DE ARTICULOS -->
 		

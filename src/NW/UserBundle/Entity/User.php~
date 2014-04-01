@@ -419,4 +419,42 @@ class User extends BaseUser
     {
         return $this->anuncios;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $banners;
+
+
+    /**
+     * Add banners
+     *
+     * @param \NW\PrincipalBundle\Entity\banners $banners
+     * @return User
+     */
+    public function addBanner(\NW\PrincipalBundle\Entity\banners $banners)
+    {
+        $this->banners[] = $banners;
+
+        return $this;
+    }
+
+    /**
+     * Remove banners
+     *
+     * @param \NW\PrincipalBundle\Entity\banners $banners
+     */
+    public function removeBanner(\NW\PrincipalBundle\Entity\banners $banners)
+    {
+        $this->banners->removeElement($banners);
+    }
+
+    /**
+     * Get banners
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBanners()
+    {
+        return $this->banners;
+    }
 }

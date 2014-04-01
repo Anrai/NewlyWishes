@@ -1,0 +1,25 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Banners.orm.yml
+NW\PrincipalBundle\Entity\Banners:
+    type: entity
+    table: banners
+    manyToOne:
+        user:
+            targetEntity: NW\UserBundle\Entity\User
+            inversedBy: banners
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        usuarioId:
+            type: integer
+        name:
+            type: string   
+            length: 255
+        path:
+            type: string
+            length: 255

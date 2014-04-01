@@ -5,14 +5,19 @@ namespace NW\PrincipalBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Uploads
+ * Banners
  */
-class Uploads
+class Banners
 {
     /**
      * @var integer
      */
     private $id;
+
+    /**
+     * @var integer
+     */
+    private $usuarioId;
 
     /**
      * @var string
@@ -23,6 +28,11 @@ class Uploads
      * @var string
      */
     private $path;
+
+    /**
+     * @var \NW\UserBundle\Entity\User
+     */
+    private $user;
 
 
     /**
@@ -36,10 +46,33 @@ class Uploads
     }
 
     /**
+     * Set usuarioId
+     *
+     * @param integer $usuarioId
+     * @return Banners
+     */
+    public function setUsuarioId($usuarioId)
+    {
+        $this->usuarioId = $usuarioId;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioId
+     *
+     * @return integer 
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuarioId;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
-     * @return Uploads
+     * @return Banners
      */
     public function setName($name)
     {
@@ -62,7 +95,7 @@ class Uploads
      * Set path
      *
      * @param string $path
-     * @return Uploads
+     * @return Banners
      */
     public function setPath($path)
     {
@@ -81,31 +114,26 @@ class Uploads
         return $this->path;
     }
 
-    public function getAbsolutePath()
+    /**
+     * Set user
+     *
+     * @param \NW\UserBundle\Entity\User $user
+     * @return Banners
+     */
+    public function setUser(\NW\UserBundle\Entity\User $user = null)
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+        $this->user = $user;
+
+        return $this;
     }
 
-    public function getWebPath()
+    /**
+     * Get user
+     *
+     * @return \NW\UserBundle\Entity\User 
+     */
+    public function getUser()
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return $this->user;
     }
 }

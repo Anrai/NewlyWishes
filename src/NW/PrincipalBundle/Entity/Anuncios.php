@@ -106,7 +106,7 @@ class Anuncios
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return 'uploads/anuncios/'.$this->getUsuarioId();
     }
 
     /**
@@ -166,7 +166,7 @@ class Anuncios
     }
 
     /**
-     * No sé si poner algo aquí
+     * 
      */
     private $file;
 

@@ -9,8 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 use NW\PrincipalBundle\Form\Type\EdicionProveedorType;
 use NW\PrincipalBundle\Form\Type\ArticuloType;
 use NW\PrincipalBundle\Form\Type\AnuncioType;
+use NW\PrincipalBundle\Form\Type\BannersType;
 
 use NW\PrincipalBundle\Entity\Articulos;
+use NW\PrincipalBundle\Entity\Banners;
 use NW\PrincipalBundle\Entity\Anuncios;
 use NW\UserBundle\Entity\registroproveedores;
 
@@ -197,16 +199,64 @@ class ProveedoresController extends Controller
         ));
     }
 
-    public function misbannersAction()
+    public function misbannersAction(Request $request)
     {
+    	$em = $this->getDoctrine()->getManager();
+
         $user=$this->getUser();
         $proveedorObject=$user->getRegistroproveedores();
 
         $proveedor['nombre']=$proveedorObject->getNombreRazon();
         $proveedor['cuenta']=$proveedorObject->getId();
 
+        // Formulario del anuncio
+        $formBannerData = new Banners();
+        $formBanner = $this->createForm(new BannersType(), $formBannerData);
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario 1 (Agregar Banner)
+            if ($request->request->has($formBanner->getName())) {
+                // handle the first form
+                $formBanner->handleRequest($request);
+         
+                if ($formBanner->isValid()) {
+      
+				    $formBannerData->setUser($user);
+      				$formBannerData->upload($user->getId());
+
+                    $em->persist($formBannerData);
+
+                    $em->flush();
+                }
+            }
+            // Formulario2
+            /*else if ($request->request->has($formOtro->getName())) {
+                // handle the second form
+                $formOtro->handleRequest($request);
+         
+                if ($formOtro->isValid()) {
+        
+                    //Contenido
+                }
+            }*/
+        }
+
+        // Obteniendo la lista de banners en un arreglo de objetos
+        $banners = $em->getRepository('NWPrincipalBundle:Banners')->findBy(array('usuarioId' => $user->getId()));
+
+        // Convirtiendo los resultados en arrays
+        foreach($banners as $index=>$value)
+        {
+            $objetoenArray=$banners[$index]->getValues();
+            $banners[$index]=$objetoenArray;
+        }
+
         return $this->render('NWPrincipalBundle:Proveedores:misbanners.html.twig', array(
             'proveedor' => $proveedor,
+            'formBanner' => $formBanner->createView(),
+            'banners' => $banners,
         ));
     }
 
@@ -219,6 +269,20 @@ class ProveedoresController extends Controller
 
         $proveedor['nombre']=$proveedorObject->getNombreRazon();
         $proveedor['cuenta']=$proveedorObject->getId();
+        
+        // Se carga un anuncio del proveedor si es que ya existe
+      	$AnuncioViejo = $em->getRepository('NWPrincipalBundle:Anuncios')->findOneByUsuarioId($user->getId());
+
+      	if ($AnuncioViejo)
+      	{
+      		$anuncioWebpage = $AnuncioViejo->getWebpage();
+      		$anuncioImagePath = $AnuncioViejo->getWebPath();
+      	}
+      	else
+      	{
+      		$anuncioWebpage = "No se ha definido ningun sitio";
+      		$anuncioImagePath = "img/anuncio.jpg";
+      	}
 
         // Formulario del anuncio
         $formAnuncioData = new Anuncios();
@@ -234,11 +298,21 @@ class ProveedoresController extends Controller
          
                 if ($formAnuncio->isValid()) {
       
-      				$formAnuncioData->upload();
+                	// Si ya existe un anuncio se actualiza, si no se hace una nuevo
+      				if ($AnuncioViejo) {
+      					$AnuncioViejo->setFile($formAnuncioData->getFile());
+      					$AnuncioViejo->setWebpage($formAnuncioData->getWebpage());
+      					$AnuncioViejo->upload();
 
-      				$formAnuncioData->setUser($user);
+      					$em->persist($AnuncioViejo);
+				    }
+				    else{
+					    $formAnuncioData->setUser($user);
+	      				$formAnuncioData->upload();
 
-                    $em->persist($formAnuncioData);
+	                    $em->persist($formAnuncioData);
+                	}
+
                     $em->flush();
                 }
             }
@@ -257,6 +331,8 @@ class ProveedoresController extends Controller
         return $this->render('NWPrincipalBundle:Proveedores:misanuncios.html.twig', array(
         	'formAnuncio' => $formAnuncio->createView(),
             'proveedor' => $proveedor,
+            'anuncioWebpage' => $anuncioWebpage,
+            'anuncioImagePath' => $anuncioImagePath,
         ));
     }
 
