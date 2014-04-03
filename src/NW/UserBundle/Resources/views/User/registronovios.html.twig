@@ -22,27 +22,27 @@
 				</div>
 	      
 			    <div class="row">
-			        <div class="col-md-4">
-			        	{{ form_widget(form.novias.nombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre' } }) }}
-			        	{{ form_widget(form.novias.sNombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Segundo Nombre' } }) }}
-				        {{ form_widget(form.novias.aPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
-				        {{ form_widget(form.novias.aMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
+			        <div class="col-md-4 puntosRosas">
+			        	<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.nombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre' } }) }}
+			        	<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.sNombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Segundo Nombre' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.aPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.aMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
 			        </div>
-			        <div class="col-md-4">
-			        	{{ form_widget(form.novias.eMail, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
-				        {{ form_widget(form.novias.lada, { 'attr': {'class': 'input_registro_novios input_registro20', 'placeholder': 'LADA' } }) }}
-						{{ form_widget(form.novias.telefono, { 'attr': {'class': 'input_registro_novios input_registro74', 'placeholder': 'Teléfono de casa u oficina' } }) }}
-						{{ form_widget(form.novias.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono celular' } }) }}
+			        <div class="col-md-4 puntosRosas">
+			        	<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.eMail, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.lada, { 'attr': {'class': 'input_registro_novios input_registro20', 'placeholder': 'LADA' } }) }}
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0px;" width="210"> {{ form_widget(form.novias.telefono, { 'attr': {'class': 'input_registro_novios input_registro74', 'placeholder': 'Teléfono de casa u oficina' } }) }}
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono celular' } }) }}
 			        </div>
-			        <div class="col-md-4">
-				        {{ form_widget(form.novias.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección completa' } }) }}
-						{{ form_label(form.novias.pais, 'País') }}
+			        <div class="col-md-4 puntosRosas">
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">{{ form_widget(form.novias.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección completa' } }) }}
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0; float:left; margin-left:-5px; margin-top:7px;" width="210">{{ form_label(form.novias.pais, 'País') }}
 				        {{ form_widget(form.novias.pais, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
 			            <br />
-				        {{ form_label(form.novias.estado, 'Estado') }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0; float:left; margin-top:7px;" width="210">{{ form_label(form.novias.estado, 'Estado') }}
 				        {{ form_widget(form.novias.estado, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
-				        {{ form_widget(form.novias.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Municipio o Delegación' } }) }}
-			    		{{ form_widget(form.novias.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0; float:left; margin-top:43px; margin-left:-23px;" width="210">{{ form_widget(form.novias.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Municipio o Delegación' } }) }}
+			    		<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.novias.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
 			        </div>
 			    </div>
 
@@ -59,27 +59,27 @@
 				</div>  
 				
 				<div class="row">
-			        <div class="col-md-4">
-			        	{{ form_widget(form.novios.nombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre' } }) }}
-			        	{{ form_widget(form.novios.sNombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Segundo Nombre' } }) }}
-				        {{ form_widget(form.novios.aPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
-				        {{ form_widget(form.novios.aMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
+			        <div class="col-md-4 puntosRosas">
+			        	<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:15px;" width="210">{{ form_widget(form.novios.nombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre' } }) }}
+			        	<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:15px;" width="210">{{ form_widget(form.novios.sNombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Segundo Nombre' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:15px;" width="210">{{ form_widget(form.novios.aPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:15px;" width="210">{{ form_widget(form.novios.aMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
 			        </div>
-			        <div class="col-md-4">
-			        	{{ form_widget(form.novios.eMail, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
-				        {{ form_widget(form.novios.lada, { 'attr': {'class': 'input_registro_novios input_registro20', 'placeholder': 'LADA' } }) }}
-						{{ form_widget(form.novios.telefono, { 'attr': {'class': 'input_registro_novios input_registro74', 'placeholder': 'Teléfono de casa u oficina' } }) }}
-						{{ form_widget(form.novios.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono celular' } }) }}
+			        <div class="col-md-4 puntosRosas">
+			        	<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">{{ form_widget(form.novios.eMail, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" style="float:left; margin-top:100px;"  width="210">{{ form_widget(form.novios.lada, { 'attr': {'class': 'input_registro_novios input_registro20', 'placeholder': 'LADA' } }) }}
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0; float:left margin-top:30px;;" width="210">{{ form_widget(form.novios.telefono, { 'attr': {'class': 'input_registro_novios input_registro74', 'placeholder': 'Teléfono de casa u oficina' } }) }}
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="float:left; margin-top::;px;" width="210">{{ form_widget(form.novios.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono celular' } }) }}
 			        </div>
-			        <div class="col-md-4">
-				        {{ form_widget(form.novios.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección completa' } }) }}
-						{{ form_label(form.novios.pais, 'País') }}
+			        <div class="col-md-4 puntosRosas">
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">{{ form_widget(form.novios.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección completa' } }) }}
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0; float:left; margin-left:-5px; margin-top:7px;" width="210">{{ form_label(form.novios.pais, 'País') }}
 				        {{ form_widget(form.novios.pais, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
 			            <br />
-				        {{ form_label(form.novios.estado, 'Estado') }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0; float:left; margin-top:7px;" width="210">{{ form_label(form.novios.estado, 'Estado') }}
 				        {{ form_widget(form.novios.estado, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
-				        {{ form_widget(form.novios.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Municipio o Delegación' } }) }}
-			    		{{ form_widget(form.novios.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
+				        <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:0; float:left; margin-top:43px; margin-left:-23px;" width="210">{{ form_widget(form.novios.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Municipio o Delegación' } }) }}
+			    		<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.novios.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
 			        </div>
 			    </div>
 
@@ -90,13 +90,13 @@
 				</div>
 					      
 				<div class="row">
-					<div class="col-md-4">
-						{{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
-						{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
+					<div class="col-md-4 puntosRosas">
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
 					</div>
-					<div class="col-md-4">
-						{{ form_widget(form.terminosCondiciones) }} {{ form_label(form.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
-						{{ form_widget(form.terminosPrivacidad) }} {{ form_label(form.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
+					<div class="col-md-4 puntosRosas">
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:7px;" width="210">{{ form_widget(form.terminosCondiciones) }} {{ form_label(form.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:7px;" width="210">{{ form_widget(form.terminosPrivacidad) }} {{ form_label(form.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
 					</div>
 					<div class="col-md-4">
 						{{ form_widget(form.aceptar) }}
