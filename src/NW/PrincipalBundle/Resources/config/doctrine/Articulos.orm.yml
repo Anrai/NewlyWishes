@@ -9,6 +9,10 @@ NW\PrincipalBundle\Entity\Articulos:
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
+    oneToMany:
+        fotosarticulos:
+            targetEntity: FotosArticulos
+            mappedBy: articulo
     id:
         id:
             type: integer
@@ -38,5 +42,3 @@ NW\PrincipalBundle\Entity\Articulos:
             length: 15
         estatus:
             type: boolean
-        fotos:
-            type: simple_array

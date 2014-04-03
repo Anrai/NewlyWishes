@@ -374,7 +374,51 @@ class Articulos
         'tamanos' => $this->getTamanos(),
         'tipo' => $this->getTipo(),
         'estatus' => $this->getEstatus(),
-        'fotos' => $this->getFotos(),
         );
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $fotosarticulos;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fotosarticulos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add fotosarticulos
+     *
+     * @param \NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos
+     * @return Articulos
+     */
+    public function addFotosarticulo(\NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos)
+    {
+        $this->fotosarticulos[] = $fotosarticulos;
+
+        return $this;
+    }
+
+    /**
+     * Remove fotosarticulos
+     *
+     * @param \NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos
+     */
+    public function removeFotosarticulo(\NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos)
+    {
+        $this->fotosarticulos->removeElement($fotosarticulos);
+    }
+
+    /**
+     * Get fotosarticulos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFotosarticulos()
+    {
+        return $this->fotosarticulos;
     }
 }

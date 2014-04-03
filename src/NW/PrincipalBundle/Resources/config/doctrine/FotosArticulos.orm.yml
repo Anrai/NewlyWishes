@@ -1,0 +1,22 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/FotosArticulos.orm.yml
+NW\PrincipalBundle\Entity\FotosArticulos:
+    type: entity 
+    table: fotosarticulos
+    manyToOne:
+        articulo:
+            targetEntity: Articulos
+            inversedBy: fotosarticulos
+            joinColumn:
+                name: articuloId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator: 
+                strategy: AUTO
+    fields:
+        articuloId:
+            type: integer
+        path:
+            type: string
+            length: 255

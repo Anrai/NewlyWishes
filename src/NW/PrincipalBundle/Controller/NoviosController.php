@@ -23,7 +23,6 @@ use NW\PrincipalBundle\Entity\Notas;
 use NW\PrincipalBundle\Entity\MesaRegalos;
 use NW\PrincipalBundle\Entity\CatRegalos;
 
-
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
 

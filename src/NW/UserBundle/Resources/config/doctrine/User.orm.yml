@@ -43,5 +43,5 @@ NW\UserBundle\Entity\User:
             targetEntity:  NW\PrincipalBundle\Entity\Articulos
             mappedBy: user
         banners:
-            targetEntity: NW\PrincipalBundle\Entity\banners
+            targetEntity: NW\PrincipalBundle\Entity\Banners
             mappedBy: user

@@ -138,7 +138,7 @@ class Banners
         return $this->path;
     }
 
-        public function getAbsolutePath($userId)
+    public function getAbsolutePath($userId)
     {
         return null === $this->path
             ? null

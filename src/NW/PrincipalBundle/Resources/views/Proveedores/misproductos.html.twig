@@ -28,7 +28,7 @@
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
-					<div class="modal-header">
+				<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title rosa" id="myModalLabel">Nuevo Artículo</h4>
 					</div>
@@ -42,7 +42,7 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
-										{{ form_widget(formArticulo.nombre, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Nombre del artículo' } }) }}
+										{{ form_widget(formArticulo.datos.nombre, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Nombre del artículo' } }) }}
 									</div>
 									<div class="col-xs-2">
 										<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
@@ -52,7 +52,7 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
-										{{ form_widget(formArticulo.descripcion, { 'attr': {'class': 'textarea_small', 'style': '', 'placeholder': 'Descripción' } }) }}
+										{{ form_widget(formArticulo.datos.descripcion, { 'attr': {'class': 'textarea_small', 'style': '', 'placeholder': 'Descripción' } }) }}
 									</div>
 									<div class="col-xs-2">
 									</div>
@@ -61,7 +61,7 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
-										{{ form_widget(formArticulo.idInterno, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'ID (Asignar uno)' } }) }}
+										{{ form_widget(formArticulo.datos.idInterno, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'ID (Asignar uno)' } }) }}
 									</div>
 									<div class="col-xs-2">
 									</div>
@@ -70,7 +70,7 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
-										{{ form_widget(formArticulo.stock, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Inventario Disponible' } }) }}
+										{{ form_widget(formArticulo.datos.stock, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Inventario Disponible' } }) }}
 									</div>
 									<div class="col-xs-2">
 									</div>
@@ -79,7 +79,7 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
-										{{ form_widget(formArticulo.precio, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Valor' } }) }}
+										{{ form_widget(formArticulo.datos.precio, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Valor' } }) }}
 									</div>
 									<div class="col-xs-2">
 									</div>
@@ -87,7 +87,7 @@
 
 								<div class="row">
 									<div class="col-xs-10">
-										{{ form_widget(formArticulo.precioPromocion, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Valor Promoción' } }) }}
+										{{ form_widget(formArticulo.datos.precioPromocion, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Valor Promoción' } }) }}
 									</div>
 									<div class="col-xs-2">
 										<img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:7px; margin-left:-20px;">
@@ -107,17 +107,17 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
-										{{ form_widget(formArticulo.tamanos, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': '' } }) }}
+										{{ form_widget(formArticulo.datos.tamanos, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': '' } }) }}
 									</div>
 									<div class="col-xs-2">
 									</div>
 								</div>
 
 								<br><img src="{{asset('img/punto.png')}}" style="margin-top:5px; margin-left:-8px; position:absolute; width:5px; height:5px;">Tipo <img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:-3px; margin-left:30px;"><br>
-								{{ form_widget(formArticulo.tipo) }}
+								{{ form_widget(formArticulo.datos.tipo) }}
 								<br><br>
 								<img src="{{asset('img/punto.png')}}" style="margin-top:5px; margin-left:-8px; position:absolute; width:5px; height:5px;">Estatus <img class="puntov" src="{{asset('img/puntov.png')}}" style="margin-top:-3px; margin-left:14px;"><br>
-								{{ form_widget(formArticulo.estatus) }}
+								{{ form_widget(formArticulo.datos.estatus) }}
 								<br>
 								<img src="{{asset('img/punto.png')}}" style="margin-top:8px; margin-left:-8px; position:absolute; width:5px; height:5px;">
 								{{ form_widget(formArticulo.terminosCondiciones) }} {{ form_label(formArticulo.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
@@ -131,32 +131,10 @@
 										<img src="{{asset('img/nw.png')}}" width="100%">
 									</div>
 								</div>
-								<div class="row" style="margin-top:30px;">
-									<div class="col-xs-6">
-										<img class="cuadro_foto_principal" src="{{asset('img/foto.png')}}" width="100%">
-									</div>
-									<div class="col-xs-6" style="padding-top:10px;">
-										<img src="{{asset('img/bote.png')}}" width="40px" height="40%" style="margin-left:20%;"><br><br>
-										Eliminar esta foto
-									</div>
-								</div>
-								<div class="row" style="margin-top:10px;">
-									<div class="col-xs-4">
-										<div class="cuadro_upload_foto"></div>
-									</div>
-									<div class="col-xs-4">
-										<div class="cuadro_upload_foto"></div>
-									</div>
-									<div class="col-xs-4">
-										<div class="cuadro_upload_foto"></div>
-									</div>
-
-								</div>
 								<div class="row" style="margin-top:20px;">
 									<div class="col-xs-12">
-										<input type="submit" id="enviar_form" value="Seleccionar Foto" style="width:120px;">
-										<br><br><br>
-										Has cargado la siguiente foto:
+										{{ form_widget(formArticulo.foto.file, { 'attr': {'class': '', 'style': '', 'placeholder': '' } }) }}
+										<br><br>
 									</div>
 								</div>
 
@@ -171,7 +149,6 @@
 					</div>
 
 					{{ form_end(formArticulo) }}
-
 				</div>
 			</div>
 		</div>

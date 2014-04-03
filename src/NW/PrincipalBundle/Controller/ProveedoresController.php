@@ -12,6 +12,7 @@ use NW\PrincipalBundle\Form\Type\AnuncioType;
 use NW\PrincipalBundle\Form\Type\BannersType;
 
 use NW\PrincipalBundle\Entity\Articulos;
+use NW\PrincipalBundle\Entity\FotosArticulos;
 use NW\PrincipalBundle\Entity\Banners;
 use NW\PrincipalBundle\Entity\Anuncios;
 use NW\UserBundle\Entity\registroproveedores;
@@ -144,8 +145,9 @@ class ProveedoresController extends Controller
         $proveedor['cuenta']=$proveedorObject->getId();
 
         // Formulario de nuevo artículo
-        $formArticuloData = new Articulos();
-        $formArticulo = $this->createForm(new ArticuloType(), $formArticuloData);
+        $formArticuloData['datos'] = new Articulos();
+        $formArticuloData['foto'] = new FotosArticulos();
+        $formArticulo = $this->createForm(new ArticuloType(), $formArticuloData); // Formulario de usuarios mezclado con el de novias y novios
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
@@ -156,17 +158,17 @@ class ProveedoresController extends Controller
                 $formArticulo->handleRequest($request);
          
                 if ($formArticulo->isValid()) {
-        
-        			// Convirtiendo a array los tamaños y las fotos
-                	$tamanos = explode(',', $formArticulo["tamanos"]->getData());
-                	$fotos = explode(',', $formArticulo["fotos"]->getData());
+        			
+        			$newArticulo = $formArticulo["datos"]->getData();
+        			$newArticuloFoto = $formArticulo["foto"]->getData();
 
-                	$newArticulo=$formArticulo->getData();
-                	$newArticulo->setUser($user);
-                	$newArticulo->setTamanos($tamanos);
-                	$newArticulo->setFotos($fotos);
+                	$newArticulo->setUser($user);// Setteando el usuario en el artículo
+                	$newArticuloFoto->setArticulo($newArticulo);// Setteando el articulo en la foto
+                	$newArticulo->setTamanos(explode(',', $formArticulo["datos"]["tamanos"]->getData()));// Convierte en array los tamaños
+                	$newArticuloFoto->upload($user->getId());// Subiendo la imagen
 
                     $em->persist($newArticulo);
+                    $em->persist($newArticuloFoto);
                     $em->flush();
                 }
             }
