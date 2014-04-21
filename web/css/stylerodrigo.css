@@ -169,7 +169,6 @@ hr{
 }
 .foto{
 	border: solid 1px black;
-	margin-left: -50px;
 }
 .ma{
 	margin-top: -10px;
@@ -562,11 +561,11 @@ hr{
 	margin-bottom:10px;
 }
 
-.carousel-inner{
+#bannersCarousel>.carousel-inner{
 	height: 500px;
 }
 
-.carousel-inner>.item>img, .carousel-inner>.item>a>img{
+#bannersCarousel>.carousel-inner>.item>img, .carousel-inner>.item>a>img{
 	height: 490px;
 }
 
@@ -623,10 +622,19 @@ hr{
 	margin-left: -14px;
 }
 
+.carousel-indicators li{
+	background-color: rgba(163, 163, 163, 1);
+	width: 12px; 
+ 	height: 12px;
+}
 
+.carousel-indicators .active{
+	background-color: #E40794;
+}
 
-
-
+.indicators-down {
+  bottom:-30px;
+}
 
 
 

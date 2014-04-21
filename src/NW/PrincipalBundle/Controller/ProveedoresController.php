@@ -192,6 +192,12 @@ class ProveedoresController extends Controller
         {
             $objetoenArray=$articulos[$index]->getValues();
             $articulos[$index]=$objetoenArray;
+
+            foreach($articulos[$index]['fotos'] as $indice=>$valor)
+            {
+            	$objeto2enArray=$articulos[$index]['fotos'][$indice]->getValues($user->getId());
+            	$articulos[$index]['fotos'][$indice]=$objeto2enArray;
+            }
         }
 
         return $this->render('NWPrincipalBundle:Proveedores:misproductos.html.twig', array(

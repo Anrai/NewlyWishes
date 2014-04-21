@@ -188,9 +188,10 @@ class FotosArticulos
     }
 
     // Método que regresa mis valores en forma de array
-    public function getValues(){
+    public function getValues($userId){
         return array(
         'id' => $this->getId(),
+        'webPath' => $this->getWebPath($userId),
         //'name' => $this->getName(),
         //'imageWebPath' => $this->getWebPath($this->getUsuarioId()),
         );
