@@ -233,3 +233,7 @@ h3{
 .cuadro_upload_foto {
 	height:50px; width:90%; border:rgba(0,0,0,0.4) solid 1px; border-radius:4px;"
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
