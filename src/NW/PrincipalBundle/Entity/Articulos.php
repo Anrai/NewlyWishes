@@ -422,4 +422,60 @@ class Articulos
     {
         return $this->fotosarticulos;
     }
+    /**
+     * @var integer
+     */
+    private $categoriaId;
+
+    /**
+     * @var \NW\PrincipalBundle\Entity\Categorias
+     */
+    private $categoria;
+
+
+    /**
+     * Set categoriaId
+     *
+     * @param integer $categoriaId
+     * @return Articulos
+     */
+    public function setCategoriaId($categoriaId)
+    {
+        $this->categoriaId = $categoriaId;
+
+        return $this;
+    }
+
+    /**
+     * Get categoriaId
+     *
+     * @return integer 
+     */
+    public function getCategoriaId()
+    {
+        return $this->categoriaId;
+    }
+
+    /**
+     * Set categoria
+     *
+     * @param \NW\PrincipalBundle\Entity\Categorias $categoria
+     * @return Articulos
+     */
+    public function setCategoria(\NW\PrincipalBundle\Entity\Categorias $categoria = null)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \NW\PrincipalBundle\Entity\Categorias 
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
 }

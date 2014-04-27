@@ -9,6 +9,11 @@ NW\PrincipalBundle\Entity\Articulos:
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
+        categoria:
+            targetEntity: Categorias
+            joinColumn:
+                name: categoriaId
+                referencedColumnName: id
     oneToMany:
         fotosarticulos:
             targetEntity: FotosArticulos
@@ -20,6 +25,8 @@ NW\PrincipalBundle\Entity\Articulos:
                 strategy: AUTO	
     fields:
         usuarioId:
+            type: integer
+        categoriaId:
             type: integer
         idInterno:
             type: string

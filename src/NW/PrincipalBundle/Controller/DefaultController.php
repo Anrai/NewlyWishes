@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
+use NW\PrincipalBundle\Form\Type\BusquedaArticulosType;
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -57,9 +59,57 @@ class DefaultController extends Controller
         );
     }
 
-    public function noticiasAction()
+    public function noticiasAction(Request $request)
     {
-        return $this->render('NWPrincipalBundle:Default:noticias.html.twig');
+        // Formulario de buscador de artículos
+        $formBuscarArticulo = $this->createForm(new BusquedaArticulosType());
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario  de búqueda de artículos
+            if ($request->request->has($formBuscarArticulo->getName())) {
+                // handle the first form
+                $formBuscarArticulo->handleRequest($request);
+         
+                if ($formBuscarArticulo->isValid()) {
+
+                    if($formBuscarArticulo["categorias"]->getData())
+                    {
+                        // Buscar según categoría
+                    }
+                    else if ($formBuscarArticulo["otro"]->getData())
+                    {
+                        // Buscar según otro
+                    }
+
+                    // Recuperando datos del formulario
+                        /*
+                    $formBuscarArticulo["categorias"]->getData()
+                    $formBuscarArticulo["estado"]->getData()
+                    $formBuscarArticulo["categorias"]->getData()
+                    $formBuscarArticulo["otro"]->getData()
+                    $formBuscarArticulo["proveedor"]->getData()*/
+
+                    //Contenido
+                }
+            }
+            // Formulario2
+            /*
+            else if ($request->request->has($form->getName())) {
+                // handle the second form
+                $form->handleRequest($request);
+         
+                if ($form->isValid()) {
+        
+                    //Contenido
+                }
+            }*/
+        }
+
+        return $this->render('NWPrincipalBundle:Default:noticias.html.twig', array(
+            'formBuscarArticulo' => $formBuscarArticulo->createView(),
+        ));
     }
 
     public function noticiaAction()

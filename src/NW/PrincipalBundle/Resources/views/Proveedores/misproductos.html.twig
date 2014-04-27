@@ -60,6 +60,12 @@
 
 								<div class="row">
 									<div class="col-xs-10">
+										{{ form_widget(formArticulo.categoria.categorias, { 'attr': {'class': 'form-control', 'style': '', 'placeholder': '' } }) }} <br />
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-xs-10">
 										<img src="{{asset('img/punto.png')}}" style="margin-top:9px; margin-left:-8px; position:absolute; width:5px; height:5px;">
 										{{ form_widget(formArticulo.datos.idInterno, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'ID (Asignar uno)' } }) }}
 									</div>

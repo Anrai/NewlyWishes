@@ -23,6 +23,7 @@ class ArticuloType extends AbstractType
     {
         // Se carga el formulario para fotos
         $builder->add('datos', new DatosArticuloType());
+        $builder->add('categoria', new CategoriasType());
         $builder->add('foto', new FotosArticulosType());
 
         // Formulario de articulo

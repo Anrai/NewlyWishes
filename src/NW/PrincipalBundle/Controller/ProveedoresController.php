@@ -159,10 +159,21 @@ class ProveedoresController extends Controller
          
                 if ($formArticulo->isValid()) {
         			
+                    // Recuperando información de formularios
         			$newArticulo = $formArticulo["datos"]->getData();
         			$newArticuloFoto = $formArticulo["foto"]->getData();
 
+                    if($formArticulo["categoria"]->getData())
+                    {
+                        $newArticuloCategoria=$this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find($formArticulo["categoria"]["categorias"]->getData());
+                    }
+                    else
+                    {
+                        $newArticuloCategoria=$this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find(27);
+                    }
+                    
                 	$newArticulo->setUser($user);// Setteando el usuario en el artículo
+                    $newArticulo->setCategoria($newArticuloCategoria);// Setteando la categoría en el artículo
                 	$newArticuloFoto->setArticulo($newArticulo);// Setteando el articulo en la foto
                 	$newArticulo->setTamanos(explode(',', $formArticulo["datos"]["tamanos"]->getData()));// Convierte en array los tamaños
                 	$newArticuloFoto->upload($user->getId());// Subiendo la imagen

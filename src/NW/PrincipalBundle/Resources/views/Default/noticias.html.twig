@@ -13,24 +13,21 @@
 				<div class="row">
 					<div class="caja gris2">
 						<p>Encuentra lo que necesitas</p>
+						{{ form_start(formBuscarArticulo) }}
 						<div class="col-xs-5">
-							<select class="form-control">
-								<option>que buscas</option>
-							</select>
-							<select class="form-control">
-								<option>donde vives</option>
-							</select>
+							{{ form_widget(formBuscarArticulo.categorias, { 'attr': {'class': 'form-control', 'style': '', 'placeholder': '' } }) }}
+							{{ form_widget(formBuscarArticulo.estado, { 'attr': {'class': 'form-control', 'style': '', 'placeholder': '' } }) }}
 						</div>
 						<div class="col-xs-7">
-							<input type="text" class="form-control input11" placeholder="¿no está en el menú? escribea quí lo que necesitas">
-							<input type="text" class="form-control input11" placeholder="nombre del proveedor que buscas">
+							{{ form_widget(formBuscarArticulo.otro, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': '¿no está en el menú? escribea quí lo que necesitas' } }) }}
+							{{ form_widget(formBuscarArticulo.proveedor, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': 'nombre del proveedor que buscas' } }) }}
 						</div>
 						<div class="col-xs-7">
-
 						</div>
 						<div class="col-xs-5">
-							<input class="enviar4 botoon2" type="submit" id="enviar_form" value="Buscar" style="width:120px;"> <br>
+							{{ form_widget(formBuscarArticulo.Buscar, { 'attr': {'class': 'enviar4 botoon2 enviar_form', 'style': 'width:120px;', 'placeholder': '' } }) }}<br>
 						</div>
+						{{ form_end(formBuscarArticulo) }}
 					</div>
 				</div>
 				<div class="row">
@@ -54,25 +51,21 @@
 		<div class="row">
 			<div class="col-xs-7">
 				<div class="noticia1">
-					<h1>Noticia 1 / Nota 1 / Reportaje 1</h1>
+					<a href="{{ path('nw_principal_noticia_completa') }}"><h1>Noticia 1 / Nota 1 / Reportaje 1</h1></a>
 					<p>
-						Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art">Leer más</span>
+						Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art"><a href="{{ path('nw_principal_noticia_completa') }}">Leer más</a></span>
 					</p>
 				</div>
 				<div class="noticia1">
-					<h1>Noticia 2 / Nota 2 / Reportaje 2</h1>
+					<a href="{{ path('nw_principal_noticia_completa') }}"><h1>Noticia 1 / Nota 1 / Reportaje 1</h1></a>
 					<p>
-						Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art">Leer más</span>
+						Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art"><a href="{{ path('nw_principal_noticia_completa') }}">Leer más</a></span>
 					</p>
-				</div><div class="noticia1">
-					<h1>Noticia 3 / Nota 3 / Reportaje 3</h1>
+				</div>
+				<div class="noticia1">
+					<a href="{{ path('nw_principal_noticia_completa') }}"><h1>Noticia 1 / Nota 1 / Reportaje 1</h1></a>
 					<p>
-						Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art">Leer más</span>
-					</p>
-				</div><div class="noticia1">
-					<h1>Noticia 4 / Nota 4 / Reportaje 4</h1>
-					<p>
-						Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art">Leer más</span>
+						Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art"><a href="{{ path('nw_principal_noticia_completa') }}">Leer más</a></span>
 					</p>
 				</div>
 			</div>

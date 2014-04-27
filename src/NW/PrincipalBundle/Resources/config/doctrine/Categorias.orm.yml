@@ -1,0 +1,17 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Categorias.orm.yml
+NW\PrincipalBundle\Entity\Categorias:
+    type: entity 
+    table: categorias
+    oneToMany:
+        articulo:
+            targetEntity: Articulos
+            mappedBy: categoria
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: 150
