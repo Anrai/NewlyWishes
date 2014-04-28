@@ -35,9 +35,16 @@ class FotosArticulos
      *
      * @return integer 
      */
-    public function getUsuarioId()
+    public function getUsuarioId($userId)
     {
-        return $this->articulo->getUsuarioId();
+        if (!$userId)
+        {
+            return $this->articulo->getUsuarioId();
+        }
+        else
+        {
+            return $userId;
+        }
     }
 
     /**
@@ -119,32 +126,32 @@ class FotosArticulos
         return $this->articulo;
     }
 
-    public function getAbsolutePath()
+    public function getAbsolutePath($userId)
     {
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+            : $this->getUploadRootDir($userId).'/'.$this->path;
     }
 
-    public function getWebPath()
+    public function getWebPath($userId)
     {
         return null === $this->path
             ? null
-            : $this->getUploadDir().'/'.$this->path;
+            : $this->getUploadDir($userId).'/'.$this->path;
     }
 
-    protected function getUploadRootDir()
+    protected function getUploadRootDir($userId)
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../../web/'.$this->getUploadDir($userId);
     }
 
-    protected function getUploadDir()
+    protected function getUploadDir($userId)
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/articulos/'.$this->getUsuarioId();
+        return 'uploads/articulos/'.$this->getUsuarioId($userId);
     }
 
     /**
@@ -172,7 +179,7 @@ class FotosArticulos
         return $this->file;
     }
 
-    public function upload()
+    public function upload($userId)
     {
         // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
@@ -185,7 +192,7 @@ class FotosArticulos
         // move takes the target directory and then the
         // target filename to move to
         $this->getFile()->move(
-            $this->getUploadRootDir(),
+            $this->getUploadRootDir($userId),
             $this->getFile()->getClientOriginalName()
         );
 
@@ -197,10 +204,10 @@ class FotosArticulos
     }
 
     // Método que regresa mis valores en forma de array
-    public function getValues(){
+    public function getValues($userId){
         return array(
         'id' => $this->getId(),
-        'webPath' => $this->getWebPath(),
+        'webPath' => $this->getWebPath($userId),
         //'name' => $this->getName(),
         //'imageWebPath' => $this->getWebPath($this->getUsuarioId()),
         );

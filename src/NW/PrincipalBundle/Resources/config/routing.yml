@@ -2,10 +2,6 @@ nw_principal_homepage:
     pattern:  /
     defaults: { _controller: NWPrincipalBundle:Default:index }
 
-nw_principal_noticias:
-    pattern:  /noticias
-    defaults: { _controller: NWPrincipalBundle:Default:noticias }
-
 nw_principal_noticia_completa:
     pattern:  /noticia
     defaults: { _controller: NWPrincipalBundle:Default:noticia }

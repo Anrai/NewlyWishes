@@ -180,7 +180,7 @@ class DefaultController extends Controller
 
                         foreach($resultados[$index]['fotos'] as $indice=>$valor)
                         {
-                            $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues();
+                            $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues(false);
                             $resultados[$index]['fotos'][$indice]=$objeto2enArray;
                         }
                     }*/
@@ -229,7 +229,7 @@ class DefaultController extends Controller
 
                     foreach($resultados[$index]['fotos'] as $indice=>$valor)
                     {
-                        $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues();
+                        $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues(false);
                         $resultados[$index]['fotos'][$indice]=$objeto2enArray;
                     }
                 }

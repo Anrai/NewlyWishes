@@ -207,7 +207,7 @@ class ProveedoresController extends Controller
 
             foreach($articulos[$index]['fotos'] as $indice=>$valor)
             {
-            	$objeto2enArray=$articulos[$index]['fotos'][$indice]->getValues();
+            	$objeto2enArray=$articulos[$index]['fotos'][$indice]->getValues(false);
             	$articulos[$index]['fotos'][$indice]=$objeto2enArray;
             }
         }
