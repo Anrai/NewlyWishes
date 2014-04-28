@@ -12,7 +12,7 @@ class CategoriasType extends AbstractType
     {
         $builder->add('categorias', 'choice', array(
                 'choices' => array(
-                    ''    => '¿Qué buscas?',
+                    ''  => 'Otros',
                     '1'   => 'Jardines',
                     '2'   => 'Salones',
                     '3'   => 'Hoteles',

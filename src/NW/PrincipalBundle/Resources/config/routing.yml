@@ -10,9 +10,13 @@ nw_principal_noticia_completa:
     pattern:  /noticia
     defaults: { _controller: NWPrincipalBundle:Default:noticia }
 
-nw_principal_resultados:
-    pattern:  /resultados
-    defaults: { _controller: NWPrincipalBundle:Default:resultados }
+nw_principal_articulos:
+    pattern:  /articulos/
+    defaults: { _controller: NWPrincipalBundle:Default:listaArticulos}
+
+nw_principal_articulos_catname:
+    pattern:  /articulos/{catName}
+    defaults: { _controller: NWPrincipalBundle:Default:listaArticulos, catName: otros }
 
 nw_principal_empresa:
     pattern:  /empresa

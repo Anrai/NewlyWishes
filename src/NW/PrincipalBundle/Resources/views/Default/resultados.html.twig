@@ -12,29 +12,30 @@
 				<div class="row">
 					<div class="caja gris2">
 						<p>Encuentra lo que necesitas</p>
+						{{ form_start(formBuscarArticulo) }}
 						<div class="col-xs-5">
-							<select class="form-control">
-								<option>que buscas</option>
-							</select>
-							<select class="form-control">
-								<option>donde vives</option>
-							</select>
+							{{ form_widget(formBuscarArticulo.categorias, { 'attr': {'class': 'form-control', 'style': '', 'placeholder': '' } }) }}
+							<!-- La ubicación no se puede ocupar porque los artículos no tienen ubicación según el pdf
+							{{ form_widget(formBuscarArticulo.estado, { 'attr': {'class': 'form-control', 'style': '', 'placeholder': '' } }) }}
+							-->
 						</div>
 						<div class="col-xs-7">
-							<input type="text" class="form-control input11" placeholder="¿no está en el menú? escribea quí lo que necesitas">
-							<input type="text" class="form-control input11" placeholder="nombre del proveedor que buscas">
+							{{ form_widget(formBuscarArticulo.otro, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': '¿no está en el menú? escribea quí lo que necesitas' } }) }}<br />
+							{{ form_widget(formBuscarArticulo.proveedor, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': 'nombre del proveedor que buscas' } }) }}
 						</div>
 						<div class="col-xs-7">
-
 						</div>
 						<div class="col-xs-5">
-							<input class="enviar4 botoon2" type="submit" id="enviar_form" value="Buscar" style="width:120px;"> <br>
+							{{ form_widget(formBuscarArticulo.Buscar, { 'attr': {'class': 'enviar4 botoon2 enviar_form', 'style': 'width:120px;', 'placeholder': '' } }) }}<br>
 						</div>
+						{{ form_end(formBuscarArticulo) }}
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-5">
+					{% if resultados %}
 						<h2 class="carrito2 art">Resultados</h2>
+					{% endif %}
 					</div>
 					<div class="col-xs-2">
 						<img class="carrito2" src="{{asset('img/novios/nuestras_compras.png')}}">
@@ -52,38 +53,27 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-7">
+				{% if resultados %}
+				{% for item in resultados %}
 				<div class="row">
 					<div class="col-xs-1">
-						
 					</div>
 					<div class="col-xs-8">
 						<div class="resultados">
-							<h1>Proveedor 1</h1>
+							<h1>{{item.nombre}}</h1>
 							<p>
-								Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art">Ir al micrositio</span>
+								{{item.descripcion}}<span class="art"> Ir al micrositio</span>
 							</p>
 						</div>
 					</div>
 					<div class="col-xs-1">
-						<img class="resultados2" src="{{asset('img/ejlogo.jpg')}}">
+						<img class="resultados2" src="{{ asset(item.fotos.0.webPath) }}" style="max-width:177px">
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-xs-1">
-						
-					</div>
-					<div class="col-xs-8">
-						<div class="resultados">
-							<h1>Proveedor 1</h1>
-							<p>
-								Descripción del proveedor…Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. <span class="art">Ir al micrositio</span>
-							</p>
-						</div>
-					</div>
-					<div class="col-xs-1">
-						<img class="resultados2" src="{{asset('img/ejlogo.jpg')}}">
-					</div>
-				</div>
+				{% endfor %}
+				{% endif %}
+
+
 				<div class="noticia1">
 					<h1>Noticia 1 / Nota 1 / Reportaje 1</h1>
 					<p>

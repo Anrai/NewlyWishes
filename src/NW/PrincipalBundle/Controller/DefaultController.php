@@ -77,21 +77,35 @@ class DefaultController extends Controller
                     if($formBuscarArticulo["categorias"]->getData())
                     {
                         // Buscar según categoría
+                        $ArticulosEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Articulos');
+                        $resultados = $ArticulosEntidad->findBy(array('categoriaId' => $formBuscarArticulo["categorias"]->getData()));
                     }
                     else if ($formBuscarArticulo["otro"]->getData())
                     {
                         // Buscar según otro
                     }
+                    else if ($formBuscarArticulo["proveedor"]->getData())
+                    {
+                        // Buscar según otro
+                    }
 
-                    // Recuperando datos del formulario
-                        /*
-                    $formBuscarArticulo["categorias"]->getData()
-                    $formBuscarArticulo["estado"]->getData()
-                    $formBuscarArticulo["categorias"]->getData()
-                    $formBuscarArticulo["otro"]->getData()
-                    $formBuscarArticulo["proveedor"]->getData()*/
+                    // Convirtiendo los resultados en arrays
+                    foreach($resultados as $index=>$value)
+                    {
+                        $objetoenArray=$resultados[$index]->getValues();
+                        $resultados[$index]=$objetoenArray;
 
-                    //Contenido
+                        foreach($resultados[$index]['fotos'] as $indice=>$valor)
+                        {
+                            $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues();
+                            $resultados[$index]['fotos'][$indice]=$objeto2enArray;
+                        }
+                    }
+
+                    // Se muestran todos los artículos encontrados
+                    return $this->render('NWPrincipalBundle:Default:resultados.html.twig', array(
+                        'resultados' =>  $resultados,
+                    ));
                 }
             }
             // Formulario2
@@ -117,9 +131,121 @@ class DefaultController extends Controller
         return $this->render('NWPrincipalBundle:Default:noticia.html.twig');
     }
 
-    public function resultadosAction()
+    public function listaArticulosAction(Request $request)
     {
-        return $this->render('NWPrincipalBundle:Default:resultados.html.twig');
+        // Formulario de buscador de artículos
+        $formBuscarArticulo = $this->createForm(new BusquedaArticulosType());
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario  de búqueda de artículos
+            if ($request->request->has($formBuscarArticulo->getName())) {
+                // handle the first form
+                $formBuscarArticulo->handleRequest($request);
+         
+                if ($formBuscarArticulo->isValid()) {
+
+                    if($formBuscarArticulo["categorias"]->getData())
+                    {
+                        // Buscar según categoría
+                        //$ArticulosEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Articulos');
+                        //$resultados = $ArticulosEntidad->findBy(array('categoriaId' => $formBuscarArticulo["categorias"]->getData()));
+                        
+                        $catEntity = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias');
+                        $catObj = $catEntity->find($formBuscarArticulo["categorias"]->getData());
+                        $catName = $catObj->getNombre();
+
+                        // Quitar acentos de la categoría
+                        $no_permitidas = array ('á','é','í','ó','ú','Á','É','Í','Ó','Ú','ñ','Ñ');
+                        $si_permitidas = array ('a','e','i','o','u','A','E','I','O','U','n','N');
+                        $catName = str_replace($no_permitidas, $si_permitidas, $catName);
+
+                        return $this->redirect($this->generateUrl('nw_principal_articulos_catname')."/".$catName);
+                    }
+                    else if ($formBuscarArticulo["otro"]->getData())
+                    {
+                        // Buscar según otro
+                    }
+                    else if ($formBuscarArticulo["proveedor"]->getData())
+                    {
+                        // Buscar según proveedor
+                    }
+
+                    // Convirtiendo los resultados en arrays
+                    /*foreach($resultados as $index=>$value)
+                    {
+                        $objetoenArray=$resultados[$index]->getValues();
+                        $resultados[$index]=$objetoenArray;
+
+                        foreach($resultados[$index]['fotos'] as $indice=>$valor)
+                        {
+                            $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues();
+                            $resultados[$index]['fotos'][$indice]=$objeto2enArray;
+                        }
+                    }*/
+
+                    // Se muestran todos los artículos encontrados
+                    return new Response("Ola k ase");
+
+                }
+            }
+            // Formulario2
+            /*
+            else if ($request->request->has($form->getName())) {
+                // handle the second form
+                $form->handleRequest($request);
+         
+                if ($form->isValid()) {
+        
+                    //Contenido
+                }
+            }*/
+        }
+        // Si se quiere cargar el listado de artículos
+        else if ('GET' === $request->getMethod()){
+
+            // Obtener el nombre de la categoría
+            $catName = str_replace ("/articulos/", "", $this->getRequest()->getPathInfo());
+            $catName = str_replace ("%20", " ", $catName);
+
+            // Obteniendo entidades de categorías y artículos
+            $CategoriasEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias');
+            $ArticulosEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Articulos');
+
+            // Obteniendo el iD 
+            $catObj = $CategoriasEntidad->findOneBy(array('nombre' => $catName));
+
+            // ¿Existe la categoría?
+            if(is_object($catObj))
+            {
+                $resultados = $ArticulosEntidad->findBy(array('categoriaId' => $catObj->getId()));
+
+                // Convirtiendo los resultados en arrays
+                foreach($resultados as $index=>$value)
+                {
+                    $objetoenArray=$resultados[$index]->getValues();
+                    $resultados[$index]=$objetoenArray;
+
+                    foreach($resultados[$index]['fotos'] as $indice=>$valor)
+                    {
+                        $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues();
+                        $resultados[$index]['fotos'][$indice]=$objeto2enArray;
+                    }
+                }
+            }
+            else
+            {
+                $resultados = false;
+            }
+        }
+
+        // Se muestran todos los artículos encontrados
+        return $this->render('NWPrincipalBundle:Default:resultados.html.twig', array(
+            'formBuscarArticulo' => $formBuscarArticulo->createView(),
+            'resultados' =>  $resultados,
+        ));
+        
     }
 
     public function empresaAction()

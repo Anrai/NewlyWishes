@@ -16,10 +16,12 @@
 						{{ form_start(formBuscarArticulo) }}
 						<div class="col-xs-5">
 							{{ form_widget(formBuscarArticulo.categorias, { 'attr': {'class': 'form-control', 'style': '', 'placeholder': '' } }) }}
+							<!-- La ubicación no se puede ocupar porque los artículos no tienen ubicación según el pdf
 							{{ form_widget(formBuscarArticulo.estado, { 'attr': {'class': 'form-control', 'style': '', 'placeholder': '' } }) }}
+							-->
 						</div>
 						<div class="col-xs-7">
-							{{ form_widget(formBuscarArticulo.otro, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': '¿no está en el menú? escribea quí lo que necesitas' } }) }}
+							{{ form_widget(formBuscarArticulo.otro, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': '¿no está en el menú? escribea quí lo que necesitas' } }) }}<br />
 							{{ form_widget(formBuscarArticulo.proveedor, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': 'nombre del proveedor que buscas' } }) }}
 						</div>
 						<div class="col-xs-7">

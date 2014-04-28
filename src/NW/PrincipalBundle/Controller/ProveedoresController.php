@@ -163,13 +163,14 @@ class ProveedoresController extends Controller
         			$newArticulo = $formArticulo["datos"]->getData();
         			$newArticuloFoto = $formArticulo["foto"]->getData();
 
-                    if($formArticulo["categoria"]->getData())
+                    // Si se eligió categoriá para el artículo, ésta se ubica, si no, entonces se mete en la categoría "Otros(id=27)"
+                    if($formArticulo["categoria"]["categorias"]->getData())
                     {
-                        $newArticuloCategoria=$this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find($formArticulo["categoria"]["categorias"]->getData());
+                        $newArticuloCategoria = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find($formArticulo["categoria"]["categorias"]->getData());
                     }
                     else
                     {
-                        $newArticuloCategoria=$this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find(27);
+                        $newArticuloCategoria = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find(27);
                     }
                     
                 	$newArticulo->setUser($user);// Setteando el usuario en el artículo
@@ -206,7 +207,7 @@ class ProveedoresController extends Controller
 
             foreach($articulos[$index]['fotos'] as $indice=>$valor)
             {
-            	$objeto2enArray=$articulos[$index]['fotos'][$indice]->getValues($user->getId());
+            	$objeto2enArray=$articulos[$index]['fotos'][$indice]->getValues();
             	$articulos[$index]['fotos'][$indice]=$objeto2enArray;
             }
         }
