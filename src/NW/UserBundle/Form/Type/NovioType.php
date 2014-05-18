@@ -72,6 +72,6 @@ class NovioType extends AbstractType
 
     public function getName()
     {
-        return 'noviazgo';
+        return 'novioForm';
     }
 }

@@ -1,7 +1,7 @@
-NW\UserBundle\Entity\Novias:
-    properties:
-        sNombre:
-            - Blank: ~
+#NW\UserBundle\Entity\Novias:
+#    properties:
+#        sNombre:
+#            - Blank: ~
 #        dueDate:
 #            - NotBlank: ~
 #            - Type: \DateTime

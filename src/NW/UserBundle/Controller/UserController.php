@@ -98,7 +98,7 @@ class UserController extends Controller
 
             // El registro del formulario fue exitoso y se muestra lo siguiente al usuario
             return new Response(
-                'Novios registrados con éxisto'
+                'Novios registrados con éxito'
             );
 
         }
