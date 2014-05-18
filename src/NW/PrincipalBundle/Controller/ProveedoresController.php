@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use NW\PrincipalBundle\Form\Type\EdicionProveedorType;
 use NW\PrincipalBundle\Form\Type\ArticuloType;
+use NW\PrincipalBundle\Form\Type\ArticuloEditType;
 use NW\PrincipalBundle\Form\Type\AnuncioType;
 use NW\PrincipalBundle\Form\Type\BannersType;
 
@@ -147,7 +148,12 @@ class ProveedoresController extends Controller
         // Formulario de nuevo artículo
         $formArticuloData['datos'] = new Articulos();
         $formArticuloData['foto'] = new FotosArticulos();
-        $formArticulo = $this->createForm(new ArticuloType(), $formArticuloData); // Formulario de usuarios mezclado con el de novias y novios
+        $formArticulo = $this->createForm(new ArticuloType(), $formArticuloData);
+
+        // Formulario de edición de artículo
+        $formArticuloEditData['datos'] = new Articulos();
+        $formArticuloEditData['foto'] = new FotosArticulos();
+        $formArticuloEdit = $this->createForm(new ArticuloEditType(), $formArticuloEditData);
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
@@ -159,7 +165,7 @@ class ProveedoresController extends Controller
          
                 if ($formArticulo->isValid()) {
         			
-                    // Recuperando información de formularios
+                    // Recuperando información de formulario
         			$newArticulo = $formArticulo["datos"]->getData();
         			$newArticuloFoto = $formArticulo["foto"]->getData();
 
@@ -184,16 +190,54 @@ class ProveedoresController extends Controller
                     $em->flush();
                 }
             }
-            // Formulario2
-            /*else if ($request->request->has($formOtro->getName())) {
+            // Formulario2 (Editar artículo)
+            else if ($request->request->has($formArticuloEdit->getName())) {
                 // handle the second form
-                $formOtro->handleRequest($request);
+                $formArticuloEdit->handleRequest($request);
          
-                if ($formOtro->isValid()) {
+                if ($formArticuloEdit->isValid()) {
+
+                    // Persistiendo los datos en la base de datos
+                    $em = $this->getDoctrine()->getEntityManager();
         
-                    //Contenido
+                    // Recuperando información de formulario
+                    $newArticulo = $formArticuloEdit["datos"]->getData();
+
+                    // Si se eligió categoriá para el artículo, ésta se ubica, si no, entonces se mete en la categoría "Otros(id=27)"
+                    if($formArticuloEdit["categoria"]["categorias"]->getData())
+                        $newArticuloCategoria = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find($formArticuloEdit["categoria"]["categorias"]->getData());
+                    else
+                        $newArticuloCategoria = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias')->find(27);
+
+                    // Se obtiene el antiguo objeto del artículo
+                    $oldArticulo = $this->getDoctrine()->getRepository('NWPrincipalBundle:Articulos')->find($formArticuloEdit["id"]->getData());
+                    
+                    // Se actualizan los valores del artículo
+                    $oldArticulo->setNombre($formArticuloEdit["datos"]["nombre"]->getData());
+                    $oldArticulo->setIdInterno($formArticuloEdit["datos"]["idInterno"]->getData());
+                    $oldArticulo->setDescripcion($formArticuloEdit["datos"]["descripcion"]->getData());
+                    $oldArticulo->setStock($formArticuloEdit["datos"]["stock"]->getData());
+                    $oldArticulo->setPrecio($formArticuloEdit["datos"]["precio"]->getData());
+                    $oldArticulo->setPrecioPromocion($formArticuloEdit["datos"]["precioPromocion"]->getData());
+                    $oldArticulo->setTamanos(explode(',', $formArticuloEdit["datos"]["tamanos"]->getData()));// Convierte en array los tamaños
+                    $oldArticulo->setTipo($formArticuloEdit["datos"]["tipo"]->getData());
+                    $oldArticulo->setEstatus($formArticuloEdit["datos"]["estatus"]->getData());
+                    $oldArticulo->setCategoria($newArticuloCategoria);// Setteando la categoría en el artículo
+
+                    // Si se cargó una nueva foto:
+                    if($formArticuloEdit["foto"]["file"]->getData())
+                    {
+                        $newArticuloFoto = $formArticuloEdit["foto"]->getData(); // Obteniendo objeto foto del formulario
+                        $newArticuloFoto->setArticulo($oldArticulo); // Setteando el articulo en la foto antigua
+                        $newArticuloFoto->upload($user->getId()); // Subiendo la imagen
+                        $em->persist($newArticuloFoto); // Persistiendo a la base de datos
+                    }
+
+                    // Se persiste el artículo en la base de datos
+                    $em->persist($oldArticulo);
+                    $em->flush();
                 }
-            }*/
+            }
         }
 
         // Obteniendo la lista de artículos en un arreglo de objetos
@@ -215,8 +259,33 @@ class ProveedoresController extends Controller
         return $this->render('NWPrincipalBundle:Proveedores:misproductos.html.twig', array(
             'proveedor' => $proveedor,
             'formArticulo' => $formArticulo->createView(),
+            'formArticuloEdit' => $formArticuloEdit->createView(),
             'articulos' => $articulos,
         ));
+    }
+
+    public function ProductoDeleteAction($id) // Controlador que borra un producto según el id pasado
+    {
+        // Manejador de entidades Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Objeto producto que se eliminará
+        $producto = $em->getRepository('NWPrincipalBundle:Articulos')->find($id);
+
+        // Buscar fotos del producto
+        $fotosArray = $em->getRepository('NWPrincipalBundle:FotosArticulos')->findBy(array('articuloId' => $id));
+
+        // Borrar fotos del producto
+        foreach($fotosArray as $index=>$fotoObj)
+        {
+            $em->remove($fotoObj);
+        }
+
+        // Borrar Producto
+        $em->remove($producto);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_proveedores_misproductos'));
     }
 
     public function misbannersAction(Request $request)

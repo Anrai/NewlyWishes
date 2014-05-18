@@ -20,8 +20,10 @@
 							-->
 						</div>
 						<div class="col-xs-7">
-							{{ form_widget(formBuscarArticulo.otro, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': '¿no está en el menú? escribea quí lo que necesitas' } }) }}<br />
+							{{ form_widget(formBuscarArticulo.otro, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': '¿no está en el menú? escribea aquí lo que necesitas' } }) }}<br />
+							<!-- Todavía no está activada la búsqueda de proveedor
 							{{ form_widget(formBuscarArticulo.proveedor, { 'attr': {'class': 'form-control input11', 'style': '', 'placeholder': 'nombre del proveedor que buscas' } }) }}
+							-->
 						</div>
 						<div class="col-xs-7">
 						</div>
@@ -62,7 +64,7 @@
 						<div class="resultados">
 							<h1>{{item.nombre}}</h1>
 							<p>
-								{{item.descripcion}}<span class="art"> Ir al micrositio</span>
+								{{item.descripcion}}<span class="art"></span>
 							</p>
 						</div>
 					</div>

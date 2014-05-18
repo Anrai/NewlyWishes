@@ -136,6 +136,9 @@ class DefaultController extends Controller
         // Formulario de buscador de artículos
         $formBuscarArticulo = $this->createForm(new BusquedaArticulosType());
 
+        // Servicio de búsqueda y carga de artículos de la base de datos
+        $buscador = $this->get('articulos_buscador');
+
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
         
@@ -146,8 +149,6 @@ class DefaultController extends Controller
          
                 if ($formBuscarArticulo->isValid()) {
 
-                    // Se llama al servicio de búsqueda de artículos en la base de datos
-                    $buscador = $this->get('articulos_buscador');
                     // Se redirige el sitio a la lista de artículos que se quieren buscar pasados por GET
                     return $this->redirect($buscador->generarLink(
                         $formBuscarArticulo["categorias"]->getData(), // Categoría establecida
@@ -156,53 +157,27 @@ class DefaultController extends Controller
                     ));
                 }
             }
-            // Formulario2
-            /*
-            else if ($request->request->has($form->getName())) {
-                // handle the second form
-                $form->handleRequest($request);
-         
-                if ($form->isValid()) {
-        
-                    //Contenido
-                }
-            }*/
         }
-        // Si se quiere cargar el listado de artículos
+        // Si se quiere cargar un listado de artículos por categoría o búsqueda
         else if ('GET' === $request->getMethod()){
 
-            // Obtener el nombre de la categoría
-            $catName = str_replace ("/articulos/", "", $this->getRequest()->getPathInfo());
-            $catName = str_replace ("%20", " ", $catName);
+            // Checar si se quieren cargar los artículos de una búsqueda
+            $esBusquedaAticulo = strpos($this->getRequest()->getPathInfo(), "/busqueda/");
 
-            // Obteniendo entidades de categorías y artículos
-            $CategoriasEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias');
-            $ArticulosEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Articulos');
-
-            // Obteniendo el iD 
-            $catObj = $CategoriasEntidad->findOneBy(array('nombre' => $catName));
-
-            // ¿Existe la categoría?
-            if(is_object($catObj))
+            if($esBusquedaAticulo)
             {
-                $resultados = $ArticulosEntidad->findBy(array('categoriaId' => $catObj->getId()));
+                $buscar = str_replace ("/articulos/busqueda/", "", $this->getRequest()->getPathInfo());
+                $buscar = str_replace ("%20", " ", $buscar);
 
-                // Convirtiendo los resultados en arrays
-                foreach($resultados as $index=>$value)
-                {
-                    $objetoenArray=$resultados[$index]->getValues();
-                    $resultados[$index]=$objetoenArray;
-
-                    foreach($resultados[$index]['fotos'] as $indice=>$valor)
-                    {
-                        $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues(false);
-                        $resultados[$index]['fotos'][$indice]=$objeto2enArray;
-                    }
-                }
+                $resultados = $buscador->articulosPorCoincidencia($buscar);
             }
             else
             {
-                $resultados = false;
+                // Obtener el nombre de la categoría
+                $catName = str_replace ("/articulos/", "", $this->getRequest()->getPathInfo());
+                $catName = str_replace ("%20", " ", $catName);
+
+                $resultados = $buscador->articulosPorCategoria($catName);
             }
         }
 

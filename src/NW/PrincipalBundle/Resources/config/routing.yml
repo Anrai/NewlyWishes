@@ -14,6 +14,10 @@ nw_principal_articulos:
     pattern:  /articulos/
     defaults: { _controller: NWPrincipalBundle:Default:listaArticulos}
 
+nw_principal_articulos_busqueda:
+    pattern:  /articulos/busqueda/{buscar}
+    defaults: { _controller: NWPrincipalBundle:Default:listaArticulos, buscar: boda }
+
 nw_principal_articulos_catname:
     pattern:  /articulos/{catName}
     defaults: { _controller: NWPrincipalBundle:Default:listaArticulos, catName: otros }
@@ -37,6 +41,10 @@ nw_principal_proveedores_micuenta:
 nw_principal_proveedores_misproductos:
     pattern:  /proveedores/misproductos
     defaults: { _controller: NWPrincipalBundle:Proveedores:misproductos }
+
+nw_principal_proveedores_producto_delete:
+    pattern:  /proveedores/producto/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Proveedores:ProductoDelete }
 
 nw_principal_proveedores_misbanners:
     pattern:  /proveedores/misbanners

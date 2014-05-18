@@ -14,7 +14,7 @@ use NW\PrincipalBundle\Form\Type\DatosArticuloType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ArticuloType extends AbstractType
+class ArticuloEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,11 +23,12 @@ class ArticuloType extends AbstractType
     {
         $builder->add('datos', new DatosArticuloType());
         $builder->add('categoria', new CategoriasType());
-        $builder->add('foto', new FotosArticulosType());
+        $builder->add('foto', new FotosArticulosType(), array('required'  => false));
 
+        $builder->add('id', 'hidden', array('mapped' => false, 'required'  => true));
         $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));
-        $builder->add('Agregar', 'submit');
+        $builder->add('Editar', 'submit');
     }
 
     /*public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -42,6 +43,6 @@ class ArticuloType extends AbstractType
      */
     public function getName()
     {
-        return 'articulo';
+        return 'articuloEdit';
     }
 }

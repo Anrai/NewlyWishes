@@ -375,6 +375,7 @@ class Articulos
         'tipo' => $this->getTipo(),
         'estatus' => $this->getEstatus(),
         'fotos' => $this->getFotosarticulos()->toArray(),
+        'categoria' => $this->getCategoriaId()
         );
     }
     /**
