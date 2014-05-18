@@ -2,6 +2,10 @@ nw_principal_homepage:
     pattern:  /
     defaults: { _controller: NWPrincipalBundle:Default:index }
 
+nw_principal_funcionamiento:
+    pattern:  /funcionamiento
+    defaults: { _controller: NWPrincipalBundle:Default:funcionamiento }
+
 nw_principal_noticia_completa:
     pattern:  /noticia
     defaults: { _controller: NWPrincipalBundle:Default:noticia }
@@ -61,10 +65,6 @@ nw_principal_proveedores_miinformacionbancaria:
 nw_principal_proveedores_tutoriales:
     pattern:  /proveedores/tutoriales
     defaults: { _controller: NWPrincipalBundle:Proveedores:tutoriales }
-
-nw_principal_funcionamiento:
-    pattern:  /funcionamiento
-    defaults: { _controller: NWPrincipalBundle:Default:funcionamiento }
 
 nw_principal_novios_index:
     pattern:  /novios/index

@@ -146,48 +146,14 @@ class DefaultController extends Controller
          
                 if ($formBuscarArticulo->isValid()) {
 
-                    if($formBuscarArticulo["categorias"]->getData())
-                    {
-                        // Buscar según categoría
-                        //$ArticulosEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Articulos');
-                        //$resultados = $ArticulosEntidad->findBy(array('categoriaId' => $formBuscarArticulo["categorias"]->getData()));
-                        
-                        $catEntity = $this->getDoctrine()->getRepository('NWPrincipalBundle:Categorias');
-                        $catObj = $catEntity->find($formBuscarArticulo["categorias"]->getData());
-                        $catName = $catObj->getNombre();
-
-                        // Quitar acentos de la categoría
-                        $no_permitidas = array ('á','é','í','ó','ú','Á','É','Í','Ó','Ú','ñ','Ñ');
-                        $si_permitidas = array ('a','e','i','o','u','A','E','I','O','U','n','N');
-                        $catName = str_replace($no_permitidas, $si_permitidas, $catName);
-
-                        return $this->redirect($this->generateUrl('nw_principal_articulos_catname')."/".$catName);
-                    }
-                    else if ($formBuscarArticulo["otro"]->getData())
-                    {
-                        // Buscar según otro
-                    }
-                    else if ($formBuscarArticulo["proveedor"]->getData())
-                    {
-                        // Buscar según proveedor
-                    }
-
-                    // Convirtiendo los resultados en arrays
-                    /*foreach($resultados as $index=>$value)
-                    {
-                        $objetoenArray=$resultados[$index]->getValues();
-                        $resultados[$index]=$objetoenArray;
-
-                        foreach($resultados[$index]['fotos'] as $indice=>$valor)
-                        {
-                            $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues(false);
-                            $resultados[$index]['fotos'][$indice]=$objeto2enArray;
-                        }
-                    }*/
-
-                    // Se muestran todos los artículos encontrados
-                    return new Response("Ola k ase");
-
+                    // Se llama al servicio de búsqueda de artículos en la base de datos
+                    $buscador = $this->get('articulos_buscador');
+                    // Se redirige el sitio a la lista de artículos que se quieren buscar pasados por GET
+                    return $this->redirect($buscador->generarLink(
+                        $formBuscarArticulo["categorias"]->getData(), // Categoría establecida
+                        $formBuscarArticulo["otro"]->getData(), // Categoría no especificada (ID=27)
+                        $formBuscarArticulo["proveedor"]->getData() // Proveedor que se busca
+                    ));
                 }
             }
             // Formulario2

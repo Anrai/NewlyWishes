@@ -3,6 +3,13 @@
 #services:
 #    nw_principal.forms.controller:
 #        class: "%nw_principal.controller.forms.class%"
+#services:
+#    nw_principal.forms.controller.manyForms:
+#        class: NW\PrincipalBundle\Controller\FormsController\manyFormsAction
+parameters:
+    articulos_buscador.class: NW\PrincipalBundle\Articulos\BuscadorArticulos
+
 services:
-    nw_principal.forms.controller.manyForms:
-        class: NW\PrincipalBundle\Controller\FormsController\manyFormsAction
+    articulos_buscador:
+        class:     %articulos_buscador.class%
+        arguments: [@router, @doctrine.orm.entity_manager]

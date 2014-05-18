@@ -11,6 +11,7 @@ NW\PrincipalBundle\Entity\Articulos:
                 referencedColumnName: id
         categoria:
             targetEntity: Categorias
+            inversedBy: articulo
             joinColumn:
                 name: categoriaId
                 referencedColumnName: id
