@@ -1,0 +1,19 @@
+{# src/NW/UserBundle/Resources/views/felicidades.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+	{% block body %}
+	
+		{% include ':plantillasParciales:top.html.twig' %}
+
+			<div class="container">
+				<div class="cuadro img-responsive">
+					<br>
+					<img class="img-responsive proveedores" src="{{asset('img/felicidades.jpg')}}" />
+					
+					¡Tu registro se ha completado de manera satisfactoria!
+
+				</div>
+			</div>
+
+	{% endblock %}

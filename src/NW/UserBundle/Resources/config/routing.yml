@@ -1,6 +1,6 @@
-nw_user_newuser:
-    pattern:  /asignarRoles
-    defaults: { _controller: NWUserBundle:User:asignarRoles }
+#nw_user_newuser:
+#    pattern:  /asignarRoles
+#    defaults: { _controller: NWUserBundle:User:asignarRoles }
 
 nw_user_registronovios:
     pattern:  /registronovios
@@ -13,3 +13,7 @@ nw_user_loginnovios:
 nw_user_registroproveedores:
     pattern:  /registroproveedores
     defaults: { _controller: NWUserBundle:User:registroproveedores }
+
+nw_user_registro_exitoso:
+    pattern:  /registroexitoso
+    defaults: { _controller: NWUserBundle:User:registroExitoso }

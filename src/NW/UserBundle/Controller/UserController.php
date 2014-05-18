@@ -96,10 +96,8 @@ class UserController extends Controller
             $em->persist($novios);
             $em->flush();
 
-            // El registro del formulario fue exitoso y se muestra lo siguiente al usuario
-            return new Response(
-                'Novios registrados con éxito'
-            );
+            // El registro del formulario fue exitoso y se muestra mensaje de felicitación
+            return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));
 
         }
         else{
@@ -237,7 +235,7 @@ class UserController extends Controller
                 'proveedor creados con ID: '.$proveedor->getId().' y usuario con ID: '.$user->getId()
             );*/
 
-            return new Response('Travesura realizada');
+            return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));
 
         }
         else{
@@ -247,6 +245,11 @@ class UserController extends Controller
         }
     }
 
+    public function registroExitosoAction()
+    {
+        return $this->render('NWUserBundle:User:felicidades.html.twig');
+    }
+/*
     public function asignarRolesAction()
     {
 
@@ -259,7 +262,7 @@ class UserController extends Controller
         return new Response('Nuevo rol asignado correctamente al usuario '.$user->getId());
     }
 
-/*
+
 	public function loginAction()
     {
         $request = $this->getRequest();
