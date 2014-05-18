@@ -133,8 +133,8 @@ class UserController extends Controller
                 array('fisica' => 'Persona Física', 'moral' => 'Persona Moral'),
                 'multiple' => false, 'expanded' => true, 'required' => true, 'empty_data'  => null))
             ->add('nombreRazon', 'text')
-            ->add('apellidoPaterno', 'text')
-            ->add('apellidoMaterno', 'text')
+            ->add('apellidoPaterno', 'text', array('required' => false))
+            ->add('apellidoMaterno', 'text', array('required' => false))
             ->add('rfc', 'text')
             ->add('email', 'email')
             ->add('lada', 'text', array('max_length' => 3))
@@ -203,6 +203,22 @@ class UserController extends Controller
             $user->setPlainPassword($form["userPass"]->getData());
             $user->addRole('ROLE_PROVEEDOR');
             $user->setEnabled(true);
+
+            // Agregando Apellidos invisibles al proveedor si se trata de persona moral o si no existen apellidos
+            if($form["tipoPersona"]->getData() == "moral")
+            {
+                $proveedor->setApellidoPaterno(" ");
+                $proveedor->setApellidoMaterno(" ");
+            }
+            if(!$form["apellidoPaterno"]->getData())
+            {
+                $proveedor->setApellidoPaterno(" ");
+            }
+            if(!$form["apellidoMaterno"]->getData())
+            {
+                $proveedor->setApellidoMaterno(" ");
+            }
+
 
             // Agregando Estado del proveedor
             $estado=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["estado"]->getData());
