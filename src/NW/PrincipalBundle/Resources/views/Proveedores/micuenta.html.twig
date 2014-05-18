@@ -101,13 +101,13 @@
 						    </div>
 						  </div>
 						</div>
-						<!-- FIN CARGA DE ARTICULOS -->
+						<!-- FIN MODAL -->
 				</div>
 				<div class="row">
 					<div class="col-md-4">
-						<h4>Plan contratado:<span class="esc">Básico</span></h4>
+						<h4>Plan contratado: <span class="esc">{{ proveedor.planName }} </span></h4>
 					</div>
-					<!--Inicia primer Modal-->
+					<!--Inicia Modal Planes-->
 					<div class="col-md-3">
 						<a class="art3" data-toggle="modal" data-target="#myModal"><h5 class="art">Editar</h5></a>
 					</div>
@@ -129,13 +129,14 @@
 									<br>
 									<br>
 									<div class="usuario">
-										<h3>Usuario:</h3>
+										<h3>Usuario: {{ app.user.username }}</h3>
 									</div>
 									<br>
 									<br>
 
 								</div>
 									<div class="container minplanes">
+										{{ form_start(formProveedorPlan) }}
 										<table class="table table-striped">
 											<tr height="20px">
 												<td class="planes2"></td>
@@ -257,31 +258,23 @@
 										  </tbody>
 										  <tr>
 										    <td class="funcionalidades"> Costo mensual (3 meses gratis al registrarte) </td>
-										    <td class="term"><label> $299&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
-										    <td class="term"><label> $599&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
-										    <td class="term"><label> $299&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
-										    <td class="term"><label> $499&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
-										    <td class="term"><label>$999&nbsp;&nbsp;<input type="radio" name="optionsRadios" id="optionsRadios1" checked> </label></td>
+											<td class="term">{{ form_widget(formProveedorPlan.plan.0) }}{{ form_label(formProveedorPlan.plan.0, '$299') }}</td>
+											<td class="term">{{ form_widget(formProveedorPlan.plan.1) }}{{ form_label(formProveedorPlan.plan.0, '$599') }}</td>
+											<td class="term">{{ form_widget(formProveedorPlan.plan.2) }}{{ form_label(formProveedorPlan.plan.0, '$299') }}</td>
+											<td class="term">{{ form_widget(formProveedorPlan.plan.3) }}{{ form_label(formProveedorPlan.plan.0, '$499') }}</td>
+											<td class="term">{{ form_widget(formProveedorPlan.plan.4) }}{{ form_label(formProveedorPlan.plan.0, '$999') }}</td>
 										  </tr>
 										</table>
-											<div class="row">
-												<div class="col-xs-9">
-														<div class="radio">
-													  		<label>
-													    		He leído y acepto los <span class="term">términos y condiciones</span>&nbsp;&nbsp;&nbsp;<input type="checkbox">
-													  		</label>
-														</div>
-														<div class="radio">
-													  		<label>
-													    		He leído y acepto los <span class="term">términos de privacidad</span>&nbsp;&nbsp;&nbsp;<input type="checkbox">
-													  		</label>
-														</div>
-												</div>
-												<div class="col-xs-3">
-													<button id="enviar_form2" name="" class="btn btn-default">Enviar</button>
-												</div>
+										<div class="row">
+											<div class="col-xs-9">
+													{{ form_label(formProveedorPlan.terminosCondiciones, 'Acepto los términos y condiciones') }}&nbsp;&nbsp;{{ form_widget(formProveedorPlan.terminosCondiciones) }}<br />
+													{{ form_label(formProveedorPlan.terminosPrivacidad, 'Acepto los términos de privacidad') }}&nbsp;&nbsp;{{ form_widget(formProveedorPlan.terminosPrivacidad) }} <br />
 											</div>
-
+											<div class="col-xs-3">
+												{{ form_widget(formProveedorPlan.Enviar, { 'attr': {'class': 'btn btn-default enviar_form2'}}) }}
+											</div>
+										</div>
+										{{ form_end(formProveedorPlan) }}
 										<br>
 									</div>	
 			      			</div>

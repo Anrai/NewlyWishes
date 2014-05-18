@@ -11,6 +11,7 @@ use NW\PrincipalBundle\Form\Type\ArticuloType;
 use NW\PrincipalBundle\Form\Type\ArticuloEditType;
 use NW\PrincipalBundle\Form\Type\AnuncioType;
 use NW\PrincipalBundle\Form\Type\BannersType;
+use NW\PrincipalBundle\Form\Type\SeleccionPlanType;
 
 use NW\PrincipalBundle\Entity\Articulos;
 use NW\PrincipalBundle\Entity\FotosArticulos;
@@ -41,6 +42,10 @@ class ProveedoresController extends Controller
         $formProveedorData["cp"] = $proveedorObject->getCp();
         $formProveedorData["estado"] = $proveedorObject->getEstados()->getId();
         $formProveedor = $this->createForm(new EdicionProveedorType(), $formProveedorData);
+
+        // Formulario de cambio de plan
+        $formProveedorPlanData["plan"] = $proveedorObject->getPlan();
+        $formProveedorPlan = $this->createForm(new SeleccionPlanType(), $formProveedorPlanData);
 
         // Formulario de cambio de contraseña
         $form=$this->createFormBuilder()
@@ -115,6 +120,24 @@ class ProveedoresController extends Controller
                     $em->flush();
                 }
             }
+
+            // ¿El formulario que se envió es el de edición de plan?
+            else if ($request->request->has($formProveedorPlan->getName())) {
+
+                // handle the second form
+                $formProveedorPlan->handleRequest($request);
+         
+                if ($formProveedorPlan->isValid()) {
+
+                    // Agregando plan al proveedor actual
+                    $proveedorObject->setPlan($formProveedorPlan["plan"]->getData());
+
+                    // Persistiendo los datos en la base de datos
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $em->persist($proveedorObject);
+                    $em->flush();
+                }
+            }
         }
 
          // Datos del proveedor
@@ -137,11 +160,13 @@ class ProveedoresController extends Controller
         $proveedor['estado']=$proveedorObject->getEstados()->getEstado();
         $proveedor['ciudad']=$proveedorObject->getCiudad();
         $proveedor['cp']=$proveedorObject->getCp();
+        $proveedor['planName']=$proveedorObject->getPlanName();
         // Fin de datos del proveedor
 
         return $this->render('NWPrincipalBundle:Proveedores:micuenta.html.twig', array(
             'form' => $form->createView(),
             'formProveedor' => $formProveedor->createView(),
+            'formProveedorPlan' => $formProveedorPlan->createView(),
             'proveedor' => $proveedor,
             'statusForm' => $statusForm
         ));

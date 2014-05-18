@@ -501,4 +501,31 @@ class registroproveedores
     {
         return $this->plan;
     }
+
+    // Muestra un nombre legible para el plan
+    public function getPlanName()
+    {
+        $plan = $this->plan;
+
+        switch ($plan) {
+            case 'anuncioEspecial':
+                return 'Anuncio Especial';
+                break;
+            case 'anuncioPlus':
+                return 'Anuncio Plus';
+                break;
+            case 'basico':
+                return 'Básico';
+                break;
+            case 'estandar':
+                return 'Estándar';
+                break;
+            case 'plus':
+                return 'Plus';
+                break;
+            default:
+                return 'Esta cuenta no tiene Plan';
+                break;
+        }
+    }
 }
