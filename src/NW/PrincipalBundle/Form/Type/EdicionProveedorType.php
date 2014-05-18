@@ -14,8 +14,8 @@ class EdicionProveedorType extends AbstractType
                 array('fisica' => 'Persona Física', 'moral' => 'Persona Moral'),
                 'multiple' => false, 'expanded' => true, 'required' => true, 'empty_data'  => null));
         $builder->add('nombreRazon', 'text');
-        $builder->add('apellidoPaterno', 'text');
-        $builder->add('apellidoMaterno', 'text');
+        $builder->add('apellidoPaterno', 'text', array('required' => false));
+        $builder->add('apellidoMaterno', 'text', array('required' => false));
         $builder->add('rfc', 'text');
         $builder->add('email', 'email');
         $builder->add('lada', 'text', array('max_length' => 3));

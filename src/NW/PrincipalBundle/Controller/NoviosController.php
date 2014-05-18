@@ -539,11 +539,9 @@ class NoviosController extends Controller
         $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
         // Formulario de edición de datos de los novios
-        $NoviasObject=new Novias();
-            $NoviasObject->setNombre('');// Con esto se muestra el nombre que se quiera en el formulario renderizado
-        $formData['novias'] = $NoviasObject;
-        $formData['novios'] = new Novios();
-        $formNovios = $this->createForm(new EdicionNoviosType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
+        $formData2['novias'] = $novia; // Se recuperan datos de la novia
+        $formData2['novios'] = $novio; // Se recuperan datos del novio
+        $formNovios = $this->createForm(new EdicionNoviosType(), $formData2); // Formulario de usuarios mezclado con el de novias y novios
         $formDiaBoda = $this->createForm(new DiaBodaType());
 
         // Formulario de cambio de contraseña

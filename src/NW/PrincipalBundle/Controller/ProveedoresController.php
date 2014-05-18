@@ -27,7 +27,20 @@ class ProveedoresController extends Controller
         $proveedorObject=$user->getRegistroproveedores();
 
         // Formulario de edición de datos del proveedor
-        $formProveedor = $this->createForm(new EdicionProveedorType());
+        $formProveedorData["tipoPersona"] = $proveedorObject->getTipoPersona();
+        $formProveedorData["nombreRazon"] = $proveedorObject->getNombreRazon();
+        $formProveedorData["apellidoPaterno"] = $proveedorObject->getApellidoPaterno();
+        $formProveedorData["apellidoMaterno"] = $proveedorObject->getApellidoMaterno();
+        $formProveedorData["rfc"] = $proveedorObject->getRfc();
+        $formProveedorData["email"] = $proveedorObject->getEmail();
+        $formProveedorData["lada"] = $proveedorObject->getLada();
+        $formProveedorData["telefono"] = $proveedorObject->getTelefono();
+        $formProveedorData["celular"] = $proveedorObject->getCelular();
+        $formProveedorData["direccion"] = $proveedorObject->getDireccion();
+        $formProveedorData["ciudad"] = $proveedorObject->getCiudad();
+        $formProveedorData["cp"] = $proveedorObject->getCp();
+        $formProveedorData["estado"] = $proveedorObject->getEstados()->getId();
+        $formProveedor = $this->createForm(new EdicionProveedorType(), $formProveedorData);
 
         // Formulario de cambio de contraseña
         $form=$this->createFormBuilder()
