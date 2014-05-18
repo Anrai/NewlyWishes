@@ -26,11 +26,6 @@ class DefaultController extends Controller
         return $this->render('NWPrincipalBundle:Default:registronovios.html.twig');
     }
 
-    public function planesAction()
-    {
-        return $this->render('NWPrincipalBundle:Default:planes.html.twig');
-    }
-
     public function changePassAction()
     {
         // Si todo funcionó correctamente, se le muestra al usuario la página de loggeo

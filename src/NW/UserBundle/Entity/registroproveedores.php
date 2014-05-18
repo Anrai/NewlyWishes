@@ -472,4 +472,33 @@ class registroproveedores
     {
         return $this->estados;
     }
+    
+    /**
+     * @var string
+     */
+    private $plan;
+
+
+    /**
+     * Set plan
+     *
+     * @param string $plan
+     * @return registroproveedores
+     */
+    public function setPlan($plan)
+    {
+        $this->plan = $plan;
+
+        return $this;
+    }
+
+    /**
+     * Get plan
+     *
+     * @return string 
+     */
+    public function getPlan()
+    {
+        return $this->plan;
+    }
 }

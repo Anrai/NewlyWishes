@@ -26,10 +26,6 @@ nw_principal_empresa:
     pattern:  /empresa
     defaults: { _controller: NWPrincipalBundle:Default:empresa }
 
-nw_principal_planes:
-    pattern:  /planes
-    defaults: { _controller: NWPrincipalBundle:Default:planes }
-
 nw_principal_changepass:
     pattern:  /changePass
     defaults: { _controller: NWPrincipalBundle:Default:changePass }

@@ -125,6 +125,7 @@ class UserController extends Controller
         $registro->setEstado('');
         $registro->setCiudad('');
         $registro->setCp('');
+        $registro->setPlan('');
  
         $form = $this->createFormBuilder($registro)
             ->add('tipoPersona', 'choice', array('choices' => 
@@ -182,7 +183,16 @@ class UserController extends Controller
             ->add('userPass', 'password', array('mapped' => false, 'required'  => true))
             ->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true))
             ->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true))
-            ->add('Enviar', 'submit')
+            ->add('plan', 'choice', array('choices' => 
+                array(
+                    'anuncioEspecial' => 'Anuncio Especial',
+                    'anuncioPlus' => 'Anuncio Plus',
+                    'basico' => 'Básico',
+                    'estandar' => 'Estándar',
+                    'plus' => 'Plus'
+                ),
+                'multiple' => false, 'expanded' => true, 'required' => true, 'empty_data'  => null))
+            ->add('Aceptar', 'submit')
             ->getForm();
 
         $form->handleRequest($request);

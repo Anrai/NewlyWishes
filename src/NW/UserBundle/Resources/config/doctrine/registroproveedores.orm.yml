@@ -62,3 +62,6 @@ NW\UserBundle\Entity\registroproveedores:
         cp:
             type: string
             length: 100
+        plan:
+            type: string
+            length: 100
