@@ -692,4 +692,63 @@ class registroproveedores
     {
         return $this->descripcion;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $galeria;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->galeria = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add galeria
+     *
+     * @param \NW\PrincipalBundle\Entity\GaleriaProveedor $galeria
+     * @return registroproveedores
+     */
+    public function addGalerium(\NW\PrincipalBundle\Entity\GaleriaProveedor $galeria)
+    {
+        $this->galeria[] = $galeria;
+
+        return $this;
+    }
+
+    /**
+     * Remove galeria
+     *
+     * @param \NW\PrincipalBundle\Entity\GaleriaProveedor $galeria
+     */
+    public function removeGalerium(\NW\PrincipalBundle\Entity\GaleriaProveedor $galeria)
+    {
+        $this->galeria->removeElement($galeria);
+    }
+
+    /**
+     * Get galeria
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGaleria()
+    {
+        return $this->galeria;
+    }
+
+    /*
+    * Método que obtiene las fotos de galería del proveedor y las regresa como arreglo de urls
+    */
+    public function getGaleriaArray()
+    {
+        $galeria = $this->getGaleria()->toArray();
+
+        foreach($galeria as $indice=>$valor)
+        {
+            $galeria[$indice] = $galeria[$indice]->getWebPath(false);
+        }
+        return $galeria;
+    }
 }

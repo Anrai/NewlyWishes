@@ -18,6 +18,7 @@ use NW\PrincipalBundle\Entity\Articulos;
 use NW\PrincipalBundle\Entity\FotosArticulos;
 use NW\PrincipalBundle\Entity\Banners;
 use NW\PrincipalBundle\Entity\Anuncios;
+use NW\PrincipalBundle\Entity\GaleriaProveedor;
 use NW\UserBundle\Entity\registroproveedores;
 
 class ProveedoresController extends Controller
@@ -151,9 +152,23 @@ class ProveedoresController extends Controller
          
                 if ($formProveedorPublico->isValid()) {
 
-                    // Se actualiza el logo por el nuevo y se sube
-                    $proveedorObject->setFile($formProveedorPublico["file"]->getData());
-                    $proveedorObject->upload();
+                    // Se actualiza el logo por el nuevo si es que se definió uno y se sube
+                    if($formProveedorPublico["file"]->getData())
+                    {
+                        $proveedorObject->setFile($formProveedorPublico["file"]->getData());
+                        $proveedorObject->upload();
+                    }
+
+                    // Se sube una nueva imagen a la galería del producto si es que se definió una
+                    if($formProveedorPublico["fileGaleria"]->getData())
+                    {
+                        $nuevaFotoGaleria = new GaleriaProveedor();
+                        $nuevaFotoGaleria->setProveedor($proveedorObject);
+                        $nuevaFotoGaleria->setFile($formProveedorPublico["fileGaleria"]->getData());
+                        $nuevaFotoGaleria->upload(false); // False o la id del usuario es lo mismo
+
+                        $em->persist($nuevaFotoGaleria);
+                    }
 
                     $proveedorObject->setNombreComercial($formProveedorPublico["nombreComercial"]->getData());
                     $proveedorObject->setDescripcion($formProveedorPublico["descripcion"]->getData());
@@ -185,6 +200,10 @@ class ProveedoresController extends Controller
         $proveedor['ciudad']=$proveedorObject->getCiudad();
         $proveedor['cp']=$proveedorObject->getCp();
         $proveedor['planName']=$proveedorObject->getPlanName();
+        $proveedor['nombreComercial']=$proveedorObject->getNombreComercial();
+        $proveedor['descripcion']=$proveedorObject->getDescripcion();
+        $proveedor['logo']=$proveedorObject->getWebPath();
+        $proveedor['galeria']=$proveedorObject->getGaleriaArray();
         // Fin de datos del proveedor
 
         return $this->render('NWPrincipalBundle:Proveedores:micuenta.html.twig', array(

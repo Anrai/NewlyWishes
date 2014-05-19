@@ -330,10 +330,10 @@
 
 								<div class="modal-body">
 								{{ form_start(formProveedorPublico) }}
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span> Logo </span>
+									<h1>Logo</h1>
 									<div class="row">
 										<div class="col-xs-3">
-											<img class="ejlogo" src="{{asset('img/ejlogo.jpg')}}">
+											<img class="ejlogo" width="177" src="{{asset(proveedor.logo)}}">
 										</div>
 										<div class="col-xs-4">
 											<label for="ejemplo_archivo_1" class="cargar">Cargar logo como imagen</label>
@@ -347,10 +347,11 @@
 									<h1>Galería de imágenes</h1>
 									<div class="row">
 										<div class="col-xs-3">
-											<input type="submit" value="Añadir foto nueva" class="boton-seleccionar"> <br>
+											{{ form_widget(formProveedorPublico.fileGaleria, {'attr': {'class': 'cargar2'}}) }}
 										</div>
 										<div class="col-xs-9">
-											<label for="ejemplo_archivo_1">Cargar nueva imagen a la galería</label>
+											<br>
+											<label for="ejemplo_archivo_2">Cargar nueva imagen a la galería</label>
 										</div>
 									</div>
 									<div class="row">
@@ -358,14 +359,26 @@
 
 										</div>
 										<div class="col-xs-3">
+										<!--
 											<img class="bote_top" src="{{asset('img/bote.png')}}">
-											<p>Eliminar esta foto</p>	
+											<p>Eliminar esta foto</p>
+										-->
 										</div>
 										<div class="col-xs-5">
-											<div>
-												<div class="foto2">
-													<span class="foto1">Foto</span>
-												</div>
+											<div id="galeria2" class="carousel slide">
+											    <ol class="carousel-indicators indicators-down">
+												    {% for foto in proveedor.galeria %}
+												      <li data-target="#galeria2" data-slide-to="{{loop.index0}}" class="{% if loop.first %}active{% endif %}"></li>
+												    {% endfor %}
+											    </ol>
+
+											    <div class="carousel-inner">
+											    	{% for foto in proveedor.galeria %}
+														<div class="item {% if loop.first %}active{% endif %}">
+													    	<img src="{{ asset(foto) }}" alt="" class="foto" />
+													    </div>
+													{% endfor %}
+											    </div>
 											</div>
 										</div>
 										<div class="row left">
@@ -397,22 +410,36 @@
 				</div>
 				<div class="row">
 					<div class="col-md-3">
-						<img class="ejlogo" src="{{asset('img/ejlogo.jpg')}}">
+						<img class="ejlogo" width="177" src="{{ asset(proveedor.logo) }}">
 					</div>
 					<div class="col-md-3">
-						<h3 class="esc">Nombre de la empresa</h3>
+						<h3 class="esc">{{ proveedor.nombreComercial }}</h3>
 					</div>
 				</div>
 				Descripción de los que ofreces
 				<br>
 				<br>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, molestias, quos, amet, sapiente eius odio doloremque pariatur temporibus illum cum quasi ipsam blanditiis eos. Facere, doloremque reprehenderit cumque alias accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, neque ab architecto dolorum excepturi natus aspernatur beatae repellat sed libero! Placeat sit consequatur consequuntur obcaecati sed eveniet beatae fugiat iste!
+				{{ proveedor.descripcion }}
 				<br>
 				<br>
 				<br>
 				<h5>Galería de imágenes</h5>
 				<br>
-				<br>
+				<div id="galeria" class="carousel slide">
+				    <ol class="carousel-indicators indicators-down">
+					    {% for foto in proveedor.galeria %}
+					      <li data-target="#galeria" data-slide-to="{{loop.index0}}" class="{% if loop.first %}active{% endif %}"></li>
+					    {% endfor %}
+				    </ol>
+
+				    <div class="carousel-inner">
+				    	{% for foto in proveedor.galeria %}
+							<div class="item {% if loop.first %}active{% endif %}">
+						    	<img src="{{ asset(foto) }}" alt="" class="foto" />
+						    </div>
+						{% endfor %}
+				    </div>
+				</div>
 				<br>
 				<h4 class="esc"> 
 					Mi Contraseña
@@ -453,4 +480,4 @@
 
 	    
 
-	{% endblock %}
+{% endblock %}

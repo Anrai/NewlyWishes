@@ -1,0 +1,22 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/GaleriaProveedor.orm.yml
+NW\PrincipalBundle\Entity\GaleriaProveedor:
+    type: entity 
+    table: galeriaproveedor
+    manyToOne:
+        proveedor:
+            targetEntity: NW\UserBundle\Entity\registroproveedores
+            inversedBy: galeria
+            joinColumn:
+                name: proveedorId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator: 
+                strategy: AUTO
+    fields:
+        proveedorId:
+            type: integer
+        path:
+            type: string
+            length: 255

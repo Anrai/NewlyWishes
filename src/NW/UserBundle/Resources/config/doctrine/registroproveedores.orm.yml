@@ -16,6 +16,10 @@ NW\UserBundle\Entity\registroproveedores:
             joinColumn:
                 name: estado
                 referencedColumnName: id
+    oneToMany:
+        galeria:
+            targetEntity: NW\PrincipalBundle\Entity\GaleriaProveedor
+            mappedBy: proveedor
     id:
         id:
             type: integer

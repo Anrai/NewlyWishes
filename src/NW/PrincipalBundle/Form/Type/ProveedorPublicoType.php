@@ -14,6 +14,7 @@ class ProveedorPublicoType extends AbstractType
         $builder->add('nombreComercial', 'text');
         $builder->add('descripcion', 'textarea');
         $builder->add('file', 'file', array('required' => false));
+        $builder->add('fileGaleria', 'file', array('required' => false));
         $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('Actualizar', 'submit');
