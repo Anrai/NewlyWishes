@@ -65,3 +65,12 @@ NW\UserBundle\Entity\registroproveedores:
         plan:
             type: string
             length: 100
+        path:
+            type: string
+            length: 255
+        nombreComercial:
+            type: string
+            length: 255
+        descripcion:
+            type: string
+            length: 255

@@ -81,7 +81,7 @@ class Anuncios
         return $this->path;
     }
 
-        public function getAbsolutePath()
+    public function getAbsolutePath()
     {
         return null === $this->path
             ? null

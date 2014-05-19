@@ -12,6 +12,7 @@ use NW\PrincipalBundle\Form\Type\ArticuloEditType;
 use NW\PrincipalBundle\Form\Type\AnuncioType;
 use NW\PrincipalBundle\Form\Type\BannersType;
 use NW\PrincipalBundle\Form\Type\SeleccionPlanType;
+use NW\PrincipalBundle\Form\Type\ProveedorPublicoType;
 
 use NW\PrincipalBundle\Entity\Articulos;
 use NW\PrincipalBundle\Entity\FotosArticulos;
@@ -23,6 +24,9 @@ class ProveedoresController extends Controller
 {
     public function micuentaAction(Request $request)
     {
+        // Manejador de entidades
+        $em = $this->getDoctrine()->getEntityManager();
+
         // Obtener usuario y proveedor
         $user=$this->getUser();
         $proveedorObject=$user->getRegistroproveedores();
@@ -48,11 +52,17 @@ class ProveedoresController extends Controller
         $formProveedorPlan = $this->createForm(new SeleccionPlanType(), $formProveedorPlanData);
 
         // Formulario de cambio de contraseña
-        $form=$this->createFormBuilder()
+        $form = $this->createFormBuilder()
             ->add('oldPass', 'password')
             ->add('newPass', 'password')
             ->add('Cambiar', 'submit')
             ->getForm();
+
+        // Formulario de Imagen Pública de la empresa
+        //$formProveedorPublicoData["nombreComercial"] = $proveedorObject->getNombreComercial();
+        //$formProveedorPublicoData["descripcion"] = $proveedorObject->getDescripcion();
+        $formProveedorPublicoData = new registroproveedores();
+        $formProveedorPublico = $this->createForm(new ProveedorPublicoType(), $formProveedorPublicoData);
 
         // No se ha actualizado la contraseña
         $statusForm=false;
@@ -85,7 +95,6 @@ class ProveedoresController extends Controller
                     }            
                 }
             }
-
             // ¿El formulario que se envió es el de edición de los datos del proveedor?
             else if ($request->request->has($formProveedor->getName())) {
 
@@ -115,16 +124,14 @@ class ProveedoresController extends Controller
                     $proveedorObject->setCp($formProveedor["cp"]->getData());
 
                     // Persistiendo los datos en la base de datos
-                    $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($proveedorObject);
                     $em->flush();
                 }
             }
-
             // ¿El formulario que se envió es el de edición de plan?
             else if ($request->request->has($formProveedorPlan->getName())) {
 
-                // handle the second form
+                // handle the third form
                 $formProveedorPlan->handleRequest($request);
          
                 if ($formProveedorPlan->isValid()) {
@@ -133,9 +140,26 @@ class ProveedoresController extends Controller
                     $proveedorObject->setPlan($formProveedorPlan["plan"]->getData());
 
                     // Persistiendo los datos en la base de datos
-                    $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($proveedorObject);
                     $em->flush();
+                }
+            }
+            // ¿El formulario que se envió es el de edición de imagen comercial?
+            else if ($request->request->has($formProveedorPublico->getName())) {
+
+                // handle the fourth form
+                $formProveedorPublico->handleRequest($request);
+         
+                if ($formProveedorPublico->isValid()) {
+
+                    return new Response($formProveedorPublicoData);
+
+                    // Se actualiza el logo por el nuevo y se sube
+                    /*$proveedorObject->setFile($formProveedorPublicoData->getFile());
+                    $proveedorObject->upload();
+
+                    $em->persist($proveedorObject);
+                    $em->flush();*/
                 }
             }
         }
@@ -167,6 +191,7 @@ class ProveedoresController extends Controller
             'form' => $form->createView(),
             'formProveedor' => $formProveedor->createView(),
             'formProveedorPlan' => $formProveedorPlan->createView(),
+            'formProveedorPublico' => $formProveedorPublico->createView(),
             'proveedor' => $proveedor,
             'statusForm' => $statusForm
         ));
