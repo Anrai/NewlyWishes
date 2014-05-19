@@ -59,9 +59,8 @@ class ProveedoresController extends Controller
             ->getForm();
 
         // Formulario de Imagen Pública de la empresa
-        //$formProveedorPublicoData["nombreComercial"] = $proveedorObject->getNombreComercial();
-        //$formProveedorPublicoData["descripcion"] = $proveedorObject->getDescripcion();
-        $formProveedorPublicoData = new registroproveedores();
+        $formProveedorPublicoData["nombreComercial"] = $proveedorObject->getNombreComercial();
+        $formProveedorPublicoData["descripcion"] = $proveedorObject->getDescripcion();
         $formProveedorPublico = $this->createForm(new ProveedorPublicoType(), $formProveedorPublicoData);
 
         // No se ha actualizado la contraseña
@@ -126,7 +125,7 @@ class ProveedoresController extends Controller
                     // Persistiendo los datos en la base de datos
                     $em->persist($proveedorObject);
                     $em->flush();
-                }
+                }http://www.taringa.net/posts/linux/16009015/Xubuntu-Ubuntu-12-04-con-efectos-compiz.html
             }
             // ¿El formulario que se envió es el de edición de plan?
             else if ($request->request->has($formProveedorPlan->getName())) {
@@ -152,14 +151,15 @@ class ProveedoresController extends Controller
          
                 if ($formProveedorPublico->isValid()) {
 
-                    return new Response($formProveedorPublicoData);
-
                     // Se actualiza el logo por el nuevo y se sube
-                    /*$proveedorObject->setFile($formProveedorPublicoData->getFile());
+                    $proveedorObject->setFile($formProveedorPublico["file"]->getData());
                     $proveedorObject->upload();
 
+                    $proveedorObject->setNombreComercial($formProveedorPublico["nombreComercial"]->getData());
+                    $proveedorObject->setDescripcion($formProveedorPublico["descripcion"]->getData());
+
                     $em->persist($proveedorObject);
-                    $em->flush();*/
+                    $em->flush();
                 }
             }
         }

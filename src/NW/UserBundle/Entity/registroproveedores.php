@@ -3,6 +3,7 @@
 namespace NW\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * registroproveedores
@@ -583,7 +584,7 @@ class registroproveedores
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/anuncios/'.$this->getUsuarioId();
+        return 'uploads/proveedores/'.$this->getUsuarioId();
     }
 
     /**
