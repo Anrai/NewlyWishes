@@ -5,8 +5,97 @@
 	{% block body %}
 	
 		{% include ':plantillasParciales:top.html.twig' %}
-	    {% include ':plantillasParciales:slider.html.twig' %}
-	    {% include ':plantillasParciales:pasosboda.html.twig' %}
+
+
+		<div class="row">
+			<div class="row">
+				<div class="row">
+					<div class="caja gris2">
+						<p>Encuentra lo que necesitas</p>
+						<div class="col-xs-5">
+							<select class="form-control">
+								<option>que buscas</option>
+							</select>
+							<select class="form-control">
+								<option>donde vives</option>
+							</select>
+						</div>
+						<div class="col-xs-7">
+							<input type="text" class="form-control input11" placeholder="¿no está en el menú? escribea quí lo que necesitas">
+							<input type="text" class="form-control input11" placeholder="nombre del proveedor que buscas">
+						</div>
+						<div class="col-xs-7">
+
+						</div>
+						<div class="col-xs-5">
+							<input class="enviar4 botoon2" type="submit" id="enviar_form" value="Buscar" style="width:120px;"> <br>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<h2 class="carrito2 art">Regresar</h2>
+					</div>
+					<div class="col-xs-2">
+						<img class="carrito2" src="{{asset('img/novios/nuestras_compras.png')}}">
+					</div>
+					<div class="col-xs-3">
+						<div class="artcarrito2">
+							<span class="art">0 </span>Artículos en tu carrito <br> <span class="art">NewlyWishes</span>
+						</div>
+					</div>
+					<div class="col-xs-2">
+						<input class="enviar2" type="submit" id="enviar_form" value="Checkout" style="width:120px;"> <br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-1">
+				
+			</div>
+			<div class="col-xs-2">
+				<img class="resultados2" src="{{asset('img/ejlogo.jpg')}}">
+			</div>
+			<div class="col-xs-7">
+				<h1>NOMBRE DE LA EMPRESA</h1>
+				<p>Descripción de servicios… Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. Loremipsumdolor sitamet, consectetueradipiscingelit. Aeneancommodoligulaegetdolor. Aeneanmassa. Cum sociisnatoquepenatibuset magnisdisparturientmontes, nasceturridiculusmus. Loremipsumdolor sitamet, consectetueradipiscingelit.</p>
+			</div>
+		</div>
+		<div class="col-xs-1">
+			
+		</div>
+		<div class="col-xs-2">
+			<img class="estrellitas" src="{{asset('img/estrellaa.png')}}">&nbsp;<img class="estrellitas" src="{{asset('img/estrellaa.png')}}">&nbsp;<img class="estrellitas" src="{{asset('img/estrellaa.png')}}">&nbsp; <img class="estrellitas" src="{{asset('img/estrellag.png')}}">&nbsp; <img class="estrellitas" src="{{asset('img/estrellag.png')}}">
+		</div>
+		<div class="col-xs-9">
+			<h1>Valora el servicio de la empresa / reseñas</h1>
+		</div>
+		<div class="caja gris3">
+			<div class="col-xs-2">
+				<br>
+				<h1>Galería</h1>
+			</div>
+			<div class="col-xs-1">
+				<br>
+				<table style="display:inline;border-collapse:collapse;border:0"><tr>
+				<td style="padding:0"><img src="transparent.gif" width="2" height="70" style="background:grey">
+				</td></tr></table>
+			</div>
+			<div class="col-xs-9">
+				<input type="password" id="form_oldPass" name="form[oldPass]" required="required" class="input_registro_novios" placeholder="buscarproducto / servicio [nombre, descripción, código]">
+			</div>
+			<div class="col-xs-7">
+			
+		</div>
+		<div class="col-xs-3">
+			<input class="enviar4 botoon2" type="submit" id="enviar_form" value="Buscar" style="width:120px;"> 
+		</div>
+		</div>	
+		
+		
+
 
 	    
 

@@ -54,10 +54,13 @@ class DefaultController extends Controller
         );
     }
 
-    public function noticiasAction(Request $request)
+    public function noticiaAction(Request $request)
     {
         // Formulario de buscador de artículos
         $formBuscarArticulo = $this->createForm(new BusquedaArticulosType());
+
+        // Servicio de búsqueda y carga de artículos de la base de datos
+        $buscador = $this->get('articulos_buscador');
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
@@ -69,61 +72,19 @@ class DefaultController extends Controller
          
                 if ($formBuscarArticulo->isValid()) {
 
-                    if($formBuscarArticulo["categorias"]->getData())
-                    {
-                        // Buscar según categoría
-                        $ArticulosEntidad = $this->getDoctrine()->getRepository('NWPrincipalBundle:Articulos');
-                        $resultados = $ArticulosEntidad->findBy(array('categoriaId' => $formBuscarArticulo["categorias"]->getData()));
-                    }
-                    else if ($formBuscarArticulo["otro"]->getData())
-                    {
-                        // Buscar según otro
-                    }
-                    else if ($formBuscarArticulo["proveedor"]->getData())
-                    {
-                        // Buscar según otro
-                    }
-
-                    // Convirtiendo los resultados en arrays
-                    foreach($resultados as $index=>$value)
-                    {
-                        $objetoenArray=$resultados[$index]->getValues();
-                        $resultados[$index]=$objetoenArray;
-
-                        foreach($resultados[$index]['fotos'] as $indice=>$valor)
-                        {
-                            $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues();
-                            $resultados[$index]['fotos'][$indice]=$objeto2enArray;
-                        }
-                    }
-
-                    // Se muestran todos los artículos encontrados
-                    return $this->render('NWPrincipalBundle:Default:resultados.html.twig', array(
-                        'resultados' =>  $resultados,
+                    // Se redirige el sitio a la lista de artículos que se quieren buscar pasados por GET
+                    return $this->redirect($buscador->generarLink(
+                        $formBuscarArticulo["categorias"]->getData(), // Categoría establecida
+                        $formBuscarArticulo["otro"]->getData(), // Búsqueda en nombre y descripción de cada artículo
+                        $formBuscarArticulo["proveedor"]->getData() // Proveedor que se busca
                     ));
                 }
             }
-            // Formulario2
-            /*
-            else if ($request->request->has($form->getName())) {
-                // handle the second form
-                $form->handleRequest($request);
-         
-                if ($form->isValid()) {
-        
-                    //Contenido
-                }
-            }*/
         }
 
-        return $this->render('NWPrincipalBundle:Default:noticias.html.twig', array(
-            'formBuscarArticulo' => $formBuscarArticulo->createView(),
+        return $this->render('NWPrincipalBundle:Default:noticia.html.twig', array(
+            'formBuscarArticulo' => $formBuscarArticulo->createView()
         ));
-    }
-
-    public function noticiaAction()
-    {
-        return $this->render('NWPrincipalBundle:Default:noticia.html.twig');
     }
 
     public function listaArticulosAction(Request $request)
@@ -147,7 +108,7 @@ class DefaultController extends Controller
                     // Se redirige el sitio a la lista de artículos que se quieren buscar pasados por GET
                     return $this->redirect($buscador->generarLink(
                         $formBuscarArticulo["categorias"]->getData(), // Categoría establecida
-                        $formBuscarArticulo["otro"]->getData(), // Categoría no especificada (ID=27)
+                        $formBuscarArticulo["otro"]->getData(), // Búsqueda en nombre y descripción de cada artículo
                         $formBuscarArticulo["proveedor"]->getData() // Proveedor que se busca
                     ));
                 }
