@@ -17,10 +17,15 @@ class BuscadorArticulos
 	{
 		$link = $this->router->generate('nw_principal_articulos'); // Link que se regresará
 
-		if ($otra)
+        if ($proveedor)
+        {
+            $proveedor = $this->quitarAcentos($proveedor);
+            $link = $this->router->generate('nw_principal_proveedor').'/busqueda/';
+            $link.= $proveedor;
+        }
+		else if ($otra)
 		{
 			$otra = $this->quitarAcentos($otra);
-
             $link.= 'busqueda/'.$otra;
 		}
 		else if($categoria)
@@ -75,6 +80,43 @@ class BuscadorArticulos
         return $this->articulosToArray($resultados);
 	}
 
+    public function proveedoresPorCoincidencia($palabra)
+    {
+        // Obtener repositorio
+        $proveedoresEntity = $this->em->getRepository('NWUserBundle:registroproveedores'); // Entidad de Proveedores
+         
+        $query = $proveedoresEntity->createQueryBuilder('a')
+            ->where('a.nombreComercial LIKE :buscar')
+            ->orderBy('a.nombreComercial', 'ASC')
+            ->setParameter('buscar', '%'.$palabra.'%')
+            ->getQuery();
+         
+        $resultados = $query->getResult();
+
+        return $this->proveedoresToArray($resultados);
+    }
+
+    public function proveedorPorNombreComercial($proveedorName)
+    {
+        // Obteniendo entidad
+        $proveedoresEntidad = $this->em->getRepository('NWUserBundle:registroproveedores');
+
+        // Obteniendo el objeto proveedor
+        $proveedorObj = $proveedoresEntidad->findOneBy(array('nombreComercial' => $proveedorName));
+
+        // ¿Existe el proveedor?
+        if(is_object($proveedorObj))
+        {
+            return $proveedorObj->getValues();
+
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
 	public function articulosToArray($resultados)
 	{
 		// Si existen resultados que mostrar, éstos convierten en array sus contenidos desde objetos
@@ -96,6 +138,22 @@ class BuscadorArticulos
 
         return $resultados;
 	}
+
+    public function proveedoresToArray($resultados)
+    {
+        // Si existen resultados que mostrar, éstos convierten en array sus contenidos desde objetos
+        if($resultados)
+        {
+            // Convirtiendo los resultados en arrays
+            foreach($resultados as $index=>$value)
+            {
+                $objetoenArray=$resultados[$index]->getValues();
+                $resultados[$index]=$objetoenArray;
+            }
+        }
+
+        return $resultados;
+    }
 
 	private function quitarAcentos($palabra)
 	{

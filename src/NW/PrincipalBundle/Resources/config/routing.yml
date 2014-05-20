@@ -22,9 +22,13 @@ nw_principal_articulos_catname:
     pattern:  /articulos/{catName}
     defaults: { _controller: NWPrincipalBundle:Default:listaArticulos, catName: otros }
 
-nw_principal_empresa:
-    pattern:  /empresa
-    defaults: { _controller: NWPrincipalBundle:Default:empresa }
+nw_principal_proveedor_busqueda:
+    pattern:  /proveedor/busqueda/{buscar}
+    defaults: { _controller: NWPrincipalBundle:Default:proveedor, buscar: boda }
+
+nw_principal_proveedor:
+    pattern:  /proveedor/{provName}
+    defaults: { _controller: NWPrincipalBundle:Default:proveedor, provName: ninguno }
 
 nw_principal_changepass:
     pattern:  /changePass

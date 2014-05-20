@@ -378,6 +378,7 @@ class Articulos
         'categoria' => $this->getCategoriaId()
         );
     }
+    
     /**
      * @var \Doctrine\Common\Collections\Collection
      */

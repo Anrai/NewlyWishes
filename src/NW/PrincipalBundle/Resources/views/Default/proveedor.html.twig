@@ -1,0 +1,59 @@
+{# src/NW/PrincipalBundle/Resources/views/formato.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+	{% block body %}
+	
+		{% include ':plantillasParciales:top.html.twig' %}
+		{% include 'NWPrincipalBundle:Default:formBusquedaCarrito.html.twig' %}
+
+		<hr>
+		<div class="row">
+			<div class="col-xs-1">
+				
+			</div>
+			<div class="col-xs-2">
+				<img class="resultados2" width="177"  src="{{asset(proveedor.logo)}}">
+			</div>
+			<div class="col-xs-7">
+				<h1>{{ proveedor.nombreComercial }}</h1>
+				<p>{{ proveedor.descripcion }}</p>
+			</div>
+		</div>
+		<div class="col-xs-1">
+			
+		</div>
+		<div class="col-xs-2">
+			<img class="estrellitas" src="{{asset('img/estrellaa.png')}}">&nbsp;<img class="estrellitas" src="{{asset('img/estrellaa.png')}}">&nbsp;<img class="estrellitas" src="{{asset('img/estrellaa.png')}}">&nbsp; <img class="estrellitas" src="{{asset('img/estrellag.png')}}">&nbsp; <img class="estrellitas" src="{{asset('img/estrellag.png')}}">
+		</div>
+		<div class="col-xs-9">
+			<h1>Valora el servicio de la empresa / reseñas</h1>
+		</div>
+		<div class="caja gris3">
+			<div class="col-xs-2">
+				<br>
+				<h1>Galería</h1>
+			</div>
+			<div class="col-xs-1">
+				<br>
+				<table style="display:inline;border-collapse:collapse;border:0"><tr>
+				<td style="padding:0"><img src="transparent.gif" width="2" height="70" style="background:grey">
+				</td></tr></table>
+			</div>
+			<div class="col-xs-9">
+				<input type="password" id="form_oldPass" name="form[oldPass]" required="required" class="input_registro_novios" placeholder="buscarproducto / servicio [nombre, descripción, código]">
+			</div>
+			<div class="col-xs-7">
+			
+		</div>
+		<div class="col-xs-3">
+			<input class="enviar4 botoon2" type="submit" id="enviar_form" value="Buscar" style="width:120px;"> 
+		</div>
+		</div>	
+		
+		
+
+
+	    
+
+	{% endblock %}

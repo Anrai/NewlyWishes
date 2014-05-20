@@ -145,9 +145,70 @@ class DefaultController extends Controller
         
     }
 
-    public function empresaAction()
+    public function proveedorAction(Request $request)
     {
-        return $this->render('NWPrincipalBundle:Default:empresa.html.twig');
+        // Manejador de entidades
+        $em = $this->getDoctrine()->getEntityManager();
+
+        // Formulario de buscador de artículos
+        $formBuscarArticulo = $this->createForm(new BusquedaArticulosType());
+
+        // Servicio de búsqueda y carga de artículos de la base de datos
+        $buscador = $this->get('articulos_buscador');
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario  de búqueda de artículos
+            if ($request->request->has($formBuscarArticulo->getName())) {
+                // handle the first form
+                $formBuscarArticulo->handleRequest($request);
+         
+                if ($formBuscarArticulo->isValid()) {
+
+                    // Se redirige el sitio a la lista de artículos que se quieren buscar pasados por GET
+                    return $this->redirect($buscador->generarLink(
+                        $formBuscarArticulo["categorias"]->getData(), // Categoría establecida
+                        $formBuscarArticulo["otro"]->getData(), // Búsqueda en nombre y descripción de cada artículo
+                        $formBuscarArticulo["proveedor"]->getData() // Proveedor que se busca
+                    ));
+                }
+            }
+        }
+        // Si se quiere cargar un proveedor específico
+        else if ('GET' === $request->getMethod()){
+
+            // Checar si se quieren cargar los artículos de una búsqueda
+            $esBusquedaProveedor = strpos($this->getRequest()->getPathInfo(), "/busqueda/");
+
+            if($esBusquedaProveedor)
+            {
+                $buscar = str_replace ("/proveedor/busqueda/", "", $this->getRequest()->getPathInfo());
+                $buscar = str_replace ("%20", " ", $buscar);
+
+                $resultados = $buscador->proveedoresPorCoincidencia($buscar);
+
+                return $this->render('NWPrincipalBundle:Default:proveedoresBusqueda.html.twig', array(
+                    'formBuscarArticulo' => $formBuscarArticulo->createView(),
+                    'resultados' => $resultados,
+                ));
+            }
+            else
+            {
+                // Obtener el nombre de la categoría
+                $provName = str_replace ("/proveedor/", "", $this->getRequest()->getPathInfo());
+                $provName = str_replace ("%20", " ", $provName);
+
+                $proveedorArray = $buscador->proveedorPorNombreComercial($provName);
+
+                return $this->render('NWPrincipalBundle:Default:proveedor.html.twig', array(
+                    'formBuscarArticulo' => $formBuscarArticulo->createView(),
+                    'proveedor' => $proveedorArray,
+                ));
+            }
+
+        }
+
     }
 
 }
