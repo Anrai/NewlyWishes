@@ -118,9 +118,9 @@ class DefaultController extends Controller
         else if ('GET' === $request->getMethod()){
 
             // Checar si se quieren cargar los artículos de una búsqueda
-            $esBusquedaAticulo = strpos($this->getRequest()->getPathInfo(), "/busqueda/");
+            $esBusquedaArticulo = strpos($this->getRequest()->getPathInfo(), "/busqueda/");
 
-            if($esBusquedaAticulo)
+            if($esBusquedaArticulo)
             {
                 $buscar = str_replace ("/articulos/busqueda/", "", $this->getRequest()->getPathInfo());
                 $buscar = str_replace ("%20", " ", $buscar);
@@ -201,9 +201,30 @@ class DefaultController extends Controller
 
                 $proveedorArray = $buscador->proveedorPorNombreComercial($provName);
 
+                $proveedorEntity = $em->getRepository('NWUserBundle:registroproveedores');
+                $proveedorObj = $proveedorEntity->findOneBy(array('nombreComercial' => $provName));
+                $proveedorUsuarioId = $proveedorObj->getUsuarioId();
+
+                // Obteniendo la lista de artículos en un arreglo de objetos
+                $articulos = $em->getRepository('NWPrincipalBundle:Articulos')->findBy(array('usuarioId' => $proveedorUsuarioId));
+
+                // Convirtiendo los resultados en arrays
+                foreach($articulos as $index=>$value)
+                {
+                    $objetoenArray=$articulos[$index]->getValues();
+                    $articulos[$index]=$objetoenArray;
+
+                    foreach($articulos[$index]['fotos'] as $indice=>$valor)
+                    {
+                        $objeto2enArray=$articulos[$index]['fotos'][$indice]->getValues(false);
+                        $articulos[$index]['fotos'][$indice]=$objeto2enArray;
+                    }
+                }
+
                 return $this->render('NWPrincipalBundle:Default:proveedor.html.twig', array(
                     'formBuscarArticulo' => $formBuscarArticulo->createView(),
                     'proveedor' => $proveedorArray,
+                    'articulos' => $articulos,
                 ));
             }
 

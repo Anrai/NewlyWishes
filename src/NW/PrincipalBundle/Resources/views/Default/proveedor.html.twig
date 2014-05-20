@@ -49,11 +49,75 @@
 		<div class="col-xs-3">
 			<input class="enviar4 botoon2" type="submit" id="enviar_form" value="Buscar" style="width:120px;"> 
 		</div>
+		</div>
+
+	{% for articulo in articulos %}
+	{% if articulo.estatus %}
+	<!-- Inicio de artículo -->
+	<div class="articuloCompleto">
+		<div class="container">
+			<div class="col-md-10">
+				<h5 class="art articuloNombre">{{articulo.nombre}}</h5>	
+				<span class="articuloID" style="visibility:hidden">{{articulo.id}}</span>
+				<span class="articuloCategoria" style="visibility:hidden">{{articulo.categoria}}</span>
+			</div>
+			<div class="col-md-2">
+			</div>
 		</div>	
-		
-		
+		<hr />
+		<div class="container">
+			<p>Descripción: </p>
+			<div class="col-md-8">
+				<p class="articuloDescripcion">{{articulo.descripcion}}</p>
+			</div>
+			<div class="col-md-1">
+				Valor <br>
+				<p class="art2">$<span class="articuloPrecio">{{articulo.precio}}</span></p> <br>
+				Valor promoción <br>
+				<p class="art2">$<span class="articuloPrecioPromocion">{{articulo.precioPromocion}}</span></p> <br>
+			</div>
+			<div class="col-md-2">
 
+			</div>
+			<div class="col-md-4">
+				Tamaños:<br />
+				{% for tamano in articulo.tamanos %}
+					{{tamano}}<br />
+				{% endfor %}
+				<span style="visibility:hidden" class="articuloTamanos">{% for tamano in articulo.tamanos %}{{tamano}},{% endfor %}</span>
+			</div>
+			<div class="col-md-4">
+				<p>Inventario disponible: <span class="art articuloStock">{{articulo.stock}}</span></p>
+			</div>
+			<div class="col-md-4">
+				<div id="fotos{{articulo.id}}" class="carousel slide">
+				    <ol class="carousel-indicators indicators-down">
+					    {% for foto in articulo.fotos %}
+					      <li data-target="#fotos{{articulo.id}}" data-slide-to="{{loop.index0}}" class="{% if loop.first %}active{% endif %}"></li>
+					    {% endfor %}
+				    </ol>
 
+				    <div class="carousel-inner">
+				    	{% for foto in articulo.fotos %}
+							<div class="item {% if loop.first %}active{% endif %}">
+						    	<img src="{{ asset(foto.webPath) }}" alt="" class="foto" />
+						    </div>
+						{% endfor %}
+						<span style="visibility:hidden" class="articuloFotos">{% for foto in articulo.fotos %}{{foto.id}},{% endfor %}</span>
+				    </div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-md-8">
+				<p>ID: <span class="art articuloidInterno">{{articulo.idInterno}}</span></p> <br>
+				<p>Tipo: <span class="art articuloTipo">{{articulo.tipo}}</span></p>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	<!-- Fin de artículo -->
+	{% endfor %}
 	    
 
 	{% endblock %}

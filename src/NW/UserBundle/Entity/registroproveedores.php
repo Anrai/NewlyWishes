@@ -753,12 +753,14 @@ class registroproveedores
     }
 
     // Método que regresa mis valores en forma de array
-    public function getValues(){
+    public function getValues()
+    {
         return array(
-        'id' => $this->getId(),
-        'nombreComercial' => $this->getNombreComercial(),
-        'descripcion' => $this->getDescripcion(),
-        'logo' => $this->getWebPath(),
+            'id' => $this->getId(),
+            'nombreComercial' => $this->getNombreComercial(),
+            'descripcion' => $this->getDescripcion(),
+            'logo' => $this->getWebPath(),
+            'galeria' => $this->getGaleriaArray(),
         );
     }
 }
