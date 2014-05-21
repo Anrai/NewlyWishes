@@ -159,8 +159,8 @@ class NoviosController extends Controller
             'formPadrinos' => $formPadrinos->createView(),
             'formNotas' => $formNotas->createView(),
             'formDiaBoda' => $formDiaBoda->createView(),
-            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
-            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
+            'hayFechaBoda' => false,//$BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => 30,//$BodaVieja->contadorFechaBoda(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'padrinos' => $padrinos,
@@ -678,8 +678,8 @@ class NoviosController extends Controller
             'noviaInfo' => $noviaInfo,
             'novioInfo' => $novioInfo,
             'statusForm' => $statusForm,
-            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
-            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
+            'hayFechaBoda' => false,//$BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => false//$BodaVieja->contadorFechaBoda(),
         ));
     }
 	

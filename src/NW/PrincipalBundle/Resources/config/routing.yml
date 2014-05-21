@@ -26,12 +26,16 @@ nw_principal_proveedor_busqueda:
     pattern:  /proveedor/busqueda/{buscar}
     defaults: { _controller: NWPrincipalBundle:Default:proveedor, buscar: boda }
 
-nw_principal_proveedor:
-    pattern:  /proveedor/{provName}
-    defaults: { _controller: NWPrincipalBundle:Default:proveedor, provName: ninguno }
+nw_principal_buscar_novios:
+    pattern:  /buscarnovios
+    defaults: { _controller: NWPrincipalBundle:Default:buscarnovios }
 
 nw_principal_changepass:
-    pattern:  /changePass
+    pattern:  /changepass
+    defaults: { _controller: NWPrincipalBundle:Default:changePass }
+
+nw_principal_changepass:
+    pattern:  /changepass
     defaults: { _controller: NWPrincipalBundle:Default:changePass }
 
 nw_principal_proveedores_micuenta:

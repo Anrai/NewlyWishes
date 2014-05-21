@@ -9,6 +9,9 @@ NW\UserBundle\Entity\Novias:
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
+        novio:
+            targetEntity: Novios
+            mappedBy: novia
     manyToOne:
         estados:
             targetEntity: NW\PrincipalBundle\Entity\Estados

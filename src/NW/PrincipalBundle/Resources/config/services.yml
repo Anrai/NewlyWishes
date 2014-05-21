@@ -9,6 +9,7 @@
 parameters:
     articulos_buscador.class: NW\PrincipalBundle\Articulos\BuscadorArticulos
     resenas_service.class: NW\PrincipalBundle\Servicios\Resenas
+    busqueda_novios_service.class: NW\PrincipalBundle\Servicios\BusquedaNovios
 
 services:
     articulos_buscador:
@@ -16,4 +17,7 @@ services:
         arguments: [@router, @doctrine.orm.entity_manager]
     resenas_service:
         class:     %resenas_service.class%
+        arguments: [@router, @doctrine.orm.entity_manager]
+    busqueda_novios_service:
+        class:     %busqueda_novios_service.class%
         arguments: [@router, @doctrine.orm.entity_manager]

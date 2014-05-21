@@ -1,0 +1,29 @@
+{# src/NW/PrincipalBundle/Resources/Views/Default/changePass.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {% include ':plantillasParciales:top.html.twig' %}
+
+        <div class="container">
+            
+            <h4>Parejas encontradas</h4>
+
+            <div class="row">
+                <div class="col-md-4"><strong>Novia</strong></div>
+                <div class="col-md-4"><strong>Novio</strong></div>
+                <div class="col-md-4"><strong>Fecha de la boda</strong></div>
+            </div>
+
+            {% for pareja in resultados %}
+            <div class="row">
+                <div class="col-md-4">{{pareja.noviaNombre}}</div>
+                <div class="col-md-4">{{pareja.novioNombre}}</div>
+                <div class="col-md-4">{{pareja.fechaBoda}}</div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+{% endblock %}

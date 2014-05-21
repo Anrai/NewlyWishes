@@ -9,6 +9,12 @@ NW\UserBundle\Entity\Novios:
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
+        novia:
+            targetEntity: Novias
+            inversedBy: novio
+            joinColumn:
+                name: noviaId
+                referencedColumnName: id
     manyToOne:
         estados:
             targetEntity: NW\PrincipalBundle\Entity\Estados
@@ -23,6 +29,8 @@ NW\UserBundle\Entity\Novios:
                 strategy: AUTO
     fields:
         usuarioId:
+            type: integer
+        noviaId:
             type: integer
         nombre:
             type: string

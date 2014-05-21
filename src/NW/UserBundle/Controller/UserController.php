@@ -89,6 +89,9 @@ class UserController extends Controller
             $novias->setUser($user);
             $novios->setUser($user);
 
+            // Agregando Novia al Novio
+            $novios->setNovia($novias);
+
             // Persistiendo los datos en la base de datos
             $em = $this->getDoctrine()->getEntityManager(); 
             $em->persist($user);

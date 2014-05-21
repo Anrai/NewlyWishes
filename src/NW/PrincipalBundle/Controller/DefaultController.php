@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 use NW\PrincipalBundle\Form\Type\BusquedaArticulosType;
 use NW\PrincipalBundle\Form\Type\NuevaResenaType;
+use NW\PrincipalBundle\Form\Type\BuscarNoviosType;
 
 use NW\PrincipalBundle\Entity\Resena;
 
@@ -275,6 +276,39 @@ class DefaultController extends Controller
 
         }
 
+    }
+
+    public function buscarnoviosAction(Request $request)
+    {
+        // Formulario de búsqueda de novios
+        $formBuscarNovios = $this->createForm(new BuscarNoviosType());
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+        
+            // Formulario de búqueda de novios
+            if ($request->request->has($formBuscarNovios->getName())) {
+                // handle the first form
+                $formBuscarNovios->handleRequest($request);
+         
+                if ($formBuscarNovios->isValid()) {
+
+                    // Servicio de Búsqueda de novios
+                    $busquedaNoviosService = $this->get('busqueda_novios_service');
+
+                    // Resultados de la búsqueda de novios
+                    $resultados = $busquedaNoviosService->buscarNovios($formBuscarNovios->getData());
+
+                    return $this->render('NWPrincipalBundle:Default:noviosencontrados.html.twig', array(
+                        'resultados' => $resultados,
+                    ));
+                }
+            }
+        }
+
+        return $this->render('NWPrincipalBundle:Default:buscarnovios.html.twig', array(
+            'formBuscarNovios' => $formBuscarNovios->createView(),
+        ));
     }
 
 }
