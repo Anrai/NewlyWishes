@@ -32,7 +32,7 @@
 		<div class="caja gris3">
 			<div class="col-xs-2">
 				<br>
-				<h1>Galería</h1>
+				<a class="art3" data-toggle="modal" data-target="#galeria"><h1>Galería</h1></a>
 			</div>
 			<div class="col-xs-1">
 				<br>
@@ -118,6 +118,44 @@
 	{% endif %}
 	<!-- Fin de artículo -->
 	{% endfor %}
+
+	<!-- Modal -->
+	<div class="modal fade" id="galeria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="border: rgba(204,0,153,0.7) 2px solid; padding:10px;">
+				<div class="modal-header2">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<div class="col-xs-7">
+						<h4 class="modal-title rosa" id="myModalLabel">{{ proveedor.nombreComercial }} - Galería</h4>
+					</div>
+					<div class="col-xs-5">
+						<img class="logo-modal" src="{{asset('img/nw.png')}}">	
+					</div>
+				</div>
+
+
+				<div class="modal-body">
+					<div id="fotosGaleria" class="carousel slide" style="margin-top:120px">
+					    <ol class="carousel-indicators indicators-down">
+						    {% for foto in proveedor.galeria %}
+						      <li data-target="#fotosGaleria" data-slide-to="{{loop.index0}}" class="{% if loop.first %}active{% endif %}"></li>
+						    {% endfor %}
+					    </ol>
+
+					    <div class="carousel-inner">
+					    	{% for foto in proveedor.galeria %}
+								<div class="item {% if loop.first %}active{% endif %}">
+							    	<img src="{{ asset(foto) }}" alt="" class="foto" />
+							    </div>
+							{% endfor %}
+					    </div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- FIN MODAL -->
 	    
 
 	{% endblock %}
