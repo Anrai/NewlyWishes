@@ -515,8 +515,15 @@ class ProveedoresController extends Controller
         $proveedor['nombre']=$proveedorObject->getNombreRazon();
         $proveedor['cuenta']=$proveedorObject->getId();
 
+        // Servicio de Reseñas
+        $resenasService = $this->get('resenas_service');
+
+        // Obtener toda la información de las reseñas del proveedor
+        $resenas = $resenasService->getResenas($proveedorObject->getId());
+
         return $this->render('NWPrincipalBundle:Proveedores:misresenas.html.twig', array(
             'proveedor' => $proveedor,
+            'resenas' => $resenas,
         ));
     }
 

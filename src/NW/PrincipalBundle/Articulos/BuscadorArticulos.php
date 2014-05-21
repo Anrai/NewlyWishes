@@ -149,6 +149,7 @@ class BuscadorArticulos
             {
                 $objetoenArray=$resultados[$index]->getValues();
                 $resultados[$index]=$objetoenArray;
+                $resultados[$index]['url'] = $this->quitarAcentos($objetoenArray['nombreComercial']);
             }
         }
 

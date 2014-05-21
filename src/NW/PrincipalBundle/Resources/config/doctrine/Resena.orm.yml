@@ -1,0 +1,27 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Resena.orm.yml
+NW\PrincipalBundle\Entity\Resena:
+    type: entity
+    table: resena
+    manyToOne:
+        proveedor:
+            targetEntity: NW\UserBundle\Entity\registroproveedores
+            inversedBy: resenas
+            joinColumn:
+                name: proveedorId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        proveedorId:
+            type: integer
+        puntuacion:
+            type: integer
+        titulo:
+            type: string
+            length: 255
+        resena:
+            type: string
+            length: 255

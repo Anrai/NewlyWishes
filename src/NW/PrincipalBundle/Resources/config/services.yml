@@ -8,8 +8,12 @@
 #        class: NW\PrincipalBundle\Controller\FormsController\manyFormsAction
 parameters:
     articulos_buscador.class: NW\PrincipalBundle\Articulos\BuscadorArticulos
+    resenas_service.class: NW\PrincipalBundle\Servicios\Resenas
 
 services:
     articulos_buscador:
         class:     %articulos_buscador.class%
+        arguments: [@router, @doctrine.orm.entity_manager]
+    resenas_service:
+        class:     %resenas_service.class%
         arguments: [@router, @doctrine.orm.entity_manager]

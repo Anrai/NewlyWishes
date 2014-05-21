@@ -20,6 +20,9 @@ NW\UserBundle\Entity\registroproveedores:
         galeria:
             targetEntity: NW\PrincipalBundle\Entity\GaleriaProveedor
             mappedBy: proveedor
+        resenas:
+            targetEntity: NW\PrincipalBundle\Entity\Resena
+            mappedBy: proveedor
     id:
         id:
             type: integer

@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
 use NW\PrincipalBundle\Form\Type\BusquedaArticulosType;
+use NW\PrincipalBundle\Form\Type\NuevaResenaType;
+
+use NW\PrincipalBundle\Entity\Resena;
 
 class DefaultController extends Controller
 {
@@ -174,6 +177,35 @@ class DefaultController extends Controller
                     ));
                 }
             }
+            // Formulario de nueva Reseña
+            if ($request->request->has('nuevaResena')) {
+                // handle the first form
+                $formNuevaResena = $this->createForm(new nuevaResenaType());
+                $formNuevaResena->handleRequest($request);
+         
+                if ($formNuevaResena->isValid()) {
+
+                    // Se obtienen los datos del proveedor
+                    $proveedorId = $formNuevaResena['proveedorId']->getData();
+                    $proveedorEntity = $em->getRepository('NWUserBundle:registroproveedores');
+                    $proveedorObj = $proveedorEntity->find($proveedorId);
+                    $proveedorNombreComercial = $proveedorObj->getNombreComercial();
+
+                    // Se crea una nueva reseña
+                    $newResenaObj = new Resena();
+                    $newResenaObj->setTitulo($formNuevaResena['titulo']->getData());
+                    $newResenaObj->setResena($formNuevaResena['resena']->getData());
+                    $newResenaObj->setPuntuacion($formNuevaResena['puntuacion']->getData());
+                    $newResenaObj->setProveedor($proveedorObj);
+
+                    // Se persiste la nueva reseña a la base de datos
+                    $em->persist($newResenaObj);
+                    $em->flush();
+
+                    // Se regresa a la página del proveedor
+                    return $this->redirect($this->generateURL('nw_principal_proveedor').'/'.$proveedorNombreComercial);
+                }
+            }
         }
         // Si se quiere cargar un proveedor específico
         else if ('GET' === $request->getMethod()){
@@ -195,7 +227,7 @@ class DefaultController extends Controller
             }
             else
             {
-                // Obtener el nombre de la categoría
+                // Obtener el nombre del proveedor
                 $provName = str_replace ("/proveedor/", "", $this->getRequest()->getPathInfo());
                 $provName = str_replace ("%20", " ", $provName);
 
@@ -221,10 +253,23 @@ class DefaultController extends Controller
                     }
                 }
 
+                // Servicio de Reseñas
+                $resenasService = $this->get('resenas_service');
+
+                // Obtener toda la información de las reseñas del proveedor
+                $resenas = $resenasService->getResenas($proveedorObj->getId());
+
+                // Formulario de nueva reseña (si es necesaria)
+                $formNuevaResenaData = new Resena();
+                $formNuevaResenaData->setProveedorId($proveedorObj->getId());
+                $formNuevaResena = $this->createForm(new nuevaResenaType(), $formNuevaResenaData);
+
                 return $this->render('NWPrincipalBundle:Default:proveedor.html.twig', array(
                     'formBuscarArticulo' => $formBuscarArticulo->createView(),
+                    'formNuevaResena' => $formNuevaResena->createView(),
                     'proveedor' => $proveedorArray,
                     'articulos' => $articulos,
+                    'resenas' => $resenas,
                 ));
             }
 

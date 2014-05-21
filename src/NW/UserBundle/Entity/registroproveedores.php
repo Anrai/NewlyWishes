@@ -763,4 +763,43 @@ class registroproveedores
             'galeria' => $this->getGaleriaArray(),
         );
     }
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $resenas;
+
+
+    /**
+     * Add resenas
+     *
+     * @param \NW\PrincipalBundle\Entity\Resena $resenas
+     * @return registroproveedores
+     */
+    public function addResena(\NW\PrincipalBundle\Entity\Resena $resenas)
+    {
+        $this->resenas[] = $resenas;
+
+        return $this;
+    }
+
+    /**
+     * Remove resenas
+     *
+     * @param \NW\PrincipalBundle\Entity\Resena $resenas
+     */
+    public function removeResena(\NW\PrincipalBundle\Entity\Resena $resenas)
+    {
+        $this->resenas->removeElement($resenas);
+    }
+
+    /**
+     * Get resenas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResenas()
+    {
+        return $this->resenas;
+    }
 }
