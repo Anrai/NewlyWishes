@@ -7,6 +7,7 @@ use NW\UserBundle\Entity\usuario;
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
 use NW\UserBundle\Entity\registroproveedores;
+use NW\PrincipalBundle\Entity\Bodas;
 
 use NW\UserBundle\Form\Type\RegistroType;
 
@@ -92,11 +93,21 @@ class UserController extends Controller
             // Agregando Novia al Novio
             $novios->setNovia($novias);
 
+            // Agregando objeto boda a los novios
+            $boda = new Bodas();
+            $boda->setUser($user);
+            $boda->setCeremonia('');
+            $boda->setCeremoniaDireccion('');
+            $boda->setRecepcion('');
+            $boda->setRecepcionDireccion('');
+            $boda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
+
             // Persistiendo los datos en la base de datos
             $em = $this->getDoctrine()->getEntityManager(); 
             $em->persist($user);
             $em->persist($novias);
             $em->persist($novios);
+            $em->persist($boda);
             $em->flush();
 
             // El registro del formulario fue exitoso y se muestra mensaje de felicitación

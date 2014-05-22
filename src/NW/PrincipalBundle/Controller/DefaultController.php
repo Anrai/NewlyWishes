@@ -311,4 +311,37 @@ class DefaultController extends Controller
         ));
     }
 
+    public function mesaDeRegalosAction($usuarioId, Request $request)
+    {
+        // Servicio de funciones para la mesa de regalos
+        $MRService = $this->get('mesa_regalos_service');
+
+        $noviaYnovio = $MRService->getNovios($usuarioId); // Obtener los nombre de los novios
+        $formFiltrar = $MRService->getFormFiltrar(); // Formulario para filtrar artículos
+
+        // Sin criterios de búsqueda
+        $categoria = '';
+        $precioArticulo = '';
+        $precioParte = '';
+
+        // Recuperando formulario
+        if('POST' === $request->getMethod()) {
+            $formFiltrar->handleRequest($request);
+            if($formFiltrar->isValid()) {
+                // Cambian los criterios de búsqueda
+                $categoria = $formFiltrar['categoria']->getData();
+                $precioArticulo = $formFiltrar['precioArticulo']->getData();
+                $precioParte = $formFiltrar['precioParte']->getData();
+            }
+        }
+
+        $articulos = $MRService->getMesaRegalos($usuarioId, $categoria, $precioArticulo, $precioParte); // Obtener artículos de la mesa de regalos filtrada
+        
+        return $this->render('NWPrincipalBundle:Default:mesaderegalos.html.twig', array(
+            'formFiltrar' => $formFiltrar->createView(),
+            'noviaYnovio' => $noviaYnovio,
+            'articulos' => $articulos,
+        ));
+    }
+
 }

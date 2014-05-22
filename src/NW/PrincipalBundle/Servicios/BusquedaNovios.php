@@ -73,10 +73,11 @@ class BusquedaNovios
 
             $resultados[$index]['novioNombre'] = $result[$index]->getNombreCompleto();
             $resultados[$index]['noviaNombre'] = $noviaEntity->findOneBy(array('usuarioId' => $usuarioId))->getNombreCompleto();
+            $resultados[$index]['usuarioId'] = $usuarioId;
 
             $Boda = $bodasEntity->findOneBy(array('usuarioId' => $usuarioId));
 
-            if($Boda)
+            if($Boda->hayFechaBoda())
             {
                 $resultados[$index]['fechaBoda'] = $Boda->getFechaBoda()->format('d - m - Y');
             }

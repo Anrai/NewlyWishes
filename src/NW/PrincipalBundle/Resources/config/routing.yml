@@ -30,6 +30,10 @@ nw_principal_buscar_novios:
     pattern:  /buscarnovios
     defaults: { _controller: NWPrincipalBundle:Default:buscarnovios }
 
+nw_principal_mesa_regalos:
+    pattern:  /mesa-de-regalos/{usuarioId}
+    defaults: { _controller: NWPrincipalBundle:Default:mesaDeRegalos }
+
 nw_principal_changepass:
     pattern:  /changepass
     defaults: { _controller: NWPrincipalBundle:Default:changePass }

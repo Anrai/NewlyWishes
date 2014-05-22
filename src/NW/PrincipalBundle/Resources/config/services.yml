@@ -10,6 +10,7 @@ parameters:
     articulos_buscador.class: NW\PrincipalBundle\Articulos\BuscadorArticulos
     resenas_service.class: NW\PrincipalBundle\Servicios\Resenas
     busqueda_novios_service.class: NW\PrincipalBundle\Servicios\BusquedaNovios
+    mesa_regalos_service.class: NW\PrincipalBundle\Servicios\MesaRegalos
 
 services:
     articulos_buscador:
@@ -21,3 +22,6 @@ services:
     busqueda_novios_service:
         class:     %busqueda_novios_service.class%
         arguments: [@router, @doctrine.orm.entity_manager]
+    mesa_regalos_service:
+        class:     %mesa_regalos_service.class%
+        arguments: [@router, @doctrine.orm.entity_manager, @form.factory]

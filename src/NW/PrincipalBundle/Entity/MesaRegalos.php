@@ -64,7 +64,6 @@ class MesaRegalos
      */
     private $catregalos;
 
-
     /**
      * Get id
      *
@@ -339,6 +338,7 @@ class MesaRegalos
         return array(
         'id' => $this->getId(),
         'categoria' => $this->getCategoria(),
+        'categoriaName' => $this->getCatregalos()->getCategoriaName(),
         'regalo' => $this->getRegalo(),
         'cantidad' => $this->getCantidad(),
         'precioTotal' => $this->getPrecioTotal(),
