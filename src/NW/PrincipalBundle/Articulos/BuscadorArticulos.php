@@ -20,8 +20,7 @@ class BuscadorArticulos
         if ($proveedor)
         {
             $proveedor = $this->quitarAcentos($proveedor);
-            $link = $this->router->generate('nw_principal_proveedor').'/busqueda/';
-            $link.= $proveedor;
+            $link = $this->router->generate('nw_principal_proveedor_busqueda', array('buscar' => $proveedor));
         }
 		else if ($otra)
 		{

@@ -22,6 +22,10 @@ nw_principal_articulos_catname:
     pattern:  /articulos/{catName}
     defaults: { _controller: NWPrincipalBundle:Default:listaArticulos, catName: otros }
 
+nw_principal_proveedor:
+    pattern:  /proveedor/{proveedor}
+    defaults: { _controller: NWPrincipalBundle:Default:proveedor}
+
 nw_principal_proveedor_busqueda:
     pattern:  /proveedor/busqueda/{buscar}
     defaults: { _controller: NWPrincipalBundle:Default:proveedor, buscar: boda }

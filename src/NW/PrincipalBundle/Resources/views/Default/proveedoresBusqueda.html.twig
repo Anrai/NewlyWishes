@@ -17,7 +17,7 @@
 					</div>
 					<div class="col-xs-8">
 						<div class="resultados">
-							<a href="{{ url('nw_principal_proveedor') }}/{{item.url}}"><h1>{{item.nombreComercial}}</h1></a>
+							<a href="{{ url('nw_principal_proveedor', {'proveedor': item.url } ) }}"><h1>{{item.nombreComercial}}</h1></a>
 							<p>
 								{{item.descripcion}}<span class="art"></span>
 							</p>
