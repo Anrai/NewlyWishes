@@ -30,7 +30,12 @@
 	            				<p>{{articulo.descripcion}}</p>
 	            				<br />
 	            				<b>¿Cuántas partes deseas regalar? </b>
-	            				{{articulo.horcruxesFaltantes}} max.
+                                <select id="regalarPartes" name="regalarPartes">
+                                    {% for i in 1..articulo.horcruxesFaltantes %}
+                                        <option value="{{i}}">{{i}}</option>
+                                    {% endfor %}
+                                </select>
+                                <span style="float:right;"><input type="button" value="Agregar" /></span>
 	            			</div>
 	            			<div class="col-md-5">
 	            				<b>Valor</b><br />
