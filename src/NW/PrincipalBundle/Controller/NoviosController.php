@@ -43,15 +43,16 @@ class NoviosController extends Controller
         $novio=$user->getNovios();
 
         // Recuperar datos de la boda que ya existen (si es que existen)
-        $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
+        $formBodaData = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
-        $formBodaData = new Bodas();
-        if($BodaVieja)
+        if(!$formBodaData)
         {
-            $formBodaData->setCeremonia($BodaVieja->getCeremonia());
-            $formBodaData->setCeremoniaDireccion($BodaVieja->getCeremoniaDireccion());
-            $formBodaData->setRecepcion($BodaVieja->getRecepcion());
-            $formBodaData->setRecepcionDireccion($BodaVieja->getRecepcionDireccion());
+            $formBodaData = new Bodas();
+            $formBodaData->setUser($user);
+            $formBodaData->setCeremonia('');
+            $formBodaData->setCeremoniaDireccion('');
+            $formBodaData->setRecepcion('');
+            $formBodaData->setRecepcionDireccion('');
         }
          
         // Generar Formularios   
@@ -73,15 +74,15 @@ class NoviosController extends Controller
                 if($formBoda->isValid())
                 {
                     // Borrar registros de la boda antiguos (si es que existen)
-                    if($BodaVieja)
-                        {$em->remove($BodaVieja);}
+                    if($formBodaData)
+                        {$em->remove($formBodaData);}
 
                     $newBoda=$formBoda->getData();
                     $newBoda->setUser($user);
                     // Recordar la fecha de la boda o setear en el 2000 si no hay fecha
-                    if($BodaVieja->hayFechaBoda())
+                    if($formBodaData->hayFechaBoda())
                     {
-                        $newBoda->setFechaBoda($BodaVieja->getFechaBoda());
+                        $newBoda->setFechaBoda($formBodaData->getFechaBoda());
                     }
                     else
                     {
@@ -126,11 +127,12 @@ class NoviosController extends Controller
                 $formDiaBoda->handleRequest($request);
 
                 if($formDiaBoda->isValid())
-                {
+                {   
                     $DiaBoda=$formDiaBoda['fecha']->getData();
-                    $BodaVieja->setFechaBoda($DiaBoda);
 
-                    $em->persist($BodaVieja);
+                    $formBodaData->setFechaBoda($DiaBoda);
+
+                    $em->persist($formBodaData);
                     $em->flush();
                 }
             }
@@ -159,8 +161,8 @@ class NoviosController extends Controller
             'formPadrinos' => $formPadrinos->createView(),
             'formNotas' => $formNotas->createView(),
             'formDiaBoda' => $formDiaBoda->createView(),
-            'hayFechaBoda' => false,//$BodaVieja->hayFechaBoda(),
-            'contadorFechaBoda' => 30,//$BodaVieja->contadorFechaBoda(),
+            'hayFechaBoda' => $formBodaData->hayFechaBoda(),
+            'contadorFechaBoda' => $formBodaData->contadorFechaBoda(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'padrinos' => $padrinos,
