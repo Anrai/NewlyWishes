@@ -480,4 +480,45 @@ class Articulos
     {
         return $this->categoria;
     }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Banners
+     */
+    private $banner;
+
+
+    /**
+     * Set banner
+     *
+     * @param \NW\PrincipalBundle\Entity\Banners $banner
+     * @return Articulos
+     */
+    public function setBanner(\NW\PrincipalBundle\Entity\Banners $banner = null)
+    {
+        $this->banner = $banner;
+
+        return $this;
+    }
+
+    /**
+     * Get banner
+     *
+     * @return \NW\PrincipalBundle\Entity\Banners 
+     */
+    public function getBanner()
+    {
+        return $this->banner;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Articulos
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 }

@@ -62,6 +62,10 @@ nw_principal_proveedores_misbanners:
     pattern:  /proveedores/misbanners
     defaults: { _controller: NWPrincipalBundle:Proveedores:misbanners }
 
+nw_principal_proveedores_banner_delete:
+    pattern:  /proveedores/banner/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Proveedores:BannerDelete }
+
 nw_principal_proveedores_misanuncios:
     pattern:  /proveedores/misanuncios
     defaults: { _controller: NWPrincipalBundle:Proveedores:misanuncios }

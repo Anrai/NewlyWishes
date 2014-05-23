@@ -115,18 +115,6 @@ class Banners
         return $this->user;
     }
 
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Anuncios
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
 
     /**
      * Get path
@@ -138,36 +126,36 @@ class Banners
         return $this->path;
     }
 
-    public function getAbsolutePath($userId)
+    public function getAbsolutePath()
     {
         return null === $this->path
             ? null
-            : $this->getUploadRootDir($userId).'/'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->path;
     }
 
-    public function getWebPath($userId)
+    public function getWebPath($usuarioId)
     {
         return null === $this->path
             ? null
-            : $this->getUploadDir($userId).'/'.$this->path;
+            : $this->getUploadDir().$usuarioId.'/'.$this->path;
     }
 
-    protected function getUploadRootDir($userId)
+    protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir($userId);
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
 
-    protected function getUploadDir($userId)
+    protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/banners/'.$userId;
+        return 'uploads/banners/';
     }
 
     /**
-     * 
+     * Archivo que se va a subir como logo
      */
     private $file;
 
@@ -191,37 +179,106 @@ class Banners
         return $this->file;
     }
 
-    public function upload($userId)
-	{
-	    // the file property can be empty if the field is not required
-	    if (null === $this->getFile()) {
-	        return;
-	    }
+    public function upload($usuarioId)
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
 
-	    // use the original file name here but you should
-	    // sanitize it at least to avoid any security issues
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
 
-	    // move takes the target directory and then the
-	    // target filename to move to
-	    $this->getFile()->move(
-	        $this->getUploadRootDir($userId),
-	        $this->getFile()->getClientOriginalName()
-	    );
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir().$usuarioId,
+            $this->getFile()->getClientOriginalName()
+        );
 
-	    // set the path property to the filename where you've saved the file
-	    $this->path = $this->getFile()->getClientOriginalName();
+        // set the path property to the filename where you've saved the file
+        $this->path = $this->getFile()->getClientOriginalName();
 
-	    // clean up the file property as you won't need it anymore
-	    $this->file = null;
-	}
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
+    }
 
 	// Método que regresa mis valores en forma de array
-    public function getValues(){
+    public function getValues($usuarioId){
         return array(
         'id' => $this->getId(),
         'name' => $this->getName(),
-        'imageWebPath' => $this->getWebPath($this->getUsuarioId()),
+        'imageWebPath' => $this->getWebPath($usuarioId),
         );
     }
 
+    /**
+     * @var \NW\PrincipalBundle\Entity\Articulos
+     */
+    private $articulo;
+
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Banners
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Set articulo
+     *
+     * @param \NW\PrincipalBundle\Entity\Articulos $articulo
+     * @return Banners
+     */
+    public function setArticulo(\NW\PrincipalBundle\Entity\Articulos $articulo = null)
+    {
+        $this->articulo = $articulo;
+
+        return $this;
+    }
+
+    /**
+     * Get articulo
+     *
+     * @return \NW\PrincipalBundle\Entity\Articulos 
+     */
+    public function getArticulo()
+    {
+        return $this->articulo;
+    }
+    /**
+     * @var integer
+     */
+    private $articuloId;
+
+
+    /**
+     * Set articuloId
+     *
+     * @param integer $articuloId
+     * @return Banners
+     */
+    public function setArticuloId($articuloId)
+    {
+        $this->articuloId = $articuloId;
+
+        return $this;
+    }
+
+    /**
+     * Get articuloId
+     *
+     * @return integer 
+     */
+    public function getArticuloId()
+    {
+        return $this->articuloId;
+    }
 }

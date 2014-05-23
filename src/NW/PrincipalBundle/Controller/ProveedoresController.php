@@ -374,11 +374,11 @@ class ProveedoresController extends Controller
     {
     	$em = $this->getDoctrine()->getManager();
 
-        $user=$this->getUser();
-        $proveedorObject=$user->getRegistroproveedores();
+        $user = $this->getUser();
+        $proveedorObject = $user->getRegistroproveedores();
 
-        $proveedor['nombre']=$proveedorObject->getNombreRazon();
-        $proveedor['cuenta']=$proveedorObject->getId();
+        $proveedor['nombre'] = $proveedorObject->getNombreRazon();
+        $proveedor['cuenta'] = $proveedorObject->getId();
 
         // Formulario del anuncio
         $formBannerData = new Banners();
@@ -393,13 +393,26 @@ class ProveedoresController extends Controller
                 $formBanner->handleRequest($request);
          
                 if ($formBanner->isValid()) {
-      
-				    $formBannerData->setUser($user);
-      				$formBannerData->upload($user->getId());
+                    
+                    // Se busca una artículo con el idInterno (name) especificado en el formulario
+                    $articulosEntity = $em->getRepository('NWPrincipalBundle:Articulos');
+                    $articulo = $articulosEntity->findOneBy(array('usuarioId' => $user->getId(), 'idInterno' => $formBanner["name"]->getData()));
 
-                    $em->persist($formBannerData);
+                    if($articulo)
+                    {  
+                        $formBannerData->setUser($user);
+                        $formBannerData->setArticulo($articulo);
+                        $formBannerData->setFile($formBanner["file"]->getData());
+                        $formBannerData->upload($user->getId());
 
-                    $em->flush();
+                        $em->persist($formBannerData);
+                        $em->flush();
+                    }
+                    else
+                    {
+                        return new Response("No existe un artículo con el ID Interno ".$formBanner["name"]->getData());
+                    }
+				    
                 }
             }
             // Formulario2
@@ -420,7 +433,7 @@ class ProveedoresController extends Controller
         // Convirtiendo los resultados en arrays
         foreach($banners as $index=>$value)
         {
-            $objetoenArray=$banners[$index]->getValues();
+            $objetoenArray=$banners[$index]->getValues($user->getId());
             $banners[$index]=$objetoenArray;
         }
 
@@ -429,6 +442,21 @@ class ProveedoresController extends Controller
             'formBanner' => $formBanner->createView(),
             'banners' => $banners,
         ));
+    }
+
+    public function BannerDeleteAction($id) // Controlador que borra un banner según el id pasado
+    {
+        // Manejador de entidades Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Objeto banner que se eliminará
+        $banner = $em->getRepository('NWPrincipalBundle:Banners')->find($id);
+
+        // Borrar Banner
+        $em->remove($banner);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_proveedores_misbanners'));
     }
 
     public function misanunciosAction(Request $request)

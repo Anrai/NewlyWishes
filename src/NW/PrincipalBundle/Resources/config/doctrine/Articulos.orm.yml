@@ -19,19 +19,22 @@ NW\PrincipalBundle\Entity\Articulos:
         fotosarticulos:
             targetEntity: FotosArticulos
             mappedBy: articulo
+    oneToOne:
+        banner:
+            targetEntity: Banners
+            mappedBy: articulo
     id:
         id:
             type: integer
             generator:
-                strategy: AUTO	
+                strategy: AUTO
     fields:
         usuarioId:
             type: integer
-        categoriaId:
-            type: integer
         idInterno:
             type: string
-            length: 30
+        categoriaId:
+            type: integer
         nombre:
             type: string
             length: 100

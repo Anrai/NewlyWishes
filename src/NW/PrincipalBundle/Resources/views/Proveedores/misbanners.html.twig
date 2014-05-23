@@ -40,7 +40,7 @@
 			<h5 class="art">Promocion {{loop.index}}</h5>	
 		</div>
 		<div class="col-md-2">
-			<a class="art3" data-toggle="modal" data-target="#promocion"><h5 class="art">Editar</h5></a>
+			
 		</div>
 	</div>
 </div>
@@ -50,15 +50,17 @@
 
 	</div>
 	<dic class="col-md-5">
-		<img src="{{asset(banner.imageWebPath)}}" alt="ejemplo" class="marco"> 
+		<img src="{{asset(banner.imageWebPath)}}" alt="ejemplo" class="marco" width="177"> 
 		<br>
 		<br>
 		<br>
 		<p>ID de artículo relacionado: <span class="art">{{banner.name}}</span></p>
 	</dic>
 	<div class="col-md-2 caja">
-		<img src="{{asset('img/bote.png')}}" alt="bote">
-		<p class="eliminar">Eliminar ese banner</p>
+		<a href="{{url('nw_principal_proveedores_banner_delete', {'id': banner.id})}}">
+			<img src="{{asset('img/bote.png')}}" alt="bote">
+			<p class="eliminar">Eliminar ese banner</p>
+		</a>
 	</div>
 </div>
 {% endfor %}

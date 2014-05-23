@@ -12,8 +12,8 @@ class BannersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text');
-        $builder->add('Agregar', 'submit');
         $builder->add('file', 'file');
+        $builder->add('Agregar', 'submit');
     }
 
     /**
