@@ -13,12 +13,14 @@ use NW\PrincipalBundle\Form\Type\AnuncioType;
 use NW\PrincipalBundle\Form\Type\BannersType;
 use NW\PrincipalBundle\Form\Type\SeleccionPlanType;
 use NW\PrincipalBundle\Form\Type\ProveedorPublicoType;
+use NW\PrincipalBundle\Form\Type\NuevoCodigoVentaType;
 
 use NW\PrincipalBundle\Entity\Articulos;
 use NW\PrincipalBundle\Entity\FotosArticulos;
 use NW\PrincipalBundle\Entity\Banners;
 use NW\PrincipalBundle\Entity\Anuncios;
 use NW\PrincipalBundle\Entity\GaleriaProveedor;
+use NW\PrincipalBundle\Entity\Codigos;
 use NW\UserBundle\Entity\registroproveedores;
 
 class ProveedoresController extends Controller
@@ -578,17 +580,73 @@ class ProveedoresController extends Controller
         ));
     }
 
-    public function miscodigosAction()
+    public function miscodigosAction(Request $request)
     {
-        $user=$this->getUser();
-        $proveedorObject=$user->getRegistroproveedores();
+        // Entity Manager
+        $em = $this->getDoctrine()->getManager();
 
-        $proveedor['nombre']=$proveedorObject->getNombreRazon();
-        $proveedor['cuenta']=$proveedorObject->getId();
+        $proveedoresEntity = $em->getRepository('NWUserBundle:registroproveedores');
+        $codigosEntity = $em->getRepository('NWPrincipalBundle:Codigos');
+
+        $user = $this->getUser();
+        $proveedorObject = $user->getRegistroproveedores();
+
+        $proveedor['nombre'] = $proveedorObject->getNombreRazon();
+        $proveedor['cuenta'] = $proveedorObject->getId();
+
+        $codigosVentaEntity = $em->getRepository('NWPrincipalBundle:Codigos');
+        $codigoObject = new Codigos();
+        $codigoObject->setProveedor($proveedorObject);
+
+        $formNuevoCodigo = $this->createForm(new NuevoCodigoVentaType(), $codigoObject);
+
+        if('POST' === $request->getMethod())
+        {
+            $formNuevoCodigo->handleRequest($request);
+            if ($formNuevoCodigo->isValid())
+            {
+                $vendedor = $proveedoresEntity->find($codigoObject->getVendedorId());
+
+                if($vendedor)
+                {
+                    $codigoObject->setVendedor($vendedor);
+                    $em->persist($codigoObject);
+                    $em->flush();
+                }
+                else
+                {
+                    return new Response('No existe el vendedor especificado');
+                }
+            }
+        }
+
+        $resultados = $codigosEntity->findBy(array('proveedorId' => $proveedorObject->getId()));
+
+        foreach($resultados as $index=>$value)
+        {
+            $resultados[$index] = $value->getValues();
+        }
 
         return $this->render('NWPrincipalBundle:Proveedores:miscodigos.html.twig', array(
             'proveedor' => $proveedor,
+            'formNuevoCodigo' => $formNuevoCodigo->createView(),
+            'resultados' => $resultados,
         ));
+    }
+
+    public function CodigoDeleteAction($codigo)
+    {
+        // Manejador de entidades Doctrine
+        $em = $this->getDoctrine()->getManager();
+
+        // Objeto codigo que se eliminará
+        $codigo = $em->getRepository('NWPrincipalBundle:Codigos')->find($codigo);
+
+        // Borrar Codigo
+        $em->remove($codigo);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_proveedores_miscodigos'));
     }
 
     public function miinformacionbancariaAction()

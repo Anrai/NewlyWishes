@@ -1,0 +1,31 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/Codigos.orm.yml
+NW\PrincipalBundle\Entity\Codigos:
+    type: entity
+    table: codigos
+    manyToOne:
+        proveedor:
+            targetEntity: NW\UserBundle\Entity\registroproveedores
+            inversedBy: codigos
+            joinColumn:
+                name: proveedorId
+                referencedColumnName: id
+    oneToOne:
+        vendedor:
+            targetEntity: NW\UserBundle\Entity\registroproveedores
+            inversedBy: codigoVendedor
+            joinColumn:
+                name: vendedorId
+                referencedColumnName: id
+    id:
+        codigo:
+            type: string   
+            length: 100
+    fields:
+        proveedorId:
+            type: integer
+        vendedorId:
+            type: integer
+        porcentajeVendedor:
+            type: integer
+        porcentajeDescuento:
+            type: integer

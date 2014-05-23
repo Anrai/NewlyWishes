@@ -802,4 +802,70 @@ class registroproveedores
     {
         return $this->resenas;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $codigos;
+
+
+    /**
+     * Add codigos
+     *
+     * @param \NW\PrincipalBundle\Entity\Codigos $codigos
+     * @return registroproveedores
+     */
+    public function addCodigo(\NW\PrincipalBundle\Entity\Codigos $codigos)
+    {
+        $this->codigos[] = $codigos;
+
+        return $this;
+    }
+
+    /**
+     * Remove codigos
+     *
+     * @param \NW\PrincipalBundle\Entity\Codigos $codigos
+     */
+    public function removeCodigo(\NW\PrincipalBundle\Entity\Codigos $codigos)
+    {
+        $this->codigos->removeElement($codigos);
+    }
+
+    /**
+     * Get codigos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCodigos()
+    {
+        return $this->codigos;
+    }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Codigos
+     */
+    private $codigoVendedor;
+
+
+    /**
+     * Set codigoVendedor
+     *
+     * @param \NW\PrincipalBundle\Entity\Codigos $codigoVendedor
+     * @return registroproveedores
+     */
+    public function setCodigoVendedor(\NW\PrincipalBundle\Entity\Codigos $codigoVendedor = null)
+    {
+        $this->codigoVendedor = $codigoVendedor;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoVendedor
+     *
+     * @return \NW\PrincipalBundle\Entity\Codigos 
+     */
+    public function getCodigoVendedor()
+    {
+        return $this->codigoVendedor;
+    }
 }

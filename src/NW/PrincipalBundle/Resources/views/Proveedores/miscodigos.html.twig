@@ -3,101 +3,54 @@
 {% extends 'NWPrincipalBundle:Proveedores:administrador.html.twig' %}
 
 {% block partederecha %}
-		
-			<div class="container mi">
-				<div class="flow">
-					<div class="col-xs-6">
-						
-					</div>
-					<div class="col-xs-1 puntov">
-						<img class="img-responsive" src="{{asset('img/puntov.png')}}">
-					</div>
-					<div class="col-xs-5">
-						<h1 class="art">Mis Códigos de Venta</h1>
-					</div>
-				</div>
-				<br>
-				<br>
-				<br>
-				<br>
-				<div class="row">
-					<div>
-						<h1 class="art">
-							Mi Administración de Códigos
-						</h1>
-					</div>
-					<hr />
-				</div>
-				<div class="row">
-					<div class="col-xs-1">
-						<p class="art">
-							Código <br>
-						</p>
-						<p align="center">
-							234565 <br><br>
-							345665 <br><br>
-							345665 <br><br>
-							145665 <br><br>
-						</p>
-					</div>
-					<div class="col-xs-1">
-						<img class="img-responsive" src="{{asset('img/puntov.png')}}">
-					</div>
-					<div class="col-xs-2">
-						<p class="art">
-							Clave vendedor
-						</p>
-						<p align="center">
-							1234567 <br><br>
-							1234567 <br><br>
-							1234567 <br><br>
-							1234567 <br><br>
-						</p>
-					</div>
-					<div class="col-xs-1 ">
-						<img class="img-responsive" src="{{asset('img/puntov.png')}}">
-					</div>
-					<div class="col-xs-2">
-						<p class="art">
-							% Vendedor	
-						</p>
-						<p align="center">
-							20 <br><br>
-							20 <br><br>
-							20 <br><br>
-							20 <br><br>
-						</p>
-					</div>
-					<div class="col-xs-1 ">
-						<img class="img-responsive" src="{{asset('img/puntov.png')}}">
-					</div>
-					<div class="col-xs-2">
-						<p class="art">
-							% Descuento
-						</p>
-						<p align="center">
-							5 <br><br>
-							5 <br><br>
-							5 <br><br>
-							5 <br><br>
-						</p>
-					</div>
-					<div class="col-xs-1">
-						<img class="img-responsive" src="{{asset('img/puntov.png')}}">
-					</div>
-				</div>
-			</div>
-			
-			
 
+<img class="img-responsive" src="{{asset('img/puntov.png')}}">
 
+<div class="container">
+	<div class="row"><h1 style="float:right">Mis códigos de venta</h1></div>
+	<div class="row" style="margin-top:50px">
+		<h3>Mi administración de códigos</h3>
+	</div>
+	<div class="row">
+		<table class="table" style="height:0!important; text-align:center">
+                <thead>
+                    <tr>
+                        <th>Código <img src="{{asset('img/puntov.png')}}"></th>
+                        <th>Cuenta vendedor <img src="{{asset('img/puntov.png')}}"></th>
+                        <th>% Vendedor <img src="{{asset('img/puntov.png')}}"></th>
+                        <th>% Descuento <img src="{{asset('img/puntov.png')}}"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                	<tr>
+                	{{ form_start(formNuevoCodigo) }}
+                		<td>{{ form_widget(formNuevoCodigo.codigo) }}</td>
+                        <td>{{ form_widget(formNuevoCodigo.vendedorId) }}</td>
+                        <td>{{ form_widget(formNuevoCodigo.porcentajeVendedor) }}</td>
+                        <td>{{ form_widget(formNuevoCodigo.porcentajeDescuento) }}</td>
+                        <td>{{ form_widget(formNuevoCodigo.Agregar) }}</td>
+                    {{ form_end(formNuevoCodigo) }}
+                	</tr>
+                </tfoot>
+                <tbody>
+                	{% for resultado in resultados %}
+                    <tr>
+                        <td>{{ resultado.codigo }}</td>
+                        <td>{{ resultado.vendedorId }}</td>
+                        <td>{{ resultado.porcentajeVendedor }}</td>
+                        <td>{{ resultado.porcentajeDescuento }}</td>
+                        <td>
+                        	<a href="{{url('nw_principal_proveedores_codigo_delete', {'codigo': resultado.codigo})}}">
+	                        	<img src="{{asset('img/bote.png')}}" width="40"><br />
+								Borrar Código
+							</a>
+						</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+		</table>
+	</div>
+</div>
 
-
-
-
-
-
-
-
-
-	{% endblock %}
+{% endblock %}

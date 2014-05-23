@@ -9,6 +9,9 @@ NW\UserBundle\Entity\registroproveedores:
             joinColumn:
                 name: usuarioId
                 referencedColumnName: id
+        codigoVendedor:
+            targetEntity: NW\PrincipalBundle\Entity\Codigos
+            mappedBy: vendedor
     manyToOne:
         estados:
             targetEntity: NW\PrincipalBundle\Entity\Estados
@@ -22,6 +25,9 @@ NW\UserBundle\Entity\registroproveedores:
             mappedBy: proveedor
         resenas:
             targetEntity: NW\PrincipalBundle\Entity\Resena
+            mappedBy: proveedor
+        codigos:
+            targetEntity: NW\PrincipalBundle\Entity\Codigos
             mappedBy: proveedor
     id:
         id:

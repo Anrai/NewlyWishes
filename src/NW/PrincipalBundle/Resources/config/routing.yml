@@ -82,6 +82,10 @@ nw_principal_proveedores_miscodigos:
     pattern:  /proveedores/miscodigos
     defaults: { _controller: NWPrincipalBundle:Proveedores:miscodigos }
 
+nw_principal_proveedores_codigo_delete:
+    pattern:  /proveedores/codigo/{codigo}/delete
+    defaults: { _controller: NWPrincipalBundle:Proveedores:CodigoDelete }
+
 nw_principal_proveedores_miinformacionbancaria:
     pattern:  /proveedores/miinformacionbancaria
     defaults: { _controller: NWPrincipalBundle:Proveedores:miinformacionbancaria }
