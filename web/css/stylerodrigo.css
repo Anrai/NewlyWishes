@@ -457,11 +457,8 @@ hr{
 	padding: 15px;
 }
 .caja.gris2{
-	margin-top: 60px;
-	margin-left: 70px;
 	background-color: #dcdcdc;
-	width: 1100px;
-	height: 180px;
+	height: 200px;
 	border-radius: 6px;
 	padding: 20px;
 }

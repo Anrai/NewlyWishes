@@ -14,6 +14,7 @@ use NW\PrincipalBundle\Form\Type\PadrinosType;
 use NW\PrincipalBundle\Form\Type\NotasType;
 use NW\PrincipalBundle\Form\Type\RegaloType;
 use NW\PrincipalBundle\Form\Type\DiaBodaType;
+use NW\PrincipalBundle\Form\Type\BusquedaArticulosType;
 
 use NW\PrincipalBundle\Entity\Checklist;
 use NW\PrincipalBundle\Entity\ListaInvitados;
@@ -737,14 +738,20 @@ class NoviosController extends Controller
 
         $formDiaBoda = $this->createForm(new DiaBodaType());
 
+        // Formulario de buscador de artículos
+        $formBuscarArticulo = $this->createForm(new BusquedaArticulosType());
+
+        // Servicio de búsqueda y carga de artículos de la base de datos
+        $buscador = $this->get('articulos_buscador');
+
+        $resultados = false;
+
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
         
-            // Formulario 1
+            // Formulario del día de la boda
             if ($request->request->has($formDiaBoda->getName())) {
-                // handle the first form
                 $formDiaBoda->handleRequest($request);
-
                 if($formDiaBoda->isValid())
                 {
                     $DiaBoda=$formDiaBoda['fecha']->getData();
@@ -752,6 +759,16 @@ class NoviosController extends Controller
 
                     $em->persist($BodaVieja);
                     $em->flush();
+                }
+            }
+            // Formulario  de búqueda de artículos
+            else if ($request->request->has($formBuscarArticulo->getName())) {
+                $formBuscarArticulo->handleRequest($request);
+                if ($formBuscarArticulo->isValid()) {
+
+                    // Servicio de búsqueda y carga de artículos y proveedores de la base de datos
+                    $buscador = $this->get('articulos_buscador');
+                    $resultados = $buscador->busquedaResultados($formBuscarArticulo->getData());
                 }
             }
         }
@@ -762,6 +779,8 @@ class NoviosController extends Controller
             'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'formDiaBoda' => $formDiaBoda->createView(),
+            'formBuscarArticulo' => $formBuscarArticulo->createView(),
+            'resultados' => $resultados, // Resultados de la búsqueda
         ));
     }
 

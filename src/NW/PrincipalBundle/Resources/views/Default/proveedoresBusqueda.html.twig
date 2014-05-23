@@ -5,8 +5,11 @@
 	{% block body %}
 	
 		{% include ':plantillasParciales:top.html.twig' %}
-		{% include 'NWPrincipalBundle:Default:formBusquedaArticulos.html.twig' %}
-		{% include 'NWPrincipalBundle:Default:carrito.html.twig' %}
+		
+		<div class="container">
+			{% include 'NWPrincipalBundle:Default:formBusquedaArticulos.html.twig' %}
+			{% include 'NWPrincipalBundle:Default:carrito.html.twig' %}
+		</div>
 		
 		<div class="row">
 			<div class="col-xs-7">

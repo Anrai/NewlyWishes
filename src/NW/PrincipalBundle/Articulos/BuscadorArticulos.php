@@ -40,6 +40,24 @@ class BuscadorArticulos
 		return $link;
 	}
 
+    public function busquedaResultados($formData)
+    {
+        if ($formData["proveedor"])
+        {
+            return $this->proveedoresPorCoincidencia($formData["proveedor"]);
+        }
+        else if ($formData["otro"])
+        {
+            return $this->articulosPorCoincidencia($formData["otro"]);
+        }
+        else if($formData["categorias"])
+        {
+            return $this->articulosPorCategoria($formData["categorias"]);
+        }
+
+        return false;
+    }
+
 	public function articulosPorCoincidencia($palabra)
 	{
 		// Obtener repositorio
@@ -63,13 +81,20 @@ class BuscadorArticulos
         $CategoriasEntidad = $this->em->getRepository('NWPrincipalBundle:Categorias');
         $ArticulosEntidad = $this->em->getRepository('NWPrincipalBundle:Articulos');
 
-        // Obteniendo el iD 
-        $catObj = $CategoriasEntidad->findOneBy(array('nombre' => $categoria));
+        // Obteniendo la categoría por nombre
+        $catObjN = $CategoriasEntidad->findOneBy(array('nombre' => $categoria));
+
+        // Obteniendo la categoría por ID
+        $catObjI = $CategoriasEntidad->findOneBy(array('id' => $categoria));
 
         // ¿Existe la categoría?
-        if(is_object($catObj))
+        if(is_object($catObjN))
         {
-            $resultados = $ArticulosEntidad->findBy(array('categoriaId' => $catObj->getId()));
+            $resultados = $ArticulosEntidad->findBy(array('categoriaId' => $catObjN->getId()));
+        }
+        else if(is_object($catObjI))
+        {
+            $resultados = $ArticulosEntidad->findBy(array('categoriaId' => $catObjI->getId()));
         }
         else
         {
@@ -131,6 +156,7 @@ class BuscadorArticulos
                 {
                     $objeto2enArray=$resultados[$index]['fotos'][$indice]->getValues(false);
                     $resultados[$index]['fotos'][$indice]=$objeto2enArray;
+                    $resultados[$index]['articulo'] = true;
                 }
             }
         }
@@ -149,6 +175,7 @@ class BuscadorArticulos
                 $objetoenArray=$resultados[$index]->getValues();
                 $resultados[$index]=$objetoenArray;
                 $resultados[$index]['url'] = $this->quitarAcentos($objetoenArray['nombreComercial']);
+                $resultados[$index]['articulo'] = false;
             }
         }
 
