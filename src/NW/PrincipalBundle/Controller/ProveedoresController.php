@@ -468,6 +468,13 @@ class ProveedoresController extends Controller
 
         $proveedor['nombre']=$proveedorObject->getNombreRazon();
         $proveedor['cuenta']=$proveedorObject->getId();
+
+        $nombreComercial = $proveedorObject->getNombreComercial();
+
+        $no_permitidas = array ('á','é','í','ó','ú','Á','É','Í','Ó','Ú','ñ','Ñ');
+        $si_permitidas = array ('a','e','i','o','u','A','E','I','O','U','n','N');
+
+        $nombreComercial = str_replace($no_permitidas, $si_permitidas, $nombreComercial);
         
         // Se carga un anuncio del proveedor si es que ya existe
       	$AnuncioViejo = $em->getRepository('NWPrincipalBundle:Anuncios')->findOneByUsuarioId($user->getId());
@@ -534,6 +541,7 @@ class ProveedoresController extends Controller
             'proveedor' => $proveedor,
             'anuncioWebpage' => $anuncioWebpage,
             'anuncioImagePath' => $anuncioImagePath,
+            'nombreComercial' => $nombreComercial,
         ));
     }
 

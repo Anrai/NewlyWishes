@@ -199,10 +199,8 @@ hr{
 	padding-top: 20px;
 }
 .cajatexto{
-	width: 570px;
-	height: 150px;
 	border: 1px solid rgb(204,0,153);
-	padding-top: 20px;
+	padding: 20px;
 }
 .progress{
 	width: 300px;
