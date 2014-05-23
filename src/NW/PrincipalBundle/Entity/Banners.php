@@ -115,6 +115,18 @@ class Banners
         return $this->user;
     }
 
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Banners
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
 
     /**
      * Get path
@@ -216,20 +228,6 @@ class Banners
      * @var \NW\PrincipalBundle\Entity\Articulos
      */
     private $articulo;
-
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Banners
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
 
     /**
      * Set articulo

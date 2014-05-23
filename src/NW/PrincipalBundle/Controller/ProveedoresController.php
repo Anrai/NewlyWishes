@@ -475,7 +475,7 @@ class ProveedoresController extends Controller
       	if ($AnuncioViejo)
       	{
       		$anuncioWebpage = $AnuncioViejo->getWebpage();
-      		$anuncioImagePath = $AnuncioViejo->getWebPath();
+      		$anuncioImagePath = $AnuncioViejo->getWebPath($user->getId());
       	}
       	else
       	{
@@ -501,18 +501,20 @@ class ProveedoresController extends Controller
       				if ($AnuncioViejo) {
       					$AnuncioViejo->setFile($formAnuncioData->getFile());
       					$AnuncioViejo->setWebpage($formAnuncioData->getWebpage());
-      					$AnuncioViejo->upload();
+      					$AnuncioViejo->upload($user->getId());
 
       					$em->persist($AnuncioViejo);
 				    }
 				    else{
 					    $formAnuncioData->setUser($user);
-	      				$formAnuncioData->upload();
+	      				$formAnuncioData->upload($user->getId());
 
 	                    $em->persist($formAnuncioData);
                 	}
 
                     $em->flush();
+
+                    return $this->redirect($this->generateUrl('nw_principal_proveedores_misanuncios'));
                 }
             }
             // Formulario2

@@ -27,7 +27,7 @@
 				
 			</div>
 			<div class="col-md-4">
-				<img src="{{asset(anuncioImagePath)}}" alt="">
+				<img src="{{asset(anuncioImagePath)}}" alt="" width="200">
 			</div>
 			<div class="col-md-7">
 					
@@ -35,6 +35,7 @@
 			<div class="col-md-2">
 				<a class="art3" data-toggle="modal" data-target="#anuncio"><h5 class="art">Editar</h5></a>
 			</div>
+			{% if anuncioImagePath != 'img/anuncio.jpg' %}
 			<div class="col-md-6">
 				<br>
 				<p>Copia y pegar este código en tu página de internet, para redirigir a tus clientes a tu micrositio de NewlyWishes y para que puedan adquirir tus productos y servicios</p>
@@ -43,8 +44,11 @@
 
 			</div>
 			<div class="col-md-12 cajatexto img-responsive">
-				https://...
+				&lt;a href="http://{{anuncioWebpage}}"&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="http://newlywishes.com{{asset(anuncioImagePath)}}" width="200" /&gt;<br />
+				&lt;/a&gt;
 			</div>
+			{% endif %}
 		</div>
 		<br>
 		<br>
