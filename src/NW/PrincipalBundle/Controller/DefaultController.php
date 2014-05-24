@@ -203,8 +203,13 @@ class DefaultController extends Controller
                     $em->persist($newResenaObj);
                     $em->flush();
 
+                    $no_permitidas = array ('á','é','í','ó','ú','Á','É','Í','Ó','Ú','ñ','Ñ');
+                    $si_permitidas = array ('a','e','i','o','u','A','E','I','O','U','n','N');
+
+                    $proveedorNombreComercial = str_replace($no_permitidas, $si_permitidas, $proveedorNombreComercial);
+
                     // Se regresa a la página del proveedor
-                    return $this->redirect($this->generateURL('nw_principal_proveedor').'/'.$proveedorNombreComercial);
+                    return $this->redirect($this->generateURL('nw_principal_proveedor', array('proveedor' => $proveedorNombreComercial)));
                 }
             }
         }
