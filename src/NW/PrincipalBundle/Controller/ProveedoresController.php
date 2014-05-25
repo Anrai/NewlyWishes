@@ -5,6 +5,7 @@ namespace NW\PrincipalBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use NW\PrincipalBundle\Form\Type\EdicionProveedorType;
 use NW\PrincipalBundle\Form\Type\ArticuloType;
@@ -22,6 +23,7 @@ use NW\PrincipalBundle\Entity\Anuncios;
 use NW\PrincipalBundle\Entity\GaleriaProveedor;
 use NW\PrincipalBundle\Entity\Codigos;
 use NW\UserBundle\Entity\registroproveedores;
+
 
 class ProveedoresController extends Controller
 {
@@ -138,12 +140,65 @@ class ProveedoresController extends Controller
          
                 if ($formProveedorPlan->isValid()) {
 
+                    // Cargando el plan antiguo
+                    $planActual = $proveedorObject->getPlan();
+
                     // Agregando plan al proveedor actual
                     $proveedorObject->setPlan($formProveedorPlan["plan"]->getData());
+
+                    // Borrar rol antiguo del proveedor
+                    switch ($planActual) {
+                        case 'anuncioEspecial':
+                            $user->removeRole('ROLE_PROVEEDOR_ANUNCIO');
+                            break;
+                        case 'anuncioPlus':
+                            $user->removeRole('ROLE_PROVEEDOR_ANUNCIO');
+                            break;
+                        case 'basico':
+                            $user->removeRole('ROLE_PROVEEDOR_BASICO');
+                            break;
+                        case 'estandar':
+                            $user->removeRole('ROLE_PROVEEDOR_ESTANDAR');
+                            break;
+                        case 'plus':
+                            $user->removeRole('ROLE_PROVEEDOR_PLUS');
+                            break;
+                        default:
+                            $user->removeRole('ROLE_PROVEEDOR');
+                            break;
+                    }
+
+                    // Agregando rol de plan de proveedor
+                    switch ($formProveedorPlan["plan"]->getData()) {
+                        case 'anuncioEspecial':
+                            $user->addRole('ROLE_PROVEEDOR_ANUNCIO');
+                            break;
+                        case 'anuncioPlus':
+                            $user->addRole('ROLE_PROVEEDOR_ANUNCIO');
+                            break;
+                        case 'basico':
+                            $user->addRole('ROLE_PROVEEDOR_BASICO');
+                            break;
+                        case 'estandar':
+                            $user->addRole('ROLE_PROVEEDOR_ESTANDAR');
+                            break;
+                        case 'plus':
+                            $user->addRole('ROLE_PROVEEDOR_PLUS');
+                            break;
+                        default:
+                            $user->addRole('ROLE_PROVEEDOR');
+                            break;
+                    }
 
                     // Persistiendo los datos en la base de datos
                     $em->persist($proveedorObject);
                     $em->flush();
+
+                    // Saliendo de la sesión
+                    $this->get('security.context')->setToken(null);
+                    $this->get('request')->getSession()->invalidate();
+                    $redirect = $this->generateUrl('nw_user_registroproveedores');
+                    return $this->redirect($redirect);
                 }
             }
             // ¿El formulario que se envió es el de edición de imagen comercial?
@@ -220,6 +275,9 @@ class ProveedoresController extends Controller
 
     public function misproductosAction(Request $request)
     {
+        if(false === $this->get('security.context')->isGranted('ROLE_PROVEEDOR_BASICO')) {
+            throw new AccessDeniedException();
+        }
     	// Manejador de Doctrine
         $em = $this->getDoctrine()->getManager();
 		
@@ -374,6 +432,11 @@ class ProveedoresController extends Controller
 
     public function misbannersAction(Request $request)
     {
+        if(false === $this->get('security.context')->isGranted('ROLE_PROVEEDOR_BASICO')) {
+            throw new AccessDeniedException();
+        }
+
+        // Entity Manager
     	$em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
@@ -463,6 +526,10 @@ class ProveedoresController extends Controller
 
     public function misanunciosAction(Request $request)
     {
+        if(false === $this->get('security.context')->isGranted('ROLE_PROVEEDOR_ANUNCIO')) {
+            throw new AccessDeniedException();
+        }
+
     	$em = $this->getDoctrine()->getManager();
 
         $user=$this->getUser();
@@ -549,6 +616,10 @@ class ProveedoresController extends Controller
 
     public function misresenasAction()
     {
+        if(false === $this->get('security.context')->isGranted('ROLE_PROVEEDOR_BASICO')) {
+            throw new AccessDeniedException();
+        }
+
         $user=$this->getUser();
         $proveedorObject=$user->getRegistroproveedores();
 
@@ -569,6 +640,10 @@ class ProveedoresController extends Controller
 
     public function miestadodecuentaAction()
     {
+        if(false === $this->get('security.context')->isGranted('ROLE_PROVEEDOR_BASICO')) {
+            throw new AccessDeniedException();
+        }
+
         $user=$this->getUser();
         $proveedorObject=$user->getRegistroproveedores();
 
@@ -582,6 +657,10 @@ class ProveedoresController extends Controller
 
     public function miscodigosAction(Request $request)
     {
+        if(false === $this->get('security.context')->isGranted('ROLE_PROVEEDOR_BASICO')) {
+            throw new AccessDeniedException();
+        }
+
         // Entity Manager
         $em = $this->getDoctrine()->getManager();
 
@@ -651,6 +730,10 @@ class ProveedoresController extends Controller
 
     public function miinformacionbancariaAction()
     {
+        if(false === $this->get('security.context')->isGranted('ROLE_PROVEEDOR_BASICO')) {
+            throw new AccessDeniedException();
+        }
+
         $user=$this->getUser();
         $proveedorObject=$user->getRegistroproveedores();
 

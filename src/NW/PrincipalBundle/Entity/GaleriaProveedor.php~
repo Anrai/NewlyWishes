@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Anuncios
+ * GaleriaProveedor
  */
-class Anuncios
+class GaleriaProveedor
 {
     /**
      * @var integer
@@ -16,14 +16,36 @@ class Anuncios
     private $id;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $webpage;
+    private $proveedorId;
 
     /**
      * @var string
      */
     private $path;
+
+    /**
+     * @var \NW\UserBundle\Entity\registroproveedores
+     */
+    private $proveedor;
+
+    /**
+     * Get usuarioId
+     *
+     * @return integer 
+     */
+    public function getUsuarioId($userId)
+    {
+        if (!$userId)
+        {
+            return $this->proveedor->getUsuarioId();
+        }
+        else
+        {
+            return $userId;
+        }
+    }
 
     /**
      * Get id
@@ -36,33 +58,33 @@ class Anuncios
     }
 
     /**
-     * Set webpage
+     * Set proveedorId
      *
-     * @param string $webpage
-     * @return Anuncios
+     * @param integer $proveedorId
+     * @return GaleriaProveedor
      */
-    public function setWebpage($webpage)
+    public function setProveedorId($proveedorId)
     {
-        $this->webpage = $webpage;
+        $this->proveedorId = $proveedorId;
 
         return $this;
     }
 
     /**
-     * Get webpage
+     * Get proveedorId
      *
-     * @return string 
+     * @return integer 
      */
-    public function getWebpage()
+    public function getProveedorId()
     {
-        return $this->webpage;
+        return $this->proveedorId;
     }
 
     /**
      * Set path
      *
      * @param string $path
-     * @return Anuncios
+     * @return GaleriaProveedor
      */
     public function setPath($path)
     {
@@ -81,36 +103,62 @@ class Anuncios
         return $this->path;
     }
 
-    public function getAbsolutePath()
+    /**
+     * Set proveedor
+     *
+     * @param \NW\UserBundle\Entity\registroproveedores $proveedor
+     * @return GaleriaProveedor
+     */
+    public function setProveedor(\NW\UserBundle\Entity\registroproveedores $proveedor = null)
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
-    }
+        $this->proveedor = $proveedor;
 
-    public function getWebPath($usuarioId)
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().$usuarioId.'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/anuncios/';
+        return $this;
     }
 
     /**
-     * Archivo que se va a subir como logo
+     * Get proveedor
+     *
+     * @return \NW\UserBundle\Entity\registroproveedores 
+     */
+    public function getProveedor()
+    {
+        return $this->proveedor;
+    }
+
+    /*
+    * PARA LA CARGA DE IMÁGENES
+    */
+    public function getAbsolutePath($userId)
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir($userId).'/'.$this->path;
+    }
+
+    public function getWebPath($userId)
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir($userId).'/'.$this->path;
+    }
+
+    protected function getUploadRootDir($userId)
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir($userId);
+    }
+
+    protected function getUploadDir($userId)
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/proveedores/galeria/'.$this->getUsuarioId($userId);
+    }
+
+    /**
+     * 
      */
     private $file;
 
@@ -134,7 +182,7 @@ class Anuncios
         return $this->file;
     }
 
-    public function upload($usuarioId)
+    public function upload($userId)
     {
         // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
@@ -147,7 +195,7 @@ class Anuncios
         // move takes the target directory and then the
         // target filename to move to
         $this->getFile()->move(
-            $this->getUploadRootDir().$usuarioId,
+            $this->getUploadRootDir($userId),
             $this->getFile()->getClientOriginalName()
         );
 
@@ -156,62 +204,6 @@ class Anuncios
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
-    }
-
-    /**
-     * @var integer
-     */
-    private $usuarioId;
-
-    /**
-     * @var \NW\UserBundle\Entity\User
-     */
-    private $user;
-
-    /**
-     * Set usuarioId
-     *
-     * @param integer $usuarioId
-     * @return Anuncios
-     */
-    public function setUsuarioId($usuarioId)
-    {
-        $this->usuarioId = $usuarioId;
-
-        return $this;
-    }
-
-    /**
-     * Get usuarioId
-     *
-     * @return integer 
-     */
-    public function getUsuarioId()
-    {
-        return $this->usuarioId;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \NW\UserBundle\Entity\User $user
-     * @return Anuncios
-     */
-    public function setUser(\NW\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \NW\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
 }

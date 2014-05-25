@@ -56,10 +56,24 @@ class Resenas
 
         foreach ($sumaResenas as $key => $value)
         {
-            $porcentajeResenas[$key] = $sumaResenas[$key] *100/ $cantidadResenas;
+            if($cantidadResenas>0)
+            {
+                $porcentajeResenas[$key] = $sumaResenas[$key] *100/ $cantidadResenas;
+            }
+            else
+            {
+                $porcentajeResenas[$key] = 0;
+            }
         }
 
-        $puntuacionFinal = ceil($sumaPuntuacion / $cantidadResenas); // Redondeo hacia arriba  
+        if($cantidadResenas>0)
+        {
+            $puntuacionFinal = ceil($sumaPuntuacion / $cantidadResenas); // Redondeo hacia arriba  
+        }
+        else
+        {
+            $puntuacionFinal = 0;
+        }
 
         return array('resenas' => $resenas, 'puntuacionFinal' => $puntuacionFinal, 'porcentajeResenas' => $porcentajeResenas);
     }

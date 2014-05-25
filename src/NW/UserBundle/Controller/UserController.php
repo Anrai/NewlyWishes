@@ -223,8 +223,29 @@ class UserController extends Controller
             $user->setUsername($form["userName"]->getData());
             $user->setEmail($form["email"]->getData());
             $user->setPlainPassword($form["userPass"]->getData());
-            $user->addRole('ROLE_PROVEEDOR');
             $user->setEnabled(true);
+
+            // Agregando rol de plan de proveedor
+            switch ($form["plan"]->getData()) {
+                case 'anuncioEspecial':
+                    $user->addRole('ROLE_PROVEEDOR_ANUNCIO');
+                    break;
+                case 'anuncioPlus':
+                    $user->addRole('ROLE_PROVEEDOR_ANUNCIO');
+                    break;
+                case 'basico':
+                    $user->addRole('ROLE_PROVEEDOR_BASICO');
+                    break;
+                case 'estandar':
+                    $user->addRole('ROLE_PROVEEDOR_ESTANDAR');
+                    break;
+                case 'plus':
+                    $user->addRole('ROLE_PROVEEDOR_PLUS');
+                    break;
+                default:
+                    $user->addRole('ROLE_PROVEEDOR');
+                    break;
+            }
 
             // Agregando Apellidos invisibles al proveedor si se trata de persona moral o si no existen apellidos
             if($form["tipoPersona"]->getData() == "moral")

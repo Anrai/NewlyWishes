@@ -533,7 +533,7 @@ class registroproveedores
     /**
      * @var string
      */
-    private $path;
+    private $path = null;
 
 
     /**
@@ -542,7 +542,7 @@ class registroproveedores
      * @param string $path
      * @return registroproveedores
      */
-    public function setPath($path)
+    public function setPath($path = null)
     {
         $this->path = $path;
 
@@ -639,12 +639,12 @@ class registroproveedores
     /**
      * @var string
      */
-    private $nombreComercial;
+    private $nombreComercial = null;
 
     /**
      * @var string
      */
-    private $descripcion;
+    private $descripcion = null;
 
 
     /**
@@ -653,7 +653,7 @@ class registroproveedores
      * @param string $nombreComercial
      * @return registroproveedores
      */
-    public function setNombreComercial($nombreComercial)
+    public function setNombreComercial($nombreComercial = null)
     {
         $this->nombreComercial = $nombreComercial;
 
@@ -676,7 +676,7 @@ class registroproveedores
      * @param string $descripcion
      * @return registroproveedores
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcion($descripcion = null)
     {
         $this->descripcion = $descripcion;
 

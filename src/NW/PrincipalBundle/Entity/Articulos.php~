@@ -374,7 +374,151 @@ class Articulos
         'tamanos' => $this->getTamanos(),
         'tipo' => $this->getTipo(),
         'estatus' => $this->getEstatus(),
-        'fotos' => $this->getFotos(),
+        'fotos' => $this->getFotosarticulos()->toArray(),
+        'categoria' => $this->getCategoriaId()
         );
+    }
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $fotosarticulos;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fotosarticulos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add fotosarticulos
+     *
+     * @param \NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos
+     * @return Articulos
+     */
+    public function addFotosarticulo(\NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos)
+    {
+        $this->fotosarticulos[] = $fotosarticulos;
+
+        return $this;
+    }
+
+    /**
+     * Remove fotosarticulos
+     *
+     * @param \NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos
+     */
+    public function removeFotosarticulo(\NW\PrincipalBundle\Entity\FotosArticulos $fotosarticulos)
+    {
+        $this->fotosarticulos->removeElement($fotosarticulos);
+    }
+
+    /**
+     * Get fotosarticulos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFotosarticulos()
+    {
+        return $this->fotosarticulos;
+    }
+    /**
+     * @var integer
+     */
+    private $categoriaId;
+
+    /**
+     * @var \NW\PrincipalBundle\Entity\Categorias
+     */
+    private $categoria;
+
+
+    /**
+     * Set categoriaId
+     *
+     * @param integer $categoriaId
+     * @return Articulos
+     */
+    public function setCategoriaId($categoriaId)
+    {
+        $this->categoriaId = $categoriaId;
+
+        return $this;
+    }
+
+    /**
+     * Get categoriaId
+     *
+     * @return integer 
+     */
+    public function getCategoriaId()
+    {
+        return $this->categoriaId;
+    }
+
+    /**
+     * Set categoria
+     *
+     * @param \NW\PrincipalBundle\Entity\Categorias $categoria
+     * @return Articulos
+     */
+    public function setCategoria(\NW\PrincipalBundle\Entity\Categorias $categoria = null)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \NW\PrincipalBundle\Entity\Categorias 
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Banners
+     */
+    private $banner;
+
+
+    /**
+     * Set banner
+     *
+     * @param \NW\PrincipalBundle\Entity\Banners $banner
+     * @return Articulos
+     */
+    public function setBanner(\NW\PrincipalBundle\Entity\Banners $banner = null)
+    {
+        $this->banner = $banner;
+
+        return $this;
+    }
+
+    /**
+     * Get banner
+     *
+     * @return \NW\PrincipalBundle\Entity\Banners 
+     */
+    public function getBanner()
+    {
+        return $this->banner;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Articulos
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 }

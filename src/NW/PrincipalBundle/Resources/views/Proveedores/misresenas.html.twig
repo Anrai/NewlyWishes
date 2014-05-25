@@ -19,9 +19,11 @@
 	<hr />
 	<div class="col-xs-1 minest">
 		<div>
-			{% for i in 1..resenas.puntuacionFinal %}
-			    <img src="{{asset('img/estrellaa.png')}}">
-			{% endfor %}
+			{% if resenas.puntuacionFinal > 0 %}
+				{% for i in 1..resenas.puntuacionFinal %}
+				    <img src="{{asset('img/estrellaa.png')}}">
+				{% endfor %}
+			{% endif %}
 			{% if resenas.puntuacionFinal < 5 %}
 				{% for i in 1..5-resenas.puntuacionFinal %}
 				    <img src="{{asset('img/estrellag.png')}}">

@@ -444,4 +444,37 @@ class Novias
     {
         return $this->estados;
     }
+
+    public function getNombreCompleto()
+    {
+        return $this->getNombre().' '.$this->getSNombre().' '.$this->getAPaterno().' '.$this->getAMaterno();
+    }
+    /**
+     * @var \NW\UserBundle\Entity\Novios
+     */
+    private $novio;
+
+
+    /**
+     * Set novio
+     *
+     * @param \NW\UserBundle\Entity\Novios $novio
+     * @return Novias
+     */
+    public function setNovio(\NW\UserBundle\Entity\Novios $novio = null)
+    {
+        $this->novio = $novio;
+
+        return $this;
+    }
+
+    /**
+     * Get novio
+     *
+     * @return \NW\UserBundle\Entity\Novios 
+     */
+    public function getNovio()
+    {
+        return $this->novio;
+    }
 }

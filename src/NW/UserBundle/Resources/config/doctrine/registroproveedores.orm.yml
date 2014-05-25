@@ -81,9 +81,18 @@ NW\UserBundle\Entity\registroproveedores:
         path:
             type: string
             length: 255
+            nullable: true
+            default: NULL
+            columnDefinition: VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
         nombreComercial:
             type: string
             length: 255
+            nullable: true
+            default: NULL
+            columnDefinition: VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
         descripcion:
             type: string
             length: 255
+            nullable: true
+            default: NULL
+            columnDefinition: VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL

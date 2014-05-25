@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Anuncios
+ * FotosArticulos
  */
-class Anuncios
+class FotosArticulos
 {
     /**
      * @var integer
@@ -16,14 +16,36 @@ class Anuncios
     private $id;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $webpage;
+    private $articuloId;
 
     /**
      * @var string
      */
     private $path;
+
+    /**
+     * @var \NW\PrincipalBundle\Entity\Articulos
+     */
+    private $articulo;
+
+    /**
+     * Get usuarioId
+     *
+     * @return integer 
+     */
+    public function getUsuarioId($userId)
+    {
+        if (!$userId)
+        {
+            return $this->articulo->getUsuarioId();
+        }
+        else
+        {
+            return $userId;
+        }
+    }
 
     /**
      * Get id
@@ -36,33 +58,33 @@ class Anuncios
     }
 
     /**
-     * Set webpage
+     * Set articuloId
      *
-     * @param string $webpage
-     * @return Anuncios
+     * @param integer $articuloId
+     * @return FotosArticulos
      */
-    public function setWebpage($webpage)
+    public function setArticuloId($articuloId)
     {
-        $this->webpage = $webpage;
+        $this->articuloId = $articuloId;
 
         return $this;
     }
 
     /**
-     * Get webpage
+     * Get articuloId
      *
-     * @return string 
+     * @return integer 
      */
-    public function getWebpage()
+    public function getArticuloId()
     {
-        return $this->webpage;
+        return $this->articuloId;
     }
 
     /**
      * Set path
      *
      * @param string $path
-     * @return Anuncios
+     * @return FotosArticulos
      */
     public function setPath($path)
     {
@@ -81,36 +103,59 @@ class Anuncios
         return $this->path;
     }
 
-    public function getAbsolutePath()
+    /**
+     * Set articulo
+     *
+     * @param \NW\PrincipalBundle\Entity\Articulos $articulo
+     * @return FotosArticulos
+     */
+    public function setArticulo(\NW\PrincipalBundle\Entity\Articulos $articulo = null)
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
-    }
+        $this->articulo = $articulo;
 
-    public function getWebPath($usuarioId)
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().$usuarioId.'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/anuncios/';
+        return $this;
     }
 
     /**
-     * Archivo que se va a subir como logo
+     * Get articulo
+     *
+     * @return \NW\PrincipalBundle\Entity\Articulos 
+     */
+    public function getArticulo()
+    {
+        return $this->articulo;
+    }
+
+    public function getAbsolutePath($userId)
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir($userId).'/'.$this->path;
+    }
+
+    public function getWebPath($userId)
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir($userId).'/'.$this->path;
+    }
+
+    protected function getUploadRootDir($userId)
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir($userId);
+    }
+
+    protected function getUploadDir($userId)
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/articulos/'.$this->getUsuarioId($userId);
+    }
+
+    /**
+     * 
      */
     private $file;
 
@@ -134,7 +179,7 @@ class Anuncios
         return $this->file;
     }
 
-    public function upload($usuarioId)
+    public function upload($userId)
     {
         // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
@@ -147,7 +192,7 @@ class Anuncios
         // move takes the target directory and then the
         // target filename to move to
         $this->getFile()->move(
-            $this->getUploadRootDir().$usuarioId,
+            $this->getUploadRootDir($userId),
             $this->getFile()->getClientOriginalName()
         );
 
@@ -158,60 +203,13 @@ class Anuncios
         $this->file = null;
     }
 
-    /**
-     * @var integer
-     */
-    private $usuarioId;
-
-    /**
-     * @var \NW\UserBundle\Entity\User
-     */
-    private $user;
-
-    /**
-     * Set usuarioId
-     *
-     * @param integer $usuarioId
-     * @return Anuncios
-     */
-    public function setUsuarioId($usuarioId)
-    {
-        $this->usuarioId = $usuarioId;
-
-        return $this;
+    // Método que regresa mis valores en forma de array
+    public function getValues($userId){
+        return array(
+        'id' => $this->getId(),
+        'webPath' => $this->getWebPath($userId),
+        //'name' => $this->getName(),
+        //'imageWebPath' => $this->getWebPath($this->getUsuarioId()),
+        );
     }
-
-    /**
-     * Get usuarioId
-     *
-     * @return integer 
-     */
-    public function getUsuarioId()
-    {
-        return $this->usuarioId;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \NW\UserBundle\Entity\User $user
-     * @return Anuncios
-     */
-    public function setUser(\NW\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \NW\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
 }

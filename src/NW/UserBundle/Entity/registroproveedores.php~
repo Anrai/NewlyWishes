@@ -3,6 +3,7 @@
 namespace NW\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * registroproveedores
@@ -532,7 +533,7 @@ class registroproveedores
     /**
      * @var string
      */
-    private $path;
+    private $path = null;
 
 
     /**
@@ -541,7 +542,7 @@ class registroproveedores
      * @param string $path
      * @return registroproveedores
      */
-    public function setPath($path)
+    public function setPath($path = null)
     {
         $this->path = $path;
 
@@ -583,7 +584,7 @@ class registroproveedores
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/anuncios/'.$this->getUsuarioId();
+        return 'uploads/proveedores/'.$this->getUsuarioId();
     }
 
     /**
@@ -635,4 +636,236 @@ class registroproveedores
         $this->file = null;
     }
     
+    /**
+     * @var string
+     */
+    private $nombreComercial = null;
+
+    /**
+     * @var string
+     */
+    private $descripcion = null;
+
+
+    /**
+     * Set nombreComercial
+     *
+     * @param string $nombreComercial
+     * @return registroproveedores
+     */
+    public function setNombreComercial($nombreComercial = null)
+    {
+        $this->nombreComercial = $nombreComercial;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreComercial
+     *
+     * @return string 
+     */
+    public function getNombreComercial()
+    {
+        return $this->nombreComercial;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return registroproveedores
+     */
+    public function setDescripcion($descripcion = null)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $galeria;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->galeria = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add galeria
+     *
+     * @param \NW\PrincipalBundle\Entity\GaleriaProveedor $galeria
+     * @return registroproveedores
+     */
+    public function addGalerium(\NW\PrincipalBundle\Entity\GaleriaProveedor $galeria)
+    {
+        $this->galeria[] = $galeria;
+
+        return $this;
+    }
+
+    /**
+     * Remove galeria
+     *
+     * @param \NW\PrincipalBundle\Entity\GaleriaProveedor $galeria
+     */
+    public function removeGalerium(\NW\PrincipalBundle\Entity\GaleriaProveedor $galeria)
+    {
+        $this->galeria->removeElement($galeria);
+    }
+
+    /**
+     * Get galeria
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGaleria()
+    {
+        return $this->galeria;
+    }
+
+    /*
+    * Método que obtiene las fotos de galería del proveedor y las regresa como arreglo de urls
+    */
+    public function getGaleriaArray()
+    {
+        $galeria = $this->getGaleria()->toArray();
+
+        foreach($galeria as $indice=>$valor)
+        {
+            $galeria[$indice] = $galeria[$indice]->getWebPath(false);
+        }
+        return $galeria;
+    }
+
+    // Método que regresa mis valores en forma de array
+    public function getValues()
+    {
+        return array(
+            'id' => $this->getId(),
+            'nombreComercial' => $this->getNombreComercial(),
+            'descripcion' => $this->getDescripcion(),
+            'logo' => $this->getWebPath(),
+            'galeria' => $this->getGaleriaArray(),
+        );
+    }
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $resenas;
+
+
+    /**
+     * Add resenas
+     *
+     * @param \NW\PrincipalBundle\Entity\Resena $resenas
+     * @return registroproveedores
+     */
+    public function addResena(\NW\PrincipalBundle\Entity\Resena $resenas)
+    {
+        $this->resenas[] = $resenas;
+
+        return $this;
+    }
+
+    /**
+     * Remove resenas
+     *
+     * @param \NW\PrincipalBundle\Entity\Resena $resenas
+     */
+    public function removeResena(\NW\PrincipalBundle\Entity\Resena $resenas)
+    {
+        $this->resenas->removeElement($resenas);
+    }
+
+    /**
+     * Get resenas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResenas()
+    {
+        return $this->resenas;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $codigos;
+
+
+    /**
+     * Add codigos
+     *
+     * @param \NW\PrincipalBundle\Entity\Codigos $codigos
+     * @return registroproveedores
+     */
+    public function addCodigo(\NW\PrincipalBundle\Entity\Codigos $codigos)
+    {
+        $this->codigos[] = $codigos;
+
+        return $this;
+    }
+
+    /**
+     * Remove codigos
+     *
+     * @param \NW\PrincipalBundle\Entity\Codigos $codigos
+     */
+    public function removeCodigo(\NW\PrincipalBundle\Entity\Codigos $codigos)
+    {
+        $this->codigos->removeElement($codigos);
+    }
+
+    /**
+     * Get codigos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCodigos()
+    {
+        return $this->codigos;
+    }
+    /**
+     * @var \NW\PrincipalBundle\Entity\Codigos
+     */
+    private $codigoVendedor;
+
+
+    /**
+     * Set codigoVendedor
+     *
+     * @param \NW\PrincipalBundle\Entity\Codigos $codigoVendedor
+     * @return registroproveedores
+     */
+    public function setCodigoVendedor(\NW\PrincipalBundle\Entity\Codigos $codigoVendedor = null)
+    {
+        $this->codigoVendedor = $codigoVendedor;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoVendedor
+     *
+     * @return \NW\PrincipalBundle\Entity\Codigos 
+     */
+    public function getCodigoVendedor()
+    {
+        return $this->codigoVendedor;
+    }
 }
