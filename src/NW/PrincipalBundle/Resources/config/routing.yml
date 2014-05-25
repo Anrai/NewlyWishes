@@ -169,3 +169,15 @@ nw_principal_novios_nuestras-compras:
 nw_principal_reporteros_micuenta:
     pattern:  /reporteros/micuenta
     defaults: { _controller: NWPrincipalBundle:Reporteros:micuenta }
+
+nw_principal_reporteros_misarticulos:
+    pattern:  /reporteros/miscarticulos
+    defaults: { _controller: NWPrincipalBundle:Reporteros:misarticulos }
+
+nw_principal_reporteros_enviar_articulo:
+    pattern:  /reporteros/articulo/{id}/enviar
+    defaults: { _controller: NWPrincipalBundle:Reporteros:enviarArticulo }
+
+nw_principal_reporteros_eliminar_articulo:
+    pattern:  /reporteros/articulo/{id}/eliminar
+    defaults: { _controller: NWPrincipalBundle:Reporteros:eliminarArticulo }

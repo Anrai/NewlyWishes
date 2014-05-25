@@ -1,0 +1,17 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/CategoriaReportero.orm.yml
+NW\PrincipalBundle\Entity\CategoriaReportero:
+    type: entity
+    table: categoriareportero
+    oneToMany:
+        reporteros:
+            targetEntity: ArticuloReportero
+            mappedBy: categoria
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        catName:
+            type: string   
+            length: 255

@@ -15,4 +15,4 @@ parameters:
 services:
     reportero_service:
         class:     %reportero_service.class%
-        arguments: [@doctrine.orm.entity_manager, @fos_user.user_manager]
+        arguments: [@doctrine.orm.entity_manager, @fos_user.user_manager, @security.encoder_factory]

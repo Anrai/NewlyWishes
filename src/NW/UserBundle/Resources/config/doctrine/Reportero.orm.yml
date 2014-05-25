@@ -16,6 +16,10 @@ NW\UserBundle\Entity\Reportero:
             joinColumn:
                 name: estadoId
                 referencedColumnName: id
+    oneToMany:
+        articulos:
+            targetEntity: NW\PrincipalBundle\Entity\ArticuloReportero
+            mappedBy: reportero
     id:
         id:
             type: integer

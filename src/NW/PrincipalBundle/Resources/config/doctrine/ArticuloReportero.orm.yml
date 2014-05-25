@@ -1,0 +1,35 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/ArticuloReportero.orm.yml
+NW\PrincipalBundle\Entity\ArticuloReportero:
+    type: entity
+    table: articuloreportero
+    manyToOne:
+        reportero:
+            targetEntity: NW\UserBundle\Entity\Reportero
+            inversedBy: articulos
+            joinColumn:
+                name: reporteroId
+                referencedColumnName: id
+        categoria:
+            targetEntity: CategoriaReportero
+            inversedBy: reporteros
+            joinColumn:
+                name: categoriaId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        reporteroId:
+            type: integer
+        categoriaId:
+            type: integer
+        titulo:
+            type: string   
+            length: 255
+        estatus:
+            type: string
+            length: 20
+        contenido:
+            type: text
