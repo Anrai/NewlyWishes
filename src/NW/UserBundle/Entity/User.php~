@@ -457,4 +457,32 @@ class User extends BaseUser
     {
         return $this->banners;
     }
+    /**
+     * @var \NW\UserBundle\Entity\Reportero
+     */
+    private $reportero;
+
+
+    /**
+     * Set reportero
+     *
+     * @param \NW\UserBundle\Entity\Reportero $reportero
+     * @return User
+     */
+    public function setReportero(\NW\UserBundle\Entity\Reportero $reportero = null)
+    {
+        $this->reportero = $reportero;
+
+        return $this;
+    }
+
+    /**
+     * Get reportero
+     *
+     * @return \NW\UserBundle\Entity\Reportero 
+     */
+    public function getReportero()
+    {
+        return $this->reportero;
+    }
 }

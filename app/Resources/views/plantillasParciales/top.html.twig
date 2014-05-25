@@ -30,6 +30,9 @@
 		    	{% if is_granted('ROLE_PROVEEDOR') %}
 		    		<a href="{{ path('nw_principal_proveedores_micuenta') }}">Mi cuenta</a>
 		    	{% endif %}
+		    	{% if is_granted('ROLE_REPORTERO') %}
+		    		<a href="#">Mi cuenta</a>
+		    	{% endif %}
 		  	</div>
 			<div class="cont_top" style="float:right; clear:both;">
 		    	<strong>{{ app.user.username }}</strong> &nbsp;-&nbsp; <a href="{{ path('fos_user_security_logout') }}">Salir</a>
@@ -37,7 +40,9 @@
 		 {% else %}
 		 	<div class="cont_top" style="text-align:center;">
 		 		Ingresa al sitio<br>
-			 <a href="{{ path('nw_user_loginnovios') }}">Novios</a> &nbsp;-&nbsp; <a href="{{ path('nw_user_registroproveedores') }}">Proveedores</a>
+			 <a href="{{ path('nw_user_loginnovios') }}">Novios</a> &nbsp;-&nbsp; 
+			 <a href="{{ path('nw_user_registroproveedores') }}">Proveedores</a> &nbsp;-&nbsp; 
+			 <a href="{{ path('nw_user_registroreportero') }}">Reporteros</a>
 		  	</div>
 		 {% endif %}
 	</div>

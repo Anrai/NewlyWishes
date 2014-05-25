@@ -231,4 +231,42 @@ class Estados
     {
         return $this->pais;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $reportero;
+
+
+    /**
+     * Add reportero
+     *
+     * @param \NW\UserBundle\Entity\Reportero $reportero
+     * @return Estados
+     */
+    public function addReportero(\NW\UserBundle\Entity\Reportero $reportero)
+    {
+        $this->reportero[] = $reportero;
+
+        return $this;
+    }
+
+    /**
+     * Remove reportero
+     *
+     * @param \NW\UserBundle\Entity\Reportero $reportero
+     */
+    public function removeReportero(\NW\UserBundle\Entity\Reportero $reportero)
+    {
+        $this->reportero->removeElement($reportero);
+    }
+
+    /**
+     * Get reportero
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReportero()
+    {
+        return $this->reportero;
+    }
 }

@@ -19,6 +19,9 @@ NW\PrincipalBundle\Entity\Estados:
         registroproveedores:
             targetEntity: NW\UserBundle\Entity\registroproveedores
             mappedBy: estados
+        reportero:
+            targetEntity: NW\UserBundle\Entity\Reportero
+            mappedBy: estado
     id:
         id:
             type: integer

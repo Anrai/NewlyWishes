@@ -9,7 +9,7 @@ security:
         ROLE_PROVEEDOR_ESTANDAR: [ROLE_PROVEEDOR_BASICO, ROLE_PROVEEDOR_ANUNCIO]
         ROLE_PROVEEDOR_PLUS: ROLE_PROVEEDOR_ESTANDAR
         ROLE_ADMIN: ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_NOVIO, ROLE_PROVEEDOR_PLUS]
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_NOVIO, ROLE_REPORTERO, ROLE_PROVEEDOR_PLUS]
 
     providers:
             fos_userbundle:
@@ -32,3 +32,4 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/proveedores/, role: ROLE_PROVEEDOR }
         - { path: ^/novios/, role: ROLE_NOVIO }
+        - { path: ^/reporteros/, role: ROLE_REPORTERO }

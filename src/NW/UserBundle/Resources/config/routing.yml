@@ -14,6 +14,10 @@ nw_user_registroproveedores:
     pattern:  /registroproveedores
     defaults: { _controller: NWUserBundle:User:registroproveedores }
 
+nw_user_registroreportero:
+    pattern:  /registroreportero
+    defaults: { _controller: NWUserBundle:User:registroReportero }
+
 nw_user_registro_exitoso:
     pattern:  /registroexitoso
     defaults: { _controller: NWUserBundle:User:registroExitoso }

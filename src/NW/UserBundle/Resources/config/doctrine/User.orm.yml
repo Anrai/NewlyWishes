@@ -17,6 +17,9 @@ NW\UserBundle\Entity\User:
         registroproveedores:
             targetEntity: registroproveedores
             mappedBy: user
+        reportero:
+            targetEntity: Reportero
+            mappedBy: user
         anuncios:
             targetEntity:  NW\PrincipalBundle\Entity\Anuncios
             mappedBy: user

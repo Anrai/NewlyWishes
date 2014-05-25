@@ -1,0 +1,66 @@
+# src/NW/UserBundle/Resources/config/doctrine/Reportero.orm.yml
+NW\UserBundle\Entity\Reportero:
+    type:  entity
+    table: reporteros
+    oneToOne:
+        user:
+            targetEntity: User
+            inversedBy: reportero
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+    manyToOne:
+        estado:
+            targetEntity: NW\PrincipalBundle\Entity\Estados
+            inversedBy: reportero
+            joinColumn:
+                name: estadoId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        usuarioId:
+            type: integer
+        estadoId:
+            type: integer
+        tipoPersona:
+            type: string
+            length: 100
+        nombreRazon:
+            type: string
+            length: 100
+        apellidoPaterno:
+            type: string
+            length: 100
+            nullable: true
+        apellidoMaterno:
+            type: string
+            length: 100
+            nullable: true
+        rfc:
+            type: string
+            length: 100
+        email:
+            type: string
+            length: 100
+        lada:
+            type: string
+            length: 100
+        telefono:
+            type: string
+            length: 100
+        celular:
+            type: string
+            length: 100
+        direccion:
+            type: string
+            length: 100
+        ciudad:
+            type: string
+            length: 100
+        cp:
+            type: string
+            length: 100

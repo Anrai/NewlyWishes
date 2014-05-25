@@ -7,9 +7,11 @@ use NW\UserBundle\Entity\usuario;
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
 use NW\UserBundle\Entity\registroproveedores;
+use NW\UserBundle\Entity\Reportero;
 use NW\PrincipalBundle\Entity\Bodas;
 
 use NW\UserBundle\Form\Type\RegistroType;
+use NW\UserBundle\Form\Type\ReporteroType;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -288,6 +290,33 @@ class UserController extends Controller
                 'form' => $form->createView(),
             ));
         }
+    }
+
+    public function registroReporteroAction(Request $request)
+    {
+        // Servicio con funciones para reportero
+        $reporteroService = $this->get('reportero_service');
+
+        // Nuevo objeto reportero y su formulario
+        $reportero = new Reportero();
+        $formReportero = $this->createForm(new ReporteroType(), $reportero);
+
+        // Recuperando formulario de reportero
+        $formReportero->handleRequest($request);
+        if ($formReportero->isValid()) {
+
+            // Registrar reportero mediante el servicio de reportero
+            $reporteroService->registrarReportero($reportero, $formReportero['userName']->getData(), $formReportero['userPass']->getData());
+            
+            // Redirigir a la página de registro exitoso
+            $redirect = $this->generateUrl('nw_user_registro_exitoso');
+            return $this->redirect($redirect);
+        }
+
+        // Generar página para el registro de nuevos reporteros
+        return $this->render('NWUserBundle:User:registroreportero.html.twig', array(
+            'formReportero' => $formReportero->createView(),
+        ));
     }
 
     public function registroExitosoAction()

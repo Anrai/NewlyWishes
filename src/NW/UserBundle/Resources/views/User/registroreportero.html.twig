@@ -1,0 +1,102 @@
+{# src/NW/PrincipalBundle/Resources/views/registroreportero.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+	{% block body %}
+	
+		{% include ':plantillasParciales:top.html.twig' %}
+
+		<div class="container" style="margin-top:0px; margin-bottom:0px; padding-left:50px; padding-right:50px; background-color:rgba(255,255,255,1);">
+      		<div class="">
+			    <div class="cuadro img-responsive">
+					<br>
+					<img class="img-responsive proveedores" src="{{asset('img/reporteros.png')}}" />
+					
+					{% render controller("FOSUserBundle:Security:login") %}
+
+				</div>
+			    <h4 class="olv" style="text-align:center; margin-top:20px;">Olvidé mi usuario / contraseña</h4>
+			</div>
+		</div>
+
+		{{ form_start(formReportero) }}
+
+		<div class="container" style="margin-top:0px; margin-bottom:0px; padding-left:50px; padding-right:50px; background-color:rgba(255,255,255,1);">
+
+			<div class="row" style="margin-top:50px;">
+			<h2>Registrate</h2>
+			    <div class="col-md-12">
+			        <p>
+			            Si eres un reportero nuevo y deseas publicar artículos, por favor regístrate.
+			        </p>
+			    </div>
+			</div>
+			<div class="row" style="margin-top:20px;">
+				    <div class="col-md-8">
+				    </div>
+				    <div class="row">
+				        <div class="col-md-12">
+				        	{{ form_widget(formReportero.tipoPersona) }}
+				        </div>
+				    </div>
+				    <div class="row" style="margin-top:20px;">
+				        <div class="col-md-4">
+				        	{{ form_widget(formReportero.nombreRazon, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre o razón social' } }) }}
+				            {{ form_widget(formReportero.apellidoPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
+				            {{ form_widget(formReportero.apellidoMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'pellido Materno' } }) }}
+				            {{ form_widget(formReportero.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
+				        </div>
+				        <div class="col-md-4">
+				        	{{ form_widget(formReportero.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
+				        	{{ form_widget(formReportero.lada, { 'attr': {'class': 'input_registro_novios input_registro20', 'placeholder': 'LADA'} }) }}
+				        	{{ form_widget(formReportero.telefono, { 'attr': {'class': 'input_registro_novios input_registro74', 'placeholder': 'Teléfono de oficina'} }) }}
+				        	{{ form_widget(formReportero.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
+				        </div>
+				        <div class="col-md-4">
+				        	{{ form_widget(formReportero.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
+				            {{ form_label(formReportero.pais, 'País') }}
+					        {{ form_widget(formReportero.pais, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
+				            <br />
+					        {{ form_label(formReportero.estadoId, 'Estado') }}
+					        {{ form_widget(formReportero.estadoId, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
+					        {{ form_widget(formReportero.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Municipio o Delegación' } }) }}
+				    		{{ form_widget(formReportero.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
+				        </div>
+				    </div>
+				    <!-- DATOS DEL USUARIO -->
+				    <div class="row" style="margin-top:20px;">
+				        <div class="col-md-10">
+				            <h3>Datos de Usuario:</h3>
+				        </div>
+				    </div>
+				    <div class="row">
+				        <div class="col-md-4">
+				            {{ form_widget(formReportero.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
+							{{ form_widget(formReportero.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
+				        </div>
+				        <div class="col-md-4">
+				            {{ form_widget(formReportero.terminosCondiciones) }} {{ form_label(formReportero.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
+							{{ form_widget(formReportero.terminosPrivacidad) }} {{ form_label(formReportero.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
+				        </div>
+				        <div class="col-md-4">
+				            
+				        </div>
+					</div>
+			</div>
+			<div class="row" style="margin-top:50px;">
+				<h2>Confirma tu registro</h2>
+				{{ form_widget(formReportero.Aceptar, { 'attr': {'class': 'botoncitoRosa' } }) }}
+			</div>
+
+			<div class="container">
+			    <div class="row">
+			        <div class="col-md-12" style="height:30px; background-color:rgba(255,255,255,1);">
+			        </div>
+			    </div>
+			</div>
+		</div><!-- CONTAINER -->
+
+		{{ form_end(formReportero) }}
+		
+
+	{% endblock %}
