@@ -181,3 +181,15 @@ nw_principal_reporteros_enviar_articulo:
 nw_principal_reporteros_eliminar_articulo:
     pattern:  /reporteros/articulo/{id}/eliminar
     defaults: { _controller: NWPrincipalBundle:Reporteros:eliminarArticulo }
+
+nw_principal_reporteros_misarticulos:
+    pattern:  /reporteros/miscarticulos
+    defaults: { _controller: NWPrincipalBundle:Reporteros:misarticulos }
+
+nw_principal_reporteros_miestadodecuenta:
+    pattern:  /reporteros/miestadodecuenta
+    defaults: { _controller: NWPrincipalBundle:Reporteros:miestadodecuenta }
+
+nw_principal_reporteros_miinformacionbancaria:
+    pattern:  /reporteros/miinformacionbancaria
+    defaults: { _controller: NWPrincipalBundle:Reporteros:miinformacionbancaria }

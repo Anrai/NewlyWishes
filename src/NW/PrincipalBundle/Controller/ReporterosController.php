@@ -119,4 +119,30 @@ class ReporterosController extends Controller
     	$redirect = $this->generateUrl('nw_principal_reporteros_misarticulos');
     	return $this->redirect($redirect);
     }
+
+    public function miestadodecuentaAction()
+    {
+    	// Servicio con funciones para reportero
+    	$reporteroService = $this->get('reportero_service');
+
+    	// Obtener datos de reportero según el usuario en formato para mostrar en plantilla
+    	$reporteroArray = $reporteroService->getReporteroArray($this->getUser());
+
+    	return $this->render('NWPrincipalBundle:Reporteros:miestadodecuenta.html.twig', array(
+    		'reportero' => $reporteroArray,
+    	));
+    }
+
+    public function miinformacionbancariaAction()
+    {
+    	// Servicio con funciones para reportero
+    	$reporteroService = $this->get('reportero_service');
+
+    	// Obtener datos de reportero según el usuario en formato para mostrar en plantilla
+    	$reporteroArray = $reporteroService->getReporteroArray($this->getUser());
+
+    	return $this->render('NWPrincipalBundle:Reporteros:miinformacionbancaria.html.twig', array(
+    		'reportero' => $reporteroArray,
+    	));
+    }
 }
