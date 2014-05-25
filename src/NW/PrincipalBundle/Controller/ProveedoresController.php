@@ -33,8 +33,8 @@ class ProveedoresController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         // Obtener usuario y proveedor
-        $user=$this->getUser();
-        $proveedorObject=$user->getRegistroproveedores();
+        $user = $this->getUser();
+        $proveedorObject = $user->getRegistroproveedores();
 
         // Formulario de edición de datos del proveedor
         $formProveedorData["tipoPersona"] = $proveedorObject->getTipoPersona();

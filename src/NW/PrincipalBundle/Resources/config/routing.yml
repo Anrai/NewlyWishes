@@ -165,3 +165,7 @@ nw_principal_novios_nuestra-informacion-bancaria:
 nw_principal_novios_nuestras-compras:
     pattern:  /novios/nuestras-compras
     defaults: { _controller: NWPrincipalBundle:Novios:nuestrasCompras }
+
+nw_principal_reporteros_micuenta:
+    pattern:  /reporteros/micuenta
+    defaults: { _controller: NWPrincipalBundle:Reporteros:micuenta }

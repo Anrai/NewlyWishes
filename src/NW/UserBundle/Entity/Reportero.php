@@ -472,4 +472,26 @@ class Reportero
     {
         return $this->estado;
     }
+
+    // Método que regresa mis valores en forma de array
+    public function getValues()
+    {
+        return array(
+            'id' => $this->getId(),
+            'nombreRazon' => $this->getNombreRazon(),
+            'estadoId' => $this->getEstadoId(),
+            'estado' => $this->getEstado()->getEstado(),
+            'tipoPersona' => $this->getTipoPersona(),
+            'apellidoPaterno' => $this->getApellidoPaterno(),
+            'apellidoMaterno' => $this->getApellidoMaterno(),
+            'rfc' => $this->getRfc(),
+            'email' => $this->getEmail(),
+            'lada' => $this->getLada(),
+            'telefono' => $this->getTelefono(),
+            'celular' => $this->getCelular(),
+            'direccion' => $this->getDireccion(),
+            'ciudad' => $this->getCiudad(),
+            'cp' => $this->getCp(),
+        );
+    }
 }
