@@ -55,8 +55,8 @@ NW\UserBundle\Entity\User:
             joinTable:
                 name: user_favorite_calendars
                 joinColumns:
-                  user_id:
-                    referencedColumnName: id
+                    user_id:
+                        referencedColumnName: id
                 inverseJoinColumns:
-                  group_id:
-                    referencedColumnName: id
+                    favorite_calendar_id:
+                        referencedColumnName: id

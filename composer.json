@@ -16,7 +16,9 @@
                     "type": "zip",
                     "url": "http://arshaw.com/fullcalendar/downloads/fullcalendar-1.6.4.zip"
                 }
-            }
+            },
+            "type": "git",
+            "url": "https://github.com/Anrai/CalendarBundle"
         }
     ],
     "require": {
@@ -36,9 +38,9 @@
         "knplabs/knp-menu-bundle":"dev-master",
         "knplabs/knp-menu": "2.0.*@dev",
         "sg/rrulebundle": "dev-master",
-        "twbs/bootstrap": "v2.3.2",
+        "twbs/bootstrap": "3.0.3",
         "arshaw/fullcalendar": "1.6.4",
-        "sg/calendarbundle": "dev-master"
+        "sg/calendarbundle": "dev-newly"
     },
     "scripts": {
         "post-install-cmd": [

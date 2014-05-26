@@ -1,6 +1,17 @@
 {# src/NW/PrincipalBundle/Resources/views/Novios/nuestro-calendario.html.twig #}
 {% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
 
+{% block stylesheets %}
+	{{ parent() }}
+    {% stylesheets
+        '@fullcalendar_css'
+        'bundles/sgcalendar/css/smoothness/jquery-ui-1.10.3.custom.min.css'
+        'bundles/sgcalendar/css/sgcalendar.css'
+        filter='cssrewrite' %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css"/>
+    {% endstylesheets %}
+{% endblock %}
+
 {% block partederecha %}
 
 	<div class="rlow" style="text-align:right;">
@@ -30,4 +41,20 @@
 		calendario
 	</div>
 
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+    {% javascripts
+        '@fullcalendar_js'
+        'bundles/sgcalendar/js/jquery-ui-1.10.3.custom.min.js'
+        'bundles/sgcalendar/js/jquery.ui.datepicker-de.js'
+        'bundles/sgcalendar/js/sgcalendar.js'
+        'bundles/sgcalendar/js/bootbox.min.js'
+        'bundles/sgrrule/js/underscore-min.js'
+        'bundles/sgrrule/js/rrule.js'
+        'bundles/sgrrule/js/nlp.js'
+        'bundles/sgrrule/js/moment.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

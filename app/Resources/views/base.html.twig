@@ -3,24 +3,18 @@
 {# include ':plantillasParciales:header.html.twig' #}
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <title>{% block title %}Newly Wishes{% endblock %}</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% block stylesheets %}
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
-        <link href="{{ asset('css/style2.css') }}" rel="stylesheet" media="screen">
-        <link href="{{ asset('css/stylerodrigo.css') }}" rel="stylesheet" media="screen">
-        {% endblock %}
+<head>
+    <title>{% block title %}Newly Wishes{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+    	{% stylesheets '@NWPrincipalBundle/Resources/public/css/*' %}
+	        <link rel="stylesheet" href="{{ asset_url }}" />
+	    {% endstylesheets %}
+    {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-        <!--[if lt IE 9]>
-            <script src="{{ asset('assets/js/html5shiv.js') }}"></script>
-            <script src="{{ asset('assets/js/respond.min.js') }}"></script>
-        <![endif]-->
-        <script src="{{ asset('js/jquery.js') }}"></script>
-    </head>
-    <body>
+</head>
+<body>
 
 {% block body %}
 {% endblock %}
@@ -75,8 +69,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
+    {% javascripts '@jquery_js' '@bootstrap_js' '@NWPrincipalBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
-    </body>
+
+</body>
 </html>

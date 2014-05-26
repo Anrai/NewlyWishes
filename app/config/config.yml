@@ -34,7 +34,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SgCalendarBundle ]
+    bundles:        [ SgCalendarBundle, NWPrincipalBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -57,11 +57,11 @@ assetic:
            output: img/glyphicons-halflings-white.png
        bootstrap_css:
            inputs:
-               - %kernel.root_dir%/../vendor/twbs/bootstrap/docs/assets/css/bootstrap.css
+               - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css
            output: css/bootstrap.css
        bootstrap_js:
            inputs:
-               - %kernel.root_dir%/../vendor/twbs/bootstrap/docs/assets/js/bootstrap.js
+               - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
            output: js/bootstrap.js
        fullcalendar_css:
            inputs:
