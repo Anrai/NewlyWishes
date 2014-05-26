@@ -220,4 +220,16 @@ class ArticuloReportero
     {
         return $this->categoria;
     }
+
+    // Método que regresa mis valores en forma de array
+    public function getValues()
+    {
+        return array(
+            'id' => $this->getId(),
+            'categoria' => $this->getCategoria()->getCatName(),
+            'titulo' => $this->getTitulo(),
+            'estatus' => $this->getEstatus(),
+            'contenido' => $this->getContenido(),
+        );
+    }
 }

@@ -48,3 +48,15 @@ NW\UserBundle\Entity\User:
         banners:
             targetEntity: NW\PrincipalBundle\Entity\Banners
             mappedBy: user
+    manyToMany:
+        favorites:
+            targetEntity: Sg\CalendarBundle\Model\CalendarInterface
+            inversedBy: userFavorites
+            joinTable:
+                name: user_favorite_calendars
+                joinColumns:
+                  user_id:
+                    referencedColumnName: id
+                inverseJoinColumns:
+                  group_id:
+                    referencedColumnName: id

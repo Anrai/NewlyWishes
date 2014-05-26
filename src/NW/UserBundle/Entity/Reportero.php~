@@ -494,4 +494,50 @@ class Reportero
             'cp' => $this->getCp(),
         );
     }
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $articulos;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->articulos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add articulos
+     *
+     * @param \NW\PrincipalBundle\Entity\ArticuloReportero $articulos
+     * @return Reportero
+     */
+    public function addArticulo(\NW\PrincipalBundle\Entity\ArticuloReportero $articulos)
+    {
+        $this->articulos[] = $articulos;
+
+        return $this;
+    }
+
+    /**
+     * Remove articulos
+     *
+     * @param \NW\PrincipalBundle\Entity\ArticuloReportero $articulos
+     */
+    public function removeArticulo(\NW\PrincipalBundle\Entity\ArticuloReportero $articulos)
+    {
+        $this->articulos->removeElement($articulos);
+    }
+
+    /**
+     * Get articulos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticulos()
+    {
+        return $this->articulos;
+    }
 }
