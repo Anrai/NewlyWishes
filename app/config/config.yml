@@ -34,7 +34,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SgCalendarBundle, NWPrincipalBundle ]
+    bundles:        [ NWPrincipalBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -91,11 +91,6 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
         resolve_target_entities:
-            Sg\RruleBundle\Model\RruleInterface: Sg\RruleBundle\Entity\Rrule              # SgRruleBundle default
-            Sg\RruleBundle\Model\OccurrenceInterface: Sg\RruleBundle\Entity\Occurrence    # SgRruleBundle default
-            Sg\CalendarBundle\Model\CalendarInterface: Sg\CalendarBundle\Entity\Calendar  # SgCalendarBundle default
-            Sg\CalendarBundle\Model\EventInterface: Sg\CalendarBundle\Entity\Event        # SgCalendarBundle default
-            Sg\CalendarBundle\Model\ReminderInterface: Sg\CalendarBundle\Entity\Reminder  # SgCalendarBundle default
             Symfony\Component\Security\Core\User\UserInterface: NW\UserBundle\Entity\User # your User entity
 
 # Swiftmailer Configuration
@@ -110,10 +105,3 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: NW\UserBundle\Entity\User
-
-sg_calendar:
-    first_day: 1 # Monday
-    time_format: "HH:mm"
-    from_email:
-        address:        noreply@newlywishes.com.mx
-        sender_name:    NewlyWishes

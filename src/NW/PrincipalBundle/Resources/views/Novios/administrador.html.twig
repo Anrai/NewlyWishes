@@ -1,18 +1,6 @@
 {# src/NW/PrincipalBundle/Resources/views/Novios/administrador.html.twig #}
 
 {% extends '::base.html.twig' %}
-{#
-{% block stylesheets %}
-	{{ parent() }}
-    {% stylesheets
-        '@fullcalendar_css'
-        'bundles/sgcalendar/css/smoothness/jquery-ui-1.10.3.custom.min.css'
-        'bundles/sgcalendar/css/sgcalendar.css'
-        filter='cssrewrite' %}
-        <link href="{{ asset_url }}" rel="stylesheet" type="text/css"/>
-    {% endstylesheets %}
-{% endblock %}
-#}
 
 {% block body %}
 	<div class="container" style="padding:0px; margin-top:-30px; box-shadow:rgba(0,0,0,1) 0px 0px 30px;
@@ -284,24 +272,6 @@
 			<!-- FIN CARGA DE ARTICULOS -->
 
 {% endblock %}
-{#
-{% block scripts %}
-	{{ parent() }}
-    {% javascripts
-        '@jquery_js'
-        '@bootstrap_js'
-        '@fullcalendar_js'
-        'bundles/sgcalendar/js/jquery-ui-1.10.3.custom.min.js'
-        'bundles/sgcalendar/js/jquery.ui.datepicker-de.js'
-        'bundles/sgcalendar/js/sgcalendar.js'
-        'bundles/sgcalendar/js/bootbox.min.js'
-        'bundles/sgrrule/js/underscore-min.js'
-        'bundles/sgrrule/js/rrule.js'
-        'bundles/sgrrule/js/nlp.js'
-        'bundles/sgrrule/js/moment.min.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
-#}
+
 {% block footer %}
 {% endblock %}

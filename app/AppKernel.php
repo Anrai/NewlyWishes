@@ -20,9 +20,6 @@ class AppKernel extends Kernel
             new NW\SecurityBundle\NWSecurityBundle(),
             new NW\UserBundle\NWUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Sg\CalendarBundle\SgCalendarBundle(),
-            new Sg\RruleBundle\SgRruleBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
