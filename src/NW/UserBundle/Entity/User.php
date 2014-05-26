@@ -7,7 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * User
  */
-class User extends BaseUser implements EquatableInterface, CalendarUserInterface
+class User extends BaseUser
 {
     public function __construct()
     {

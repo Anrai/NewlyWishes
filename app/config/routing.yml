@@ -24,15 +24,3 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-
-# SgRruleBundle
-sg_rrule:
-    resource: "@SgRruleBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-# SgCalendarBundle
-sg_calendar:
-    resource: "@SgCalendarBundle/Controller/"
-    type:     annotation
-    prefix:   /
