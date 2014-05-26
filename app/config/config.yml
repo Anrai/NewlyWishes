@@ -47,6 +47,10 @@ assetic:
            inputs:
                - %kernel.root_dir%/../vendor/arshaw/fullcalendar/lib/jquery.min.js
            output: js/jquery.js
+       jquery_ui_custom_js:
+           inputs:
+               - %kernel.root_dir%/../vendor/arshaw/fullcalendar/lib/jquery-ui.custom.min.js
+           output: js/jquery-ui.custom.min.js
        img_bootstrap_glyphicons_black:
            inputs:
                - %kernel.root_dir%/../vendor/twbs/bootstrap/img/glyphicons-halflings.png

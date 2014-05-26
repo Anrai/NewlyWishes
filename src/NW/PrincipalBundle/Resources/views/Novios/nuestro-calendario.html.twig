@@ -1,6 +1,75 @@
 {# src/NW/PrincipalBundle/Resources/views/Novios/nuestro-calendario.html.twig #}
 {% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets '@fullcalendar_css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <style type="text/css">
+    	td{
+    		border: none!important;
+    		padding: 5px!important;
+    	}
+    	th{
+    		border: none!important;
+    		font-size: 20px;
+			font-weight: normal!important;
+			color: rgb(204,0,153);
+    	}
+    	h2{
+    		text-transform: none!important;
+    		color: rgb(204,0,153);
+    		font-size: 26px;
+    	}
+    	.fc-button, .fc-button-prev, .fc-state-default, .fc-corner-left, .fc-corner-right, .fc-state-down{
+    		border: none!important;
+    		height: 35px!important;
+    		background: none!important;
+    		box-shadow: none!important;
+    	}
+    	.fc-day{
+    		font-size: 16px!important;
+			color: rgb(156, 156, 156)!important;
+    	}
+    	.fc-grid .fc-other-month .fc-day-number {
+    		opacity: .6!important;
+    	}
+    	.fc-event {
+			border: 1px solid rgb(235, 169, 218);
+			background-color: rgb(235, 169, 218);
+			color: #fff;
+			font-size: 11px!important;
+			font-weight: bold;
+		}
+		.fc-event>a:hover, .fc-event>a:focus{
+			color: #fff!important;
+		}
+		.fc-state-highlight {
+			background: rgb(228, 228, 228)!important;
+		}
+    	span.arrow-left {
+		    width: 0;
+		    height: 0;
+		    border-bottom: 12px solid transparent;
+		    border-top: 12px solid transparent;
+		    border-right: 16px solid #CC0099;
+		    font-size: 0;
+		    line-height: 0;
+		}
+		span.arrow-right {
+		    width: 0;
+		    height: 0;
+		    border-bottom: 12px solid transparent;
+		    border-top: 12px solid transparent;
+		    border-left: 16px solid #CC0099;
+		    font-size: 0;
+		    line-height: 0;
+		}
+    </style>
+{% endblock %}
+
 {% block partederecha %}
 
 	<div class="rlow" style="text-align:right;">
@@ -15,8 +84,8 @@
 		
 		{# Ciclo for #}
 			<div class="row">
-				<div class="col-xs-8">a</div>
-				<div class="col-xs-4">b</div>
+				<div class="col-xs-8"></div>
+				<div class="col-xs-4"></div>
 			</div>
 		{# Fin de ciclo for #}
 
@@ -26,10 +95,17 @@
 		<span style="font-size:15px; color:rgb(146, 208, 80);"><b>Ver detalle / agregar / modificar compromisos de este día</b></span>
 	</div>
 
-	<div class="row">
-		
-		calendario
-
+	<div class="row" style="margin-top:40px;">
+		<div id='calendar'></div>
 	</div>
 
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+    {% javascripts '@jquery_ui_custom_js' '@fullcalendar_js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% include 'NWPrincipalBundle:Novios:scriptCalendar.js.twig' %}
 {% endblock %}
