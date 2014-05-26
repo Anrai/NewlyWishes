@@ -1,57 +1,33 @@
-{# src/NW/PrincipalBundle/Resources/views/Proveedores/nuestro-calendario.html.twig #}
-
-	{% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
+{# src/NW/PrincipalBundle/Resources/views/Novios/nuestro-calendario.html.twig #}
+{% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
 
 {% block partederecha %}
 
-			<div class="container">
-				<div class="flow">
-					<div class="col-md-6">
-						
-					</div>
-					<div class="col-md-1 puntov">
-						<img class="img-responsive" src="{{asset('img/puntov.png')}}">
-					</div>
-					<div class="col-md-5">
-						<h1>
-							Nuestro Calendario
-						</h1>
-					</div>
-				</div>
-				<br>
-				<br>
-				<br>
-				<br>
-				<div class="row">
-					<div>
-						<h3 class="rojo">
-							Pendientes para este día -<span class="art">3 enero 2013</span>
-						</h3 >
-					</div>
-					<hr />
-					<div class="col-xs-6">
-						Ir a cita de prueba de vestido <br>
-						Ir con estilista para prueba de peinado 
-					</div>
-					 <div class="col-xs-6">
-					 	09:00 <br>
-					 	11:00
-					 </div>
-					 <br>
-					 <br>
-					 <br>
-					 <br>
-					 <br>
-					 <br>
-					 <br>
-					 <p class="verde">
-					 	Ver detalle / agregar / modificar compromisos de este día
-					 </p>
-					 <hr />
-					 
+	<div class="rlow" style="text-align:right;">
+			<h1><img Src="{{asset('img/puntov.png')}}"> Nuestro Calendario</h1>
+	</div>
 
-						
+	<div class="row" style="font-size:17px;">
+		<b>Pendientes para este día -</b><span style="color: rgb(204,0,153);"> 3 de enero de 2014</span><br />
+	</div>
 
+	<div class="row" style="border-top-color: rgb(214, 214, 214); border-top-width: 1px; border-top-style: solid; margin-top: 25px; padding:10px;">
+		
+		{# Ciclo for #}
+			<div class="row">
+				<div class="col-xs-8">a</div>
+				<div class="col-xs-4">b</div>
+			</div>
+		{# Fin de ciclo for #}
 
+	</div>
+
+	<div class="row" style="margin-top:40px;">
+		<span style="font-size:15px; color:rgb(146, 208, 80);"><b>Ver detalle / agregar / modificar compromisos de este día</b></span>
+	</div>
+
+	<div class="row">
+		calendario
+	</div>
 
 {% endblock %}

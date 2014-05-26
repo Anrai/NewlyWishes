@@ -6,6 +6,19 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "arshaw/fullcalendar",
+                "version": "1.6.4",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://arshaw.com/fullcalendar/downloads/fullcalendar-1.6.4.zip"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
@@ -19,7 +32,13 @@
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "knplabs/knp-menu-bundle":"dev-master",
+        "knplabs/knp-menu": "2.0.*@dev",
+        "sg/rrulebundle": "dev-master",
+        "twbs/bootstrap": "v2.3.2",
+        "arshaw/fullcalendar": "1.6.4",
+        "sg/calendarbundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
