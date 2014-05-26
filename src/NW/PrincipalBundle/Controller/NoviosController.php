@@ -229,6 +229,7 @@ class NoviosController extends Controller
             'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'formDiaBoda' => $formDiaBoda->createView(),
+            'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
         ));
     }
 	
