@@ -382,6 +382,15 @@ div.arrow-up {
     margin-bottom:10px;
 }
 
+.input_login_novios{
+    font-size:14px;
+    width:266px;
+    border-radius:5px;
+    border:rgba(216,216,216,1) solid 1px;
+    padding:6px;
+    margin-bottom:10px;
+}
+
 .input_small{
     font-size:12px;
     width:100%;
@@ -591,6 +600,7 @@ height:50px;
     border-radius: 30px;
     margin-top: auto;
     margin: auto;
+    padding: 30px;
 }
 .proveedores{
     margin: auto;
@@ -603,8 +613,7 @@ height:50px;
 .olv{
     color: rgb(204,0,153);
     text-decoration: underline;
-    margin: auto;
-    margin-top: auto;
+    margin-top: 30px;
     text-align: center;
 }
 
