@@ -380,6 +380,14 @@ div.arrow-up {
     margin-bottom:10px;
 }
 
+.input-newly{
+    font-size:14px;
+    border-radius:5px;
+    border:rgba(216,216,216,1) solid 1px;
+    padding:6px;
+    margin:auto;
+}
+
 .input_login_novios{
     font-size:14px;
     width:266px;
@@ -1324,4 +1332,12 @@ label {
 .text-important{
     color: rgb(204,0,153);
     font-weight: bold;
+}
+
+.cuadro-buscar-novios{
+    text-align:center;
+    background-color:#e2e2e2;
+    padding:30px;
+    width:900px;
+    margin:auto;
 }

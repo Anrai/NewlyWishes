@@ -6,26 +6,26 @@
 
     {% include ':plantillasParciales:top.html.twig' %}
 
-        <div class="container" style="text-align:center;">
-            <p>Aquí podrás encontrar la mesa de regalos de los novios, así como direcciones, calendario y otra información que ellos compartan sus invitados</p>
+        <div class="cuadro-buscar-novios">
+            <p style="text-align:left">Aquí podrás encontrar la mesa de regalos de los novios, así como direcciones, calendario y otra información que ellos compartan sus invitados</p><br />
 
             {{ form_start(formBuscarNovios) }}
             <div class="row">
                 <div class="col-md-6">
-                    <h4>La Novia</h4>
-                    {{ form_widget(formBuscarNovios.noviaNombre, { 'attr': {'class': 'form-control', 'style': 'width:50%; margin-left:25%;', 'placeholder': 'Nombre' } }) }}
+                    <img src="{{ asset('img/lanovia.jpg') }}"><br /><br /><br />
+                    {{ form_widget(formBuscarNovios.noviaNombre, { 'attr': {'class': 'form-control input-newly', 'style': 'width:240px;', 'placeholder': 'Nombre' } }) }}
                     <br />
-                    {{ form_widget(formBuscarNovios.noviaApellidoP, { 'attr': {'class': 'form-control', 'style': 'width:50%; margin-left:25%;', 'placeholder': 'Apellido Paterno' } }) }}
+                    {{ form_widget(formBuscarNovios.noviaApellidoP, { 'attr': {'class': 'form-control input-newly', 'style': 'width:240px;', 'placeholder': 'Apellido Paterno' } }) }}
                     <br />
-                    {{ form_widget(formBuscarNovios.noviaApellidoM, { 'attr': {'class': 'form-control', 'style': 'width:50%; margin-left:25%;', 'placeholder': 'Apellido Materno' } }) }}
+                    {{ form_widget(formBuscarNovios.noviaApellidoM, { 'attr': {'class': 'form-control input-newly', 'style': 'width:240px;', 'placeholder': 'Apellido Materno' } }) }}
                 </div>
-                <div class="col-md-6">
-                    <h4>El Novio</h4>
-                    {{ form_widget(formBuscarNovios.novioNombre, { 'attr': {'class': 'form-control', 'style': 'width:50%; margin-left:25%;', 'placeholder': 'Nombre' } }) }}
+                <div class="col-md-6" style="border-left: solid 1px #cccccc;">
+                    <img src="{{ asset('img/elnovio.jpg') }}"><br /><br /><br />
+                    {{ form_widget(formBuscarNovios.novioNombre, { 'attr': {'class': 'form-control input-newly', 'style': 'width:240px;', 'placeholder': 'Nombre' } }) }}
                     <br />
-                    {{ form_widget(formBuscarNovios.novioApellidoP, { 'attr': {'class': 'form-control', 'style': 'width:50%; margin-left:25%;', 'placeholder': 'Apellido Paterno' } }) }}
+                    {{ form_widget(formBuscarNovios.novioApellidoP, { 'attr': {'class': 'form-control input-newly', 'style': 'width:240px;', 'placeholder': 'Apellido Paterno' } }) }}
                     <br />
-                    {{ form_widget(formBuscarNovios.novioApellidoM, { 'attr': {'class': 'form-control', 'style': 'width:50%; margin-left:25%;', 'placeholder': 'Apellido Materno' } }) }}
+                    {{ form_widget(formBuscarNovios.novioApellidoM, { 'attr': {'class': 'form-control input-newly', 'style': 'width:240px;', 'placeholder': 'Apellido Materno' } }) }}
                 </div>
             </div>
 
