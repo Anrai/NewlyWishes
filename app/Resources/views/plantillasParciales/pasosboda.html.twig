@@ -2,9 +2,33 @@
 
 <div class="container" style="padding-top:30px; padding-bottom:10px; padding:30px;">
     <div class="row">
-		<div class="col-sm-6 col-md-3" id="pasosBoda" style="background-image:url('{{ asset('img/1-1.jpg') }}');height:260px;background-repeat:no-repeat;background-position:center;">Crea tu mesa de regalos</div>
-		<div class="col-sm-6 col-md-3" id="pasosBoda" style="background-image:url('{{ asset('img/2-2.jpg') }}');height:260px;background-repeat:no-repeat;background-position:center;">Planea tu boda</div>
-		<div class="col-sm-6 col-md-3" id="pasosBoda" style="background-image:url('{{ asset('img/3-3.jpg') }}');height:260px;background-repeat:no-repeat;background-position:center;">Busca la mesa de los novios</div>
-		<div class="col-sm-6 col-md-3" id="pasosBoda" style="background-image:url('{{ asset('img/4-4.jpg') }}');height:260px;background-repeat:no-repeat;background-position:center;">Ingresa a tu página</div>
+		<div class="col-sm-6 col-md-3 cliqueable" onclick="location.href='{{ path('nw_user_registronovios') }}';">
+			<div class="pasos-box">
+				<span class="pasos-texto">Crea tu mesa de regalos</span>
+				<img src="{{ asset('img/default/pasos/M.png') }}" class="pasos-letra">
+				<img src="{{ asset('img/default/pasos/regalo.png') }}" class="pasos-img">
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3 cliqueable" onclick="location.href='{{ path('nw_user_registronovios') }}';">
+			<div class="pasos-box">
+				<span class="pasos-texto">Planea tu boda</span>
+				<img src="{{ asset('img/default/pasos/P.png') }}" class="pasos-letra">
+				<img src="{{ asset('img/default/pasos/copas.png') }}" class="pasos-img">
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3 cliqueable" onclick="location.href='{{ path('nw_principal_buscar_novios') }}';">
+			<div class="pasos-box">
+				<span class="pasos-texto">Busca la mesa de los novios</span>
+				<img src="{{ asset('img/default/pasos/B.png') }}" class="pasos-letra">
+				<img src="{{ asset('img/default/pasos/novios.png') }}" class="pasos-img novios">
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3 cliqueable" onclick="location.href='{{ path('nw_user_registroproveedores') }}';">
+			<div class="pasos-box">
+				<span class="pasos-texto">Ingresa a tu página</span>
+				<img src="{{ asset('img/default/pasos/I.png') }}" class="pasos-letra">
+				<img src="{{ asset('img/default/pasos/tachuela.png') }}" class="pasos-img tachuela">
+			</div>
+		</div>
     </div>
 </div>

@@ -26,7 +26,7 @@
 				          <div class="control-group">
 				            <label class="control-label" for=""></label>
 				            <div class="controls">
-				              <input id="input_registro_novios" name="" type="text" placeholder="correo electrónico" class="input-xlarge input9" required>
+				              <input id="input_registro_novios" name="" type="text" placeholder="correo electrónico" class="input-xlarge input9 input_registro_novios" required>
 				            </div>
 				          </div>
 				          <div class="control-group">
@@ -38,16 +38,15 @@
 				          <div class="control-group">
 				            <label class="control-label" for=""></label>
 				            <div class="controls">
-				              <label class="checkbox inline" for="-0">
-				                <input type="checkbox" name="" id="-0" value="Acepto términos y condiciones, así como política de privacidad" required
-				                <a href="">Acepto términos y condiciones, así como política de privacidad</a>
-				              </label>
+				            	<a class="terminos" href="#">Acepto términos y condiciones, así como política de privacidad</a>
+				                <input type="checkbox" id="checkbox-1-1" class="regular-checkbox" required="required">
+				                <label class="" for="checkbox-1-1" alt="Acepto términos y condiciones, así como política de privacidad"></label>
 				            </div>
 				          </div>
 				          <div class="control-group">
 				            <label class="control-label" for=""></label>
 				            <div class="controls">
-				              <button id="enviar_form" name="" style="margin-left:150px; margin-top:-30px;" class="btn btn-default">Enviar</button>
+				              <button name="" class="btn btn-default enviar_form">Enviar</button>
 				            </div>
 				          </div>
 				        </fieldset>
@@ -59,23 +58,21 @@
 		  <hr width=100% align="left" />
 		  <div class="row">
 		    <div class="col-md-8">
-		      <div class="row">
-		        <div class="col-md-6">
-		          <h1>Promoción 1</h1>
-		          <p>Lorem ipsum dolor sit amet,
-		          consectetuer adipiscing elit. Aenean
-		          commodo ligula eget dolor. Aenean
-		          massa. Cum sociis natoque penatibus
-		          et magnis dis parturient montes,
-		          nascetur ridiculus mus. Donec quam
-		          felis, ultricies nec, pellentesque eu,
-		          pretium quis, sem.</p>
-		        </div>
-		        <div class="col-md-6">
-		          <img src="{{ asset('img/romance.jpg') }}" />
-		        </div>
-		      </div>
-		      <hr width=100% align="left" />
+		      
+
+		      	{% for banner in banners %}
+			      	<div class="row">
+			      		<div class="col-md-6">
+			      			<h1>{{ banner.nombre }}</h1>
+			      			<p>{{ banner.descripcion }}</p>
+			      		</div>
+			      		<div class="col-md-6">
+			      			<img src="{{ asset(banner.imageWebPath) }}" style="width:100%" />
+			      		</div>
+			      	</div>
+			      	<hr width=100% align="left" />
+			    {% endfor %}
+
 		      <div class="row">
 		        <div class="col-md-6">
 		          <h1>Promoción 2</h1>
@@ -89,7 +86,7 @@
 		          pretium quis, sem.</p>
 		        </div>
 		        <div class="col-md-6">
-		          <img src="{{ asset('img/vino.jpg') }}" />
+		          <img src="{{ asset('img/vino.jpg') }}" style="width:100%" />
 		        </div>
 		      </div>
 		      <hr width=100% align="left" />
@@ -106,13 +103,18 @@
 		          pretium quis, sem.</p>
 		        </div>
 		        <div class="col-md-6">
-		          <img src="{{ asset('img/palapa.jpg') }}" />
+		          <img src="{{ asset('img/palapa.jpg') }}" style="width:100%" />
 		        </div>
 		      </div>
 		    </div>
 		    <div class="col-md-4">
-		      <img src="{{ asset('img/flores.jpg') }}" style="margin:20px;" />
-		      <img src="{{ asset('img/vestido.jpg') }}" style="margin:20px;" />
+
+		    	{% for anuncio in anuncios %}
+		    		<img src="{{ asset(anuncio) }}" style="margin:0 20px 20px; width:90%;" />
+		    	{% endfor %}
+
+				<img src="{{ asset('img/flores.jpg') }}" style="margin:0 20px 20px; width:90%;" />
+				<img src="{{ asset('img/vestido.jpg') }}" style="margin:0 20px 20px; width:90%;" />
 		    </div>
 		  </div>
 

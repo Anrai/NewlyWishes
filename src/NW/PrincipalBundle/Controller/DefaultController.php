@@ -17,7 +17,29 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('NWPrincipalBundle::index.html.twig');
+        // Manejador de entidades
+        $em = $this->getDoctrine()->getManager();
+        $articulosEntity = $em->getRepository("NWPrincipalBundle:Articulos");
+        $bannersEntity = $em->getRepository("NWPrincipalBundle:Banners");
+        $anunciosEntity = $em->getRepository("NWPrincipalBundle:Anuncios");
+
+        $banners = $bannersEntity->findAll();
+        $anuncios = $anunciosEntity->findAll();
+
+        foreach ($anuncios as $index => $anuncio) {
+            $anuncios[$index] = $anuncio->getWebPath($anuncio->getUsuarioId());
+        }
+
+        foreach ($banners as $index => $banner) {
+            $banners[$index] = $banner->getValues($banner->getUsuarioId());
+            $banners[$index]['descripcion'] = $articulosEntity->findOneBy(array('idInterno' => $banners[$index]['name']))->getDescripcion();
+            $banners[$index]['nombre'] = $articulosEntity->findOneBy(array('idInterno' => $banners[$index]['name']))->getNombre();
+        }
+
+        return $this->render('NWPrincipalBundle::index.html.twig', array(
+            'banners' => $banners,
+            'anuncios' => $anuncios
+        ));
     }
 
     public function funcionamientoAction()
