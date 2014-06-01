@@ -259,7 +259,7 @@ p{
     margin-top: 0px;
     border: none;
     opacity: 0.8;
-    background-color: #DB2FB2;
+    background-color: rgba(204,0,153,0.8);
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
     box-shadow: 0 6px 12px rgba(0,0,0,0.175);
 }
@@ -277,7 +277,7 @@ div.arrow-up {
     height: 0;
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
-    border-bottom: 20px solid #DB2FB2;
+    border-bottom: 20px solid rgba(204,0,153,0.8);
     opacity: 0.8;
     font-size: 0;
     line-height: 0;
