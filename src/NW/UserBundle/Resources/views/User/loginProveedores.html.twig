@@ -1,0 +1,42 @@
+{# src/NW/PrincipalBundle/Resources/views/login.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+	{% block body %}
+	
+		{% include ':plantillasParciales:top.html.twig' %}
+
+		<div class="container" style="margin-top:0px; margin-bottom:0px; padding-left:50px; padding-right:50px; background-color:rgba(255,255,255,1);">
+      		<div class="">
+			    <div class="cuadro img-responsive">
+					<br>
+					<img class="img-responsive proveedores" src="{{asset('img/proveedores.png')}}" />
+					
+					{% render controller("FOSUserBundle:Security:login") %}
+
+				</div>
+			    <h4 class="olv" style="text-align:center; margin-top:20px;">Olvidé mi usuario / contraseña</h4>
+			</div>
+		</div>
+		<div class="container" style="text-align:center">
+			<button type="button" class="enviar_form nuevoProveedor" onclick="location.href='{{ path('nw_user_registroproveedores') }}';">
+				¿Eres proveedor nuevo?, haz click aquí
+			</button>
+		</div>
+
+			<!--
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<br>
+						<div class="proveedor">
+							<h5 class="text-center"> ¿Eres proveedor nuevo?, haz click aquí </h5>
+						</div>
+						<br>
+						<br>
+					</div>
+				</div>
+			</div>
+			-->
+
+	{% endblock %}

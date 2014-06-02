@@ -47,6 +47,32 @@ class UserController extends Controller
         );
     }
 
+    public function loginproveedoresAction()
+    {
+        $request = $this->getRequest();
+        $session = $request->getSession();
+ 
+        // get the login error if there is one
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(
+                SecurityContext::AUTHENTICATION_ERROR
+            );
+        }
+        else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        return $this->render(
+            'NWUserBundle:User:loginProveedores.html.twig',
+            array(
+                // last username entered by the user
+                'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+                'error'         => $error,
+            )
+        );
+    }
+
     public function registronoviosAction(Request $request)
     {
            
@@ -161,6 +187,7 @@ class UserController extends Controller
                     'MX'   => 'México',
                     ), 'mapped' => false, 'multiple'  => false,))
             ->add('estado', 'choice', array('choices' => array(
+                     ''    => 'Estado',
                      '1'   => 'Aguascalientes',
                      '2'   => 'Baja California',
                      '3'   => 'Baja California Sur',
@@ -194,7 +221,7 @@ class UserController extends Controller
                      '31'   => 'Yucatán',
                      '32'   => 'Zacatecas',
                     ), 'multiple'  => false,))
-            ->add('ciudad', 'text')
+            ->add('ciudad', 'text', array('required' => false))
             ->add('cp', 'text', array('max_length' => 5))
             ->add('userName', 'text', array('mapped' => false, 'required'  => true))
             ->add('userPass', 'password', array('mapped' => false, 'required'  => true))

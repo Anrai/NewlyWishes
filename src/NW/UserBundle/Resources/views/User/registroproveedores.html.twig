@@ -6,19 +6,6 @@
 	
 		{% include ':plantillasParciales:top.html.twig' %}
 
-		<div class="container" style="margin-top:0px; margin-bottom:0px; padding-left:50px; padding-right:50px; background-color:rgba(255,255,255,1);">
-      		<div class="">
-			    <div class="cuadro img-responsive">
-					<br>
-					<img class="img-responsive proveedores" src="{{asset('img/proveedores.png')}}" />
-					
-					{% render controller("FOSUserBundle:Security:login") %}
-
-				</div>
-			    <h4 class="olv" style="text-align:center; margin-top:20px;">Olvidé mi usuario / contraseña</h4>
-			</div>
-		</div>
-
 		{{ form_start(form) }}
 
 		<!-- Modal -->
@@ -184,91 +171,165 @@
 		</div>
 		<!-- FIN DE MODAL -->
 
-		<div class="container" style="margin-top:0px; margin-bottom:0px; padding-left:50px; padding-right:50px; background-color:rgba(255,255,255,1);">
-
-			<div class="row" style="margin-top:50px;">
-			<h2>1 Registrate</h2>
-			    <div class="col-md-12">
-			        <p>
-			            Si eres un proveedor nuevo y deseas anunciarte con nosotros, por favor regístrate.
-			        </p>
-			    </div>
-			</div>
-			<div class="row" style="margin-top:20px;">
-				    <div class="col-md-8">
-				    </div>
-				    <div class="row">
-				        <div class="col-md-12">
-				        	{{ form_widget(form.tipoPersona) }}
-				        </div>
-				    </div>
-				    <div class="row" style="margin-top:20px;">
-				        <div class="col-md-4">
-				        	{{ form_widget(form.nombreRazon, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre o razón social' } }) }}
-				            {{ form_widget(form.apellidoPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
-				            {{ form_widget(form.apellidoMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'pellido Materno' } }) }}
-				            {{ form_widget(form.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
-				        </div>
-				        <div class="col-md-4">
-				        	{{ form_widget(form.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
-				        	{{ form_widget(form.lada, { 'attr': {'class': 'input_registro_novios input_registro20', 'placeholder': 'LADA'} }) }}
-				        	{{ form_widget(form.telefono, { 'attr': {'class': 'input_registro_novios input_registro74', 'placeholder': 'Teléfono de oficina'} }) }}
-				        	{{ form_widget(form.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
-				        </div>
-				        <div class="col-md-4">
-				        	{{ form_widget(form.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
-				            {{ form_label(form.pais, 'País') }}
-					        {{ form_widget(form.pais, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
-				            <br />
-					        {{ form_label(form.estado, 'Estado') }}
-					        {{ form_widget(form.estado, { 'attr': {'class': 'input_registro_novios input_registro70'} }) }}
-					        {{ form_widget(form.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Municipio o Delegación' } }) }}
-				    		{{ form_widget(form.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
-				        </div>
-				    </div>
-				    <!-- DATOS DEL USUARIO -->
-				    <div class="row" style="margin-top:20px;">
-				        <div class="col-md-10">
-				            <h3>Datos de Usuario:</h3>
-				        </div>
-				    </div>
-				    <div class="row">
-				        <div class="col-md-4">
-				            {{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
-							{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
-				        </div>
-				        <div class="col-md-4">
-				            {{ form_widget(form.terminosCondiciones) }} {{ form_label(form.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
-							{{ form_widget(form.terminosPrivacidad) }} {{ form_label(form.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
-				        </div>
-				        <div class="col-md-4">
-				            
-				        </div>
-					</div>
-			</div>
-			<div class="row" style="margin-top:50px;">
-				<h2>2 Escoge tu plan</h2>
-				Por favor selecciona el plan que más se ajuste a tus necesidades:<br /><br />
-				<a href="#" data-toggle="modal" data-target="#seleccionDePlan">Escoge tu plan aquí</a><br /><br />
-				<div id="planSeleccionado" style="visibility:hidden">
-					Haz seleccionado el plan:<br />
-					<span class="">Básico</span>
-				</div>
-			</div>
-			<div class="row" style="margin-top:50px;">
-				<h2>13 Confirma tu registro</h2>
-				{{ form_widget(form.Aceptar, { 'attr': {'class': 'botoncitoRosa' } }) }}
-			</div>
-
+		<div class="container">
 			<div class="container">
-			    <div class="row">
-			        <div class="col-md-12" style="height:30px; background-color:rgba(255,255,255,1);">
-			        </div>
-			    </div>
+
+				<div class="row">
+					<img src="{{ asset('img/user/registrate.jpg') }}">
+					<div class="col-md-12 paso-registro-proveedor">
+						<p>Si eres un proveedor nuevo y deseas anunciarte con nosotros, por favor regístrate.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="row">
+						<div class="col-md-12 form-label puntosRosas">
+							<img src="/web/img/punto.png" style="top: 11px;left: 11px;position: absolute;">
+							{{ form_widget(form.tipoPersona) }}
+							<br />
+						</div>
+						<div class="col-md-4 puntosRosas">
+							<img src="/web/img/punto.png">
+							{{ form_widget(form.nombreRazon, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre o razón social' } }) }}
+							{{ form_widget(form.apellidoPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
+							{{ form_widget(form.apellidoMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
+							<img src="/web/img/punto.png">
+							{{ form_widget(form.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
+						</div>
+						<div class="col-md-4 puntosRosas">
+							<img src="/web/img/punto.png">
+							{{ form_widget(form.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
+							<div class="col-md-3" style="padding: 0 10px 0 0;">
+								<img src="/web/img/punto.png">
+								{{ form_widget(form.lada, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'LADA'} }) }}
+							</div>
+							<div class="col-md-9" style="padding: 0;">
+								{{ form_widget(form.telefono, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono de oficina'} }) }}
+							</div>
+							<div class="col-md-12" style="padding: 0;">
+								<img src="/web/img/punto.png">
+								{{ form_widget(form.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
+							</div>
+						</div>
+						<div class="col-md-4 puntosRosas">
+							<img src="/web/img/punto.png">
+							{{ form_widget(form.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
+							<img src="/web/img/punto.png">
+							{{ form_widget(form.pais, { 'attr': {'class': 'input_registro_novios'} }) }}
+							<br />
+							<img src="/web/img/punto.png">
+							{{ form_widget(form.estado, { 'attr': {'class': 'input_registro_novios'} }) }}
+							{{ form_widget(form.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Ciudad' } }) }}
+							<img src="/web/img/punto.png">
+							{{ form_widget(form.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
+						</div>
+					</div>
+					<!-- DATOS DEL USUARIO -->
+					<div class="row">
+						<div class="col-md-12">
+							<p>Define una contraseña segura</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 puntosRosas">
+							<img src="/web/img/punto.png" alt="Registro">
+							{{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
+							<img src="/web/img/punto.png" alt="Registro">
+							{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
+						</div>
+						<div class="col-md-4 puntosRosas">
+							<img src="/web/img/punto.png" alt="Registro">
+							{{ form_widget(form.terminosCondiciones) }}
+							<span class="form-label">
+								{{ form_label(form.terminosCondiciones, 'He leído y acepto los términos y condiciones') }}
+							</span>
+							<br />
+							<img src="/web/img/punto.png" alt="Registro">
+							{{ form_widget(form.terminosPrivacidad) }}
+							<span class="form-label">
+								{{ form_label(form.terminosPrivacidad, 'He leído y acepto los términos de privacidad')}}
+							</span>
+							<br />
+						</div>
+						<div class="col-md-4">
+
+						</div>
+					</div>
+					<div class="row" style="margin-top:40px">
+						<div class="col-md-12 puntosRosas">
+							<p><img src="/web/img/punto.png" alt="Registro"> Datos obligatorios</p>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top:50px;">
+					<img src="{{ asset('img/user/escogeplan.jpg') }}"><br />
+					<div class="col-md-12 paso-registro-proveedor">
+						<div class="row">
+							<div class="col-md-8">
+								<p>Por favor selecciona el plan que más se ajuste a tus necesidades</p><br />
+								<button type="button" class="blue-button">
+									<a href="#" data-toggle="modal" data-target="#seleccionDePlan">Escoge tu plan aquí</a>
+								</button>
+							</div>
+							<div class="col-md-4">
+								<div id="planSeleccionado" style="visibility:hidden">
+									<p>Has seleccionado el plan:</p>
+									<span class="text-important" style="font-size:18px" id="planSeleccionadoSpan"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top:50px;">
+					<img src="{{ asset('img/user/confirmar.jpg') }}">
+					<div class="col-md-12 paso-registro-proveedor">
+						{{ form_widget(form.Aceptar, { 'attr': {'class': 'enviar_form' } }) }}
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12" style="height:30px; background-color:rgba(255,255,255,1);">
+						</div>
+					</div>
+				</div>
+
 			</div>
-		</div><!-- CONTAINER -->
-
+		</div>
 		{{ form_end(form) }}
-		
 
+	{% endblock %}
+
+	{% block javascripts %}
+		{{ parent() }}
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('input[name="form[plan]"]').change(function(){
+					$('#planSeleccionado').css('visibility', 'visible');
+
+					var plan = $('input[name="form[plan]"]:checked').val();
+
+					switch(plan) {
+						case 'anuncioEspecial':
+						    plan = 'Anuncio Especial';
+						    break;
+						case 'anuncioPlus':
+						    plan = 'Anuncio Plus';
+						    break;
+						case 'basico':
+						    plan = 'Básico';
+						    break;
+						case 'estandar':
+						    plan = 'Estándar';
+						    break;
+						case 'plus':
+						    plan = 'Plus';
+						    break;
+						default:
+						    plan = plan;
+					}
+
+					$('#planSeleccionadoSpan').html(plan);
+				});
+			});
+		</script>
 	{% endblock %}

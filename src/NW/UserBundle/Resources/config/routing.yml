@@ -7,8 +7,12 @@ nw_user_registronovios:
     defaults: { _controller: NWUserBundle:User:registronovios }
 
 nw_user_loginnovios:
-    pattern:  /loginnovios
+    pattern:  /login
     defaults: { _controller: NWUserBundle:User:loginnovios }
+
+nw_user_loginproveedores:
+    pattern:  /loginproveedores
+    defaults: { _controller: NWUserBundle:User:loginproveedores }
 
 nw_user_registroproveedores:
     pattern:  /registroproveedores
