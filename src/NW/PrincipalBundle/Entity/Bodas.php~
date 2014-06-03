@@ -255,4 +255,21 @@ class Bodas
         }
         return false;
     }
+
+    public function fechaBodaFormat()
+    {
+        $fecha = $this->getFechaBoda();
+        $guiones = $fecha->format('Y-m-d');
+
+        $fechaUnix = strtotime($guiones)-2592000;
+        $fechaJavascript = new \DateTime();
+        $fechaJavascript->setTimestamp($fechaUnix);
+
+        $Y = $fechaJavascript->format('Y');
+        $m = $fechaJavascript->format('n');
+        $d = $fechaJavascript->format('j');
+        $javascript = $Y.','.$m.','.$d;
+
+        return array('guiones' => $guiones, 'javascript' => $javascript);
+    }
 }

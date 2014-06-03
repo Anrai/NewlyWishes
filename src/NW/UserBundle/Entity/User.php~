@@ -485,4 +485,42 @@ class User extends BaseUser
     {
         return $this->reportero;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tareasCalendario;
+
+
+    /**
+     * Add tareasCalendario
+     *
+     * @param \NW\PrincipalBundle\Entity\TareaCalendario $tareasCalendario
+     * @return User
+     */
+    public function addTareasCalendario(\NW\PrincipalBundle\Entity\TareaCalendario $tareasCalendario)
+    {
+        $this->tareasCalendario[] = $tareasCalendario;
+
+        return $this;
+    }
+
+    /**
+     * Remove tareasCalendario
+     *
+     * @param \NW\PrincipalBundle\Entity\TareaCalendario $tareasCalendario
+     */
+    public function removeTareasCalendario(\NW\PrincipalBundle\Entity\TareaCalendario $tareasCalendario)
+    {
+        $this->tareasCalendario->removeElement($tareasCalendario);
+    }
+
+    /**
+     * Get tareasCalendario
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTareasCalendario()
+    {
+        return $this->tareasCalendario;
+    }
 }

@@ -12,6 +12,7 @@ parameters:
     busqueda_novios_service.class: NW\PrincipalBundle\Servicios\BusquedaNovios
     mesa_regalos_service.class: NW\PrincipalBundle\Servicios\MesaRegalos
     reportero_service.class: NW\UserBundle\Servicios\Reportero
+    today_twig_extension.class: NW\PrincipalBundle\Twig\TodayExtension
 
 services:
     articulos_buscador:
@@ -29,3 +30,7 @@ services:
     reportero_service:
         class:     %reportero_service.class%
         arguments: [@doctrine.orm.entity_manager, @fos_user.user_manager, @security.encoder_factory]
+    today_twig_extension:
+        class: %today_twig_extension.class%
+        tags:
+            - { name: twig.extension }

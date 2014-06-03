@@ -1,0 +1,363 @@
+<?php
+
+namespace NW\PrincipalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TareaCalendario
+ */
+class TareaCalendario
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $usuarioId;
+
+    /**
+     * @var integer
+     */
+    private $categoriaId;
+
+    /**
+     * @var string
+     */
+    private $compromiso;
+
+    /**
+     * @var string
+     */
+    private $descripcion;
+
+    /**
+     * @var \DateTime
+     */
+    private $vencimiento;
+
+    /**
+     * @var string
+     */
+    private $contactoNombre;
+
+    /**
+     * @var string
+     */
+    private $contactoTelefono;
+
+    /**
+     * @var string
+     */
+    private $contactoEmail;
+
+    /**
+     * @var string
+     */
+    private $contactoDireccion;
+
+    /**
+     * @var \NW\UserBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * @var \NW\PrincipalBundle\Entity\CategoriaCalendario
+     */
+    private $categoria;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set usuarioId
+     *
+     * @param integer $usuarioId
+     * @return TareaCalendario
+     */
+    public function setUsuarioId($usuarioId)
+    {
+        $this->usuarioId = $usuarioId;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioId
+     *
+     * @return integer 
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuarioId;
+    }
+
+    /**
+     * Set categoriaId
+     *
+     * @param integer $categoriaId
+     * @return TareaCalendario
+     */
+    public function setCategoriaId($categoriaId)
+    {
+        $this->categoriaId = $categoriaId;
+
+        return $this;
+    }
+
+    /**
+     * Get categoriaId
+     *
+     * @return integer 
+     */
+    public function getCategoriaId()
+    {
+        return $this->categoriaId;
+    }
+
+    /**
+     * Set compromiso
+     *
+     * @param string $compromiso
+     * @return TareaCalendario
+     */
+    public function setCompromiso($compromiso)
+    {
+        $this->compromiso = $compromiso;
+
+        return $this;
+    }
+
+    /**
+     * Get compromiso
+     *
+     * @return string 
+     */
+    public function getCompromiso()
+    {
+        return $this->compromiso;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return TareaCalendario
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set vencimiento
+     *
+     * @param \DateTime $vencimiento
+     * @return TareaCalendario
+     */
+    public function setVencimiento($vencimiento)
+    {
+        $this->vencimiento = $vencimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get vencimiento
+     *
+     * @return \DateTime 
+     */
+    public function getVencimiento()
+    {
+        return $this->vencimiento;
+    }
+
+    /**
+     * Set contactoNombre
+     *
+     * @param string $contactoNombre
+     * @return TareaCalendario
+     */
+    public function setContactoNombre($contactoNombre)
+    {
+        $this->contactoNombre = $contactoNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get contactoNombre
+     *
+     * @return string 
+     */
+    public function getContactoNombre()
+    {
+        return $this->contactoNombre;
+    }
+
+    /**
+     * Set contactoTelefono
+     *
+     * @param string $contactoTelefono
+     * @return TareaCalendario
+     */
+    public function setContactoTelefono($contactoTelefono)
+    {
+        $this->contactoTelefono = $contactoTelefono;
+
+        return $this;
+    }
+
+    /**
+     * Get contactoTelefono
+     *
+     * @return string 
+     */
+    public function getContactoTelefono()
+    {
+        return $this->contactoTelefono;
+    }
+
+    /**
+     * Set contactoEmail
+     *
+     * @param string $contactoEmail
+     * @return TareaCalendario
+     */
+    public function setContactoEmail($contactoEmail)
+    {
+        $this->contactoEmail = $contactoEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get contactoEmail
+     *
+     * @return string 
+     */
+    public function getContactoEmail()
+    {
+        return $this->contactoEmail;
+    }
+
+    /**
+     * Set contactoDireccion
+     *
+     * @param string $contactoDireccion
+     * @return TareaCalendario
+     */
+    public function setContactoDireccion($contactoDireccion)
+    {
+        $this->contactoDireccion = $contactoDireccion;
+
+        return $this;
+    }
+
+    /**
+     * Get contactoDireccion
+     *
+     * @return string 
+     */
+    public function getContactoDireccion()
+    {
+        return $this->contactoDireccion;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \NW\UserBundle\Entity\User $user
+     * @return TareaCalendario
+     */
+    public function setUser(\NW\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \NW\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set categoria
+     *
+     * @param \NW\PrincipalBundle\Entity\CategoriaCalendario $categoria
+     * @return TareaCalendario
+     */
+    public function setCategoria(\NW\PrincipalBundle\Entity\CategoriaCalendario $categoria = null)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \NW\PrincipalBundle\Entity\CategoriaCalendario 
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+    /**
+     * @var boolean
+     */
+    private $hecho;
+
+
+    /**
+     * Set hecho
+     *
+     * @param boolean $hecho
+     * @return TareaCalendario
+     */
+    public function setHecho($hecho)
+    {
+        $this->hecho = $hecho;
+
+        return $this;
+    }
+
+    /**
+     * Get hecho
+     *
+     * @return boolean 
+     */
+    public function getHecho()
+    {
+        return $this->hecho;
+    }
+}

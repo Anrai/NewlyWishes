@@ -48,6 +48,9 @@ NW\UserBundle\Entity\User:
         banners:
             targetEntity: NW\PrincipalBundle\Entity\Banners
             mappedBy: user
+        tareasCalendario:
+            targetEntity: NW\PrincipalBundle\Entity\TareaCalendario
+            mappedBy: user
 #    manyToMany:
 #        favorites:
 #            targetEntity: Sg\CalendarBundle\Model\CalendarInterface

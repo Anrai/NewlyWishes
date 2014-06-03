@@ -387,6 +387,7 @@ div.arrow-up {
     border:rgba(216,216,216,1) solid 1px;
     padding:6px;
     margin:auto;
+    background-color: white;
 }
 
 .input_login_novios{
@@ -1389,4 +1390,46 @@ label {
     font-size: 16px;
     padding: 20px;
     float: none!important;
+}
+
+.modal-link, .modal-link:hover{
+    font-size:15px;
+    color:rgb(146, 208, 80);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.clickableRow{
+    cursor:pointer;
+    cursor: hand;
+}
+
+.tabla-calendario{
+    height:0!important;
+    margin-top:25px;
+    background-color: white;
+    border-bottom: solid 1px #e2e2e2;
+}
+
+.tabla-calendario thead{
+    border-bottom: solid 1px #e2e2e2;
+}
+
+.tabla-calendario th{
+    font-size: 13px;
+    text-align: left;
+    font-weight: bold!important;
+}
+
+.tabla-calendario td{
+    color: black;
+    font-size: 13px;
+}
+
+.tabla-calendario tr:hover{
+    background-color: #e2e2e2;
+}
+
+.tabla-calendario thead>tr:hover{
+    background-color: white;
 }

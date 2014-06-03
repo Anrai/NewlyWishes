@@ -114,6 +114,18 @@ nw_principal_novios_nuestro-calendario:
     pattern:  /novios/nuestro-calendario
     defaults: { _controller: NWPrincipalBundle:Novios:nuestroCalendario }
 
+nw_principal_novios_tarea_calendario_delete:
+    pattern:  /novios/tarea-calendario/{id}/delete
+    defaults: { _controller: NWPrincipalBundle:Novios:TareaCalendarioDelete }
+
+nw_principal_novios_tarea_calendario_completar:
+    pattern:  /novios/tarea-calendario/{id}/completar
+    defaults: { _controller: NWPrincipalBundle:Novios:TareaCalendarioCompletar }
+
+nw_principal_novios_tarea_calendario_descompletar:
+    pattern:  /novios/tarea-calendario/{id}/descompletar
+    defaults: { _controller: NWPrincipalBundle:Novios:TareaCalendarioDescompletar }
+
 nw_principal_novios_nuestro-checklist:
     pattern:  /novios/nuestro-checklist
     defaults: { _controller: NWPrincipalBundle:Novios:nuestroChecklist }

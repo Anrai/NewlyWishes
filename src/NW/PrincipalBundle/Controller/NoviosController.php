@@ -15,6 +15,7 @@ use NW\PrincipalBundle\Form\Type\NotasType;
 use NW\PrincipalBundle\Form\Type\RegaloType;
 use NW\PrincipalBundle\Form\Type\DiaBodaType;
 use NW\PrincipalBundle\Form\Type\BusquedaArticulosType;
+use NW\PrincipalBundle\Form\TareaCalendarioType;
 
 use NW\PrincipalBundle\Entity\Checklist;
 use NW\PrincipalBundle\Entity\ListaInvitados;
@@ -23,6 +24,8 @@ use NW\PrincipalBundle\Entity\Padrinos;
 use NW\PrincipalBundle\Entity\Notas;
 use NW\PrincipalBundle\Entity\MesaRegalos;
 use NW\PrincipalBundle\Entity\CatRegalos;
+use NW\PrincipalBundle\Entity\CategoriaCalendario;
+use NW\PrincipalBundle\Entity\TareaCalendario;
 
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
@@ -201,13 +204,27 @@ class NoviosController extends Controller
         $novio=$user->getNovios();
         $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
-        // Formularios
+        // Obteniendo categorías de tareas de calendario
+        $categoriaEntity = $em->getRepository('NWPrincipalBundle:CategoriaCalendario');
+        $categorias = $categoriaEntity->findAll();
+
+        // Convirtiendo los objetos de categorías en un arreglo de strings
+        foreach ($categorias as $key => $categoria) {
+            $categoriasArr[$categoria->getId()] = $categoria->getCategoria();
+        }
+
+        // Formulario del día de la boda
         $formDiaBoda = $this->createForm(new DiaBodaType());
+
+        // Formulario de nueva tarea de Calendario
+        $nuevaTarea = new TareaCalendario();
+        $nuevaTarea->setUser($user);
+        $formTareaCalendario = $this->createForm(new TareaCalendarioType(), $nuevaTarea, array('categorias' => $categoriasArr));
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
         
-            // Formulario 1
+            // Formulario de cambio de la fecha de la boda
             if ($request->request->has($formDiaBoda->getName())) {
                 // handle the first form
                 $formDiaBoda->handleRequest($request);
@@ -221,6 +238,30 @@ class NoviosController extends Controller
                     $em->flush();
                 }
             }
+            // Formulario tarea nueva
+            if ($request->request->has($formTareaCalendario->getName())) {
+                $formTareaCalendario->handleRequest($request);
+                if($formTareaCalendario->isValid())
+                {
+                    $categoria = $categoriaEntity->find($nuevaTarea->getCategoriaId());
+                    $nuevaTarea->setcategoria($categoria);
+
+                    $vencimiento = new \DateTime(date('Y-m-d'.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
+                    $nuevaTarea->setVencimiento($vencimiento);
+
+                    $nuevaTarea->setHecho(false);
+
+                    $em->persist($nuevaTarea);
+                    $em->flush();
+                }
+            }
+        }
+
+        $tareasEntity = $em->getRepository('NWPrincipalBundle:TareaCalendario');
+        $tareas = $tareasEntity->findBy(array('usuarioId' => $user->getId()));
+
+        foreach ($tareas as $key => $tarea) {
+            $tareas[$key] = $tarea->getValues();
         }
 
         return $this->render('NWPrincipalBundle:Novios:nuestro-calendario.html.twig', array(
@@ -230,7 +271,41 @@ class NoviosController extends Controller
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'formDiaBoda' => $formDiaBoda->createView(),
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
+            'formTareaCalendario' => $formTareaCalendario->createView(),
+            'tareas' => $tareas,
         ));
+    }
+
+    public function TareaCalendarioDeleteAction($id) // Controlador que borra una tarea de calendario según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
+        $em->remove($tarea);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-calendario'));
+    }
+
+    public function TareaCalendarioCompletarAction($id) // Controlador que completa una tarea de calendario según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
+        $tarea->setHecho(true);
+        $em->persist($tarea);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-calendario'));
+    }
+
+    public function TareaCalendarioDescompletarAction($id) // Controlador que descompleta una tarea de calendario según el id pasado
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
+        $tarea->setHecho(false);
+        $em->persist($tarea);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-calendario'));
     }
 	
 	public function nuestroChecklistAction(Request $request)

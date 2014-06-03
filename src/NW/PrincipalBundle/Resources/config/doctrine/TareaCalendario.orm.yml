@@ -1,0 +1,52 @@
+# src/NW/PrincipalBundle/Resources/config/doctrine/TareaCalendario.orm.yml
+NW\PrincipalBundle\Entity\TareaCalendario:
+    type: entity
+    table: NWtareasCalendario
+    manyToOne:
+        user:
+            targetEntity: NW\UserBundle\Entity\User
+            inversedBy: tareasCalendario
+            joinColumn:
+                name: usuarioId
+                referencedColumnName: id
+        categoria:
+            targetEntity: CategoriaCalendario
+            inversedBy: tareas
+            joinColumn:
+                name: categoriaId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO	
+    fields:
+        usuarioId:
+            type: integer
+        categoriaId:
+            type: integer
+        compromiso:
+            type: string   
+            length: 255
+        descripcion:
+            type: text
+        vencimiento:
+            type: datetime
+        hecho:
+            type: boolean
+        contactoNombre:
+            type: string
+            length: 255
+            nullable: true
+        contactoTelefono:
+            type: string
+            length: 20
+            nullable: true
+        contactoEmail:
+            type: string
+            length: 150
+            nullable: true
+        contactoDireccion:
+            type: string
+            length: 255
+            nullable: true
