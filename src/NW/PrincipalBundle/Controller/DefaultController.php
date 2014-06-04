@@ -52,34 +52,6 @@ class DefaultController extends Controller
         return $this->render('NWPrincipalBundle:Default:registronovios.html.twig');
     }
 
-    public function changePassAction()
-    {
-        // Si todo funcionó correctamente, se le muestra al usuario la página de loggeo
-        $request = $this->getRequest();
-        $session = $request->getSession();
- 
-        // get the login error if there is one
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(
-                SecurityContext::AUTHENTICATION_ERROR
-            );
-        }
-        else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
-        }
-
-        // Se renderiza la págia de loggeo general para volver a entrar con la nueva contraseña
-        return $this->render(
-            'NWPrincipalBundle:Default:changePass.html.twig',
-            array(
-                // last username entered by the user
-                'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-                'error'         => $error,
-            )
-        );
-    }
-
     public function noticiaAction(Request $request)
     {
         // Formulario de buscador de artículos

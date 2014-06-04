@@ -15,7 +15,9 @@
 					{% render controller("FOSUserBundle:Security:login") %}
 
 				</div>
-			    <h4 class="olv" style="text-align:center; margin-top:20px;">Olvidé mi usuario / contraseña</h4>
+			    <div class="container" style="text-align:center">
+					<h4><a href="{{ path('nw_principal_changepass') }}" class="olv">Olvidé mi usuario / contraseña</a></h4>
+				</div>
 			</div>
 		</div>
 		<div class="container" style="text-align:center">
@@ -23,20 +25,5 @@
 				¿Eres proveedor nuevo?, haz click aquí
 			</button>
 		</div>
-
-			<!--
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<br>
-						<div class="proveedor">
-							<h5 class="text-center"> ¿Eres proveedor nuevo?, haz click aquí </h5>
-						</div>
-						<br>
-						<br>
-					</div>
-				</div>
-			</div>
-			-->
 
 	{% endblock %}

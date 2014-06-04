@@ -140,59 +140,15 @@ p{
     border: none;
 }
 
+.navbar-default{
+    background-color: white!important;
+}
+
 .navbar-default .navbar-nav>li>a {
     color:black;
     font-weight: normal;
     font-size: 13px;
 }
-
-/*
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    border-color: rgb(204,0,153);
-}
-
-.navbar-default .navbar-toggle {
-    border-color: rgb(204,0,153);
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: rgb(204,0,153);
-}
-
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
-    background: #930071;
-    background: -moz-linear-gradient(top,  #930071 0%, #cc0099 50%, #930071 100%); 
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#930071), color-stop(50%,#cc0099), color-stop(100%,#930071));
-    background: -webkit-linear-gradient(top,  #930071 0%,#cc0099 50%,#930071 100%); 
-    background: -o-linear-gradient(top,  #930071 0%,#cc0099 50%,#930071 100%);
-    background: -ms-linear-gradient(top,  #930071 0%,#cc0099 50%,#930071 100%); 
-    background: linear-gradient(to bottom,  #930071 0%,#cc0099 50%,#930071 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#930071', endColorstr='#930071',GradientType=0 );
-    color: #FFF;
-}
-
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    background: #930071;
-    background: -moz-linear-gradient(top,  #930071 0%, #cc0099 50%, #930071 100%); 
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#930071), color-stop(50%,#cc0099), color-stop(100%,#930071)); 
-    background: -webkit-linear-gradient(top,  #930071 0%,#cc0099 50%,#930071 100%); 
-    background: -o-linear-gradient(top,  #930071 0%,#cc0099 50%,#930071 100%); 
-    background: -ms-linear-gradient(top,  #930071 0%,#cc0099 50%,#930071 100%); 
-    background: linear-gradient(to bottom,  #930071 0%,#cc0099 50%,#930071 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#930071', endColorstr='#930071',GradientType=0 );
-    color: #FFF;
-}
-
-.navbar-default{
-    box-shadow: rgba(0,0,0,0.5) 0px 3px 6px;
-    background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0.07, #EDEDED), color-stop(1, #B3B3B3) );
-    background-image: -o-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
-    background-image: -moz-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
-    background-image: -webkit-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
-    background-image: -ms-linear-gradient(bottom, #EDEDED 7%, #B3B3B3 100%);
-    background-image: linear-gradient(to bottom, #EDEDED 7%, #B3B3B3 100%);
-}
-*/
 
 .nav-tabs {
     border:none;
@@ -638,7 +594,6 @@ height:50px;
     background-color: rgb(228,228,228);
     width: 620px;
     height: 310px;
-    border-radius: 30px;
     margin-top: auto;
     margin: auto;
     padding: 30px;
@@ -653,9 +608,9 @@ height:50px;
     margin-left: 15px;
 }
 
-.olv{
+.olv, .olv:hover{
     color: rgb(204,0,153);
-    text-decoration: underline;
+    text-decoration: none;
     margin-top: 30px;
     text-align: center;
 }

@@ -38,14 +38,6 @@ nw_principal_mesa_regalos:
     pattern:  /mesa-de-regalos/{usuarioId}
     defaults: { _controller: NWPrincipalBundle:Default:mesaDeRegalos }
 
-nw_principal_changepass:
-    pattern:  /changepass
-    defaults: { _controller: NWPrincipalBundle:Default:changePass }
-
-nw_principal_changepass:
-    pattern:  /changepass
-    defaults: { _controller: NWPrincipalBundle:Default:changePass }
-
 nw_principal_proveedores_micuenta:
     pattern:  /proveedores/micuenta
     defaults: { _controller: NWPrincipalBundle:Proveedores:micuenta }
