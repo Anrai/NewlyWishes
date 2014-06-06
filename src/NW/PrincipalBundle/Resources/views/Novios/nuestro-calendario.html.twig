@@ -1,13 +1,6 @@
 {# src/NW/PrincipalBundle/Resources/views/Novios/nuestro-calendario.html.twig #}
 {% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	{% stylesheets '@fullcalendar_css' '@NWPrincipalBundle/Resources/public/css/calendario.css' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endblock %}
-
 {% block partederecha %}
 
 	<div class="rlow" style="text-align:right;">
@@ -36,7 +29,7 @@
 	</div>
 
 	<div class="row" style="margin-top:40px;">
-		<div id='calendar'></div>
+		<div id="calendar" class='calendar-view'></div>
 	</div>
 
 {% endblock %}
@@ -44,13 +37,4 @@
 {% block modales %}
 	{{ parent() }}
 	{% include 'NWPrincipalBundle:Novios:modalTareas.html.twig' %}
-{% endblock %}
-
-{% block javascripts %}
-	{{ parent() }}
-    {% javascripts '@jquery_ui_custom_js' '@fullcalendar_js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-    {% include 'NWPrincipalBundle:Novios:scriptCalendar.js.twig' %}
 {% endblock %}

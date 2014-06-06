@@ -1,12 +1,12 @@
-.fc-border-separate{
+#calendar .fc-border-separate{
 	border: none:!important;
 }
 
-.fc-content td{
+#calendar .fc-content td{
 	padding: 5px!important;
 }
 
-th{
+#calendar th{
 	border: solid 1px #e2e2e2;
 	border-left: none!important;
 	border-right: none!important;
@@ -16,41 +16,41 @@ th{
 	color: rgb(204,0,153);
 }
 
-h2{
+#calendar h2{
 	text-transform: none!important;
 	color: rgb(204,0,153);
 	font-size: 26px;
 }
-.fc-button, .fc-button-prev, .fc-state-default, .fc-corner-left, .fc-corner-right, .fc-state-down{
+#calendar .fc-button, #calendar .fc-button-prev, #calendar .fc-state-default, #calendar .fc-corner-left, #calendar .fc-corner-right, #calendar .fc-state-down{
 	border: none!important;
 	height: 35px!important;
 	background: none!important;
 	box-shadow: none!important;
 }
-.fc-day{
+#calendar .fc-day{
 	font-size: 16px!important;
 	color: rgb(156, 156, 156)!important;
 }
-.fc-grid .fc-other-month .fc-day-number {
+#calendar .fc-grid .fc-other-month .fc-day-number {
 	opacity: .6!important;
 }
-.fc-event {
+#calendar .fc-event {
 	border: 1px solid rgb(235, 169, 218);
 	background-color: rgb(235, 169, 218);
 	color: #fff;
 	font-size: 11px!important;
 	font-weight: bold;
 }
-.fc-event>a:hover, .fc-event>a:focus{
+#calendar .fc-event>a:hover, #calendar .fc-event>a:focus{
 	color: #fff!important;
 }
-.fc-state-highlight {
+#calendar .fc-state-highlight {
 	background: rgb(228, 228, 228)!important;
 }
-.diaBoda{
+#calendar .diaBoda{
 	background: rgb(235, 169, 218);
 }
-span.arrow-left {
+#calendar span.arrow-left {
     width: 0;
     height: 0;
     border-bottom: 12px solid transparent;
@@ -59,12 +59,88 @@ span.arrow-left {
     font-size: 0;
     line-height: 0;
 }
-span.arrow-right {
+#calendar span.arrow-right {
     width: 0;
     height: 0;
     border-bottom: 12px solid transparent;
     border-top: 12px solid transparent;
     border-left: 16px solid #CC0099;
+    font-size: 0;
+    line-height: 0;
+}
+
+
+/* Calendario mini */
+#calendar-mini .fc-border-separate{
+	border: none:!important;
+}
+
+#calendar-mini .fc-content td{
+	border: none!important;
+}
+
+#calendar-mini table{
+}
+
+#calendar-mini th{
+	border: none!important;
+	font-size: 14px;
+	font-weight: normal!important;
+	color: white;
+	padding-bottom: 10px;
+	text-align: right;
+}
+
+#calendar-mini h2{
+	text-transform: none!important;
+	color: white;
+	font-size: 15px;
+	line-height: 31px;
+}
+#calendar-mini .fc-button, #calendar-mini .fc-button-prev, #calendar-mini .fc-state-default, #calendar-mini .fc-corner-left, #calendar-mini .fc-corner-right, #calendar-mini .fc-state-down{
+	border: none!important;
+	height: 35px!important;
+	background: none!important;
+	box-shadow: none!important;
+}
+#calendar-mini .fc-day{
+	font-size: 15px!important;
+	color: white!important;
+}
+#calendar-mini .fc-grid .fc-other-month .fc-day-number {
+	opacity: 0!important;
+}
+#calendar-mini .fc-event {
+	border: 1px solid rgb(235, 169, 218);
+	background-color: rgb(235, 169, 218);
+	color: #fff;
+	font-size: 11px!important;
+	font-weight: bold;
+}
+#calendar-mini .fc-event>a:hover, #calendar-mini .fc-event>a:focus{
+	color: #fff!important;
+}
+#calendar-mini .fc-state-highlight {
+	background: rgb(228, 228, 228)!important;
+}
+#calendar-mini .diaBoda{
+	background: rgb(235, 169, 218);
+}
+#calendar-mini span.arrow-left {
+    width: 0;
+	height: 0;
+	border-bottom: 10px solid transparent;
+	border-top: 10px solid transparent;
+	border-right: 12px solid #FFFFFF;
+	font-size: 0;
+	line-height: 0;
+}
+#calendar-mini span.arrow-right {
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-left: 12px solid #FFFFFF;
     font-size: 0;
     line-height: 0;
 }

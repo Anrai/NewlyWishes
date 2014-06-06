@@ -170,6 +170,10 @@ nw_principal_novios_nuestras-compras:
     pattern:  /novios/nuestras-compras
     defaults: { _controller: NWPrincipalBundle:Novios:nuestrasCompras }
 
+nw_principal_novios_cambiar_fecha_boda:
+    pattern:  /novios/fecha-boda/{fecha}
+    defaults: { _controller: NWPrincipalBundle:Novios:CambiarFechaBoda, fecha: 12-12-2014 }
+
 nw_principal_reporteros_micuenta:
     pattern:  /reporteros/micuenta
     defaults: { _controller: NWPrincipalBundle:Reporteros:micuenta }

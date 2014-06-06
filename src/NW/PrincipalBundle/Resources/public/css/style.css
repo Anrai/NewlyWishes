@@ -1424,3 +1424,43 @@ label {
     color: white;
     font-weight: bold;
 }
+
+.calendario-flotante{
+    position: absolute;
+    border: none;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    width: 220px;
+    display: block;
+    top: 68px;
+    left: -120px;
+    z-index: 100;
+}
+
+.arrow-up-2{
+    margin-top: 0px;
+    margin-left: 160px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 15px solid rgba(204,0,153,0.8);
+    opacity: 0.8;
+    font-size: 0;
+    line-height: 0;
+}
+
+.diaBoda-mini{
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 0px;
+    width: 34px;
+}
+
+.calendar-select-day{
+    cursor: pointer;
+    
+}

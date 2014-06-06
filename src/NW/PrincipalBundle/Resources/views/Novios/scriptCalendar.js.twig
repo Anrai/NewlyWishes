@@ -1,12 +1,7 @@
 <script>
 	$(document).ready(function() {
-	
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
 		
-		$('#calendar').fullCalendar({
+		$('.calendar-view').fullCalendar({
 			editable: true,
 			header: {
 				left: 'prev',
@@ -73,14 +68,46 @@
 			]
 		});
 
-		$('#calendar').fullCalendar('gotoDate', new Date({{fechaBodaFormat.javascript}}));
+		// Se dirigen los calendarios a la fecha de la boda
+		$('.calendar-view').fullCalendar('gotoDate', new Date({{fechaBodaFormat.javascript}}));
 
-		$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
-		$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('Día de la boda');
+		// Se aplica clase del día de la boda en el calendario grande
+		$('#calendar .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
+		$('#calendar .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('Día de la boda');
 
+		// Cada vez que se mueve el mes del calendario se busca el día de la boda y se le aplica su clase
 		$('.fc-button').click(function(){
-			$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
-			$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('Día de la boda');
+			$('#calendar .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
+			$('#calendar .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('Día de la boda');
+			$('#calendar-mini .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('<img src="{{ asset('img/circle.png') }}" class="diaBoda-mini" />');
+			// Hacer links cada numero del calendario
+			$('#calendar-mini').find('.fc-day-number').each(function(){
+				$(this).addClass('calendar-select-day');
+				$(this).attr('href', '{{ path('nw_principal_novios_cambiar_fecha_boda') }}/'+$(this).closest('td').attr('data-date'));
+			});
+			// Cada numero del calendario dirige a la página para cambiar la fecha de lab boda
+			$("#calendar-mini .fc-day-number").click(function() {
+			    window.document.location = $(this).attr("href");
+			});
+		});
+
+		// Cuando carga el mini calendario se redondea el día de la boda
+		$('#calendar-mini .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('<img src="{{ asset('img/circle.png') }}" class="diaBoda-mini" />');
+
+		// Hacer links cada numero del calendario
+		$('#calendar-mini').find('.fc-day-number').each(function(){
+			$(this).addClass('calendar-select-day');
+			$(this).attr('href', '{{ path('nw_principal_novios_cambiar_fecha_boda') }}/'+$(this).closest('td').attr('data-date'));
+		});
+
+		// Cada numero del calendario dirige a la página para cambiar la fecha de lab boda
+		$("#calendar-mini .fc-day-number").click(function() {
+		    window.document.location = $(this).attr("href");
+		});
+
+		// Se muestra u oculta el calendario mini
+		$('#calendario-mini-show').click(function(){
+			$('.calendario-flotante').toggleClass("invisible");
 		});
 
 	});

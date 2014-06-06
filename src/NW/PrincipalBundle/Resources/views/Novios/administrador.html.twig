@@ -2,6 +2,13 @@
 
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets '@fullcalendar_css' '@NWPrincipalBundle/Resources/public/css/calendario.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
 
 	<div class="container" style="padding:0px; margin-top:-30px; box-shadow:rgba(0,0,0,1) 0px 0px 30px;-moz-box-shadow:rgba(0,0,0,1) 0px 0px 30px;-ms-box-shadow:rgba(0,0,0,1) 0px 0px 30px;-o-box-shadow:rgba(0,0,0,1) 0px 0px 30px;-webkit-box-shadow:rgba(0,0,0,1) 0px 0px 30px;">
@@ -37,9 +44,15 @@
 								</h4>
 							</div>
 							<div class="col-xs-2">
-								<a class="art3" data-toggle="modal" data-target="#dia">
+								<a class="art3" href="#" id="calendario-mini-show">
 									<img src="{{ asset('img/novios/nuestro_calendario.png') }}" width="90">
 								</a>
+								<div class="calendario-flotante invisible">
+									<div class="arrow-up-2 hidden-xs"></div>
+									<div class="globito hidden-xs" style="height: 241px;">
+										<div id="calendar-mini" class='calendar-view'></div>
+									</div>
+								</div>
 							</div>
 					</div>
 				</div>
@@ -190,6 +203,15 @@
 		{% include 'NWPrincipalBundle:Novios:modalDudas.html.twig' %}
 	{% endblock %}
 
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+    {% javascripts '@jquery_ui_custom_js' '@fullcalendar_js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% include 'NWPrincipalBundle:Novios:scriptCalendar.js.twig' %}
 {% endblock %}
 
 {% block footer %}

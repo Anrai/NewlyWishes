@@ -159,7 +159,26 @@ class NoviosController extends Controller
             'novio' => $novio->getNombre(),
             'padrinos' => $padrinos,
             'notas' => $notas,
+            'fechaBodaFormat' => $formBodaData->fechaBodaFormat(),
         ));
+    }
+
+    public function CambiarFechaBodaAction($fecha)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $fecha = new \DateTime($fecha);
+
+        $user = $this->getUser();
+        $bodaEntity = $em->getRepository('NWPrincipalBundle:Bodas');
+        $boda = $bodaEntity->findOneBy(array('usuarioId' => $user->getId()));
+
+        $boda->setFechaBoda($fecha);
+
+        $em->persist($boda);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-calendario'));
     }
 
     public function PadrinoDeleteAction($id) // Controlador que borra un padrino según el id pasado
