@@ -1,28 +1,31 @@
-// as the page loads, call these scripts
+// As the page loads, call these scripts
 jQuery(document).ready(function($) {
-
-	/* Scripts especiales de SoftwareFactory al cargar la página */
     
     /* Iniciar carrouseles */
     $('#bannersCarousel').carousel();
-    
-	/* Barra de navegación se vuelve semitransparente */
-	$(window).scroll(function() {
-        if($(window).scrollTop()>0)
-		{
-			$('.navbar').removeClass('alpha60');
-		}
-		else
-		{
-			$('.navbar').addClass('alpha60');
-		}
-	});
 
 	// Link en una fila de una tabla
-	jQuery(document).ready(function($) {
-      $(".clickableRow").click(function() {
-            window.document.location = $(this).attr("href");
-      });
+	$(".clickableRow").click(function() {
+	    window.document.location = $(this).attr("href");
+	});
+
+	// Script que muestra descripción en modal de tareas del calendario de novios
+	$(".tarea_link").click(function(){
+		
+		var mostrar = true;
+		if(!$("#tarea_selected_"+$(this).attr("id")).hasClass("invisible"))
+		{
+			mostrar = false;
+		}
+
+		// Ocultar todo
+		$(".desaparecible").addClass("invisible");
+
+		if(mostrar)
+		{
+			$("#tarea_selected_"+$(this).attr("id")).removeClass("invisible");
+			$("#tarea_descripcion_"+$(this).attr("id")).removeClass("invisible");
+		}
 	});
 
 }); /* end of as page load scripts */

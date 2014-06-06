@@ -1388,3 +1388,14 @@ label {
 .tabla-calendario thead>tr:hover{
     background-color: white;
 }
+
+.calendario-tarea-descripcion{
+    margin-top:20px;
+    padding-bottom:15px;
+    border-bottom: solid 1px #e2e2e2;
+}
+
+.invisible{
+    position: absolute;
+    visibility: hidden;
+}

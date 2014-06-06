@@ -487,7 +487,7 @@ class NoviosController extends Controller
         ));
     }
 
-     public function RegaloDeleteAction($id) // Controlador que borra un regalo según el id pasado
+    public function RegaloDeleteAction($id) // Controlador que borra un regalo según el id pasado
     {
         $em = $this->getDoctrine()->getManager();
         $regalo = $em->getRepository('NWPrincipalBundle:MesaRegalos')->find($id);

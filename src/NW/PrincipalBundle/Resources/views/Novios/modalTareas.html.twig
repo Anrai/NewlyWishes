@@ -34,9 +34,9 @@
 	                    <tbody>
 
 	                        {% for tarea in tareas %}
-								<tr>
-		                        	<td>
-		                        		{#<img src="{{ asset('img/punto.png') }}">#}
+								<tr id="{{ tarea.id }}" class="tarea_link">
+		                        	<td width="35">
+		                        		<img id="tarea_selected_{{ tarea.id }}" src="{{ asset('img/punto.png') }}" class="invisible desaparecible">
 		                        	</td>
 		                        	<td>{{ tarea.compromiso }}</td>
 		                        	<td>{{ tarea.categoria }}</td>
@@ -64,9 +64,73 @@
 	                </table>
 				</div>
 
+				{% for tarea in tareas %}
+				<div id="tarea_descripcion_{{ tarea.id }}" class="row calendario-tarea-descripcion invisible desaparecible">
+					<div class="col-xs-7">
+						<div class="row">
+							<div class="col-xs-8">
+								<h3 class="rosa">{{ tarea.compromiso }}</h3>
+							</div>
+							<div class="col-xs-4">
+								<p style="text-align:right">Vence: <span class="text-important">{{ tarea.vencimiento }}</span></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<p>{{ tarea.descripcion }}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-5">
+					{% if tarea.contactoNombre %}
+						<div class="row">
+							<div class="col-xs-12">
+								<h3 class="rosa">Contacto</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">
+								<p class="text-important">Nombre:</p>
+							</div>
+							<div class="col-xs-8">
+								<p>{{ tarea.contactoNombre }}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">
+								<p class="text-important">Teléfono:</p>
+							</div>
+							<div class="col-xs-8">
+								<p>{{ tarea.contactoTelefono }}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">
+								<p class="text-important">Email:</p>
+							</div>
+							<div class="col-xs-8">
+								<p>{{ tarea.contactoEmail }}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">
+								<p class="text-important">Dirección:</p>
+							</div>
+							<div class="col-xs-8">
+								<p>{{ tarea.contactoDireccion }}</p>
+							</div>
+						</div>
+					{% endif %}
+					</div>
+				</div>
+				{% endfor %}
+
 				{{ form_start(formTareaCalendario) }}
 				<div class="row" style="margin-top:30px">
-					<h3 class="rosa">Nuevo compromiso para este día</h3>
+					<div class="col-xs-12">
+						<h3 class="rosa">Nuevo compromiso para este día</h3>
+					</div>
 					<div class="col-xs-5">
 						{{ form_widget(formTareaCalendario.compromiso, { 'attr': {'class': 'input-newly', 'style': 'width:100%; margin-top:10px;', 'placeholder': 'Compromiso' } }) }}
 						{{ form_widget(formTareaCalendario.descripcion, { 'attr': {'class': 'input-newly', 'style': 'width:100%; height:191px; margin-top:10px;', 'placeholder': 'Comentario / Descripción' } }) }}
