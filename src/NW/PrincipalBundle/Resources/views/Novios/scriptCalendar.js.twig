@@ -63,19 +63,25 @@
 					start: new Date(2014, 11, d+1, 19, 0),
 					end: new Date(2014, 11, d+1, 22, 30),
 					allDay: false
-				},*/
+				},
 				{
 					title: 'Dia de la boda',
 					start: new Date({{fechaBodaFormat.javascript}}),
 					end: new Date({{fechaBodaFormat.javascript}}),
 					allDay: true
-				}
+				}*/
 			]
 		});
 
-	$('#calendar').fullCalendar('gotoDate', new Date({{fechaBodaFormat.javascript}}));
+		$('#calendar').fullCalendar('gotoDate', new Date({{fechaBodaFormat.javascript}}));
 
-	$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
+		$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
+		$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('Día de la boda');
+
+		$('.fc-button').click(function(){
+			$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
+			$('.fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').find('.fc-day-content').html('Día de la boda');
+		});
 
 	});
 </script>

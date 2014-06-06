@@ -1418,3 +1418,9 @@ label {
     margin-bottom: 6px;
     position: absolute;
 }
+
+.fc-day-content{
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+}
