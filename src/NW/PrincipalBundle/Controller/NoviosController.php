@@ -69,31 +69,19 @@ class NoviosController extends Controller
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
- 
-            // Formulario para agregar datos de la boda
-            if ($request->request->has($formBoda->getName())) {
-                // Recuperando datos del formulario
-                $formBoda->handleRequest($request);
 
+            // Formulario de datos de la boda
+            if ($request->request->has($formBoda->getName())) {
+                $formBoda->handleRequest($request);
                 if($formBoda->isValid())
                 {
-                    // Borrar registros de la boda antiguos (si es que existen)
-                    if($formBodaData)
-                        {$em->remove($formBodaData);}
-
-                    $newBoda=$formBoda->getData();
-                    $newBoda->setUser($user);
                     // Recordar la fecha de la boda o setear en el 2000 si no hay fecha
-                    if($formBodaData->hayFechaBoda())
+                    if(!$formBodaData->hayFechaBoda())
                     {
-                        $newBoda->setFechaBoda($formBodaData->getFechaBoda());
-                    }
-                    else
-                    {
-                        $newBoda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
+                        $formBodaData->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
                     }
 
-                    $em->persist($newBoda);
+                    $em->persist($formBodaData);
                     $em->flush();
                 }
             }

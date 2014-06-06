@@ -60,13 +60,15 @@
 			{{ form_start(formBoda) }}
 				<div class="row">
 					<div class="col-xs-5">
-						{{ form_widget(formBoda.ceremonia, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Iglesia' } }) }}
+						{{ form_widget(formBoda.ceremonia, { 'attr': {'class': 'form-form invisible input_registro_novios', 'placeholder': 'Iglesia' } }) }}
+						<span class="texto-form">{{ formBoda.ceremonia.vars.value }}</span>
 					</div>
 					<div class="col-xs-5">
-						{{ form_widget(formBoda.ceremonia_direccion, { 'attr': {'class': 'textarea_registro', 'placeholder': 'Dirección' } }) }}	
+						{{ form_widget(formBoda.ceremonia_direccion, { 'attr': {'class': 'form-form invisible textarea_registro', 'placeholder': 'Dirección' } }) }}
+						<span class="texto-form">{{ formBoda.ceremonia_direccion.vars.value }}</span>
 					</div>
 					<div class="col-xs-2" style="text-align:right;">
-						<img src="{{asset('img/novios/direccion_iglesia.png')}}" style="float:left; width:50px; height:50px; ">
+						<img src="{{asset('img/novios/direccion_iglesia.png')}}" class="boton-editar">
 					</div>
 				</div>
 					
@@ -78,10 +80,12 @@
 				
 				<div class="row">
 					<div class="col-xs-5">
-						{{ form_widget(formBoda.recepcion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Lugar' } }) }}	
+						{{ form_widget(formBoda.recepcion, { 'attr': {'class': 'form-form invisible input_registro_novios', 'placeholder': 'Lugar' } }) }}
+						<span class="texto-form">{{ formBoda.recepcion.vars.value }}</span>	
 					</div>
 					<div class="col-xs-5">
-						{{ form_widget(formBoda.recepcion_direccion, { 'attr': {'class': 'textarea_registro', 'placeholder': 'Dirección' } }) }}	
+						{{ form_widget(formBoda.recepcion_direccion, { 'attr': {'class': 'form-form invisible textarea_registro', 'placeholder': 'Dirección' } }) }}	
+						<span class="texto-form">{{ formBoda.recepcion_direccion.vars.value }}</span>
 					</div>
 					<div class="col-xs-2" style="text-align:right;">
 						<input type="image" src="{{asset('img/novios/diskette.png')}}" name="image" style="float:left; margin-left:6px; width:40px; height:40px; ">

@@ -877,8 +877,6 @@ height:50px;
 }
 .input11{
     border-radius: 4px;
-    width: 400px;
-
 }
 .aceptar{
     margin-top: -60px;
@@ -1398,4 +1396,11 @@ label {
 .invisible{
     position: absolute;
     visibility: hidden;
+}
+
+.boton-editar{
+    float:left;
+    width:50px;
+    height:50px;
+    cursor: pointer;
 }
