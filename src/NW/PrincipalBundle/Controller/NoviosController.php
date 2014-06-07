@@ -235,6 +235,23 @@ class NoviosController extends Controller
 
         foreach ($tareas as $key => $tarea) {
             $tareas[$key] = $tarea->getValues();
+
+            $fecha = $tareas[$key]['vencimientoDatetime'];
+            $guiones = $fecha->format('Y-m-d');
+
+            $fechaUnix = strtotime($guiones)-2592000;
+            $fechaJavascript = new \DateTime();
+            $fechaJavascript->setTimestamp($fechaUnix);
+
+            $Y = $fecha->format('Y');
+            $m = $fecha->format('n');
+            $d = $fecha->format('j');
+            $H = $fecha->format('G');
+            $i = $fecha->format('i');
+            $javascript = $Y.','.$m.','.$d.','.$H.','.$i;
+
+            $tareas[$key]['guiones'] = $guiones;
+            $tareas[$key]['javascript'] = $javascript;
         }
 
         return $this->render('NWPrincipalBundle:Novios:nuestro-calendario.html.twig', array(

@@ -21,50 +21,14 @@
 				next: 'circle-triangle-e'
 			},
 			events: [
-				/*{
-					title: 'All Day Event',
-					start: new Date(2014, 11, 1)
-				},
-				{
-					title: 'Long Event',
-					start: new Date(2014, 11, d-5),
-					end: new Date(2014, 11, d-2)
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(2014, 11, d-3, 16, 0),
-					allDay: false
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(2014, 11, d+4, 16, 0),
-					allDay: false
-				},
-				{
-					title: 'Meeting',
-					start: new Date(2014, 11, d, 10, 30),
-					allDay: false
-				},
-				{
-					title: 'Lunch',
-					start: new Date(2014, 11, d, 11, 0),
-					end: new Date(2014, 11, d, 14, 0),
-					allDay: false
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(2014, 11, d+1, 19, 0),
-					end: new Date(2014, 11, d+1, 22, 30),
-					allDay: false
-				},
-				{
-					title: 'Dia de la boda',
-					start: new Date({{fechaBodaFormat.javascript}}),
-					end: new Date({{fechaBodaFormat.javascript}}),
-					allDay: true
-				}*/
+				{% for tarea in tareas %}
+					{
+						title: '{{ tarea.compromiso }}',
+						start: new Date({{tarea.javascript}}),
+						end: new Date({{tarea.javascript}}),
+						allDay: false
+					},
+				{% endfor %}
 			]
 		});
 

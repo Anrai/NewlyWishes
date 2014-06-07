@@ -11,8 +11,8 @@ jQuery(document).ready(function($) {
 
 	// Script que habilita/deshabilita edición de texto para la iglesia
 	$(".boton-editar").click(function(){
-		$(".form-form").removeClass("invisible");
-		$(".text-form").addClass("invisible");
+		$(".form-form").toggleClass("invisible");
+		$(".texto-form").toggleClass("invisible");
 	});
 
 	// Script que muestra descripción en modal de tareas del calendario de novios

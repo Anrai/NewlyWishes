@@ -369,6 +369,7 @@ class TareaCalendario
             'categoria' => $this->getCategoria()->getCategoria(),
             'compromiso' => $this->getCompromiso(),
             'descripcion' => $this->getDescripcion(),
+            'vencimientoDatetime' => $this->getVencimiento(),
             'vencimiento' => $this->getVencimiento()->format('H:i'),
             'hecho' => $this->getHecho(),
             'contactoNombre' => $this->getContactoNombre(),
