@@ -248,6 +248,16 @@ class NoviosController extends Controller
             $d = $fecha->format('j');
             $H = $fecha->format('G');
             $i = $fecha->format('i');
+
+            if($m == 0)
+            {
+                $m = 12;
+            }
+            else
+            {
+                $m = $m-1;
+            }
+
             $javascript = $Y.','.$m.','.$d.','.$H.','.$i;
 
             $tareas[$key]['guiones'] = $guiones;
