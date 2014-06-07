@@ -21,6 +21,7 @@
 				next: 'circle-triangle-e'
 			},
 			events: [
+				{% if tareas is defined %}
 				{% for tarea in tareas %}
 					{
 						title: '{{ tarea.compromiso }}',
@@ -29,6 +30,7 @@
 						allDay: false
 					},
 				{% endfor %}
+				{% endif %}
 			]
 		});
 
