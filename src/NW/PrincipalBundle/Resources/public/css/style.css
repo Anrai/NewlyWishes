@@ -1464,3 +1464,20 @@ label {
     cursor: pointer;
     
 }
+
+.retirar-dinero{
+    background-color: #e2e2e2;
+    color: #818181;
+    font-size: 13px;
+    top: 20px;
+    padding: 10px;
+    width: 115px;
+    position: absolute;
+    right: 0;
+}
+
+.retirar-dinero-img{
+    position: absolute;
+    width: 69px;
+    right: 100px;
+}
