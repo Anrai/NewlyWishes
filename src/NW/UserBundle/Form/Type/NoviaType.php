@@ -11,9 +11,9 @@ class NoviaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder->add('nombre', 'text');
-        $builder->add('sNombre', 'text');
+        $builder->add('sNombre', 'text', array('required' => false));
         $builder->add('aPaterno', 'text');
-        $builder->add('aMaterno', 'text');
+        $builder->add('aMaterno', 'text', array('required' => false));
         $builder->add('eMail', 'email');
         $builder->add('lada', 'text', array('max_length' => 3));
         $builder->add('telefono', 'text', array('max_length' => 8));

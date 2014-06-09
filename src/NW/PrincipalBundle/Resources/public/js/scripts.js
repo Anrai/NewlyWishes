@@ -34,4 +34,25 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	// En el registro de los novios, el checkbox de mismos datos copia los datos de la novia y los pega en el de novios
+	$('input[name="registro[mismaDireccion]"]').change(function(){
+		if($(this).is(':checked')){
+			$("#registro_novios_lada").val($("#registro_novias_lada").val());
+			$("#registro_novios_telefono").val($("#registro_novias_telefono").val());
+			$("#registro_novios_direccion").val($("#registro_novias_direccion").val());
+			$("#registro_novios_estado").val($("#registro_novias_estado").val());
+			$("#registro_novios_ciudad").val($("#registro_novias_ciudad").val());
+			$("#registro_novios_cp").val($("#registro_novias_cp").val());
+		}
+		else
+		{
+			$("#registro_novios_lada").val('');
+			$("#registro_novios_telefono").val('');
+			$("#registro_novios_direccion").val('');
+			$("#registro_novios_estado").val('');
+			$("#registro_novios_ciudad").val('');
+			$("#registro_novios_cp").val('');
+		}
+	});
+
 }); /* end of as page load scripts */

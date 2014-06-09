@@ -33,12 +33,14 @@ NW\UserBundle\Entity\Novias:
         sNombre:
             type: string
             length: 100
+            nullable: true
         aPaterno:
             type: string
             length: 100
         aMaterno:
             type: string
             length: 100
+            nullable: true
         eMail:
             type: string
             length: 100

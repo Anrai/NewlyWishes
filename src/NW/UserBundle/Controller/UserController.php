@@ -157,11 +157,7 @@ class UserController extends Controller
 
     public function registronoviosAction(Request $request)
     {
-           
-        /* Formulario individual para Novias (ejemplo)
-        $noviasClass = 'Acme\TaskBundle\Entity\Novias';
-        $form = $this->createForm(new NoviazgoType(), $noviasClass);
-        */
+        $em = $this->getDoctrine()->getManager(); 
 
         // Generando el formulario de registro de los novios y usuario
         $formData['novias'] = new Novias();
@@ -174,11 +170,25 @@ class UserController extends Controller
         if ($form->isValid()) {
 
             // Recuperando datos de los novios
-            $novias = $form["novias"]->getData();
-            $novios = $form["novios"]->getData();
+            $novias = $formData['novias'];
+            $novios = $formData['novios'];
+
+            // Checando si ya existe el usuario o el correo
+            $userManager = $this->get('fos_user.user_manager'); 
+            $usuarioPorUsername = $userManager->findUserBy(array('username' => $form["userName"]->getData()));
+            $usuarioPorEmail = $userManager->findUserBy(array('email' => $form["novios"]["eMail"]->getData()));
+
+            if($usuarioPorUsername || $usuarioPorEmail)
+            {
+                $ruta = $this->getRefererRoute();
+                $locale = $request->get('_locale');
+                $url = $this->get('router')->generate($ruta, array('_locale' => $locale));
+                $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
+
+                return $this->redirect($url);
+            }
 
             // Agregando Usuario y sus datos
-            $userManager = $this->get('fos_user.user_manager'); 
             $user = $userManager->createUser();
 
             $user->setUsername($form["userName"]->getData());
@@ -214,7 +224,6 @@ class UserController extends Controller
             $boda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
 
             // Persistiendo los datos en la base de datos
-            $em = $this->getDoctrine()->getEntityManager(); 
             $em->persist($user);
             $em->persist($novias);
             $em->persist($novios);
@@ -432,6 +441,23 @@ class UserController extends Controller
     public function registroExitosoAction()
     {
         return $this->render('NWUserBundle:User:felicidades.html.twig');
+    }
+
+    // Obtiene la url de la página anterior
+    public function getRefererRoute()
+    {
+        $request = $this->getRequest();
+
+        //look for the referer route
+        $referer = $request->headers->get('referer');
+        $lastPath = substr($referer, strpos($referer, $request->getBaseUrl()));
+        $lastPath = str_replace($request->getBaseUrl(), '', $lastPath);
+
+        $matcher = $this->get('router')->getMatcher();
+        $parameters = $matcher->match($lastPath);
+        $route = $parameters['_route'];
+
+        return $route;
     }
 /*
     public function asignarRolesAction()
