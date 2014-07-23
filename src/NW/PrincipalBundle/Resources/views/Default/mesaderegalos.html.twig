@@ -10,48 +10,50 @@
 
         <div class="container">
             
-            <h4 style="margin-top: -35px;">Mesa de Regalos de {{noviaYnovio}}</h4>
+            <h4 style="margin-top: -35px;">Mesa de Regalos de <span class="esc">{{noviaYnovio}}</span></h4>
 
             <div class="row" style="margin-top:45px">
             {% if articulos %}
             	<div class="col-md-4">
-            		<h3>Filtrar regalos</h3>
-            		<br />
-            		{{ form_start(formFiltrar) }}
-            		{{ form_end(formFiltrar) }}
+                    <div class="caja-gris-filtro">
+                		<h3>Filtrar regalos</h3>
+                		<br />
+                		{{ form_start(formFiltrar) }}
+                		{{ form_end(formFiltrar) }}
+                    </div>
             	</div>
             	<div class="col-md-8">
 
             		{% for articulo in articulos %}
 	            		<div class="row" style="border-top-color: rgb(214, 214, 214);border-top-width: 1px;border-top-style: solid;padding-top: 20px;">
 	            			<div class="col-md-7">
-	            				<h5>{{articulo.regalo}} - {{articulo.categoriaName}}</h5>
+	            				<h5><span class="esc" style="font-size:20px;">{{articulo.regalo}} - {{articulo.categoriaName}}</span></h5>
 	            				<br />
 	            				<p>{{articulo.descripcion}}</p>
 	            				<br />
-	            				<b>¿Cuántas partes deseas regalar? </b>
+	            				<b>¿Cuántas partes deseas regalar? </b>&nbsp;&nbsp;&nbsp;
                                 <select id="regalarPartes" name="regalarPartes">
                                     {% for i in 1..articulo.horcruxesFaltantes %}
                                         <option value="{{i}}">{{i}}</option>
                                     {% endfor %}
                                 </select>
-                                <span style="float:right;"><input type="button" value="Agregar" /></span>
+                                <span style="float:right;"><input type="button" class="amarillo-boton" value="Agregar" /></span>
 	            			</div>
 	            			<div class="col-md-5">
 	            				<b>Valor</b><br />
 
-            					${{articulo.precioTotal}}<br /><br />
+            					<span class="mesa-regalos-rosa-big">${{articulo.precioTotal}}</span><br /><br />
             					<b>
             						{% if articulo.cantidad == 1 %}Artículo dividido en{% else %}{{articulo.cantidad}} artículos divididos en{% endif %}
             					</b><br />
-            					{{articulo.horcruxes}} 
+            					<span class="mesa-regalos-rosa-big">{{articulo.horcruxes}} 
             					{% if articulo.horcruxes == 1 %}parte{% else %}partes{% endif %}
-            					{% if articulo.cantidad > 1 %}c/u{% endif %}
+            					{% if articulo.cantidad > 1 %}c/u{% endif %}</span>
 
             					<br /><br />
 		            			
 	            				<b>Valor por parte</b><br />
-	            				${{articulo.precioTotal / articulo.horcruxes}}
+	            				<span class="mesa-regalos-rosa-big">${{articulo.precioTotal / articulo.horcruxes}}</span>
 	            			</div>
 	            		</div>
 	            	{% endfor %}

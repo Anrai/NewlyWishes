@@ -811,7 +811,6 @@ height:50px;
 }
 .logo-modal{
     width: 250px;
-    height: 90px;
 }
 .left{
     margin-left: 6px;
@@ -1455,9 +1454,9 @@ label {
 
 .diaBoda-mini{
     position: absolute;
-    margin-top: -30px;
-    margin-left: 0px;
-    width: 34px;
+    margin-top: -25px;
+    margin-left: 1px;
+    width: 25px;
 }
 
 .calendar-select-day{
@@ -1465,19 +1464,32 @@ label {
     
 }
 
-.retirar-dinero{
-    background-color: #e2e2e2;
-    color: #818181;
-    font-size: 13px;
-    top: 20px;
-    padding: 10px;
-    width: 115px;
-    position: absolute;
-    right: 0;
+.punto-verde-bueno{
+	 font-size:12px;
+	 text-align:center;
+	 color:rgba(255,255,255,1);
+	width:16px;
+	height:16px;
+	border-radius:8px;
+	background:rgba(110,209,66,1);	
+	box-shadow:rgba(0,0,0,0.2) 0px 0px 3px;
+}
+.mesa-regalos-rosa-big{
+	color: rgb(204,0,153);
+	font-weight:bold;
+	font-size:18px;	
 }
 
-.retirar-dinero-img{
-    position: absolute;
-    width: 69px;
-    right: 100px;
+.amarillo-boton{
+	border:none;
+	border-radius:4px;
+	padding-right:20px;
+	padding-left:20px;
+	background:rgba(255,230,0,1)
+}
+.caja-gris-filtro{
+	margin-top:0px;
+	padding:20px;
+	width:95%;
+	background:rgba(235,235,235,1);
 }

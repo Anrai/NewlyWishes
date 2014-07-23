@@ -223,14 +223,14 @@
 			<div class="row" style="margin-top:10px;">
 				{{ form_start(form) }}
 					<div class="col-md-4">
-						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña actual' } }) }}
+						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Contraseña actual' } }) }}
 					</div>
 					<div class="col-md-4">
-						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nueva Contraseña' } }) }}
+						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Nueva Contraseña' } }) }}
 					</div>
 					<div class="col-md-4">
 						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
-						{{ form_widget(form.Cambiar) }}
+						{{ form_widget(form.Cambiar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:100px; margin-top:2px; bottom:0px;' } }) }}
 					</div>
 				{{ form_end(form) }}
 			</div>

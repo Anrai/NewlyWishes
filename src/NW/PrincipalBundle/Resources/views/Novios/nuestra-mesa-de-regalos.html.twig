@@ -3,26 +3,27 @@
 	{% extends 'NWPrincipalBundle:Novios:administrador.html.twig' %}
 
 {% block partederecha %}
-
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-5">
 						
 					</div>
 					<div class="col-md-1 puntov">
-						<img class="img-responsive" src="{{asset('img/puntov.png')}}">
+						<img class="img-responsive" style="margin-left:40px; margin-top:4px;" src="{{asset('img/puntov.png')}}">
 					</div>
 					<div class="col-md-5">
 						<h1>
 							Nuestra Mesa de Regalos
 						</h1>
 					</div>
+				</div>
+				<div class="row" style="margin-top:15px;">
 					<div class="col-md-6">
 						
 					</div>
 					<div class="col-md-6">
 						<p class="verde">
-							Generar detalle en PDF ó Excel –¿quién nos regaló?
+							Generar detalle en PDF ó Excel <br>¿quién nos regaló?<br><br>
 						</p>
 					</div>
 					<div class="col-md-5">
@@ -136,7 +137,7 @@
 
 						      			<div class="row" style="margin-top:30px;">
 						      				<div class="col-md-12">
-						      					{{ form_widget(formRegalo.Agregar, { 'attr': {'style': 'width:120px; float:right; margin-right:50px; margin-top:30px;' } }) }}
+						      					{{ form_widget(formRegalo.Agregar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:120px; float:right; margin-right:50px; margin-top:30px;' } }) }}
 						      				</div>
 						      			</div>
 

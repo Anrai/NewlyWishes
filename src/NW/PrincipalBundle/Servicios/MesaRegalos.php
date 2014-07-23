@@ -107,7 +107,7 @@ class MesaRegalos
         $catRegalosEntity = $this->em->getRepository('NWPrincipalBundle:CatRegalos');
         $categorias = $catRegalosEntity->findAll();
 
-        $categoria[0] = 'Selecciona una categoría';
+        $categoria[0] = 'Categoría';
         foreach($categorias as $key => $value)
         {
             $categoria[$key+1] = $categorias[$key]->getCategoriaName();
