@@ -67,6 +67,10 @@ assetic:
            inputs:
                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
            output: js/bootstrap.js
+       tooltip_bootstrap:
+           inputs:
+               - %kernel.root_dir%/../vendor/twbs/bootstrap/js/tooltip.js
+           output: js/bootstrap.js
        fullcalendar_css:
            inputs:
                - %kernel.root_dir%/../vendor/arshaw/fullcalendar/fullcalendar/fullcalendar.css

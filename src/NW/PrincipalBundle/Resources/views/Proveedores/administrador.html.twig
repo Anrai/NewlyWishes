@@ -154,5 +154,11 @@
 	</div>
 
 	{% endblock %}
+
+	{% block javascripts %}
+		{{ parent() }}  
+		<script type="text/javascript" src="{{asset('js/tooltip.js')}}"></script>
+	{% endblock %}
+
 	{% block footer %}
 	{% endblock %}
