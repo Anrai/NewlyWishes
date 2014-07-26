@@ -234,6 +234,7 @@ class Bodas
 
             if ($date2->format("Y")<=$date1->format("Y") and $date2->format("M")<=$date1->format("M") and $date2->format("D")<=$date1->format("D"))
             {
+                return $interval->format('Faltan %m meses y %d días para tu boda');
                 return "¡Felicidades!";
             }
             else
@@ -270,6 +271,6 @@ class Bodas
         $d = $fechaJavascript->format('j');
         $javascript = $Y.','.$m.','.$d;
 
-        return array('guiones' => $guiones, 'javascript' => $javascript);
+        return array('guiones' => $guiones, 'javascript' => $javascript, 'hayFechaBoda' => $this->hayFechaBoda());
     }
 }

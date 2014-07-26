@@ -34,8 +34,13 @@
 			]
 		});
 
-		// Se dirigen los calendarios a la fecha de la boda
-		$('.calendar-view').fullCalendar('gotoDate', new Date({{fechaBodaFormat.javascript}}));
+		// Se dirigen los calendarios a la fecha de la boda si es que está definida, si no se muestra la fecha actual.
+		{# /* El año 2000 significa sin fecha de boda */ #}
+		{% if fechaBodaFormat.hayFechaBoda %}
+			$('.calendar-view').fullCalendar('gotoDate', new Date({{fechaBodaFormat.javascript}}));
+		{% else %}
+			$('.calendar-view').fullCalendar('gotoDate', new Date());
+		{% endif %}
 
 		// Se aplica clase del día de la boda en el calendario grande
 		$('#calendar .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');

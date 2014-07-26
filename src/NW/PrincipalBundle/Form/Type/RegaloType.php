@@ -18,9 +18,22 @@ class RegaloType extends AbstractType
         $builder->add('cantidad', 'integer');
         $builder->add('horcruxes', 'integer');
         $builder->add('categoria', 'choice', array('choices' => array(
-			'1' => 'Muebles',
-			'2' => 'Electrodomésticos',
-			'3' => 'Viajes',
+			'1' => 'Electrodomésticos',
+			'2' => 'Cocina',
+			'3' => 'Línea blanca',
+            '4' => 'Hogar',
+            '5' => 'Recámara',
+            '6' => 'Niños',
+            '7' => 'Viajes',
+            '8' => 'Luna de miel',
+            '9' => 'Muebles',
+            '10' => 'Jardín',
+            '11' => 'Mesa',
+            '12' => 'Decoración',
+            '13' => 'Electrónica',
+            '14' => 'Televisión',
+            '15' => 'Sonido',
+            '16' => 'Otros'
 			), 'multiple'  => false,));
         $builder->add('Agregar', 'submit');
     }

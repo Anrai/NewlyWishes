@@ -81,6 +81,15 @@ class MesaRegalos
             foreach($mesa as $key => $value)
             {
                 $articulos[$key] = $value->getValues();
+
+                $number = 1234.56;
+                setlocale(LC_MONETARY,"en_US");
+
+                // Precio por parte obtener
+                $articulos[$key]['precioParte'] = number_format($articulos[$key]['precioTotal']/$articulos[$key]['horcruxes'], 2,'.', ',');
+
+                // Precio total poner comas y puntos
+                $articulos[$key]['precioTotal'] = number_format($articulos[$key]['precioTotal'], 2,'.', ',');
             }
         }
         else

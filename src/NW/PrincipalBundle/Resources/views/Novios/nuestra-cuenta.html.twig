@@ -140,8 +140,14 @@
 							        <br><br>
 							        <div class="row">
 	 														<div class="col-xs-9">
-								       	{{ form_widget(formNovios.terminosCondiciones) }} {{ form_label(formNovios.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
-										      {{ form_widget(formNovios.terminosPrivacidad) }} {{ form_label(formNovios.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
+								       	{{ form_widget(formNovios.terminosCondiciones) }}
+								       	<a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesV2.pdf')}}">
+								       	Acepto los términos y condiciones</a>
+								       	<br />
+										{{ form_widget(formNovios.terminosPrivacidad) }}
+										<a href="{{asset('documents/TerminosYCondicionesNWV4.pdf')}}">
+										Acepto los términos de privacidad</a>
+										<br />
 								        </div>
 								        <div class="col-xs-3">
 								        <img src="{{asset('img/mini-punto.png')}}">
@@ -208,7 +214,9 @@
 						<h5 class="art" style="float:left;">
 							Nuestra contraseña
 							{% if statusForm %}
-								(Se ha actualizado satisfactoriamente)
+								<b>(Se ha actualizado satisfactoriamente)</b>
+							{% elseif tamanoContrasena %}
+								<b>La contraseña debe ser de 8 caracteres</b>
 							{% endif %}
 						</h5>
 					</div>

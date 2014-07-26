@@ -96,6 +96,10 @@ class NoviosController extends Controller
 
                     $em->persist($newPadrino);
                     $em->flush();
+
+                    // Limpiar campos de formulario para agregar padrinos
+                    $formPadrinosData = new Padrinos();
+                    $formPadrinos = $this->createForm(new PadrinosType(), $formPadrinosData);
                 }
             }
             // Formulario de agregar nota
@@ -110,6 +114,10 @@ class NoviosController extends Controller
 
                     $em->persist($newNota);
                     $em->flush();
+
+                    // Limpiar campos de formulario para agregar notas
+                    $formNotasData = new Notas();
+                    $formNotas = $this->createForm(new NotasType(), $formNotasData);
                 }
             }
         }
@@ -337,6 +345,11 @@ class NoviosController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($newTask);
                     $em->flush();
+
+                    // Limpiar formulario
+                    $formAgregarData = new Checklist();
+                    $formAgregar = $this->createForm(new ChecklistType(), $formAgregarData);
+
                 }
             }
             
@@ -433,6 +446,10 @@ class NoviosController extends Controller
 
                     $em->persist($newRegalo);
                     $em->flush();
+
+                    // Limpiar formulario de nuevo regalo
+                    $formRegaloData = new MesaRegalos();
+                    $formRegalo = $this->createForm(new RegaloType(), $formRegaloData);
                 }
             }
         }
@@ -499,6 +516,10 @@ class NoviosController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($newInvitado);
                     $em->flush();
+
+                    // Limpiar formulario para nuvos invitados
+                    $formAgregarData = new ListaInvitados();
+                    $formAgregar = $this->createForm(new ListaInvitadosType(), $formAgregarData);
                 }
             }
         }
@@ -589,6 +610,7 @@ class NoviosController extends Controller
 
         // No se ha actualizado la contraseña
         $statusForm=false;
+        $tamanoContrasena=false; // El tamaño de la contraseña está bien
 
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
@@ -600,22 +622,30 @@ class NoviosController extends Controller
 
                 if($form->isValid())
                 {
-                    // Codificando la contraseña escrita para después compararla con la original
-                    $encoder_service = $this->get('security.encoder_factory');
-                    $encoder = $encoder_service->getEncoder($user);
-                    $encoder_pass = $encoder->encodePassword($form["oldPass"]->getData(), $user->getSalt());
 
-                    // Verificar que la contraseña escrita sea correcta
-                    if($encoder_pass === $user->getPassword())
+                    // Verificar el tamaño de la contraseña
+                    if(strlen($form["newPass"]->getData())==8)
                     {
-                        // Cambiar contraseña del usuario
-                        $user->setPlainPassword($form["newPass"]->getData());
-                        $this->get('fos_user.user_manager')->updateUser($user,false);
-                        $this->getDoctrine()->getManager()->flush();
-                        
-                        // Ya se actualizó la contraseña
-                        $statusForm=true;
-                    }            
+                        // Codificando la contraseña escrita para después compararla con la original
+                        $encoder_service = $this->get('security.encoder_factory');
+                        $encoder = $encoder_service->getEncoder($user);
+                        $encoder_pass = $encoder->encodePassword($form["oldPass"]->getData(), $user->getSalt());
+
+                        // Verificar que la contraseña escrita sea correcta
+                        if($encoder_pass === $user->getPassword())
+                        {
+                            // Cambiar contraseña del usuario
+                            $user->setPlainPassword($form["newPass"]->getData());
+                            $this->get('fos_user.user_manager')->updateUser($user,false);
+                            $this->getDoctrine()->getManager()->flush();
+                            
+                            // Ya se actualizó la contraseña
+                            $statusForm = true;
+                        }        
+                    }
+                    else{
+                        $tamanoContrasena = true;  
+                    }
                 }
             }
             // ¿El formulario que se envió es el de edición de los datos de los novios?
@@ -700,6 +730,7 @@ class NoviosController extends Controller
             'noviaInfo' => $noviaInfo,
             'novioInfo' => $novioInfo,
             'statusForm' => $statusForm,
+            'tamanoContrasena' => $tamanoContrasena,
             'hayFechaBoda' => false,//$BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => false,//$BodaVieja->contadorFechaBoda(),
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
