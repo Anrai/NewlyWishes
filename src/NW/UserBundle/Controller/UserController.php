@@ -180,13 +180,22 @@ class UserController extends Controller
 
             if($usuarioPorUsername || $usuarioPorEmail)
             {
+                $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
+                return $this->render('NWUserBundle:User:registronovios.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+            }
+
+            /* // Generar alerta
+            if($usuarioPorUsername || $usuarioPorEmail)
+            {
                 $ruta = $this->getRefererRoute();
                 $locale = $request->get('_locale');
                 $url = $this->get('router')->generate($ruta, array('_locale' => $locale));
                 $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
 
                 return $this->redirect($url);
-            }
+            }*/
 
             // Agregando Usuario y sus datos
             $user = $userManager->createUser();
