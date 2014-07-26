@@ -15,9 +15,9 @@ class NovioType extends AbstractType
         $builder->add('aPaterno', 'text');
         $builder->add('aMaterno', 'text', array('required' => false));
         $builder->add('eMail', 'email');
-        $builder->add('lada', 'text', array('max_length' => 3));
-        $builder->add('telefono', 'text', array('max_length' => 8));
-        $builder->add('celular', 'text', array('max_length' => 10));
+        $builder->add('lada', 'integer', array('max_length' => 3));
+        $builder->add('telefono', 'integer', array('max_length' => 8));
+        $builder->add('celular', 'integer', array('max_length' => 10));
         $builder->add('direccion', 'text');
         $builder->add('pais', 'choice', array(
                 'choices' => array(
@@ -60,7 +60,7 @@ class NovioType extends AbstractType
                     '32'   => 'Zacatecas',),
                 'multiple'  => false,));
         $builder->add('ciudad', 'text');
-        $builder->add('cp', 'text', array('max_length' => 5));
+        $builder->add('cp', 'integer', array('max_length' => 5));
     }
 
  	public function setDefaultOptions(OptionsResolverInterface $resolver)
