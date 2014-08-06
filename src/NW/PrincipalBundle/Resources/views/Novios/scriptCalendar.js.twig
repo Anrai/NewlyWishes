@@ -1,7 +1,7 @@
 <script>
 	$(document).ready(function() {
 		
-		$('.calendar-view').fullCalendar({
+		$('#calendar').fullCalendar({
 			editable: true,
 			header: {
 				left: 'prev',
@@ -32,6 +32,27 @@
 				{% endfor %}
 				{% endif %}
 			]
+		});
+
+		$('#calendar-mini').fullCalendar({
+			editable: true,
+			header: {
+				left: 'prev',
+				center: 'title',
+				right: 'next'
+			},
+			monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+			monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+			dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+			dayNamesShort: ['D','L','M','M','J','V','S'],
+			buttonText: {
+				prev: "<span class='arrow-left'></span>",
+				next: "<span class='arrow-right'></span>",
+			},
+			buttonIcons: {
+				prev: 'arrow-left',
+				next: 'circle-triangle-e'
+			}
 		});
 
 		// Se dirigen los calendarios a la fecha de la boda si es que está definida, si no se muestra la fecha actual.

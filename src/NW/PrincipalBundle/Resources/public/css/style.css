@@ -1493,3 +1493,7 @@ label {
 	width:95%;
 	background:rgba(235,235,235,1);
 }
+
+#calendar-mini .fc-state-highlight>div {
+    background: rgb(78, 0, 41)!important;
+}

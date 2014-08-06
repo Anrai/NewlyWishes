@@ -4,9 +4,11 @@ namespace NW\UserBundle\Form\Type;
 
 use NW\UserBundle\Form\Type\NoviaType;
 use NW\UserBundle\Form\Type\NovioType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
- 
+use Symfony\Component\Validator\Constraints\Length;
+
 class RegistroType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -17,7 +19,7 @@ class RegistroType extends AbstractType
 
         // Se genera el formulario para el registro de usuarios
         $builder->add('userName', 'text', array('mapped' => false, 'required'  => true));
-        $builder->add('userPass', 'password', array('mapped' => false, 'required'  => true));
+        $builder->add('userPass', 'password', array('mapped' => false, 'required'  => true, 'constraints' => new Length(array('min' => 8))));
         $builder->add('mismaDireccion', 'checkbox', array('mapped' => false, 'required'  => false));
         $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));

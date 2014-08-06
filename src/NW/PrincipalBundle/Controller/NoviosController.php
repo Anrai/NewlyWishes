@@ -234,6 +234,10 @@ class NoviosController extends Controller
 
                     $em->persist($nuevaTarea);
                     $em->flush();
+
+                    $nuevaTarea = new TareaCalendario();
+                    $nuevaTarea->setUser($user);
+                    $formTareaCalendario = $this->createForm(new TareaCalendarioType(), $nuevaTarea, array('categorias' => $categoriasArr));
                 }
             }
         }

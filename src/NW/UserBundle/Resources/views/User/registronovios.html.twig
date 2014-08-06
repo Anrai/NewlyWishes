@@ -121,6 +121,8 @@
 		<div class="col-md-4 puntosRosas">
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
+			<br />
+			La contraseña debe tener mínimo 8 caracteres
 		</div>
 		<div class="col-md-4 puntosRosas">
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:7px;" width="210">{{ form_widget(form.terminosCondiciones) }} {{ form_label(form.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />

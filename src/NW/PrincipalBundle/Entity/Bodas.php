@@ -230,9 +230,10 @@ class Bodas
             $date1 = new \DateTime();
             
 
-            $interval = $date1->diff($date2);
+            $interval = $date1->diff($date2,true);
+            $diferencia = $date2->format('U')-$date1->format('U');
 
-            if ($date2->format("Y")<=$date1->format("Y") and $date2->format("M")<=$date1->format("M") and $date2->format("D")<=$date1->format("D"))
+            /*if ($date2->format("Y")<=$date1->format("Y") and $date2->format("M")<=$date1->format("M") and $date2->format("D")<=$date1->format("D"))
             {
                 return $interval->format('Faltan %m meses y %d días para tu boda');
                 return "¡Felicidades!";
@@ -240,7 +241,19 @@ class Bodas
             else
             {
                 return $interval->format('Faltan %m meses y %d días para tu boda');
+            }*/
+
+            if($diferencia > 0)
+            {
+                return $interval->format('Faltan %m meses y %d días para tu boda');
             }
+            else if(abs($diferencia) >= 0 and abs($diferencia) <= 86400){
+                return "¡Felicidades! Hoy es tu boda";
+            }
+            else{
+                return $interval->format('Tu boda fue hace %m meses y %d días');
+            }
+
         }
         return false;
     }
