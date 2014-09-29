@@ -103,8 +103,8 @@ nw_principal_novios_nota_delete:
     defaults: { _controller: NWPrincipalBundle:Novios:NotaDelete }
 
 nw_principal_novios_nuestro-calendario:
-    pattern:  /novios/nuestro-calendario
-    defaults: { _controller: NWPrincipalBundle:Novios:nuestroCalendario }
+    pattern:  /novios/nuestro-calendario/{dia}/{mes}/{ano}
+    defaults: { _controller: NWPrincipalBundle:Novios:nuestroCalendario, dia:0, mes:0, ano:0 }
 
 nw_principal_novios_tarea_calendario_delete:
     pattern:  /novios/tarea-calendario/{id}/delete

@@ -8,16 +8,18 @@
 	</div>
 
 	<div class="row" style="font-size:17px;">
-		<b>Pendientes para este día -</b><span style="color: rgb(204,0,153);"> {{ today() }} </span><br />
+		<b>Pendientes para este día -</b><span style="color: rgb(204,0,153);"> {{diaActual}}</span><br />
 	</div>
 
 	<div class="row" style="border-top-color: rgb(214, 214, 214); border-top-width: 1px; border-top-style: solid; margin-top: 25px; padding:10px;">
 		
 		{% for tarea in tareas %}
+			{% if tarea.show %}
 			<div class="row">
 				<div class="col-xs-8" style="font-size:14px;">{{ tarea.compromiso }}</div>
 				<div class="col-xs-4" style="font-size:14px;">{{ tarea.vencimiento }}</div>
 			</div>
+			{% endif %}
 		{% endfor %}
 
 	</div>

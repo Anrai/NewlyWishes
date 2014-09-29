@@ -364,6 +364,7 @@ class TareaCalendario
     // Método que regresa mis valores en forma de array
     public function getValues()
     {
+
         return array(
             'id' => $this->getId(),
             'categoria' => $this->getCategoria()->getCategoria(),

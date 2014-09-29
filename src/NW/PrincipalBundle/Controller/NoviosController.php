@@ -192,14 +192,23 @@ class NoviosController extends Controller
         return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-boda'));
     }
 	
-	public function nuestroCalendarioAction(Request $request)
+	public function nuestroCalendarioAction($dia, $mes, $ano, Request $request)
     {
         // Manejador de Doctrine
         $em = $this->getDoctrine()->getManager();
 
-        $user=$this->getUser();
-        $novia=$user->getNovias();
-        $novio=$user->getNovios();
+        if($ano){
+            $lookForDay = $ano.'-'.$mes.'-'.$dia;
+            $lookForDay = \DateTime::createFromFormat('Y-m-d', $lookForDay);
+        }
+        else
+        {
+            $lookForDay = new \DateTime();
+        }
+
+        $user = $this->getUser();
+        $novia = $user->getNovias();
+        $novio = $user->getNovios();
         $BodaVieja = $em->getRepository('NWPrincipalBundle:Bodas')->findOneByUsuarioId($user->getId());
 
         // Obteniendo categorías de tareas de calendario
@@ -227,7 +236,14 @@ class NoviosController extends Controller
                     $categoria = $categoriaEntity->find($nuevaTarea->getCategoriaId());
                     $nuevaTarea->setcategoria($categoria);
 
-                    $vencimiento = new \DateTime(date('Y-m-d'.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
+                    if($ano){
+                        $vencimiento = new \DateTime(date($ano.'-'.$mes.'-'.$dia.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
+                    }
+                    else
+                    {
+                        $vencimiento = new \DateTime(date('Y-m-d'.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
+                    }
+
                     $nuevaTarea->setVencimiento($vencimiento);
 
                     $nuevaTarea->setHecho(false);
@@ -274,7 +290,23 @@ class NoviosController extends Controller
 
             $tareas[$key]['guiones'] = $guiones;
             $tareas[$key]['javascript'] = $javascript;
+
+            // Mostrar para el día seleccionado
+            if($guiones == $lookForDay->format('Y-m-d'))
+            {
+                $tareas[$key]['show'] = true;
+            }
+            else
+            {
+                 $tareas[$key]['show'] = false;
+            }
         }
+
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $arrayDias = array( 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+        $diaActual = $lookForDay->format('j')." de ".$arrayMeses[$lookForDay->format('n')-1]." de ".$lookForDay->format('Y');
+
+        $diaActual2 = $lookForDay->format('n').'-'.$lookForDay->format('j').'-'.$lookForDay->format('Y');
 
         return $this->render('NWPrincipalBundle:Novios:nuestro-calendario.html.twig', array(
             'novia' => $novia->getNombre(),
@@ -284,6 +316,8 @@ class NoviosController extends Controller
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
             'formTareaCalendario' => $formTareaCalendario->createView(),
             'tareas' => $tareas,
+            'diaActual' => $diaActual,
+            'diaActual2' => $diaActual2,
         ));
     }
 
