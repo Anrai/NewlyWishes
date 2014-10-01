@@ -31,7 +31,7 @@
 					},
 				{% endfor %}
 				{% endif %}
-			]
+			]	
 		});
 
 		$('#calendar-mini').fullCalendar({
@@ -56,7 +56,9 @@
 		});
 
 		// Se dirigen los calendarios al mes ubicado
-		$('.calendar-view').fullCalendar('gotoDate', new Date("{{diaActual2}}"));
+		{% if diaActual2 is defined %}
+			$('.calendar-view').fullCalendar('gotoDate', new Date("{{diaActual2}}"));
+		{% endif %}
 
 		// Se aplica clase del día de la boda en el calendario grande
 		$('#calendar .fc-day[data-date="{{ fechaBodaFormat.guiones }}"]').addClass('diaBoda');
@@ -78,7 +80,7 @@
 			});
 
 			// Se le pone link a cada día del mes para cambiar a ese día en particular
-			$(".fc-day").each(function(){
+			$("#calendar .fc-day").each(function(){
 			    var dayNumber = $(this).find(".fc-day-number").text();
 			    var anoMesDia = $(this).data("date");
 			    var ano = anoMesDia.substring(0, 4);
@@ -109,7 +111,7 @@
 		});
 
 		// Se le pone link a cada día del mes para cambiar a ese día en particular
-		$(".fc-day").each(function(){
+		$("#calendar .fc-day").each(function(){
 		    var dayNumber = $(this).find(".fc-day-number").text();
 		    var anoMesDia = $(this).data("date");
 		    var ano = anoMesDia.substring(0, 4);
@@ -118,6 +120,5 @@
 
 		    $(this).find(".fc-day-number").html("<a href='{{ path('nw_principal_novios_nuestro-calendario')}}/"+dia+"/"+mes+"/"+ano+"'>"+dayNumber+"</a>");
 		});
-
 	});
 </script>
