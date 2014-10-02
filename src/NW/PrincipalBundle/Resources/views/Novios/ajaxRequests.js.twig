@@ -8,8 +8,8 @@ $('.completation').click(function(){
 		completar(serverInfo);
 	});
 	
-	$("#tarea-"+myID).find(".completation").toggle();
-	$("#tarea-"+myID).find(".descompletation").toggle();
+	$("#"+myID).find(".completation").toggle();
+	$("#"+myID).find(".descompletation").toggle();
 });
 
 $('.descompletation').click(function(){
@@ -21,8 +21,22 @@ $('.descompletation').click(function(){
 		descompletar(serverInfo);
 	});
 
-	$("#tarea-"+myID).find(".completation").toggle();
-	$("#tarea-"+myID).find(".descompletation").toggle();
+	$("#"+myID).find(".completation").toggle();
+	$("#"+myID).find(".descompletation").toggle();
+});
+
+$('.elimination').click(function(){
+
+	var myID = $(this).data("id");
+	var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/delete";
+
+	$.getJSON(ajaxURL, function(serverInfo){
+		eliminar(serverInfo);
+	});
+
+	$("#"+myID).remove();
+	$("#tarea-"+myID).remove();
+	$("tarea_descripcion_"+myID).remove();
 });
 
 function completar(serverInfo){
@@ -40,6 +54,17 @@ function descompletar(serverInfo){
     var descompletado = serverInfo.descompletado;
 
     if(descompletado){
+	    return true;
+	}
+	else{
+		return false;
+	}
+}
+
+function eliminar(serverInfo){
+    var eliminado = serverInfo.eliminado;
+
+    if(eliminado){
 	    return true;
 	}
 	else{

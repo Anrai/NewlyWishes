@@ -35,7 +35,7 @@
 
 	                        {% for tarea in tareas %}
 	                        	{% if tarea.show %}
-									<tr id="tarea-{{tarea.id}}" class="tarea_link">
+									<tr id="{{tarea.id}}" class="tarea_link">
 			                        	<td width="35">
 			                        		<img id="tarea_selected_{{ tarea.id }}" src="{{ asset('img/punto.png') }}" class="invisible desaparecible">
 			                        	</td>
@@ -51,7 +51,7 @@
 											</a>
 			                        	</td>
 			                        	<td style="text-align:center;">
-			                        		<a href="{{url('nw_principal_novios_tarea_calendario_delete', {'id': tarea.id})}}">
+			                        		<a href="#" class="elimination" data-id="{{tarea.id}}">
 			                        			<img src="{{asset('img/bote.png')}}" style="width:25px;" />
 			                        		</a>
 			                        	</td>

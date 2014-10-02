@@ -15,7 +15,7 @@
 		
 		{% for tarea in tareas %}
 			{% if tarea.show %}
-			<div class="row">
+			<div class="row" id="tarea-{{tarea.id}}">
 				<div class="col-xs-8" style="font-size:14px;">{{ tarea.compromiso }}</div>
 				<div class="col-xs-4" style="font-size:14px;">{{ tarea.vencimiento }}</div>
 			</div>

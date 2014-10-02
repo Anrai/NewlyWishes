@@ -323,12 +323,17 @@ class NoviosController extends Controller
 
     public function TareaCalendarioDeleteAction($id) // Controlador que borra una tarea de calendario según el id pasado
     {
-        $em = $this->getDoctrine()->getManager();
-        $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
-        $em->remove($tarea);
-        $em->flush();
-
-        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-calendario'));
+        if($this->getRequest()->isXmlHttpRequest())
+        {
+           $em = $this->getDoctrine()->getManager();
+            $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
+            $em->remove($tarea);
+            $em->flush();
+            return new Response("{\"eliminado\": true}");
+        }
+        else{
+            return new Response("Acceso no permitido");
+        }
     }
 
     public function TareaCalendarioCompletarAction($id) // Controlador que completa una tarea de calendario según el id pasado
