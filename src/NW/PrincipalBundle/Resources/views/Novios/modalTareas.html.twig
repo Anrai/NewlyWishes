@@ -35,7 +35,7 @@
 
 	                        {% for tarea in tareas %}
 	                        	{% if tarea.show %}
-									<tr id="{{ tarea.id }}" class="tarea_link">
+									<tr id="tarea-{{tarea.id}}" class="tarea_link">
 			                        	<td width="35">
 			                        		<img id="tarea_selected_{{ tarea.id }}" src="{{ asset('img/punto.png') }}" class="invisible desaparecible">
 			                        	</td>
@@ -43,15 +43,12 @@
 			                        	<td>{{ tarea.categoria }}</td>
 			                        	<td style="text-align:center;">{{ tarea.vencimiento }}</td>
 			                        	<td style="text-align:center;">
-			                        		{% if tarea.hecho %}
-												<a href="{{url('nw_principal_novios_tarea_calendario_descompletar', {'id': tarea.id})}}">
-													<span class="cuadro_confirmacion" style="margin-left:35px;">&nbsp;✓</span>
-												</a>
-											{% else %}
-												<a href="{{url('nw_principal_novios_tarea_calendario_completar', {'id': tarea.id})}}">
-													<span class="cuadro_confirmacion" style="margin-left:35px;"></span>
-												</a>
-											{% endif %}
+											<a href="#" class="descompletation" data-id="{{tarea.id}}" style="{% if tarea.hecho %}display:block;{% else %}display:none;{% endif %}">
+												<span class="cuadro_confirmacion" style="margin-left:35px;">&nbsp;✓</span>
+											</a>
+											<a href="#" class="completation" data-id="{{tarea.id}}" style="{% if tarea.hecho %}display:none;{% else %}display:block;{% endif %}">
+												<span class="cuadro_confirmacion" style="margin-left:35px;"></span>
+											</a>
 			                        	</td>
 			                        	<td style="text-align:center;">
 			                        		<a href="{{url('nw_principal_novios_tarea_calendario_delete', {'id': tarea.id})}}">

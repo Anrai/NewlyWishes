@@ -40,3 +40,8 @@
 	{{ parent() }}
 	{% include 'NWPrincipalBundle:Novios:modalTareas.html.twig' %}
 {% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+    {% include 'NWPrincipalBundle:Novios:ajaxRequests.js.twig' %}
+{% endblock %}

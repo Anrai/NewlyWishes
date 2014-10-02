@@ -1,0 +1,50 @@
+<script>
+$('.completation').click(function(){
+
+	var myID = $(this).data("id");
+	var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/completar";
+
+	$.getJSON(ajaxURL, function(serverInfo){
+		completar(serverInfo);
+	});
+	
+	$("#tarea-"+myID).find(".completation").toggle();
+	$("#tarea-"+myID).find(".descompletation").toggle();
+});
+
+$('.descompletation').click(function(){
+
+	var myID = $(this).data("id");
+	var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/descompletar";
+
+	$.getJSON(ajaxURL, function(serverInfo){
+		descompletar(serverInfo);
+	});
+
+	$("#tarea-"+myID).find(".completation").toggle();
+	$("#tarea-"+myID).find(".descompletation").toggle();
+});
+
+function completar(serverInfo){
+    var completado = serverInfo.completado;
+
+    if(completado){
+	    return true;
+	}
+	else{
+		return false;
+	}
+}
+
+function descompletar(serverInfo){
+    var descompletado = serverInfo.descompletado;
+
+    if(descompletado){
+	    return true;
+	}
+	else{
+		return false;
+	}
+}
+
+</script>

@@ -333,24 +333,35 @@ class NoviosController extends Controller
 
     public function TareaCalendarioCompletarAction($id) // Controlador que completa una tarea de calendario según el id pasado
     {
-        $em = $this->getDoctrine()->getManager();
-        $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
-        $tarea->setHecho(true);
-        $em->persist($tarea);
-        $em->flush();
+        if($this->getRequest()->isXmlHttpRequest())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
+            $tarea->setHecho(true);
+            $em->persist($tarea);
+            $em->flush();
+            return new Response("{\"completado\": true}");
+        }
+        else{
+            return new Response("Acceso no permitido");
+        }
 
-        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-calendario'));
     }
 
     public function TareaCalendarioDescompletarAction($id) // Controlador que descompleta una tarea de calendario según el id pasado
     {
-        $em = $this->getDoctrine()->getManager();
-        $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
-        $tarea->setHecho(false);
-        $em->persist($tarea);
-        $em->flush();
-
-        return $this->redirect($this->generateUrl('nw_principal_novios_nuestro-calendario'));
+        if($this->getRequest()->isXmlHttpRequest())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $tarea = $em->getRepository('NWPrincipalBundle:TareaCalendario')->find($id);
+            $tarea->setHecho(false);
+            $em->persist($tarea);
+            $em->flush();
+            return new Response("{\"descompletado\": true}");
+        }
+        else{
+            return new Response("Acceso no permitido");
+        }
     }
 	
 	public function nuestroChecklistAction(Request $request)

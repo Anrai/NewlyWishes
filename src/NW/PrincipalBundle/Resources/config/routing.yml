@@ -110,6 +110,10 @@ nw_principal_novios_tarea_calendario_delete:
     pattern:  /novios/tarea-calendario/{id}/delete
     defaults: { _controller: NWPrincipalBundle:Novios:TareaCalendarioDelete }
 
+nw_principal_novios_tarea_calendario_operaciones:
+    pattern:  /novios/tarea-calendario
+    defaults: { _controller: NWPrincipalBundle:Novios:TareaCalendarioOperaciones }
+
 nw_principal_novios_tarea_calendario_completar:
     pattern:  /novios/tarea-calendario/{id}/completar
     defaults: { _controller: NWPrincipalBundle:Novios:TareaCalendarioCompletar }
