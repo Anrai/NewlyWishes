@@ -225,37 +225,49 @@ class NoviosController extends Controller
         $nuevaTarea->setUser($user);
         $formTareaCalendario = $this->createForm(new TareaCalendarioType(), $nuevaTarea, array('categorias' => $categoriasArr));
 
-        // Recuperando formularios
-        if('POST' === $request->getMethod()) {
-        
-            // Formulario tarea nueva
-            if ($request->request->has($formTareaCalendario->getName())) {
-                $formTareaCalendario->handleRequest($request);
-                if($formTareaCalendario->isValid())
-                {
-                    $categoria = $categoriaEntity->find($nuevaTarea->getCategoriaId());
-                    $nuevaTarea->setcategoria($categoria);
+        // Recuperando formulario si es AJAX
+        if($this->getRequest()->isXmlHttpRequest())
+        {
+            $formTareaCalendario->bind($request);
+            if($formTareaCalendario->isValid())
+            {
+                // Codigo de respuesta
+                $responseCode = 200;
+                $return = array("responseCode" => $responseCode);
+                
+                // Persistir formulario a base de datos
+                $categoria = $categoriaEntity->find($nuevaTarea->getCategoriaId());
+                $nuevaTarea->setcategoria($categoria);
 
-                    if($ano){
-                        $vencimiento = new \DateTime(date($ano.'-'.$mes.'-'.$dia.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
-                    }
-                    else
-                    {
-                        $vencimiento = new \DateTime(date('Y-m-d'.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
-                    }
-
-                    $nuevaTarea->setVencimiento($vencimiento);
-
-                    $nuevaTarea->setHecho(false);
-
-                    $em->persist($nuevaTarea);
-                    $em->flush();
-
-                    $nuevaTarea = new TareaCalendario();
-                    $nuevaTarea->setUser($user);
-                    $formTareaCalendario = $this->createForm(new TareaCalendarioType(), $nuevaTarea, array('categorias' => $categoriasArr));
+                if($ano){
+                    $vencimiento = new \DateTime(date($ano.'-'.$mes.'-'.$dia.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
                 }
+                else
+                {
+                    $vencimiento = new \DateTime(date('Y-m-d'.' '.$formTareaCalendario['hora']->getData().':'.$formTareaCalendario['minuto']->getData() ));
+                }
+
+                $nuevaTarea->setVencimiento($vencimiento);
+
+                $nuevaTarea->setHecho(false);
+
+                $em->persist($nuevaTarea);
+                $em->flush();
+
+                $nuevaTarea = new TareaCalendario();
+                $nuevaTarea->setUser($user);
+                $formTareaCalendario = $this->createForm(new TareaCalendarioType(), $nuevaTarea, array('categorias' => $categoriasArr));
             }
+            else
+            {
+                // La petición no funciona
+                $responseCode = 500;
+                $return = array("responseCode" => $responseCode);
+            }
+
+            // Se devuelve al cliente el resultado de la operación ajax
+            $return = json_encode($return);
+            return new Response($return, $responseCode, array('Content-Type'=>'application/json'));
         }
 
         $tareasEntity = $em->getRepository('NWPrincipalBundle:TareaCalendario');
@@ -319,6 +331,14 @@ class NoviosController extends Controller
             'diaActual' => $diaActual,
             'diaActual2' => $diaActual2,
         ));
+    }
+
+    public function TareaCalendarioAgregarAction()
+    {
+        if($this->getRequest()->isXmlHttpRequest())
+        {
+
+        }
     }
 
     public function TareaCalendarioDeleteAction($id) // Controlador que borra una tarea de calendario según el id pasado

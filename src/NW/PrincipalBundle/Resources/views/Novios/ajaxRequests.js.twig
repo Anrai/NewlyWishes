@@ -1,42 +1,47 @@
 <script>
-$('.completation').click(function(){
+$(document).ready(function()
+{
+	$("form[name='nw_principalbundle_tareacalendario']").submit(submitForm);
 
-	var myID = $(this).data("id");
-	var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/completar";
+	$('.completation').click(function(){
 
-	$.getJSON(ajaxURL, function(serverInfo){
-		completar(serverInfo);
-	});
-	
-	$("#"+myID).find(".completation").toggle();
-	$("#"+myID).find(".descompletation").toggle();
-});
+		var myID = $(this).data("id");
+		var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/completar";
 
-$('.descompletation').click(function(){
-
-	var myID = $(this).data("id");
-	var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/descompletar";
-
-	$.getJSON(ajaxURL, function(serverInfo){
-		descompletar(serverInfo);
+		$.getJSON(ajaxURL, function(serverInfo){
+			completar(serverInfo);
+		});
+		
+		$("#"+myID).find(".completation").toggle();
+		$("#"+myID).find(".descompletation").toggle();
 	});
 
-	$("#"+myID).find(".completation").toggle();
-	$("#"+myID).find(".descompletation").toggle();
-});
+	$('.descompletation').click(function(){
 
-$('.elimination').click(function(){
+		var myID = $(this).data("id");
+		var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/descompletar";
 
-	var myID = $(this).data("id");
-	var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/delete";
+		$.getJSON(ajaxURL, function(serverInfo){
+			descompletar(serverInfo);
+		});
 
-	$.getJSON(ajaxURL, function(serverInfo){
-		eliminar(serverInfo);
+		$("#"+myID).find(".completation").toggle();
+		$("#"+myID).find(".descompletation").toggle();
 	});
 
-	$("#"+myID).remove();
-	$("#tarea-"+myID).remove();
-	$("tarea_descripcion_"+myID).remove();
+	$('.elimination').click(function(){
+
+		var myID = $(this).data("id");
+		var ajaxURL = "{{url('nw_principal_novios_tarea_calendario_operaciones')}}"+"/"+myID+"/delete";
+
+		$.getJSON(ajaxURL, function(serverInfo){
+			eliminar(serverInfo);
+		});
+
+		$("#"+myID).remove();
+		$("#tarea-"+myID).remove();
+		$("tarea_descripcion_"+myID).remove();
+	});
 });
 
 function completar(serverInfo){
@@ -70,6 +75,30 @@ function eliminar(serverInfo){
 	else{
 		return false;
 	}
+}
+
+function submitForm(){
+
+	var values = {};
+
+	$.each($("form[name='nw_principalbundle_tareacalendario']").serializeArray(), function(i, field) {
+		values[field.name] = field.value;
+	});
+
+	$.ajax({
+		type        : 'POST',
+		url         : $("form[name='nw_principalbundle_tareacalendario']").attr("action"),
+		data        : values,
+		success     : function(data) {
+			if(data.responseCode == 200 ){
+				return true;
+			}
+			else{
+				alert("No se agregó la nueva tarea. Intente nuevamente: "+data.algunDato);
+			}		
+		}
+	});
+	return false;
 }
 
 </script>
