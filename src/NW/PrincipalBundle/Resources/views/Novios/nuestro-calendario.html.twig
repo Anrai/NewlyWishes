@@ -11,7 +11,7 @@
 		<b>Pendientes para este día -</b><span style="color: rgb(204,0,153);"> {{diaActual}}</span><br />
 	</div>
 
-	<div class="row" style="border-top-color: rgb(214, 214, 214); border-top-width: 1px; border-top-style: solid; margin-top: 25px; padding:10px;">
+	<div id="tareasNormal" class="row" style="border-top-color: rgb(214, 214, 214); border-top-width: 1px; border-top-style: solid; margin-top: 25px; padding:10px;">
 		
 		{% for tarea in tareas %}
 			{% if tarea.show %}

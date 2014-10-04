@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// Script que muestra descripción en modal de tareas del calendario de novios
-	$(".tarea_link").click(function(){
+	$('#tablaTareas').on('click', '.tarea_link', function() {
 		
 		var mostrar = true;
 		if(!$("#tarea_selected_"+$(this).attr("id")).hasClass("invisible"))

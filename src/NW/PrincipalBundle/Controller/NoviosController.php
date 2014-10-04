@@ -231,10 +231,6 @@ class NoviosController extends Controller
             $formTareaCalendario->bind($request);
             if($formTareaCalendario->isValid())
             {
-                // Codigo de respuesta
-                $responseCode = 200;
-                $return = array("responseCode" => $responseCode);
-                
                 // Persistir formulario a base de datos
                 $categoria = $categoriaEntity->find($nuevaTarea->getCategoriaId());
                 $nuevaTarea->setcategoria($categoria);
@@ -254,9 +250,23 @@ class NoviosController extends Controller
                 $em->persist($nuevaTarea);
                 $em->flush();
 
+                // respuestas
+                $responseCode = 200;
+                $return["responseCode"] = $responseCode;
+                $return["newID"] = $nuevaTarea->getId();
+                $return["compromiso"] = $nuevaTarea->getCompromiso();
+                $return["descripcion"] = $nuevaTarea->getDescripcion();
+                $return["categoria"] = $categoria->getCategoria();
+                $return["vencimiento"] = $vencimiento->format("H:i");
+                $return["nombre"] = $nuevaTarea->getContactoNombre();
+                $return["telefono"] = $nuevaTarea->getContactoTelefono();
+                $return["email"] = $nuevaTarea->getContactoEmail();
+                $return["direccion"] = $nuevaTarea->getContactoDireccion();
+
+                // Se genera un nuevo objeto para el formulario
                 $nuevaTarea = new TareaCalendario();
                 $nuevaTarea->setUser($user);
-                $formTareaCalendario = $this->createForm(new TareaCalendarioType(), $nuevaTarea, array('categorias' => $categoriasArr));
+                $formTareaCalendario = $this->createForm(new TareaCalendarioType(), $nuevaTarea, array('categorias' => $categoriasArr));                
             }
             else
             {
