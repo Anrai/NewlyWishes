@@ -12,6 +12,7 @@ parameters:
     busqueda_novios_service.class: NW\PrincipalBundle\Servicios\BusquedaNovios
     mesa_regalos_service.class: NW\PrincipalBundle\Servicios\MesaRegalos
     reportero_service.class: NW\UserBundle\Servicios\Reportero
+    busquedas_service.class: NW\PrincipalBundle\Servicios\Busquedas
     today_twig_extension.class: NW\PrincipalBundle\Twig\TodayExtension
 
 services:
@@ -20,6 +21,9 @@ services:
         arguments: [@router, @doctrine.orm.entity_manager]
     resenas_service:
         class:     %resenas_service.class%
+        arguments: [@router, @doctrine.orm.entity_manager]
+    busquedas_service:
+        class:     %busquedas_service.class%
         arguments: [@router, @doctrine.orm.entity_manager]
     busqueda_novios_service:
         class:     %busqueda_novios_service.class%

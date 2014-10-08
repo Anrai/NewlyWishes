@@ -2,6 +2,10 @@ nw_principal_homepage:
     pattern:  /
     defaults: { _controller: NWPrincipalBundle:Default:index }
 
+nw_principal_busqueda:
+    pattern:  /buscar
+    defaults: { _controller: NWPrincipalBundle:Default:busqueda}
+
 nw_principal_funcionamiento:
     pattern:  /funcionamiento
     defaults: { _controller: NWPrincipalBundle:Default:funcionamiento }

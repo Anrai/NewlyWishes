@@ -115,8 +115,8 @@
 				<li><a href="{{ url('nw_principal_buscar_novios') }}">Búsqueda de novios</a></li>
 				<li><a href="{{ path('nw_user_registroproveedores') }}">Anúnciate aquí</a></li>
 				<li class="visible-md visible-lg rightround">
-        			<form class="navbar-form navbar-left" role="search">
-            			<input type="text" id="buscador_top" class="form-control lupa" placeholder="Buscar">
+        			<form class="navbar-form navbar-left" role="search" method="POST" action="{{url('nw_principal_busqueda')}}">
+            			<input type="text" id="buscador_top" name="busqueda" class="form-control lupa" placeholder="Buscar">
         			</form>
       			</li>
     		</ul>

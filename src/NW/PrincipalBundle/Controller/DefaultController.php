@@ -343,4 +343,28 @@ class DefaultController extends Controller
         ));
     }
 
+    public function busquedaAction(Request $request)
+    {
+        // Recuperando formulario
+        if('POST' === $request->getMethod()) {
+
+            // Se obtiene la palabra que se quiere buscar
+            $busqueda = $this->get('request')->request->get('busqueda');
+
+            // Servicio con funciones para realizar búsquedas
+            $busquedasService = $this->get('busquedas_service');
+
+            // Resultados de la búsqueda
+            $resultados = $busquedasService->busquedaGeneral($busqueda);
+
+            return $this->render('NWPrincipalBundle:Default:busqueda.html.twig', array(
+                'busqueda' => $busqueda,
+                'resultados' => $resultados,
+            ));
+        }
+        else{
+            return new Response("No hay parámetros de búsqueda, inténtelo nuevamente.");
+        }
+    }
+
 }
