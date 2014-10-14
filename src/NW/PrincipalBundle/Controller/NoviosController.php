@@ -328,7 +328,7 @@ class NoviosController extends Controller
         $arrayDias = array( 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
         $diaActual = $lookForDay->format('j')." de ".$arrayMeses[$lookForDay->format('n')-1]." de ".$lookForDay->format('Y');
 
-        $diaActual2 = $lookForDay->format('n').'-'.$lookForDay->format('j').'-'.$lookForDay->format('Y');
+        $diaActual2 = $lookForDay->format('Y').'-'.$lookForDay->format('n').'-'.$lookForDay->format('j');
 
         return $this->render('NWPrincipalBundle:Novios:nuestro-calendario.html.twig', array(
             'novia' => $novia->getNombre(),
