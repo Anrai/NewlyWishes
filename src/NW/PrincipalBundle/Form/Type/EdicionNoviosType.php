@@ -18,7 +18,7 @@ class EdicionNoviosType extends AbstractType
         // Se generan los nuevos campos de formulario
         $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));
-        $builder->add('enviar', 'submit');
+        $builder->add('Enviar', 'submit');
     }
 
     public function getName()
