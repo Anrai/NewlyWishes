@@ -45,7 +45,7 @@
 	color: #fff!important;
 }
 #calendar .fc-state-highlight {
-	background: rgb(228, 228, 228)!important;
+	background: rgb(228, 228, 228);
 }
 #calendar .diaBoda{
 	background: rgb(235, 169, 218);
@@ -143,4 +143,19 @@
     border-left: 12px solid #FFFFFF;
     font-size: 0;
     line-height: 0;
+}
+#calendar .fc-day:hover, .iluminardia{
+	background-color: rgb(157, 221, 255);
+}
+#calendar .fc-day>div{
+	height: 100%;
+	min-height: 90px;
+	padding: 0;
+}
+#calendar .fc-day-number{
+	width: 100%;
+}
+#calendar .fc-day-number>a{
+	display: block;
+	text-align: right;
 }

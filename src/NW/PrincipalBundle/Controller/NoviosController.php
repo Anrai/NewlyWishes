@@ -805,6 +805,7 @@ class NoviosController extends Controller
         $novioInfo['ciudad']=$novio->getCiudad();
         $novioInfo['cp']=$novio->getCp();
 
+
         // Renderear la plantilla con la información necesaria
         return $this->render('NWPrincipalBundle:Novios:nuestra-cuenta.html.twig', array(
             'form' => $form->createView(),
@@ -815,8 +816,8 @@ class NoviosController extends Controller
             'novioInfo' => $novioInfo,
             'statusForm' => $statusForm,
             'tamanoContrasena' => $tamanoContrasena,
-            'hayFechaBoda' => false,//$BodaVieja->hayFechaBoda(),
-            'contadorFechaBoda' => false,//$BodaVieja->contadorFechaBoda(),
+            'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
+            'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
         ));
     }
