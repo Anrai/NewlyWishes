@@ -55,4 +55,6 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	$(".hacerTooltip").tooltip(); 
+
 }); /* end of as page load scripts */

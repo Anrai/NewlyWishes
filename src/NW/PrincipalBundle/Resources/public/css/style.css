@@ -1497,3 +1497,7 @@ label {
 #calendar-mini .fc-state-highlight>div {
     background: rgb(78, 0, 41)!important;
 }
+
+.hacerTooltip{
+    cursor:pointer;
+}
