@@ -1501,3 +1501,9 @@ label {
 .hacerTooltip{
     cursor:pointer;
 }
+
+.tooltipAncho .tooltip-inner {
+    min-width: 160px;
+    /* If max-width does not work, try using width instead */
+    width: 160px; 
+}
