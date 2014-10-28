@@ -69,10 +69,11 @@
     		<ul class="nav navbar-nav nav-tabs">
 				<li class="leftround"><a href="{{ url('nw_principal_funcionamiento') }}">¿Cómo funciona?</a></li>
 				<li class="dropdown">
-					<a href="{{ url('nw_principal_articulos') }}" class="dropdown-toggle disabled" data-toggle="dropdown">Lo que necesitas</a>
+					<a href="#{#{ url('nw_principal_articulos') }#}" class="dropdown-toggle disabled" data-toggle="dropdown">Lo que necesitas</a>
 					<div class="dropdown-menu">
 						<div class="arrow-up hidden-xs"></div>
 						<div class="globito hidden-xs">
+							{# <!--
 							<div class="row">
 								<div class="col-md-4">
 									<a href="{{url('nw_principal_articulos')}}Jardines">Jardines</a><br />
@@ -105,9 +106,14 @@
 									<a href="{{url('nw_principal_articulos')}}Sastres">Sastres</a><br />
 									<a href="{{url('nw_principal_articulos')}}Fuegos artificiales">Fuegos artificiales</a><br />
 									<a href="{{url('nw_principal_articulos')}}Edecanes">Edecanes</a><br />
-									<a href="{{url('nw_principal_articulos')}}Cenas de pareja">Cenas de pareja</a>
+									<a href="{{url('nw_principal_articulos')}}Cenas de pareja">Cenas de pareja</a>									
 								</div>
 							</div>
+							--> #}
+
+							<p id="proximamenteTemporal">
+							Próximamente podrás encontrar a los mejores proveedores de productos y servicios para tu boda
+							</p>
 						</div>
 					</div>
         		</li>
