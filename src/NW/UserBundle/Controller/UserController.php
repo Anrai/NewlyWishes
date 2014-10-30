@@ -268,7 +268,7 @@ class UserController extends Controller
         $registro->setEstado('');
         $registro->setCiudad('');
         $registro->setCp('');
-        $registro->setPlan('');
+        $registro->setPlan('None');
  
         $form = $this->createFormBuilder($registro)
             ->add('tipoPersona', 'choice', array('choices' => 
@@ -321,13 +321,13 @@ class UserController extends Controller
                      '31'   => 'Yucatán',
                      '32'   => 'Zacatecas',
                     ), 'multiple'  => false,))
-            ->add('ciudad', 'text', array('required' => false))
+            ->add('ciudad', 'text', array('required' => true))
             ->add('cp', 'text', array('max_length' => 5))
             ->add('userName', 'text', array('mapped' => false, 'required'  => true))
             ->add('userPass', 'password', array('mapped' => false, 'required'  => true))
             ->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true))
             ->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true))
-            ->add('plan', 'choice', array('choices' => 
+            /*->add('plan', 'choice', array('choices' => 
                 array(
                     'anuncioEspecial' => 'Anuncio Especial',
                     'anuncioPlus' => 'Anuncio Plus',
@@ -336,6 +336,8 @@ class UserController extends Controller
                     'plus' => 'Plus'
                 ),
                 'multiple' => false, 'expanded' => true, 'required' => true, 'empty_data'  => null))
+            */
+            ->add('plan', 'hidden')
             ->add('Aceptar', 'submit')
             ->getForm();
 

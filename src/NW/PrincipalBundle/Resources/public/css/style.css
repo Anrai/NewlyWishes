@@ -1513,3 +1513,33 @@ label {
     margin-top: 12px;
     font-size: 17px;
 }
+.imagenDiv1Temporal{
+    text-align: center;
+}
+.imagenDiv1Temporal>img{
+    max-width: 145px;
+}
+.strong1Temporal{
+    color: rgba(198,41,158,1);
+    font-size: 13px;
+}
+.columnaTemporal{
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.columnaTemporal .row{
+    padding-top: 35px;
+}
+.proximamenteTemporal{
+    background-color: rgba(204,0,153,0.8);
+    padding: 12px 0 12px;
+    text-align: center;
+    color: white;
+    top: 99px;
+    position: relative;
+    z-index: 99;
+    margin-top: -81px;
+}
+.proximamenteTemporal p{
+    font-size: 18px;
+}

@@ -137,7 +137,10 @@
 			La contraseña debe tener mínimo 8 caracteres
 		</div>
 		<div class="col-md-4 puntosRosas">
-			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:7px;" width="210">{{ form_widget(form.terminosCondiciones) }} {{ form_label(form.terminosCondiciones, 'Acepto los términos y condiciones') }}<br />
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:7px;" width="210">{{ form_widget(form.terminosCondiciones) }} 
+			<a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesNovios.pdf')}}">
+			{{ form_label(form.terminosCondiciones, 'Acepto los términos y condiciones') }}
+			</a><br />
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:7px;" width="210">{{ form_widget(form.terminosPrivacidad) }} {{ form_label(form.terminosPrivacidad, 'Acepto los términos de privacidad') }}<br />
 		</div>
 		<div class="col-md-4">
