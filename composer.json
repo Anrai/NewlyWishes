@@ -34,7 +34,10 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "twbs/bootstrap": "3.0.3",
-        "arshaw/fullcalendar": "1.6.4"
+        "arshaw/fullcalendar": "1.6.4",
+        "payum/payum-bundle": "*@stable",
+        "payum/offline": "*@stable",
+        "payum/paypal-rest": "*@stable"
     },
     "scripts": {
         "post-install-cmd": [

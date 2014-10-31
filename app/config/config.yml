@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: "@NWPrincipalBundle/Resources/config/services.yml" }
+    - { resource: payum.yml }
 
 framework:
     #esi:             ~
