@@ -35,8 +35,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "twbs/bootstrap": "3.0.3",
         "arshaw/fullcalendar": "1.6.4",
-        "payum/payum": "0.6.*@dev",
-        "payum/paypal-rest": "0.6.*@dev"
+        "payum/payum-bundle": "*@stable",
+        "payum/paypal-rest": "*@stable"
     },
     "scripts": {
         "post-install-cmd": [
