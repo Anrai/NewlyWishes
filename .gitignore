@@ -6,7 +6,7 @@ composer.phar
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
-autoload.php
+/vendor/autoload.php
 /vendor/
 /web/bundles/
 /app/bootstrap*
