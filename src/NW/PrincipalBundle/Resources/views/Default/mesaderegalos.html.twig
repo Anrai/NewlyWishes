@@ -15,10 +15,18 @@
             <div class="row" style="margin-top:45px">
             {% if articulos %}
             	<div class="col-md-4">
-                    <div class="caja-gris-filtro">
-                		<h3>Filtrar regalos</h3>
+                    <div class="caja-gris-filtro" style="height: 287px;">
+                		<h3 style="font-weight: bold;">Filtrar regalos</h3>
                 		<br />
                 		{{ form_start(formFiltrar) }}
+                            {{ form_widget(formFiltrar.categoria, { 'attr': {'class': 'form-control input11'} }) }}
+                            <br />
+                            {{ form_widget(formFiltrar.precioArticulo, { 'attr': {'class': 'form-control input11'} }) }}
+                            <br />
+                            {{ form_widget(formFiltrar.precioParte, { 'attr': {'class': 'form-control input11'} }) }}
+                            <br />
+                            {{ form_widget(formFiltrar.Filtrar, { 'attr': {'class': 'enviar_form', 'style': 'width: 120px;float: right;margin-top:20px;', 'placeholder': '' } }) }}
+                            <br />
                 		{{ form_end(formFiltrar) }}
                     </div>
             	</div>
