@@ -14,7 +14,7 @@
                 "version": "1.6.4",
                 "dist": {
                     "type": "zip",
-                    "url": "http://arshaw.com/fullcalendar/downloads/fullcalendar-1.6.4.zip"
+                    "url": "http://arshaw.com/downloads/fullcalendar/fullcalendar-1.6.4.zip"
                 }
             }
         }
@@ -34,7 +34,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "twbs/bootstrap": "3.0.3",
-        "arshaw/fullcalendar": "1.6.4"
+        "arshaw/fullcalendar": "1.6.4",
+        "payum/payum": "0.6.*@dev",
+        "payum/paypal-rest": "0.6.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new NW\SecurityBundle\NWSecurityBundle(),
             new NW\UserBundle\NWUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
