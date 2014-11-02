@@ -37,7 +37,8 @@
         "arshaw/fullcalendar": "1.6.4",
         "payum/payum-bundle": "*@stable",
         "payum/offline": "*@stable",
-        "payum/paypal-rest": "*@stable"
+        "payum/paypal-rest": "*@stable",
+        "payum/paypal-express-checkout-nvp": "*@stable"
     },
     "scripts": {
         "post-install-cmd": [

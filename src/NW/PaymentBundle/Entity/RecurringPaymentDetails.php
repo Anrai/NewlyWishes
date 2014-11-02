@@ -2,20 +2,18 @@
 namespace NW\PaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Payum\Core\Model\Order as BaseOrder;
+use NW\PaymentBundle\Model\RecurringPaymentDetails as BaseRecurringPaymentDetails;
 
 /**
- * @ORM\Table
+ * @ORM\Table(name="payum_recurring_payment_details")
  * @ORM\Entity
  */
-class Order extends BaseOrder
+class RecurringPaymentDetails extends BaseRecurringPaymentDetails
 {
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     *
-     * @var integer $id
      */
     protected $id;
 }

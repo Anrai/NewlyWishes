@@ -7,20 +7,24 @@ doctrine:
                         is_bundle: false
                         type: xml
                         dir: %kernel.root_dir%/../vendor/payum/core/Payum/Core/Bridge/Doctrine/Resources/mapping
-
-                        # set this dir instead if you use `payum/payum` library
-                        #dir: %kernel.root_dir%/../vendor/payum/payum/src/Payum/Core/Bridge/Doctrine/Resources/mapping
-
                         prefix: Payum\Core\Model
 
 payum:
     security:
         token_storage:
-            NW\PaymentBundle\Entity\PaymentToken: { doctrine: orm }
+            NW\PaymentBundle\Entity\PaymentSecurityToken:
+                doctrine: orm
 
     storages:
-        NW\PaymentBundle\Entity\Order: { doctrine: orm }
+        NW\PaymentBundle\Entity\PaymentDetails:
+            payment:
+                all: true
+            doctrine: orm
 
     contexts:
-        offline:
-            offline: ~
+        paypal_express_checkout_and_doctrine_orm:
+            paypal_express_checkout_nvp:
+                username: '%paypal.express_checkout.username%'
+                password: '%paypal.express_checkout.password%'
+                signature: '%paypal.express_checkout.signature%'
+                sandbox: true

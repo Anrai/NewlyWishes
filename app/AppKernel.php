@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new NW\SecurityBundle\NWSecurityBundle(),
             new NW\UserBundle\NWUserBundle(),
             new NW\PaymentBundle\NWPaymentBundle(),
+            new NW\PaypalExpressCheckoutBundle\NWPaypalExpressCheckoutBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Payum\Bundle\PayumBundle\PayumBundle(),
         );

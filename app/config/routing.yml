@@ -1,6 +1,26 @@
+
+payum_capture:
+    resource: "@PayumBundle/Resources/config/routing/capture.xml"
+    prefix:   /
+
+payum_authorize:
+    resource: "@PayumBundle/Resources/config/routing/authorize.xml"
+    prefix:   /
+
+payum_sync:
+    resource: "@PayumBundle/Resources/config/routing/sync.xml"
+    prefix:   /
+
+payum_notify:
+    resource: "@PayumBundle/Resources/config/routing/notify.xml"
+    prefix:   /
+
+nw_paypal_express_checkout:
+    resource: "@NWPaypalExpressCheckoutBundle/Resources/config/routing.yml"
+    prefix:   /
+
 nw_payment:
-    resource: "@NWPaymentBundle/Controller/"
-    type:     annotation
+    resource: "@NWPaymentBundle/Resources/config/routing.yml"
     prefix:   /
 
 nw_user:

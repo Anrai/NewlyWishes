@@ -1,6 +1,6 @@
 <?php
 
-namespace NW\PaymentBundle\Tests\Controller;
+namespace Acme\PaymentBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
