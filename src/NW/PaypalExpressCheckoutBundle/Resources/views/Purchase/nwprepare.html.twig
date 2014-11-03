@@ -1,0 +1,17 @@
+{# src/NW/PrincipalBundle/Resources/views/formato.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+	{% block body %}
+	
+		{% include ':plantillasParciales:top.html.twig' %}
+		
+		<div class="container">
+			<form method="POST">
+		        {{ form_widget(form) }}
+
+		        <input type="submit" value="Pay" />
+		    </form>
+		</div>
+
+	{% endblock %}

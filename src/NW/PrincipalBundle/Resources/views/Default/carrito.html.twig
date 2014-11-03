@@ -1,6 +1,8 @@
 <div class="row" style="margin-right: 70px;">
 	<div style="float:right">
-		<input class="enviar2" type="submit" id="enviar_form" value="Checkout" style="width:120px; margin-left:0!important;">
+		<form action="{{ url('nw_paypal_express_checkout_prepare_purchase') }}">
+		    <input class="enviar2" type="submit" id="enviar_form" value="Checkout" style="width:120px; margin-left:0!important;">
+		</form>
 	</div>
 	<div style="float:right; margin: 20px 20px 10px 20px">
 		<span class="art">0 </span>Artículos en tu carrito
