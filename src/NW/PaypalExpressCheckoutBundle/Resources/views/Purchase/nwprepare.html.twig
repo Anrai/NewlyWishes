@@ -7,11 +7,47 @@
 		{% include ':plantillasParciales:top.html.twig' %}
 		
 		<div class="container">
-			<form method="POST">
-		        {{ form_widget(form) }}
 
-		        <input type="submit" value="Pay" />
-		    </form>
+			<div class="row">
+				<h2>Carrito</h2>
+				<!-- show the cart -->
+				<div class="simpleCart_items"></div>
+			</div>
+
+			<div class="row">
+				<h2>Total</h2>
+				<!-- grand total, including tax and shipping (ex. $28.49) -->
+				<div class="simpleCart_grandTotal"></div>
+			</div>
+
+			<div class="row">
+				<!-- create a checkout button -->
+				<a href="javascript:;" class="btn simpleCart_checkout">Pagar</a>
+			</div>
+			{#
+			<div class="row">
+				<h2>Prueba</h2>
+				<form method="POST">
+			        {{ form_widget(form) }}
+			        <input type="submit" value="Pagar" />
+			    </form>
+		    </div>
+		    #}
 		</div>
 
+	{% endblock %}
+
+	{% block javascripts %}
+	    {{ parent() }}
+	    <script>
+	        simpleCart({
+	            checkout: {
+	                type: "SendForm" , 
+	                url: "{{ url('nw_paypal_express_checkout_prepare_purchase') }}"
+	            },
+	            currency: "MXN",
+	            language: "spanish-mx",
+	            method: "GET",
+	        });
+	    </script>
 	{% endblock %}

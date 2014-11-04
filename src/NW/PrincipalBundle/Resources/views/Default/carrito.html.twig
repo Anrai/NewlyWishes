@@ -1,11 +1,12 @@
 <div class="row" style="margin-right: 70px;">
 	<div style="float:right">
-		<form action="{{ url('nw_paypal_express_checkout_prepare_purchase') }}">
+		{#<form action="{{ url('nw_paypal_express_checkout_prepare_purchase') }}">
 		    <input class="enviar2" type="submit" id="enviar_form" value="Checkout" style="width:120px; margin-left:0!important;">
-		</form>
+		</form>#}
+		<a href="javascript:;" class="btn enviar2 simpleCart_checkout" style="min-width: 87px;margin-left: -1px;color: white;">Checkout</a>
 	</div>
 	<div style="float:right; margin: 20px 20px 10px 20px">
-		<span class="art">0 </span>Artículos en tu carrito
+		<span class="art simpleCart_quantity"></span> Artículos en tu carrito
 		<br />
 		<span class="art">NewlyWishes</span>
 	</div>

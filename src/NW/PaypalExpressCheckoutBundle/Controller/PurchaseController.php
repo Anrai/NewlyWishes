@@ -18,29 +18,45 @@ class PurchaseController extends Controller
      *   "/prepare_purchase",
      *   name="nw_paypal_express_checkout_prepare_purchase"
      * )
-     * 
-     * @Extra\Template("NWPaypalExpressCheckoutBundle:Purchase:nwprepare.html.twig")
      */
     public function preparePurchaseAction(Request $request)
     {
         $paymentName = 'paypal_express_checkout_and_doctrine_orm';
         
-        $form = $this->createPurchaseForm();
-
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $data = $form->getData();
-
+        if('POST' === $request->getMethod())
+        {
+            // Almacén de datos del carrito
             $storage = $this->getPayum()->getStorage('NW\PaymentBundle\Entity\PaymentDetails');
 
+            // Se genera un nuevo modelo con detalles del pago
             /** @var $paymentDetails PaymentDetails */
             $paymentDetails = $storage->createModel();
-            $paymentDetails['PAYMENTREQUEST_0_CURRENCYCODE'] = $data['currency'];
-            $paymentDetails['PAYMENTREQUEST_0_AMT'] = $data['amount'];
 
-            $paymentDetails['L_PAYMENTREQUEST_0_NAME0'] = "Ejemplo de artículo";
-            $paymentDetails['L_PAYMENTREQUEST_0_QTY0'] = 1;
-            $paymentDetails['L_PAYMENTREQUEST_0_AMT0'] = 1;
+            // Costo total de la compra (dos decimales sin punto) $1.25 = 125
+            $totalAmount = 0;
+
+            // Se genera cada producto a comprar
+            $itemCount = $request->request->get('itemCount');
+
+            $i=0;
+            $j=1;
+            while ($i < $itemCount) {
+                $itemCantidad = $request->request->get('item_quantity_'.$j);
+                $itemPrecio = $request->request->get('item_price_'.$j);
+                $totalAmount += $itemCantidad * $itemPrecio;
+
+                $paymentDetails['L_PAYMENTREQUEST_0_NAME'.$i] = $request->request->get('item_name_'.$j)." (parte)";
+                //$paymentDetails['L_PAYMENTREQUEST_0_DESC'.$i] = $request->request->get('item_description_'.$j);
+                $paymentDetails['L_PAYMENTREQUEST_0_QTY'.$i] = $itemCantidad;
+                $paymentDetails['L_PAYMENTREQUEST_0_AMT'.$i] = $itemPrecio;
+
+                $j++;
+                $i++;
+            }
+
+            // Datos de la compra
+            $paymentDetails['PAYMENTREQUEST_0_CURRENCYCODE'] = "MXN"; // Pesos mexicanos
+            $paymentDetails['PAYMENTREQUEST_0_AMT'] = $totalAmount;
 
             $storage->updateModel($paymentDetails);
 
@@ -58,25 +74,7 @@ class PurchaseController extends Controller
             return $this->redirect($captureToken->getTargetUrl());
         }
 
-        return array(
-            'form' => $form->createView(),
-            'paymentName' => $paymentName
-        );
-    }
-
-    /**
-     * @return \Symfony\Component\Form\Form
-     */
-    protected function createPurchaseForm()
-    {
-        return $this->createFormBuilder()
-            ->add('amount', null, array(
-                'data' => 1,
-                'constraints' => array(new Range(array('max' => 2)))
-            ))
-            ->add('currency', null, array('data' => 'USD'))
-            ->getForm()
-        ;
+        return new Response ("Error al obtener carrito");
     }
 
     /**
