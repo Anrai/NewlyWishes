@@ -1,4 +1,8 @@
 <script>
+
+// Url del bote de basura para que aparezca en los nuevos
+var urlBote = "{{asset('img/bote.png')}}";
+
 $(document).ready(function()
 {
 	$("form[name='nw_principalbundle_tareacalendario']").submit(submitForm);
@@ -123,7 +127,7 @@ function ajaxSuccess(data)
     nuevaTareaModal+=	'	</td>';
     nuevaTareaModal+=	'	<td style="text-align:center;">';
     nuevaTareaModal+=	'		<a href="#" class="elimination" data-id="'+data.newID+'">';
-    nuevaTareaModal+=	'			<img src="/web/img/bote.png" style="width:25px;">';
+    nuevaTareaModal+=	'			<img src="'+urlBote+'" style="width:25px;">';
     nuevaTareaModal+=	'		</a>';
     nuevaTareaModal+=	'	</td>';
     nuevaTareaModal+=	'</tr>';
