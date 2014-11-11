@@ -13,6 +13,23 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PurchaseController extends Controller
 {
+
+    /**
+     * @Extra\Route(
+     *   "/carrito",
+     *   name="nw_paypal_express_checkout_carrito"
+     * )
+     * 
+     * @Extra\Template("NWPaypalExpressCheckoutBundle:Purchase:nwprepare.html.twig")
+     */
+    public function carritoAction()
+    {
+        //return new Response("Este sera el carrito");
+        return array(
+            'paymentName' => 'paypal_express_checkout_and_doctrine_orm'
+        );
+    }
+
     /**
      * @Extra\Route(
      *   "/prepare_purchase",
@@ -92,4 +109,5 @@ class PurchaseController extends Controller
     {
         return $this->get('payum.security.token_factory');
     }
+
 }
