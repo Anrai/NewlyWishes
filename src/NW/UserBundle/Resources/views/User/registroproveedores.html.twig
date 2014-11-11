@@ -241,36 +241,45 @@
 						<div class="col-md-4 puntosRosas">
 							<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.nombreRazon, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre o razón social' } }) }}
+							<br/>
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.apellidoPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
+							<br/>
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.apellidoMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
-							<img src="{{ asset('img/punto.png') }}">
+<br/>
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
 						</div>
 						<div class="col-md-4 puntosRosas">
 							<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
 							<div class="col-md-3" style="padding: 0 10px 0 0;">
-								<img src="{{ asset('img/punto.png') }}">
+								
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 								{{ form_widget(form.lada, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'LADA'} }) }}
 							</div>
 							<div class="col-md-9" style="padding: 0;">
 								{{ form_widget(form.telefono, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono de oficina'} }) }}
 							</div>
 							<div class="col-md-12" style="padding: 0;">
-								<img src="{{ asset('img/punto.png') }}">
+								
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 								{{ form_widget(form.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
 							</div>
 						</div>
 						<div class="col-md-4 puntosRosas">
 							<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
-							<img src="{{ asset('img/punto.png') }}">
+							<br/>
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.pais, { 'attr': {'class': 'input_registro_novios'} }) }}
 							<br />
 							<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.estado, { 'attr': {'class': 'input_registro_novios'} }) }}
 							{{ form_widget(form.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Ciudad' } }) }}
-							<img src="{{ asset('img/punto.png') }}">
+							<br/>
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
 						</div>
 					</div>
@@ -284,21 +293,22 @@
 						<div class="col-md-4 puntosRosas">
 							<img src="{{ asset('img/punto.png') }}" alt="Registro">
 							{{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
-							<img src="{{ asset('img/punto.png') }}" alt="Registro">
+							<br/>
+			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
 						</div>
 						<div class="col-md-4 puntosRosas">
 							<img src="{{ asset('img/punto.png') }}" alt="Registro">
-							{{ form_widget(form.terminosCondiciones) }}
-							<span class="form-label">
-								{{ form_label(form.terminosCondiciones, 'He leído y acepto los términos y condiciones') }}
-							</span>
+							{{ form_widget(form.terminosCondiciones) }} 
+							<a href="{{asset('documents/TerminosYCondicionesNWNovios.pdf')}}" target="_blank">
+								Acepto los términos y condiciones generales
+							</a>
 							<br />
 							<img src="{{ asset('img/punto.png') }}" alt="Registro">
 							{{ form_widget(form.terminosPrivacidad) }}
-							<span class="form-label">
-								{{ form_label(form.terminosPrivacidad, 'He leído y acepto los términos de privacidad')}}
-							</span>
+							<a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesNovios.pdf')}}" target="_blank">
+								Acepto las Condiciones de Uso General y de Registro y Aviso de privacidad
+							</a>
 							<br />
 						</div>
 						<div class="col-md-4">
