@@ -21,6 +21,9 @@ class RegistroType extends AbstractType
         $builder->add('userName', 'text', array('mapped' => false, 'required'  => true));
         $builder->add('userPass', 'password', array('mapped' => false, 'required'  => true, 'constraints' => new Length(array('min' => 8))));
         $builder->add('mismaDireccion', 'checkbox', array('mapped' => false, 'required'  => false));
+
+        $builder->add('codigoPromocion', 'text', array('mapped' => false, 'required'  => false));
+
         $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));
         $builder->add('aceptar', 'submit');
