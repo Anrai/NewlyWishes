@@ -7,6 +7,9 @@ NW\UserBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    fields:
+        saldo:
+            type: float
     oneToOne:
         novios:
             targetEntity: Novios

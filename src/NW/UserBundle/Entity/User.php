@@ -24,6 +24,11 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var float
+     */
+    protected $saldo;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -31,6 +36,29 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get Saldo
+     *
+     * @return float 
+     */
+    public function getSaldo()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set Saldo
+     *
+     * @param float $saldo
+     * @return User
+     */
+    public function setSaldo($saldo)
+    {
+        $this->saldo = $saldo;
+
+        return $this;
     }
 
     protected $novias;
