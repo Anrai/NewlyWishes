@@ -259,6 +259,7 @@ class UserController extends Controller
         $registro->setNombreRazon('');
         $registro->setApellidoPaterno('');
         $registro->setApellidoMaterno('');
+        $registro->setNombreComercial('');
         $registro->setRfc('');
         $registro->setEmail('');
         $registro->setLada('');
@@ -277,6 +278,7 @@ class UserController extends Controller
             ->add('nombreRazon', 'text')
             ->add('apellidoPaterno', 'text', array('required' => false))
             ->add('apellidoMaterno', 'text', array('required' => false))
+            ->add('nombreComercial', 'text', array('required' => false))
             ->add('rfc', 'text')
             ->add('email', 'email')
             ->add('lada', 'text', array('max_length' => 3))
@@ -321,7 +323,7 @@ class UserController extends Controller
                      '31'   => 'Yucatán',
                      '32'   => 'Zacatecas',
                     ), 'multiple'  => false,))
-            ->add('ciudad', 'text', array('required' => true))
+            ->add('ciudad', 'text', array('required' => false))
             ->add('cp', 'text', array('max_length' => 5))
             ->add('userName', 'text', array('mapped' => false, 'required'  => true))
             ->add('userPass', 'password', array('mapped' => false, 'required'  => true))
