@@ -1,0 +1,32 @@
+{# app/Resources/views/menuGrisSuperior.html.twig #}
+
+<div class="container" style="">
+	<div class="header_box">
+		<div class="cont_top" style="margin-right:20px;">
+			Español&nbsp; | &nbsp;MXN
+		</div>
+		{% if app.user %}
+		  	<div class="cont_top">
+		  		{% if is_granted('ROLE_NOVIO') %}
+		    		Mi lista de deseos &nbsp;-&nbsp; <a href="{{ path('nw_principal_novios_nuestra-boda') }}">Nuestra Boda</a>
+		    	{% endif %}
+		    	{% if is_granted('ROLE_PROVEEDOR') %}
+		    		<a href="{{ path('nw_principal_proveedores_micuenta') }}">Mi cuenta</a>
+		    	{% endif %}
+		    	{% if is_granted('ROLE_REPORTERO') %}
+		    		<a href="{{ path('nw_principal_reporteros_micuenta') }}">Mi cuenta</a>
+		    	{% endif %}
+		  	</div>
+			<div class="cont_top" style="float:right; clear:both;">
+		    	<strong>{{ app.user.username }}</strong> &nbsp;-&nbsp; <a href="{{ path('fos_user_security_logout') }}">Salir</a>
+		  	</div>
+		 {% else %}
+		 	<div class="cont_top" style="text-align:center;">
+		 		Ingresa al sitio<br>
+			 <a href="{{ path('nw_user_loginnovios') }}">Novios</a>{# &nbsp;-&nbsp; 
+			 <a href="{{ path('nw_user_loginproveedores') }}">Proveedores</a> &nbsp;-&nbsp; 
+			 <a href="{{ path('nw_user_loginnovios') }}">Reporteros</a>#}
+		  	</div>
+		 {% endif %}
+	</div>
+</div>
