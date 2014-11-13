@@ -5,7 +5,14 @@
 	{% block body %}
 	
 		{% include ':plantillasParciales:top.html.twig' %}
+
+		{% for flashMessage in app.session.flashbag.get('notice') %}
+		    <div class="alert alert-info">
+		        {{ flashMessage }}
+		    </div>
+		{% endfor %}
 	    {% include ':plantillasParciales:slider.html.twig' %}
+
 	    {% include ':plantillasParciales:pasosboda.html.twig' %}
 
 	    <div class="container" style="padding:30px; padding-top:0px;">

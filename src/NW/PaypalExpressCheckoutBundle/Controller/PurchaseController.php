@@ -79,6 +79,7 @@ class PurchaseController extends Controller
             // Datos de la compra
             $paymentDetails['PAYMENTREQUEST_0_CURRENCYCODE'] = "MXN"; // Pesos mexicanos
             $paymentDetails['PAYMENTREQUEST_0_AMT'] = $totalAmount;
+            $paymentDetails['PAYMENTREQUEST_0_CUSTOM'] = $itemCount;
 
             $storage->updateModel($paymentDetails);
 
