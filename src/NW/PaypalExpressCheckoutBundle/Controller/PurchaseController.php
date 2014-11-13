@@ -42,7 +42,6 @@ class PurchaseController extends Controller
         
         if('POST' === $request->getMethod())
         {
-            return new Response ($request->request->get('item_itemid_1'));
             // Almacén de datos del carrito
             $storage = $this->getPayum()->getStorage('NW\PaymentBundle\Entity\PaymentDetails');
 
@@ -61,14 +60,17 @@ class PurchaseController extends Controller
             while ($i < $itemCount) {
                 $itemCantidad = $request->request->get('item_quantity_'.$j);
                 $itemPrecio = $request->request->get('item_price_'.$j);
-                $itemId = $request->request->get('item_itemid_'.$j);
                 $totalAmount += $itemCantidad * $itemPrecio;
 
+                $split_options = explode(",", $request->request->get('item_options_'.$j));
+                $itemDescripcion = explode(":", $split_options[0]);
+                $itemId = explode(":", $split_options[1]);
+
                 $paymentDetails['L_PAYMENTREQUEST_0_NAME'.$i] = $request->request->get('item_name_'.$j)." (parte)";
-                $paymentDetails['L_PAYMENTREQUEST_0_DESC'.$i] = $request->request->get('item_description_'.$j);
+                $paymentDetails['L_PAYMENTREQUEST_0_DESC'.$i] = trim($itemDescripcion[1]);
                 $paymentDetails['L_PAYMENTREQUEST_0_QTY'.$i] = $itemCantidad;
                 $paymentDetails['L_PAYMENTREQUEST_0_AMT'.$i] = $itemPrecio;
-                $paymentDetails['L_PAYMENTREQUEST_0_NUMBER'.$i] = $itemId;
+                $paymentDetails['L_PAYMENTREQUEST_0_NUMBER'.$i] = trim($itemId[1]);
 
                 $j++;
                 $i++;
