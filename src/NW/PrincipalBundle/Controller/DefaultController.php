@@ -339,7 +339,7 @@ class DefaultController extends Controller
         return $this->render('NWPrincipalBundle:Default:mesaderegalos.html.twig', array(
             'formFiltrar' => $formFiltrar->createView(),
             'noviaYnovio' => $noviaYnovio,
-            'articulos' => $articulos,
+            'articulos' => $articulos
         ));
     }
 

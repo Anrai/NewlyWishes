@@ -37,7 +37,8 @@
             			<div class="col-md-7">
             				<h5><span class="esc" style="font-size:20px;"><span class="item_name">{{articulo.regalo}}</span> - {{articulo.categoriaName}}</span></h5>
             				<br />
-            				<p class="item-description">{{articulo.descripcion}}</p>
+            				<p class="item_description">{{articulo.descripcion}}</p>
+                            <span class="invisible item_itemid">{{articulo.id}}</span>
             				<br />
             				<b>¿Cuántas partes deseas regalar? </b>&nbsp;&nbsp;&nbsp;
                             <select id="regalarPartes" name="regalarPartes" class="item_Quantity">
@@ -91,6 +92,7 @@
             language: "spanish-mx",
             cartColumns: [
                 { attr: "description" , label: "Description" } ,
+                { attr: "itemid" , label: "Id del Item" } ,
             ]
         });
     </script>

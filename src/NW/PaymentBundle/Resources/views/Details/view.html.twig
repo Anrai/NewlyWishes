@@ -14,15 +14,14 @@
                 <p class="alert alert-danger" style="font-size:16px">La transacción no pudo ser completada. Estado: {{ status }}</p>
             {% endif %}
         </div>
-        <!--
+        
         <div class="row">
         	<pre style="white-space: pre;">
-                {# php5.4+ para mostrar json en pantalla
                     {{ details|json_encode(constant('JSON_PRETTY_PRINT'))|raw }}
-                #}
+                
             </pre>
         </div>
-        -->
+        
     </div>
 
 {% endblock %}
