@@ -151,6 +151,7 @@ class NoviosController extends Controller
             'padrinos' => $padrinos,
             'notas' => $notas,
             'fechaBodaFormat' => $formBodaData->fechaBodaFormat(),
+            'saldo' => $user->getSaldo(),
         ));
     }
 
@@ -340,6 +341,7 @@ class NoviosController extends Controller
             'tareas' => $tareas,
             'diaActual' => $diaActual,
             'diaActual2' => $diaActual2,
+            'saldo' => $user->getSaldo(),
         ));
     }
 
@@ -458,6 +460,7 @@ class NoviosController extends Controller
             'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
+            'saldo' => $user->getSaldo(),
         ));
     }
 
@@ -557,6 +560,7 @@ class NoviosController extends Controller
             'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
+            'saldo' => $user->getSaldo(),
         ));
     }
 
@@ -635,6 +639,7 @@ class NoviosController extends Controller
             'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
+            'saldo' => $user->getSaldo(),
         ));
     }
 
@@ -819,6 +824,7 @@ class NoviosController extends Controller
             'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
+            'saldo' => $user->getSaldo(),
         ));
     }
 	
@@ -884,6 +890,7 @@ class NoviosController extends Controller
             'formBuscarArticulo' => $formBuscarArticulo->createView(),
             'resultados' => $resultados, // Resultados de la búsqueda
             'fechaBodaFormat' => $BodaVieja->fechaBodaFormat(),
+            'saldo' => $user->getSaldo(),
         ));
     }
 

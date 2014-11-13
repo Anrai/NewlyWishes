@@ -45,7 +45,7 @@ class User extends BaseUser
      */
     public function getSaldo()
     {
-        return $this->id;
+        return $this->saldo;
     }
 
     /**
