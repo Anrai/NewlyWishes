@@ -2,6 +2,7 @@
 
 // Url del bote de basura para que aparezca en los nuevos
 var urlBote = "{{asset('img/bote.png')}}";
+var urlPunto = "{{asset('img/punto.png')}}";
 
 $(document).ready(function()
 {
@@ -112,7 +113,7 @@ function ajaxSuccess(data)
 {
 	var nuevaTareaModal = '<tr id="'+data.newID+'" class="tarea_link">';
     nuevaTareaModal+=	'<td width="35">';
-    nuevaTareaModal+=	'<img id="tarea_selected_'+data.newID+'" src="/web/img/punto.png" class="invisible desaparecible">';
+    nuevaTareaModal+=	'<img id="tarea_selected_'+data.newID+'" src="'+urlPunto+'" class="invisible desaparecible">';
     nuevaTareaModal+=	'</td>';
     nuevaTareaModal+=	'	<td>'+data.compromiso+'</td>';
     nuevaTareaModal+=	'	<td>'+data.categoria+'</td>';
