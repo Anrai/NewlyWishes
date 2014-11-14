@@ -49,6 +49,18 @@ class User extends BaseUser
     }
 
     /**
+     * Get SaldoFormat
+     *
+     * @return string 
+     */
+    public function getSaldoFormat()
+    {
+        $saldo = $this->saldo;
+        $saldoFormat = number_format($saldo, 2, '.', ',');
+        return $saldoFormat;
+    }
+
+    /**
      * Set Saldo
      *
      * @param float $saldo

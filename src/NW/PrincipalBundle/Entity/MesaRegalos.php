@@ -50,11 +50,6 @@ class MesaRegalos
     private $descripcion;
 
     /**
-     * @var boolean
-     */
-    private $absorberComision;
-
-    /**
      * @var \NW\UserBundle\Entity\User
      */
     private $user;
@@ -233,29 +228,6 @@ class MesaRegalos
     public function getDescripcion()
     {
         return $this->descripcion;
-    }
-
-    /**
-     * Set absorberComision
-     *
-     * @param boolean $absorberComision
-     * @return MesaRegalos
-     */
-    public function setAbsorberComision($absorberComision)
-    {
-        $this->absorberComision = $absorberComision;
-
-        return $this;
-    }
-
-    /**
-     * Get absorberComision
-     *
-     * @return boolean 
-     */
-    public function getAbsorberComision()
-    {
-        return $this->absorberComision;
     }
 
     /**

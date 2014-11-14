@@ -14,7 +14,7 @@ class RegaloType extends AbstractType
         $builder->add('regalo', 'text');
         $builder->add('descripcion', 'textarea');
         $builder->add('precioTotal', 'integer');
-        $builder->add('absorberComision', 'checkbox', array('required'  => false));
+        //$builder->add('absorberComision', 'checkbox', array('required'  => false)); // YA NO SE USA
         $builder->add('cantidad', 'integer');
         $builder->add('horcruxes', 'integer');
         $builder->add('categoria', 'choice', array('choices' => array(

@@ -38,5 +38,5 @@ NW\PrincipalBundle\Entity\MesaRegalos:
             type: integer
         descripcion:
             type: text
-        absorberComision:
-            type: boolean
+#        absorberComision:
+#            type: boolean

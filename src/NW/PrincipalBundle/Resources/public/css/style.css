@@ -1563,3 +1563,8 @@ label {
 .carousel-container {
     margin-left:0;
 }
+
+.simpleCart_items td{
+    padding: 15px;
+    border: solid 1px rgb(190, 190, 190);
+}

@@ -39,6 +39,7 @@
             				<br />
             				<p class="item_description">{{articulo.descripcion}}</p>
                             <span class="invisible item_itemid">{{articulo.id}}</span>
+                            <span class="invisible item_pareja">{{noviaYnovio}}</span>
             				<br />
             				<b>¿Cuántas partes deseas regalar? </b>&nbsp;&nbsp;&nbsp;
                             <select id="regalarPartes" name="regalarPartes" class="item_Quantity">
@@ -93,6 +94,7 @@
             cartColumns: [
                 { attr: "description" , label: "Description" } ,
                 { attr: "itemid" , label: "Id del Item" } ,
+                { attr: "pareja" , label: "Pareja" } ,
             ]
         });
     </script>
