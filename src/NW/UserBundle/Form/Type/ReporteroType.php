@@ -10,9 +10,6 @@ class ReporteroType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('tipoPersona', 'choice', array('choices' => 
-                array('fisica' => 'Persona Física', 'moral' => 'Persona Moral'),
-                'multiple' => false, 'expanded' => true, 'required' => true, 'empty_data'  => null));
         $builder->add('nombreRazon', 'text');
         $builder->add('apellidoPaterno', 'text', array('required' => false));
         $builder->add('apellidoMaterno', 'text', array('required' => false));

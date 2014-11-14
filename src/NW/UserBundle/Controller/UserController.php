@@ -204,6 +204,7 @@ class UserController extends Controller
             $user->setEmail($form["novios"]["eMail"]->getData());
             $user->setPlainPassword($form["userPass"]->getData());
             $user->addRole('ROLE_NOVIO');
+            $user->setSaldo(0);
             $user->setEnabled(true);
 
             // Agregando Estado de la novia
@@ -358,6 +359,7 @@ class UserController extends Controller
             $user->setEmail($form["email"]->getData());
             $user->setPlainPassword($form["userPass"]->getData());
             $user->setEnabled(true);
+            $user->setSaldo(0);
 
             // Agregando rol de plan de proveedor
             switch ($form["plan"]->getData()) {

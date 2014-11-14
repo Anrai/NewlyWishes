@@ -37,8 +37,6 @@
 	<h5>Código postal:<span class="esc"> {{ reportero.cp }} </span></h5>
 </div>
 
-<hr />
-
 <div class="row">
 	<hr />
 	<span class="esc"> Cambiar contraseña </span >
@@ -54,7 +52,7 @@
 		</div>
 		<div class="col-md-4">
 			<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass pero he podido ) -->
-			{{ form_widget(formPassword.Cambiar) }}
+			{{ form_widget(formPassword.Cambiar, { 'attr': {'class': 'enviar_form', 'style': '' } }) }}
 		</div>
 		{{ form_end(formPassword) }}
 	</div>

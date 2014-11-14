@@ -28,6 +28,7 @@ class Reportero
         $user->setPlainPassword($userPass);
         $user->setEnabled(true);
         $user->addRole('ROLE_REPORTERO');
+        $user->setSaldo(0);
 
         // Agregando Reportero
         $reportero->setUser($user);

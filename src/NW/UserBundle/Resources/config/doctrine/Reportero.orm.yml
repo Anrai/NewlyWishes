@@ -30,9 +30,6 @@ NW\UserBundle\Entity\Reportero:
             type: integer
         estadoId:
             type: integer
-        tipoPersona:
-            type: string
-            length: 100
         nombreRazon:
             type: string
             length: 100

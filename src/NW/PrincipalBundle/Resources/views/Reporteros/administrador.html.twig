@@ -12,19 +12,28 @@
   	{% include ':plantillasParciales:menuGrisSuperior.html.twig' %}
 
 	<div class="container corrector" style="padding-top:50px;">
-		<div class="row">
-			<div class="col-md-6">
+		<div class="row" style="display: table">
+			<div class="col-md-6 same-height">
 				<div class="nw2">
 					<a href="{{url('nw_principal_homepage')}}">
-					<img class="img-responsive" src="{{asset('img/nw2.png')}}">
+						<img class="img-responsive" src="{{asset('img/nw2.png')}}">
 					</a>
 				</div>
 			</div>
-			<div class="col-md-6 text-center">
-				<br>
-				<h4>Hoy es <span class="esc">{{"now"|date("m/d/Y")}}</span></h4>
-				<br>
-				<h4 class="esc">Sitio de reporteros</h4>
+			<div class="col-md-1 same-height">
+				<a href="{{ path('fos_user_security_logout') }}" class="text-important salir-link">
+					Salir
+				</a>
+			</div>
+			<div class="col-md-5 text-center same-height">
+				<div class="row" style="text-align:right">
+					<div class="col-xs-12">
+						<h4>Hoy es <span class="esc">{{ today() }}</span></h4>
+					</div>
+				</div>
+				<div class="row">
+					<h4 class="esc">Sitio de reporteros</h4>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -42,7 +51,7 @@
 	<div class="container" style="padding-top:0px; font-size:12px;">
 		<div class="row">
 			<div class="col-md-12">
-				<h4 style="font-size:16px;">Saldo de tus artículos vendidos: <span class="esc">$0.00 pesos</span></h4>
+				<h4 style="font-size:16px;">Saldo de tus artículos vendidos: <span class="esc">${{reportero.saldo}} pesos</span></h4>
 			</div>
 
 		</div>
@@ -56,7 +65,7 @@
 						  	<a href="{{ url('nw_principal_reporteros_micuenta') }}"><li style="border-radius:10px 10px 0px 0px;">Mi Cuenta</li></a>
 						    <a href="{{ url('nw_principal_reporteros_misarticulos') }}"><li> Mis Artículos </li></a>
 						    <a href="{{ url('nw_principal_reporteros_miestadodecuenta') }}"><li> Mi Estado de Cuenta </li></a>
-						    <a href="{{ url('nw_principal_reporteros_miinformacionbancaria') }}"><li>Mis Información Bancaria </li></a>
+						    <!--<a href="{{ url('nw_principal_reporteros_miinformacionbancaria') }}"><li>Mis Información Bancaria </li></a>-->
 						    <li style="border-radius:0px 0px 10px 10px; text-align:center; color:rgba(0,0,0,1);">
 						    	<p>Tienes alguna duda, comentario, sugerencia o simplemente quieres decirnos algo, <span class="rosa"><a data-toggle="modal" data-target="#Quejas">escríbenos aquí</a></span>.</p>
 						    </li>
