@@ -51,19 +51,28 @@ class DetailsController extends PayumController
                 $regaloObject = $mesaRegalosEntity->find($itemId);
                 $usuarioObject = $regaloObject->getUser();
 
+                // Se actualiza el regalo con las nuevas partes compradas
+                $horcruxesPagadosAnterior = $regaloObject->getHorcruxesPagados();
+                $regaloObject->setHorcruxesPagados($horcruxesPagadosAnterior+$cantidad);
+
                 // Se obtiene el saldo del usuario y se le suma la cantidad final
                 $saldoViejo = $usuarioObject->getSaldo();
                 $saldoNuevo = $saldoViejo + $aumentoSaldo;
                 $usuarioObject->setSaldo($saldoNuevo);
 
-                // Se persiste el usuario
+                // Se persiste el usuario y el regalo
                 $em->persist($usuarioObject);
+                $em->persist($regaloObject);
                 $em->flush();
             }
 
             $this->get('session')->getFlashBag()->set(
                 'notice',
                 'Pago realizado con éxito. El saldo de los regalos ha sido entregado.'
+            );
+            $this->get('session')->getFlashBag()->set(
+                'transaccion',
+                'Vaciar Carrito, la transacción fue correcta'
             );
 
             /*return $this->render('NWPaymentBundle:Details:view.html.twig', array(

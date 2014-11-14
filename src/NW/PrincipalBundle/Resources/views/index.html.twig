@@ -126,3 +126,16 @@
 
 		</div><!-- /.container -->
 	{% endblock %}
+
+	{# Se vacía el carrito si la transacción fue correcta #}
+	{% block javascripts %}
+		{{ parent() }}
+		{% set transaccion = app.session.flashbag.get("transaccion") %}
+		{% if (transaccion is not empty) %}
+		    <script>
+		    	$(document).ready(function(){
+				    simpleCart.empty();
+				});
+		    </script>
+		{% endif %}
+	{% endblock %}
