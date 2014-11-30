@@ -66,6 +66,16 @@
 			</div>
 		</div>
 
+		<div class="container">
+			{% for flashMessage in app.session.flashbag.get('notice') %}
+			<div class="row" style="margin-top:30px;">
+			    <div class="alert alert-info">
+			        {{ flashMessage }}
+			    </div>
+			</div>
+			{% endfor %}
+		</div>
+
 		<div class="container"  style="padding-top:30px; padding-left:0px;">
 			<div class="row">
 				<div class="col-md-3">

@@ -16,6 +16,7 @@ use NW\PrincipalBundle\Form\Type\RegaloType;
 use NW\PrincipalBundle\Form\Type\DiaBodaType;
 use NW\PrincipalBundle\Form\Type\BusquedaArticulosType;
 use NW\PrincipalBundle\Form\TareaCalendarioType;
+use NW\PrincipalBundle\Form\SolicitudRetiroType;
 
 use NW\PrincipalBundle\Entity\Checklist;
 use NW\PrincipalBundle\Entity\ListaInvitados;
@@ -26,6 +27,7 @@ use NW\PrincipalBundle\Entity\MesaRegalos;
 use NW\PrincipalBundle\Entity\CatRegalos;
 use NW\PrincipalBundle\Entity\CategoriaCalendario;
 use NW\PrincipalBundle\Entity\TareaCalendario;
+use NW\PrincipalBundle\Entity\SolicitudRetiro;
 
 use NW\UserBundle\Entity\Novias;
 use NW\UserBundle\Entity\Novios;
@@ -701,6 +703,10 @@ class NoviosController extends Controller
         $statusForm=false;
         $tamanoContrasena=false; // El tamaño de la contraseña está bien
 
+        // Formulario de solicitud de retiro
+        $nuevaSolicitudRetiro = new SolicitudRetiro();
+        $formSolicitudRetiro = $this->createForm(new SolicitudRetiroType(), $nuevaSolicitudRetiro);
+
         // Recuperando formularios
         if('POST' === $request->getMethod()) {
  
@@ -786,6 +792,27 @@ class NoviosController extends Controller
                     $em->flush();
                 }
             }
+            // Formulario de solicitud de retiro
+            else if ($request->request->has($formSolicitudRetiro->getName())) {
+                // handle form de solicitud de retiro
+                $formSolicitudRetiro->handleRequest($request);
+                if ($formSolicitudRetiro->isValid()) {
+
+                    // Aqui pasa todo
+                    $nuevaSolicitudRetiro->setUsuario($user);
+                    $nuevaSolicitudRetiro->setFecha(new \DateTime());
+                    $nuevaSolicitudRetiro->setRealizado(false);
+
+                    $em->persist($nuevaSolicitudRetiro);
+                    $em->flush();
+
+                    // Se manda un mensaje de travesura realizada
+                    $this->get('session')->getFlashBag()->set(
+                        'notice',
+                        'Se ha enviado la solicitud para retirar su dinero en la cuenta de paypal indicada. Por favor espere a que sea aprobada.'
+                    );
+                }
+            }
         }
 
          // Datos de la novia para plantilla
@@ -815,6 +842,7 @@ class NoviosController extends Controller
         return $this->render('NWPrincipalBundle:Novios:nuestra-cuenta.html.twig', array(
             'form' => $form->createView(),
             'formNovios' => $formNovios->createView(),
+            'formSolicitudRetiro' => $formSolicitudRetiro->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'noviaInfo' => $noviaInfo,

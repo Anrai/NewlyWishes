@@ -54,6 +54,9 @@ NW\UserBundle\Entity\User:
         tareasCalendario:
             targetEntity: NW\PrincipalBundle\Entity\TareaCalendario
             mappedBy: user
+        solicitudesRetiro:
+            targetEntity: NW\PrincipalBundle\Entity\SolicitudRetiro
+            mappedBy: usuario
 #    manyToMany:
 #        favorites:
 #            targetEntity: Sg\CalendarBundle\Model\CalendarInterface
