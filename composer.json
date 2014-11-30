@@ -34,10 +34,11 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "twbs/bootstrap": "3.0.3",
         "arshaw/fullcalendar": "1.6.4",
-        "payum/payum-bundle": "*@stable",
+        "payum/core": "0.13.*@dev",
+        "payum/payum-bundle": "0.13.*@dev",
         "payum/offline": "*@stable",
-        "payum/paypal-rest": "*@stable",
-        "payum/paypal-express-checkout-nvp": "*@stable"
+        "payum/paypal-rest": "0.13.*@dev",
+        "payum/paypal-express-checkout-nvp": "0.13.*@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
