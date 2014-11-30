@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: "@NWPrincipalBundle/Resources/config/services.yml" }
     - { resource: payum.yml }
+    - { resource: params.php }
 
 framework:
     #esi:             ~
@@ -44,14 +45,6 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
     assets:
-       jquery_js:
-           inputs:
-               - %kernel.root_dir%/../vendor/arshaw/fullcalendar/lib/jquery.min.js
-           output: js/jquery.js
-       jquery_ui_custom_js:
-           inputs:
-               - %kernel.root_dir%/../vendor/arshaw/fullcalendar/lib/jquery-ui.custom.min.js
-           output: js/jquery-ui.custom.min.js
        img_bootstrap_glyphicons_black:
            inputs:
                - %kernel.root_dir%/../vendor/twbs/bootstrap/img/glyphicons-halflings.png
@@ -60,10 +53,6 @@ assetic:
            inputs:
                - %kernel.root_dir%/../vendor/twbs/bootstrap/img/glyphicons-halflings-white.png
            output: img/glyphicons-halflings-white.png
-       bootstrap_css:
-           inputs:
-               - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css
-           output: css/bootstrap.css
        bootstrap_js:
            inputs:
                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
@@ -72,10 +61,6 @@ assetic:
            inputs:
                - %kernel.root_dir%/../vendor/twbs/bootstrap/js/tooltip.js
            output: js/bootstrap.js
-       fullcalendar_css:
-           inputs:
-               - %kernel.root_dir%/../vendor/arshaw/fullcalendar/fullcalendar/fullcalendar.css
-           output: css/fullcalendar.css
        fullcalendar_js:
            inputs:
                - %kernel.root_dir%/../vendor/arshaw/fullcalendar/fullcalendar/fullcalendar.min.js
