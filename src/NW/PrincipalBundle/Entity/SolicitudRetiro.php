@@ -192,4 +192,9 @@ class SolicitudRetiro
     {
         return $this->usuario;
     }
+
+    public function getFechaFormat()
+    {
+        return $this->fecha->format('d-m-Y H:i:s');
+    }
 }

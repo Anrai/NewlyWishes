@@ -30,6 +30,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/registro$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin$, roles: ROLE_ADMIN }
         - { path: ^/proveedores/, role: ROLE_PROVEEDOR }
         - { path: ^/novios/, role: ROLE_NOVIO }
         - { path: ^/reporteros/, role: ROLE_REPORTERO }
