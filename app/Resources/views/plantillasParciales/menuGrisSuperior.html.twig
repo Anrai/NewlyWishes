@@ -7,6 +7,9 @@
 		</div>
 		{% if app.user %}
 		  	<div class="cont_top">
+		  		{% if is_granted('ROLE_ADMIN') %}
+		    		<a href="{{ path('nw_principal_admin_panel') }}">Panel de Control</a>
+		    	{% endif %}
 		  		{% if is_granted('ROLE_NOVIO') %}
 		    		Mi lista de deseos &nbsp;-&nbsp; <a href="{{ path('nw_principal_novios_nuestra-boda') }}">Nuestra Boda</a>
 		    	{% endif %}

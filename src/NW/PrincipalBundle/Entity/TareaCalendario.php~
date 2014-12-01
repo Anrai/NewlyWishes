@@ -360,4 +360,23 @@ class TareaCalendario
     {
         return $this->hecho;
     }
+
+    // Método que regresa mis valores en forma de array
+    public function getValues()
+    {
+
+        return array(
+            'id' => $this->getId(),
+            'categoria' => $this->getCategoria()->getCategoria(),
+            'compromiso' => $this->getCompromiso(),
+            'descripcion' => $this->getDescripcion(),
+            'vencimientoDatetime' => $this->getVencimiento(),
+            'vencimiento' => $this->getVencimiento()->format('H:i'),
+            'hecho' => $this->getHecho(),
+            'contactoNombre' => $this->getContactoNombre(),
+            'contactoTelefono' => $this->getContactoTelefono(),
+            'contactoEmail' => $this->getContactoEmail(),
+            'contactoDireccion' => $this->getContactoDireccion(),
+        );
+    }
 }
