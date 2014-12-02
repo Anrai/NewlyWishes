@@ -12,8 +12,3 @@ parameters:
     mailer_password: null
     locale: es
     secret: ThisTokenIsNotSoSecretChangeIt
-    paypal.express_checkout.username: 'docserchek-facilitator_api1.gmail.com'
-    paypal.express_checkout.password: '32CEGRDF5J9EM2WS'
-    paypal.express_checkout.signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31A7GLJfxDJ2SFxVMqGhE7iJkP3sYA'
-    paypal.express_checkout.usd_testuser_login: 'docserchek-buyer@gmail.com'
-    paypal.express_checkout.usd_testuser_password: '12345678'
