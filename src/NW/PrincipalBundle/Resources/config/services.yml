@@ -38,3 +38,10 @@ services:
         class: %today_twig_extension.class%
         tags:
             - { name: twig.extension }
+    payum.buzz.client: # Overwriting this payum service as doesnt work with paypal sandbox
+        class: %payum.buzz.client.class%
+        calls:
+            - [setTimeout, [200]]
+            - [setOption, [64,false]] #CURLOPT_SSL_VERIFYPEER
+            - [setOption, [81,false]] #CURLOPT_SSL_VERIFYHOST
+            - [setOption, [32,4]] #CURLOPT_SSLVERSION
