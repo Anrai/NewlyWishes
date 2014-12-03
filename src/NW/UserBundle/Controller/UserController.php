@@ -164,92 +164,94 @@ class UserController extends Controller
         $formData['novios'] = new Novios();
         $form = $this->createForm(new RegistroType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
 
-        // Solicitando datos del formulario para ver si recuperar los datos, mostrar error o mostrar formulario
-        $form->handleRequest($request);
- 
-        if ($form->isValid()) {
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+            // Formulario de datos de la boda
+            if ($request->request->has($form->getName())) {
+                // Solicitando datos del formulario para ver si recuperar los datos, mostrar error o mostrar formulario
+                $form->handleRequest($request);
+                if ($form->isValid()) {
+                    // Recuperando datos de los novios
+                    $novias = $formData['novias'];
+                    $novios = $formData['novios'];
 
-            // Recuperando datos de los novios
-            $novias = $formData['novias'];
-            $novios = $formData['novios'];
+                    // Checando si ya existe el usuario o el correo
+                    $userManager = $this->get('fos_user.user_manager'); 
+                    $usuarioPorUsername = $userManager->findUserBy(array('username' => $form["userName"]->getData()));
+                    $usuarioPorEmail = $userManager->findUserBy(array('email' => $form["novios"]["eMail"]->getData()));
 
-            // Checando si ya existe el usuario o el correo
-            $userManager = $this->get('fos_user.user_manager'); 
-            $usuarioPorUsername = $userManager->findUserBy(array('username' => $form["userName"]->getData()));
-            $usuarioPorEmail = $userManager->findUserBy(array('email' => $form["novios"]["eMail"]->getData()));
+                    if($usuarioPorUsername || $usuarioPorEmail)
+                    {
+                        $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
+                        return $this->render('NWUserBundle:User:registronovios.html.twig', array(
+                            'form' => $form->createView(),
+                        ));
+                    }
 
-            if($usuarioPorUsername || $usuarioPorEmail)
-            {
-                $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
-                return $this->render('NWUserBundle:User:registronovios.html.twig', array(
-                    'form' => $form->createView(),
-                ));
+                    /* // Generar alerta
+                    if($usuarioPorUsername || $usuarioPorEmail)
+                    {
+                        $ruta = $this->getRefererRoute();
+                        $locale = $request->get('_locale');
+                        $url = $this->get('router')->generate($ruta, array('_locale' => $locale));
+                        $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
+
+                        return $this->redirect($url);
+                    }*/
+
+                    // Agregando Usuario y sus datos
+                    $user = $userManager->createUser();
+
+                    $user->setUsername($form["userName"]->getData());
+                    $user->setEmail($form["novios"]["eMail"]->getData());
+                    $user->setPlainPassword($form["userPass"]->getData());
+                    $user->addRole('ROLE_NOVIO');
+                    $user->setSaldo(0);
+                    $user->setEnabled(true);
+
+                    // Agregando Estado de la novia
+                    $estadoNovia=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novias"]["estado"]->getData());
+                    $estadoNovia->addNovia($novias);
+                    $novias->setEstados($estadoNovia);
+
+                    // Agregando Estado del novio
+                    $estadoNovio=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novios"]["estado"]->getData());
+                    $estadoNovio->addNovio($novios);
+                    $novios->setEstados($estadoNovio);
+
+                    // Agregando Usuario a los novios
+                    $novias->setUser($user);
+                    $novios->setUser($user);
+
+                    // Agregando Novia al Novio
+                    $novios->setNovia($novias);
+
+                    // Agregando objeto boda a los novios
+                    $boda = new Bodas();
+                    $boda->setUser($user);
+                    $boda->setCeremonia('');
+                    $boda->setCeremoniaDireccion('');
+                    $boda->setRecepcion('');
+                    $boda->setRecepcionDireccion('');
+                    $boda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
+
+                    // Persistiendo los datos en la base de datos
+                    $em->persist($user);
+                    $em->persist($novias);
+                    $em->persist($novios);
+                    $em->persist($boda);
+                    $em->flush();
+
+                    // El registro del formulario fue exitoso y se muestra mensaje de felicitación
+                    return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));
+                }
             }
-
-            /* // Generar alerta
-            if($usuarioPorUsername || $usuarioPorEmail)
-            {
-                $ruta = $this->getRefererRoute();
-                $locale = $request->get('_locale');
-                $url = $this->get('router')->generate($ruta, array('_locale' => $locale));
-                $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
-
-                return $this->redirect($url);
-            }*/
-
-            // Agregando Usuario y sus datos
-            $user = $userManager->createUser();
-
-            $user->setUsername($form["userName"]->getData());
-            $user->setEmail($form["novios"]["eMail"]->getData());
-            $user->setPlainPassword($form["userPass"]->getData());
-            $user->addRole('ROLE_NOVIO');
-            $user->setSaldo(0);
-            $user->setEnabled(true);
-
-            // Agregando Estado de la novia
-            $estadoNovia=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novias"]["estado"]->getData());
-            $estadoNovia->addNovia($novias);
-            $novias->setEstados($estadoNovia);
-
-            // Agregando Estado del novio
-            $estadoNovio=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novios"]["estado"]->getData());
-            $estadoNovio->addNovio($novios);
-            $novios->setEstados($estadoNovio);
-
-            // Agregando Usuario a los novios
-            $novias->setUser($user);
-            $novios->setUser($user);
-
-            // Agregando Novia al Novio
-            $novios->setNovia($novias);
-
-            // Agregando objeto boda a los novios
-            $boda = new Bodas();
-            $boda->setUser($user);
-            $boda->setCeremonia('');
-            $boda->setCeremoniaDireccion('');
-            $boda->setRecepcion('');
-            $boda->setRecepcionDireccion('');
-            $boda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
-
-            // Persistiendo los datos en la base de datos
-            $em->persist($user);
-            $em->persist($novias);
-            $em->persist($novios);
-            $em->persist($boda);
-            $em->flush();
-
-            // El registro del formulario fue exitoso y se muestra mensaje de felicitación
-            return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));
-
         }
-        else{
-            // Si no se ha ocupado el formulario (o contiene errores) se le muestra al usuario
-            return $this->render('NWUserBundle:User:registronovios.html.twig', array(
-                'form' => $form->createView(),
-            ));
-        }
+
+        // Si no se ha ocupado el formulario (o contiene errores) se le muestra al usuario
+        return $this->render('NWUserBundle:User:registronovios.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function registroproveedoresAction(Request $request)
