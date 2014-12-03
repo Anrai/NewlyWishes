@@ -1,7 +1,57 @@
-#NW\UserBundle\Entity\Novias:
-#    properties:
-#        sNombre:
-#            - Blank: ~
-#        dueDate:
-#            - NotBlank: ~
-#            - Type: \DateTime
+# NW/UserBundle/Resources/config/validation.yml
+
+NW\UserBundle\Entity\Novias:
+    properties:
+        nombre:
+            - NotBlank: ~
+        #sNombre:
+        aPaterno:
+            - NotBlank: ~
+        aMaterno:
+            - NotBlank: ~
+        eMail:
+            - NotBlank: ~
+            - Email:
+                checkMX: true
+        lada:
+            - NotBlank: ~
+        telefono:
+            - NotBlank: ~
+        celular:
+            - NotBlank: ~
+        direccion:
+            - NotBlank: ~
+        estado:
+            - NotBlank: ~
+        ciudad:
+            - NotBlank: ~
+        cp:
+            - NotBlank: ~
+
+NW\UserBundle\Entity\Novios:
+    properties:
+        nombre:
+            - NotBlank: ~
+        #sNombre:
+        aPaterno:
+            - NotBlank: ~
+        aMaterno:
+            - NotBlank: ~
+        eMail:
+            - NotBlank: ~
+            - Email:
+                checkMX: true
+        lada:
+            - NotBlank: ~
+        telefono:
+            - NotBlank: ~
+        celular:
+            - NotBlank: ~
+        direccion:
+            - NotBlank: ~
+        estado:
+            - NotBlank: ~
+        ciudad:
+            - NotBlank: ~
+        cp:
+            - NotBlank: ~
