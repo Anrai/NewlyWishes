@@ -38,6 +38,44 @@ class NoviosController extends Controller
     {
         return $this->render('NWPrincipalBundle:Novios:index.html.twig');
     }
+
+    public function dudasNoviosAction(Request $request)
+    {
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+
+            // Información del correo
+            $user = $this->getUser();
+            $asunto = $this->get('request')->request->get('asunto');
+            $mensaje = $this->get('request')->request->get('mensaje');
+
+            // Buscar usuario segun su Id
+
+            // Enviar correo a atencion@newlywishes.com con las dudas de los novios
+            $message = \Swift_Message::newInstance()
+            ->setSubject("Mensaje de usuario: ".$asunto)
+            ->setFrom("info@newlywishes.com")
+            ->setTo("atencion@newlywishes.com")
+            ->setBody(
+                $this->renderView(
+                    'NWPrincipalBundle:Novios:dudasNovios.html.twig', array(
+                        'user' => $user,
+                        'asunto' => $asunto,
+                        'mensaje' => $mensaje
+                    )
+                )
+            );
+            $this->get('mailer')->send($message);
+
+            // Se manda un mensaje de travesura realizada
+            $this->get('session')->getFlashBag()->set(
+                'notice',
+                'Se ha recibido con éxito su mensaje, le responderemos por correo tan pronto como sea posible.'
+            );
+        }
+        
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-boda'));
+    }
 	
 	public function nuestraBodaAction(Request $request)
     {
