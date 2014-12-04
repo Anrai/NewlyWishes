@@ -876,6 +876,35 @@ class NoviosController extends Controller
                     $em->persist($novia);
                     $em->persist($novio);
                     $em->flush();
+
+                    // Se mandan correos de los cambios hechos en los datos de la cuenta
+                    // Novio
+                    $message = \Swift_Message::newInstance()
+                    ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
+                    ->setFrom("info@newlywishes.com")
+                    ->setTo($novio->getEMail())
+                    ->setBody(
+                        $this->renderView(
+                            'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(
+                                
+                            )
+                        )
+                    );
+                    $this->get('mailer')->send($message);
+                    
+                    // Novia
+                    $message = \Swift_Message::newInstance()
+                    ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
+                    ->setFrom("info@newlywishes.com")
+                    ->setTo($novia->getEMail())
+                    ->setBody(
+                        $this->renderView(
+                            'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(
+                                
+                            )
+                        )
+                    );
+                    $this->get('mailer')->send($message);
                 }
             }
             // Formulario de solicitud de retiro
