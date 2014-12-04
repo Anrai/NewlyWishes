@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 use NW\PrincipalBundle\Form\Type\EdicionNoviosType;
 use NW\PrincipalBundle\Form\Type\ChecklistType;
 use NW\PrincipalBundle\Form\Type\ListaInvitadosType;
@@ -730,8 +733,8 @@ class NoviosController extends Controller
 
         // Formulario de cambio de contraseña
         $form=$this->createFormBuilder()
-            ->add('oldPass', 'password')
-            ->add('newPass', 'password')
+            ->add('oldPass', 'password', array('required' => true, 'constraints' => new NotBlank()))
+            ->add('newPass', 'password', array('required' => true, 'constraints' => array(new NotBlank(), new Length(array('min' => 8)))))
             ->add('Cambiar', 'submit')
             ->getForm();
 
@@ -754,30 +757,40 @@ class NoviosController extends Controller
 
                 if($form->isValid())
                 {
+                    // Codificando la contraseña escrita para después compararla con la original
+                    $encoder_service = $this->get('security.encoder_factory');
+                    $encoder = $encoder_service->getEncoder($user);
+                    $encoder_pass = $encoder->encodePassword($form["oldPass"]->getData(), $user->getSalt());
 
-                    // Verificar el tamaño de la contraseña
-                    if(strlen($form["newPass"]->getData())==8)
+                    // Verificar que la contraseña escrita sea correcta
+                    if($encoder_pass === $user->getPassword())
                     {
-                        // Codificando la contraseña escrita para después compararla con la original
-                        $encoder_service = $this->get('security.encoder_factory');
-                        $encoder = $encoder_service->getEncoder($user);
-                        $encoder_pass = $encoder->encodePassword($form["oldPass"]->getData(), $user->getSalt());
-
-                        // Verificar que la contraseña escrita sea correcta
-                        if($encoder_pass === $user->getPassword())
-                        {
-                            // Cambiar contraseña del usuario
-                            $user->setPlainPassword($form["newPass"]->getData());
-                            $this->get('fos_user.user_manager')->updateUser($user,false);
-                            $this->getDoctrine()->getManager()->flush();
-                            
-                            // Ya se actualizó la contraseña
-                            $statusForm = true;
-                        }        
+                        // Cambiar contraseña del usuario
+                        $user->setPlainPassword($form["newPass"]->getData());
+                        $this->get('fos_user.user_manager')->updateUser($user,false);
+                        $this->getDoctrine()->getManager()->flush();
+                        
+                        // Se manda un mensaje de travesura realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'Se cambió la contraseña con éxito. Ya puede utilizar su nueva contraseña para iniciar sesión.'
+                        );
                     }
                     else{
-                        $tamanoContrasena = true;  
+                        // Se manda un mensaje de travesura realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'No se cambió la contraseña, la contraseña anterior no es la que escribió.'
+                        );
                     }
+                }
+                else
+                {
+                    // Se manda un mensaje de travesura realizada
+                    $this->get('session')->getFlashBag()->set(
+                        'notice',
+                        'No se cambió la contraseña, hay error en los campos del formulario.'
+                    );
                 }
             }
             // ¿El formulario que se envió es el de edición de los datos de los novios?

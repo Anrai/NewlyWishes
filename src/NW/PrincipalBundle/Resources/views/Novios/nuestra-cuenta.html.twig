@@ -237,19 +237,6 @@
 			</div>
 			<!-- FIN DATOS DEL NOVIO -->
 
-			<!-- NUESTRA CONTRASEÑA -->
-			<div class="row" style="margin-top:20px;">
-					<div class="col-xs-12">
-						<h5 class="art" style="float:left;">
-							Nuestra contraseña
-							{% if statusForm %}
-								<b>(Se ha actualizado satisfactoriamente)</b>
-							{% elseif tamanoContrasena %}
-								<b>La contraseña debe ser de 8 caracteres</b>
-							{% endif %}
-						</h5>
-					</div>
-			</div>
 			<div class="row borde_abajo"></div>
 			<div class="row" style="margin-top:10px;">
 					<div class="col-xs-12">
@@ -261,12 +248,13 @@
 				{{ form_start(form) }}
 					<div class="col-md-4">
 						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Contraseña actual' } }) }}
+						<span class="error-formulario">{{ form_errors(form.oldPass) }}</span>
 					</div>
 					<div class="col-md-4">
 						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Nueva Contraseña' } }) }}
+						<span class="error-formulario">{{ form_errors(form.newPass) }}</span>
 					</div>
 					<div class="col-md-4">
-						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
 						{{ form_widget(form.Cambiar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:100px; margin-top:2px; bottom:0px;' } }) }}
 					</div>
 				{{ form_end(form) }}
