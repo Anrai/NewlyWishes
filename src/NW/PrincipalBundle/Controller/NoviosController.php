@@ -286,8 +286,12 @@ class NoviosController extends Controller
                 }
 
                 $nuevaTarea->setVencimiento($vencimiento);
-
                 $nuevaTarea->setHecho(false);
+
+                if(is_null($nuevaTarea->getContactoNombre())){$nuevaTarea->setContactoNombre('');}
+                if(is_null($nuevaTarea->getContactoEmail())){$nuevaTarea->setContactoEmail('');}
+                if(is_null($nuevaTarea->getContactoDireccion())){$nuevaTarea->setContactoDireccion('');}
+                if(is_null($nuevaTarea->getContactoTelefono())){$nuevaTarea->setContactoTelefono('');}
 
                 $em->persist($nuevaTarea);
                 $em->flush();
@@ -300,6 +304,7 @@ class NoviosController extends Controller
                 $return["descripcion"] = $nuevaTarea->getDescripcion();
                 $return["categoria"] = $categoria->getCategoria();
                 $return["vencimiento"] = $vencimiento->format("H:i");
+
                 $return["nombre"] = $nuevaTarea->getContactoNombre();
                 $return["telefono"] = $nuevaTarea->getContactoTelefono();
                 $return["email"] = $nuevaTarea->getContactoEmail();
