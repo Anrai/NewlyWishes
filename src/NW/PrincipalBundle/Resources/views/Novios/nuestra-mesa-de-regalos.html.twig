@@ -166,7 +166,7 @@
 					<div class="col-xs-3">
 						<p class="columna_dos">
 							Valor <br>
-							<span class="art">${{ regalo.precioTotal }}</span> <br>
+							<span class="art">${{ regalo.precioTotal|number_format(2, '.', ',') }}</span> <br>
 							{{ regalo.cantidad }} Artículo(s) dividido(s) en 
 							<span class="art">{{ regalo.horcruxes }}</span> partes c/u
 						</p>
