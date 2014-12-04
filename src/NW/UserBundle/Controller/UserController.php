@@ -242,6 +242,36 @@ class UserController extends Controller
                     $em->persist($boda);
                     $em->flush();
 
+                    // Enviar correo a los novios por el registro exitoso
+                    // Novio
+                    $message = \Swift_Message::newInstance()
+                    ->setSubject("Te registraste con éxito en NewlyWishes.com")
+                    ->setFrom("info@newlywishes.com")
+                    ->setTo($novios->getEMail())
+                    ->setBody(
+                        $this->renderView(
+                            'NWUserBundle:User:correoRegistroExitoso.html.twig', array(
+                                'user' => $user,
+                                'contrasena' => $form["userPass"]->getData()
+                            )
+                        )
+                    );
+                    $this->get('mailer')->send($message);
+                    // Novia
+                    $message = \Swift_Message::newInstance()
+                    ->setSubject("Te registraste con éxito en NewlyWishes.com")
+                    ->setFrom("info@newlywishes.com")
+                    ->setTo($novias->getEMail())
+                    ->setBody(
+                        $this->renderView(
+                            'NWUserBundle:User:correoRegistroExitoso.html.twig', array(
+                                'user' => $user,
+                                'contrasena' => $form["userPass"]->getData()
+                            )
+                        )
+                    );
+                    $this->get('mailer')->send($message);
+
                     // El registro del formulario fue exitoso y se muestra mensaje de felicitación
                     return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));
                 }

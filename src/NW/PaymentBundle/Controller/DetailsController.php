@@ -40,6 +40,11 @@ class DetailsController extends PayumController
                 $precio = $details["L_PAYMENTREQUEST_0_AMT".$i];
                 $amount = $cantidad * $precio;
 
+                // Array que se usa en los renders para mandar los correos
+                $details['regalos'][$i]['nombre'] = $details["L_PAYMENTREQUEST_0_NAME".$i];
+                $details['regalos'][$i]['cantidad'] = $cantidad;
+                $details['regalos'][$i]['precio'] = $precio;
+
                 // A ese dato se le resta el 3.5%
                 $aumentoSaldo = $amount * 0.965;
 
@@ -64,6 +69,7 @@ class DetailsController extends PayumController
                 $em->persist($usuarioObject);
                 $em->persist($regaloObject);
                 $em->flush();
+
             }
 
             $this->get('session')->getFlashBag()->set(
@@ -74,6 +80,49 @@ class DetailsController extends PayumController
                 'transaccion',
                 'Vaciar Carrito, la transacción fue correcta'
             );
+
+            // Se manda correo al comprador con la confirmación de su compra
+            $message = \Swift_Message::newInstance()
+            ->setSubject("Tu regalo ha sido entregado correctamente en NewlyWishes.com")
+            ->setFrom("info@newlywishes.com")
+            ->setTo($details["EMAIL"])
+            ->setBody(
+                $this->renderView(
+                    'NWPrincipalBundle:Novios:regalasteAlgo.html.twig', array(
+                        'details' => $details, 
+                        'noviosUser' => $usuarioObject,
+                    )
+                )
+            );
+            $this->get('mailer')->send($message);
+
+            // Se le manda un correo a los novios de que les han regalado algo de su mesa de regalos
+            // Novio
+            $message = \Swift_Message::newInstance()
+            ->setSubject("Un invitado te ha regalado algo en NewlyWishes.com")
+            ->setFrom("info@newlywishes.com")
+            ->setTo($usuarioObject->getNovios()->getEMail())
+            ->setBody(
+                $this->renderView(
+                    'NWPrincipalBundle:Novios:teRegalaronAlgo.html.twig', array(
+                        'details' => $details,  
+                    )
+                )
+            );
+            $this->get('mailer')->send($message);
+            // Novia
+            $message = \Swift_Message::newInstance()
+            ->setSubject("Un invitado te ha regalado algo en NewlyWishes.com")
+            ->setFrom("info@newlywishes.com")
+            ->setTo($usuarioObject->getNovias()->getEMail())
+            ->setBody(
+                $this->renderView(
+                    'NWPrincipalBundle:Novios:teRegalaronAlgo.html.twig', array(
+                        'details' => $details,  
+                    )
+                )
+            );
+            $this->get('mailer')->send($message);
 
             /*return $this->render('NWPaymentBundle:Details:view.html.twig', array(
                 'status' => $status->getValue(),

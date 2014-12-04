@@ -247,11 +247,11 @@
 			<div class="row" style="margin-top:10px;">
 				{{ form_start(form) }}
 					<div class="col-md-4">
-						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Contraseña actual' } }) }}
+						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña actual' } }) }}
 						<span class="error-formulario">{{ form_errors(form.oldPass) }}</span>
 					</div>
 					<div class="col-md-4">
-						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Nueva Contraseña' } }) }}
+						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nueva Contraseña' } }) }}
 						<span class="error-formulario">{{ form_errors(form.newPass) }}</span>
 					</div>
 					<div class="col-md-4">
