@@ -52,6 +52,40 @@ class AdminController extends Controller
             $respuesta
         );
 
+        // Se manda correo a los novios de que su solicitud de retiro ha sido aceptada
+        $message = \Swift_Message::newInstance()
+        ->setSubject("Tu solicitud de retiro ha sido aceptada en NewlyWishes.com")
+        ->setFrom("info@newlywishes.com")
+        ->setTo($usuario->getNovios()->getEMail())
+        ->setBody(
+            $this->renderView(
+                'NWPrincipalBundle:Admin:solicitudRetiroAceptada.html.twig', array(
+                    'id' => $solicitudObject->getId(),
+                    'saldoViejo' => $saldoViejo,
+                    'saldoNuevo' => $saldoNuevo,
+                    'amount' => $solicitudObject->getAmount(),
+                    'cuentaPaypal' => $solicitudObject->getCuentaPaypal(),
+                )
+            )
+        );
+        $this->get('mailer')->send($message);
+        $message = \Swift_Message::newInstance()
+        ->setSubject("Tu solicitud de retiro ha sido aceptada en NewlyWishes.com")
+        ->setFrom("info@newlywishes.com")
+        ->setTo($usuario->getNovias()->getEMail())
+        ->setBody(
+            $this->renderView(
+                'NWPrincipalBundle:Admin:solicitudRetiroAceptada.html.twig', array(
+                    'id' => $solicitudObject->getId(),
+                    'saldoViejo' => $saldoViejo,
+                    'saldoNuevo' => $saldoNuevo,
+                    'amount' => $solicitudObject->getAmount(),
+                    'cuentaPaypal' => $solicitudObject->getCuentaPaypal(),
+                )
+            )
+        );
+        $this->get('mailer')->send($message);
+
         return $this->redirect($this->generateURL('nw_principal_admin_panel'));
     }
 
