@@ -40,9 +40,10 @@ class DetailsController extends PayumController
                 $precio = $details["L_PAYMENTREQUEST_0_AMT".$i];
                 $amount = $cantidad * $precio;
 
-                // Array que se usa en el render para mandar correo a los novios
+                // Array que se usa en los renders para mandar los correos
                 $details['regalos'][$i]['nombre'] = $details["L_PAYMENTREQUEST_0_NAME".$i];
                 $details['regalos'][$i]['cantidad'] = $cantidad;
+                $details['regalos'][$i]['precio'] = $precio;
 
                 // A ese dato se le resta el 3.5%
                 $aumentoSaldo = $amount * 0.965;
@@ -79,6 +80,21 @@ class DetailsController extends PayumController
                 'transaccion',
                 'Vaciar Carrito, la transacción fue correcta'
             );
+
+            // Se manda correo al comprador con la confirmación de su compra
+            $message = \Swift_Message::newInstance()
+            ->setSubject("Tu regalo ha sido entregado correctamente en NewlyWishes.com")
+            ->setFrom("info@newlywishes.com")
+            ->setTo("docser@gmail.com"/*$details["EMAIL"]*/)
+            ->setBody(
+                $this->renderView(
+                    'NWPrincipalBundle:Novios:regalasteAlgo.html.twig', array(
+                        'details' => $details, 
+                        'noviosUser' => $usuarioObject,
+                    )
+                )
+            );
+            $this->get('mailer')->send($message);
 
             // Se le manda un correo a los novios de que les han regalado algo de su mesa de regalos
             // Novio
