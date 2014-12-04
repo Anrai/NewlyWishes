@@ -852,19 +852,34 @@ class NoviosController extends Controller
                 // handle form de solicitud de retiro
                 $formSolicitudRetiro->handleRequest($request);
                 if ($formSolicitudRetiro->isValid()) {
-                    // Aqui pasa todo
-                    $nuevaSolicitudRetiro->setUsuario($user);
-                    $nuevaSolicitudRetiro->setFecha(new \DateTime());
-                    $nuevaSolicitudRetiro->setRealizado(false);
+                    // Mandar solicitud de retiro solo si no tiene solicitudes anteriores sin aceptar
+                    $solicitudesRepository = $em->getRepository('NWPrincipalBundle:SolicitudRetiro');
+                    $solicitudSinAprobarObject = $solicitudesRepository->findOneBy(array('realizado' => false));
 
-                    $em->persist($nuevaSolicitudRetiro);
-                    $em->flush();
+                    if (!is_object($solicitudSinAprobarObject)) {
+                        // Aqui pasa todo
+                        $nuevaSolicitudRetiro->setUsuario($user);
+                        $nuevaSolicitudRetiro->setFecha(new \DateTime());
+                        $nuevaSolicitudRetiro->setRealizado(false);
 
-                    // Se manda un mensaje de travesura realizada
-                    $this->get('session')->getFlashBag()->set(
-                        'notice',
-                        'Se ha enviado la solicitud para retirar su dinero en la cuenta de paypal indicada. Por favor espere a que sea aprobada.'
-                    );
+                        $em->persist($nuevaSolicitudRetiro);
+                        $em->flush();
+
+                        // Se manda un mensaje de travesura realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'Se ha enviado la solicitud para retirar su dinero en la cuenta de paypal indicada. Por favor espere a que sea aprobada.'
+                        );
+                    }
+                    else
+                    {
+                        // Se manda un mensaje de travesura no realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'Ya tienes una solicitud de retiro en espera, espera a que sea procesada antes de mandar otra.'
+                        );   
+                    }
+                    
                 }
             }
         }
