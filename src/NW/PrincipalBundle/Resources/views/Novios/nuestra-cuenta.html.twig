@@ -20,16 +20,22 @@
 				
 				{{form_start(formSolicitudRetiro)}}
 					<div class="col-md-4">
-						<span class="error-formulario">{{ form_errors(formSolicitudRetiro.amount) }}</span>
 						{{ form_widget(formSolicitudRetiro.amount, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Cantidad en MXN' } }) }}
+						<span class="error-formulario">{{ form_errors(formSolicitudRetiro.amount) }}</span>
 					</div>
 					<div class="col-md-4">
-						<span class="error-formulario">{{ form_errors(formSolicitudRetiro.cuentaPaypal) }}</span>
 						{{ form_widget(formSolicitudRetiro.cuentaPaypal, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'correo de PayPal' } }) }}
+						<span class="error-formulario">{{ form_errors(formSolicitudRetiro.cuentaPaypal) }}</span>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
 						{{ form_widget(formSolicitudRetiro.Solicitar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:100px; margin-top:2px; bottom:0px;' } }) }}
+					</div>
+					<div class="col-md-2">
+						<div class="punto-verde-bueno hacerTooltip" style="float:left; margin-right:20px; margin-top:7px;" data-toggle="tooltip" data-placement="top" title="Para poder retirar el saldo de tu cuenta, es necesario que tengas una cuenta PayPal (correo electrónico registrado en PayPal). Si no lo tienes, es muy fácil, rápido y seguro, sólo tienes que ingresar a www.PayPal.com o dar click en el ícono del lado derecho y registrarte para vincular tu correo electrónico a tu cuenta PayPal. Recuerda que sólo podrás retirar el saldo de tu cuenta a través de PayPal. Si tienes preguntas, no dudes en contactarnos.">?</div>
+						<a href="https://www.paypal.com/mx/cgi-bin/webscr?cmd=_minimal-signup" target="_blank">
+							<img src="{{asset('img/paypal.png')}}" width="30px" alt="Regístrate en PayPal">
+						</a>
 					</div>
 				{{form_end(formSolicitudRetiro)}}
 			</div>
