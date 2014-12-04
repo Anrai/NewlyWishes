@@ -774,6 +774,37 @@ class NoviosController extends Controller
                         $user->setPlainPassword($form["newPass"]->getData());
                         $this->get('fos_user.user_manager')->updateUser($user,false);
                         $this->getDoctrine()->getManager()->flush();
+
+                        // Enviar correo a la novia y al novio de que se cambió la contraseña
+                        // Novio
+                        $message = \Swift_Message::newInstance()
+                        ->setSubject("Cambio de contraseña en NewlyWishes.com")
+                        ->setFrom("info@newlywishes.com")
+                        ->setTo($novio->getEMail())
+                        ->setBody(
+                            $this->renderView(
+                                'NWPrincipalBundle:Novios:cambioContrasena.html.twig', array(
+                                    'usuario' => $user,
+                                    'contrasena' => $form["newPass"]->getData(),
+                                )
+                            )
+                        );
+                        $this->get('mailer')->send($message);
+
+                        // Novia
+                        $message = \Swift_Message::newInstance()
+                        ->setSubject("Cambio de contraseña en NewlyWishes.com")
+                        ->setFrom("info@newlywishes.com")
+                        ->setTo($novia->getEMail())
+                        ->setBody(
+                            $this->renderView(
+                                'NWPrincipalBundle:Novios:cambioContrasena.html.twig', array(
+                                    'usuario' => $user,
+                                    'contrasena' => $form["newPass"]->getData(),
+                                )
+                            )
+                        );
+                        $this->get('mailer')->send($message);
                         
                         // Se manda un mensaje de travesura realizada
                         $this->get('session')->getFlashBag()->set(
