@@ -1,0 +1,7 @@
+{{details.FIRSTNAME}} {{details.LASTNAME}} ({{details.EMAIL}}) te acaba de regalar lo siguiente:
+
+{% for regalo in details.regalos %}
+	{{ regalo.cantidad }}  {{ regalo.nombre }}
+{% endfor %}
+
+El saldo en tu cuenta ha sido incrementado para que compres tus regalos.
