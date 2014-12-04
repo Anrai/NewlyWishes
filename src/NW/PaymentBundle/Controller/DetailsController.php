@@ -85,7 +85,7 @@ class DetailsController extends PayumController
             $message = \Swift_Message::newInstance()
             ->setSubject("Tu regalo ha sido entregado correctamente en NewlyWishes.com")
             ->setFrom("info@newlywishes.com")
-            ->setTo("docser@gmail.com"/*$details["EMAIL"]*/)
+            ->setTo($details["EMAIL"])
             ->setBody(
                 $this->renderView(
                     'NWPrincipalBundle:Novios:regalasteAlgo.html.twig', array(
