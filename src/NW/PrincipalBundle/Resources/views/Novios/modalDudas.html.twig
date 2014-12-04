@@ -20,50 +20,36 @@
 			</div>
 
 			<div class="modal-body">
-				<div class="row">
 
-					<div class="col-md-11">
-						<span style="color:rgba(0,0,0,1);">Número de cuenta:</span> 1928301
-					</div>
-
-				</div>
-
-				<div class="row">
-
-					<div class="col-md-11">
-
-						<select class="input_small">
-							<option>Asunto</option>
-						</select>
-
-					</div>
-
-				</div>
-
-				<div class="row">
-
-					<div class="col-md-11">
-						<textarea style="height:250px;" class="textarea_small" placeholder="Mensaje"></textarea>
-					</div>
-
-				</div>
-
-				<div class="row">
-
-					<div class="col-md-11">
-						<input type="submit" id="enviar_form" placeholder="Enviar" style="float:right;">
-					</div>
-
-
-					<div class="col-md-3">
-						<div class="row" style="margin-top:0px;">
-							<div class="col-md-12">
-
-							</div>
+				<form action="{{path('nw_principal_novios_dudas_novios')}}" method="POST">
+					<div class="row">
+						<div class="col-md-11">
+							<select class="input_small" name="asunto">
+								<option>Asunto</option>
+								<option value="Dudas sobre la mesa de regalos">Dudas sobre la mesa de regalos</option>
+				      			<option value="Error en la pagina">Error en la página</option>
+				      			<option value="Sugerencia">Sugerencia</option>
+				      			<option value="Queja">Queja</option>
+				      			<option value="Comentario">Comentario</option>
+				      			<option value="Pregunta">Pregunta</option>
+				      			<option value="Notificaciones">Notificaciones</option>
+				      			<option value="PayPal">PayPal</option>
+				      			<option value="Vender o anunciarme en NewlyWishes.com">Vender o anunciarme en NewlyWishes.com</option>
+							</select>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-11">
+							<textarea style="height:250px;" class="textarea_small" name="mensaje" placeholder="Mensaje"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-11">
+							<input type="submit" id="enviar_form" placeholder="Enviar" style="float:right;">
+						</div>
+					</div>
+				</form>
 
-				</div>
 			</div>
 		</div>
 	</div>

@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 use NW\PrincipalBundle\Form\Type\EdicionNoviosType;
 use NW\PrincipalBundle\Form\Type\ChecklistType;
 use NW\PrincipalBundle\Form\Type\ListaInvitadosType;
@@ -37,6 +40,42 @@ class NoviosController extends Controller
     public function indexAction()
     {
         return $this->render('NWPrincipalBundle:Novios:index.html.twig');
+    }
+
+    public function dudasNoviosAction(Request $request)
+    {
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+
+            // Información del correo
+            $user = $this->getUser();
+            $asunto = $this->get('request')->request->get('asunto');
+            $mensaje = $this->get('request')->request->get('mensaje');
+
+            // Enviar correo a atencion@newlywishes.com con las dudas de los novios
+            $message = \Swift_Message::newInstance()
+            ->setSubject("Mensaje de usuario: ".$asunto)
+            ->setFrom("info@newlywishes.com")
+            ->setTo("atencion@newlywishes.com")
+            ->setBody(
+                $this->renderView(
+                    'NWPrincipalBundle:Novios:dudasNovios.html.twig', array(
+                        'user' => $user,
+                        'asunto' => $asunto,
+                        'mensaje' => $mensaje
+                    )
+                )
+            );
+            $this->get('mailer')->send($message);
+
+            // Se manda un mensaje de travesura realizada
+            $this->get('session')->getFlashBag()->set(
+                'notice',
+                'Se ha recibido con éxito su mensaje, le responderemos por correo tan pronto como sea posible.'
+            );
+        }
+        
+        return $this->redirect($this->generateUrl('nw_principal_novios_nuestra-boda'));
     }
 	
 	public function nuestraBodaAction(Request $request)
@@ -247,8 +286,12 @@ class NoviosController extends Controller
                 }
 
                 $nuevaTarea->setVencimiento($vencimiento);
-
                 $nuevaTarea->setHecho(false);
+
+                if(is_null($nuevaTarea->getContactoNombre())){$nuevaTarea->setContactoNombre('');}
+                if(is_null($nuevaTarea->getContactoEmail())){$nuevaTarea->setContactoEmail('');}
+                if(is_null($nuevaTarea->getContactoDireccion())){$nuevaTarea->setContactoDireccion('');}
+                if(is_null($nuevaTarea->getContactoTelefono())){$nuevaTarea->setContactoTelefono('');}
 
                 $em->persist($nuevaTarea);
                 $em->flush();
@@ -261,6 +304,7 @@ class NoviosController extends Controller
                 $return["descripcion"] = $nuevaTarea->getDescripcion();
                 $return["categoria"] = $categoria->getCategoria();
                 $return["vencimiento"] = $vencimiento->format("H:i");
+
                 $return["nombre"] = $nuevaTarea->getContactoNombre();
                 $return["telefono"] = $nuevaTarea->getContactoTelefono();
                 $return["email"] = $nuevaTarea->getContactoEmail();
@@ -694,8 +738,8 @@ class NoviosController extends Controller
 
         // Formulario de cambio de contraseña
         $form=$this->createFormBuilder()
-            ->add('oldPass', 'password')
-            ->add('newPass', 'password')
+            ->add('oldPass', 'password', array('required' => true, 'constraints' => new NotBlank()))
+            ->add('newPass', 'password', array('required' => true, 'constraints' => array(new NotBlank(), new Length(array('min' => 8)))))
             ->add('Cambiar', 'submit')
             ->getForm();
 
@@ -703,8 +747,9 @@ class NoviosController extends Controller
         $statusForm=false;
         $tamanoContrasena=false; // El tamaño de la contraseña está bien
 
-        // Formulario de solicitud de retiro
+        // Formulario de solicitud de retiro estableciendo el maximo que puede retirar
         $nuevaSolicitudRetiro = new SolicitudRetiro();
+        $nuevaSolicitudRetiro->setMaximoRetiro($user->getSaldo());
         $formSolicitudRetiro = $this->createForm(new SolicitudRetiroType(), $nuevaSolicitudRetiro);
 
         // Recuperando formularios
@@ -717,30 +762,40 @@ class NoviosController extends Controller
 
                 if($form->isValid())
                 {
+                    // Codificando la contraseña escrita para después compararla con la original
+                    $encoder_service = $this->get('security.encoder_factory');
+                    $encoder = $encoder_service->getEncoder($user);
+                    $encoder_pass = $encoder->encodePassword($form["oldPass"]->getData(), $user->getSalt());
 
-                    // Verificar el tamaño de la contraseña
-                    if(strlen($form["newPass"]->getData())==8)
+                    // Verificar que la contraseña escrita sea correcta
+                    if($encoder_pass === $user->getPassword())
                     {
-                        // Codificando la contraseña escrita para después compararla con la original
-                        $encoder_service = $this->get('security.encoder_factory');
-                        $encoder = $encoder_service->getEncoder($user);
-                        $encoder_pass = $encoder->encodePassword($form["oldPass"]->getData(), $user->getSalt());
-
-                        // Verificar que la contraseña escrita sea correcta
-                        if($encoder_pass === $user->getPassword())
-                        {
-                            // Cambiar contraseña del usuario
-                            $user->setPlainPassword($form["newPass"]->getData());
-                            $this->get('fos_user.user_manager')->updateUser($user,false);
-                            $this->getDoctrine()->getManager()->flush();
-                            
-                            // Ya se actualizó la contraseña
-                            $statusForm = true;
-                        }        
+                        // Cambiar contraseña del usuario
+                        $user->setPlainPassword($form["newPass"]->getData());
+                        $this->get('fos_user.user_manager')->updateUser($user,false);
+                        $this->getDoctrine()->getManager()->flush();
+                        
+                        // Se manda un mensaje de travesura realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'Se cambió la contraseña con éxito. Ya puede utilizar su nueva contraseña para iniciar sesión.'
+                        );
                     }
                     else{
-                        $tamanoContrasena = true;  
+                        // Se manda un mensaje de travesura realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'No se cambió la contraseña, la contraseña anterior no es la que escribió.'
+                        );
                     }
+                }
+                else
+                {
+                    // Se manda un mensaje de travesura realizada
+                    $this->get('session')->getFlashBag()->set(
+                        'notice',
+                        'No se cambió la contraseña, hay error en los campos del formulario.'
+                    );
                 }
             }
             // ¿El formulario que se envió es el de edición de los datos de los novios?
@@ -797,20 +852,34 @@ class NoviosController extends Controller
                 // handle form de solicitud de retiro
                 $formSolicitudRetiro->handleRequest($request);
                 if ($formSolicitudRetiro->isValid()) {
+                    // Mandar solicitud de retiro solo si no tiene solicitudes anteriores sin aceptar
+                    $solicitudesRepository = $em->getRepository('NWPrincipalBundle:SolicitudRetiro');
+                    $solicitudSinAprobarObject = $solicitudesRepository->findOneBy(array('realizado' => false));
 
-                    // Aqui pasa todo
-                    $nuevaSolicitudRetiro->setUsuario($user);
-                    $nuevaSolicitudRetiro->setFecha(new \DateTime());
-                    $nuevaSolicitudRetiro->setRealizado(false);
+                    if (!is_object($solicitudSinAprobarObject)) {
+                        // Aqui pasa todo
+                        $nuevaSolicitudRetiro->setUsuario($user);
+                        $nuevaSolicitudRetiro->setFecha(new \DateTime());
+                        $nuevaSolicitudRetiro->setRealizado(false);
 
-                    $em->persist($nuevaSolicitudRetiro);
-                    $em->flush();
+                        $em->persist($nuevaSolicitudRetiro);
+                        $em->flush();
 
-                    // Se manda un mensaje de travesura realizada
-                    $this->get('session')->getFlashBag()->set(
-                        'notice',
-                        'Se ha enviado la solicitud para retirar su dinero en la cuenta de paypal indicada. Por favor espere a que sea aprobada.'
-                    );
+                        // Se manda un mensaje de travesura realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'Se ha enviado la solicitud para retirar su dinero en la cuenta de paypal indicada. Por favor espere a que sea aprobada.'
+                        );
+                    }
+                    else
+                    {
+                        // Se manda un mensaje de travesura no realizada
+                        $this->get('session')->getFlashBag()->set(
+                            'notice',
+                            'Ya tienes una solicitud de retiro en espera, espera a que sea procesada antes de mandar otra.'
+                        );   
+                    }
+                    
                 }
             }
         }

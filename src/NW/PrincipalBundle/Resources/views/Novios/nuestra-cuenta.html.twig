@@ -12,6 +12,34 @@
 				</div>	
 			</div>
 
+			<div class="row" style="margin-top:10px; margin-left: 0px;">
+				<h5 class="art" style="float:left;">Solicitar retiro de dinero a cuenta de PayPal</h5>
+			</div>
+
+			<div class="row">
+				
+				{{form_start(formSolicitudRetiro)}}
+					<div class="col-md-4">
+						{{ form_widget(formSolicitudRetiro.amount, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Cantidad en MXN' } }) }}
+						<span class="error-formulario">{{ form_errors(formSolicitudRetiro.amount) }}</span>
+					</div>
+					<div class="col-md-4">
+						{{ form_widget(formSolicitudRetiro.cuentaPaypal, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'correo de PayPal' } }) }}
+						<span class="error-formulario">{{ form_errors(formSolicitudRetiro.cuentaPaypal) }}</span>
+					</div>
+					<div class="col-md-2">
+						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
+						{{ form_widget(formSolicitudRetiro.Solicitar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:100px; margin-top:2px; bottom:0px;' } }) }}
+					</div>
+					<div class="col-md-2">
+						<div class="punto-verde-bueno hacerTooltip" style="float:left; margin-right:20px; margin-top:7px;" data-toggle="tooltip" data-placement="top" title="Para poder retirar el saldo de tu cuenta, es necesario que tengas una cuenta PayPal (correo electrónico registrado en PayPal). Si no lo tienes, es muy fácil, rápido y seguro, sólo tienes que ingresar a www.PayPal.com o dar click en el ícono del lado derecho y registrarte para vincular tu correo electrónico a tu cuenta PayPal. Recuerda que sólo podrás retirar el saldo de tu cuenta a través de PayPal. Si tienes preguntas, no dudes en contactarnos.">?</div>
+						<a href="https://www.paypal.com/mx/cgi-bin/webscr?cmd=_minimal-signup" target="_blank">
+							<img src="{{asset('img/paypal.png')}}" width="30px" alt="Regístrate en PayPal">
+						</a>
+					</div>
+				{{form_end(formSolicitudRetiro)}}
+			</div>
+
 			<!-- NUESTROS DATOS -->
 			<div class="row" style="margin-top:20px;">
 					<div class="col-xs-10">
@@ -209,19 +237,6 @@
 			</div>
 			<!-- FIN DATOS DEL NOVIO -->
 
-			<!-- NUESTRA CONTRASEÑA -->
-			<div class="row" style="margin-top:20px;">
-					<div class="col-xs-12">
-						<h5 class="art" style="float:left;">
-							Nuestra contraseña
-							{% if statusForm %}
-								<b>(Se ha actualizado satisfactoriamente)</b>
-							{% elseif tamanoContrasena %}
-								<b>La contraseña debe ser de 8 caracteres</b>
-							{% endif %}
-						</h5>
-					</div>
-			</div>
 			<div class="row borde_abajo"></div>
 			<div class="row" style="margin-top:10px;">
 					<div class="col-xs-12">
@@ -233,12 +248,13 @@
 				{{ form_start(form) }}
 					<div class="col-md-4">
 						{{ form_widget(form.oldPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Contraseña actual' } }) }}
+						<span class="error-formulario">{{ form_errors(form.oldPass) }}</span>
 					</div>
 					<div class="col-md-4">
 						{{ form_widget(form.newPass, { 'attr': {'class': 'input_registro_novios', 'maxlength': '8', 'placeholder': 'Nueva Contraseña' } }) }}
+						<span class="error-formulario">{{ form_errors(form.newPass) }}</span>
 					</div>
 					<div class="col-md-4">
-						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
 						{{ form_widget(form.Cambiar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:100px; margin-top:2px; bottom:0px;' } }) }}
 					</div>
 				{{ form_end(form) }}
@@ -250,25 +266,6 @@
 					</div>
 			</div>
 
-			<div class="row" style="margin-top:10px; margin-left: 0px;">
-				<h5 class="art" style="float:left;">Solicitar retiro de dinero a cuenta de PayPal</h5>
-			</div>
-
-			<div class="row">
-				
-				{{form_start(formSolicitudRetiro)}}
-					<div class="col-md-4">
-						{{ form_widget(formSolicitudRetiro.amount, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Cantidad en MXN' } }) }}
-					</div>
-					<div class="col-md-4">
-						{{ form_widget(formSolicitudRetiro.cuentaPaypal, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'correo de PayPal' } }) }}
-					</div>
-					<div class="col-md-4">
-						<!-- El formulario se debería enviar a NWPrincipalBundle:Default:changePass -->
-						{{ form_widget(formSolicitudRetiro.Solicitar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:100px; margin-top:2px; bottom:0px;' } }) }}
-					</div>
-				{{form_end(formSolicitudRetiro)}}
-			</div>
 			<!-- FIN NUESTROS DATOS -->
 
 			
