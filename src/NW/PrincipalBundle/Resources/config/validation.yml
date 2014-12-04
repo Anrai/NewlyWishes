@@ -1,0 +1,6 @@
+NW\PrincipalBundle\Entity\SolicitudRetiro:
+    properties:
+        cuentaPaypal:
+            - NotBlank: ~
+            - Email:
+                checkMX: true

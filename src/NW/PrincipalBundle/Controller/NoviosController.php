@@ -49,8 +49,6 @@ class NoviosController extends Controller
             $asunto = $this->get('request')->request->get('asunto');
             $mensaje = $this->get('request')->request->get('mensaje');
 
-            // Buscar usuario segun su Id
-
             // Enviar correo a atencion@newlywishes.com con las dudas de los novios
             $message = \Swift_Message::newInstance()
             ->setSubject("Mensaje de usuario: ".$asunto)
@@ -741,8 +739,9 @@ class NoviosController extends Controller
         $statusForm=false;
         $tamanoContrasena=false; // El tamaño de la contraseña está bien
 
-        // Formulario de solicitud de retiro
+        // Formulario de solicitud de retiro estableciendo el maximo que puede retirar
         $nuevaSolicitudRetiro = new SolicitudRetiro();
+        $nuevaSolicitudRetiro->setMaximoRetiro($user->getSaldo());
         $formSolicitudRetiro = $this->createForm(new SolicitudRetiroType(), $nuevaSolicitudRetiro);
 
         // Recuperando formularios
@@ -835,7 +834,6 @@ class NoviosController extends Controller
                 // handle form de solicitud de retiro
                 $formSolicitudRetiro->handleRequest($request);
                 if ($formSolicitudRetiro->isValid()) {
-
                     // Aqui pasa todo
                     $nuevaSolicitudRetiro->setUsuario($user);
                     $nuevaSolicitudRetiro->setFecha(new \DateTime());
