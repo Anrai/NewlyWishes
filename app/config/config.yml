@@ -97,3 +97,11 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: NW\UserBundle\Entity\User
+    from_email: 
+        address:  info@newlywishes.com
+        sender_name:  NewlyWishes
+    resetting:
+        email:
+            template:   NWUserBundle:User:resettingEmail.html.twig
+    service:
+        mailer: fos_user.mailer.twig_swift
