@@ -28,3 +28,4 @@ NW\PrincipalBundle\Entity\ListaInvitados:
         telefono:
             type: string
             length: 13
+            nullable: true

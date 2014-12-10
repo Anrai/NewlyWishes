@@ -23,11 +23,13 @@ NW\PrincipalBundle\Entity\Bodas:
         ceremonia_direccion:
             type: string
             length: 200
+            nullable: true
         recepcion:
             type: string
             length: 100
         recepcion_direccion:
             type: string
             length: 200
+            nullable: true
         fecha_boda:
             type: datetime
