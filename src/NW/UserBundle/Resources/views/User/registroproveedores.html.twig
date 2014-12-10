@@ -234,12 +234,16 @@
 				<div class="row">
 					<div class="row">
 						<div class="col-md-12 form-label puntosRosas">
-							<img src="{{ asset('img/punto.png') }}" style="top: 11px;left: 11px;position: absolute;">
+							
+					<span class="error-formulario">{{ form_errors(form.tipoPersona) }}</span>
+					<img src="{{ asset('img/punto.png') }}" style="top: 11px;left: 11px;position: absolute;">
 							{{ form_widget(form.tipoPersona) }}
 							<br />
 						</div>
 						<div class="col-md-4 puntosRosas">
-							<img src="{{ asset('img/punto.png') }}">
+							
+					<span class="error-formulario">{{ form_errors(form.nombreRazon) }}</span>
+					<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.nombreRazon, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre o razón social' } }) }}
 							<br/>
 							{{ form_widget(form.apellidoPaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Paterno' } }) }}
@@ -248,15 +252,21 @@
 							<br />
 							{{ form_widget(form.nombreComercial, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre Comercial' } }) }}
 							<br/>
-							<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+							
+					<span class="error-formulario">{{ form_errors(form.rfc) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
 						</div>
 						<div class="col-md-4 puntosRosas">
-							<img src="{{ asset('img/punto.png') }}">
+							
+					<span class="error-formulario">{{ form_errors(form.email) }}</span>
+					<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
 							<div class="col-md-3" style="padding: 0 10px 0 0;">
 								
-			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+			
+					<span class="error-formulario">{{ form_errors(form.lada) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 								{{ form_widget(form.lada, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'LADA'} }) }}
 							</div>
 							<div class="col-md-9" style="padding: 0;">
@@ -264,24 +274,35 @@
 							</div>
 							<div class="col-md-12" style="padding: 0;">
 								
-			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+			
+					<span class="error-formulario">{{ form_errors(form.celular) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 								{{ form_widget(form.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
 							</div>
 						</div>
 						<div class="col-md-4 puntosRosas">
-							<img src="{{ asset('img/punto.png') }}">
+							
+					<span class="error-formulario">{{ form_errors(form.direccion) }}</span>
+					<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
 							<br/>
-			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+
+					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.pais, { 'attr': {'class': 'input_registro_novios'} }) }}
 							<br />
-							<img src="{{ asset('img/punto.png') }}">
+							
+					<span class="error-formulario">{{ form_errors(form.estado) }}</span>
+					<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.estado, { 'attr': {'class': 'input_registro_novios'} }) }}
 							<br />
-							<img src="{{ asset('img/punto.png') }}">
+							
+					<span class="error-formulario">{{ form_errors(form.ciudad) }}</span>
+					<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Ciudad' } }) }}
 							<br/>
-			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+			
+					<span class="error-formulario">{{ form_errors(form.cp) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
 						</div>
 					</div>
@@ -293,20 +314,28 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4 puntosRosas">
-							<img src="{{ asset('img/punto.png') }}" alt="Registro">
+							
+					<span class="error-formulario">{{ form_errors(form.userName) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro">
 							{{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
 							<br/>
-			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+			
+					<span class="error-formulario">{{ form_errors(form.userPass) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
 						</div>
 						<div class="col-md-4 puntosRosas">
-							<img src="{{ asset('img/punto.png') }}" alt="Registro">
+							
+					<span class="error-formulario">{{ form_errors(form.terminosCondiciones) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro">
 							{{ form_widget(form.terminosCondiciones) }} 
 							<a href="{{asset('documents/TerminosYCondicionesNWNovios.pdf')}}" target="_blank">
 								Acepto los términos y condiciones generales
 							</a>
 							<br />
-							<img src="{{ asset('img/punto.png') }}" alt="Registro">
+							
+					<span class="error-formulario">{{ form_errors(form.terminosPrivacidad) }}</span>
+					<img src="{{ asset('img/punto.png') }}" alt="Registro">
 							{{ form_widget(form.terminosPrivacidad) }}
 							<a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesNovios.pdf')}}" target="_blank">
 								Acepto las Condiciones de Uso General y de Registro y Aviso de privacidad

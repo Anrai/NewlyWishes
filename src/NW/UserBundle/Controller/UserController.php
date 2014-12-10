@@ -17,6 +17,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class UserController extends Controller
 {
@@ -360,10 +363,10 @@ class UserController extends Controller
                     ), 'multiple'  => false,))
             ->add('ciudad', 'text', array('required' => false))
             ->add('cp', 'text', array('max_length' => 5))
-            ->add('userName', 'text', array('mapped' => false, 'required'  => true))
-            ->add('userPass', 'password', array('mapped' => false, 'required'  => true))
-            ->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true))
-            ->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true))
+            ->add('userName', 'text', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()))
+            ->add('userPass', 'password', array('mapped' => false, 'required'  => true, 'constraints' => array(new NotBlank(), new Length(array('min' => 8)))))
+            ->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()))
+            ->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()))
             /*->add('plan', 'choice', array('choices' => 
                 array(
                     'anuncioEspecial' => 'Anuncio Especial',
