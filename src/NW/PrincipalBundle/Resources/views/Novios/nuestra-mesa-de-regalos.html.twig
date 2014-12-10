@@ -64,8 +64,10 @@
 
 						      			<div class="row">
 						      				<div class="col-xs-12">
+						      					<span class="error-formulario">{{ form_errors(formRegalo.regalo) }}</span>
 						      					{{ form_widget(formRegalo.regalo, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Nombre del artículo' } }) }}
 						      					<br>
+						      					<span class="error-formulario">{{ form_errors(formRegalo.descripcion) }}</span>
 						      					{{ form_widget(formRegalo.descripcion, { 'attr': {'class': 'textarea_small', 'style': 'height:200px;', 'placeholder': 'Descripción' } }) }}
 						      				</div>
 						      			</div>
@@ -74,6 +76,7 @@
 						      		<div class="col-md-6">
 						      			<div class="row">
 						      				<div class="col-xs-10">
+						      					<span class="error-formulario">{{ form_errors(formRegalo.precioTotal) }}</span>
 						      					{{ form_widget(formRegalo.precioTotal, { 'attr': {'class': 'input_small', 'style': '', 'placeholder': 'Valor del artículo' } }) }}
 						      					<div class="col-xs-2">
 						      					</div>
@@ -99,6 +102,7 @@
 						      					Número de artículos
 						      				</div>
 						      				<div class="col-xs-4">
+						      					<span class="error-formulario">{{ form_errors(formRegalo.cantidad) }}</span>
 						      					{{ form_widget(formRegalo.cantidad, { 'attr': {'class': 'input_registro_novios'} }) }}
 						      				</div>
 						      				<div class="col-xs-2">
@@ -112,6 +116,7 @@
 						      					¿En cuántas partes desea dividir este artículo?
 						      				</div>
 						      				<div class="col-xs-4">
+						      					<span class="error-formulario">{{ form_errors(formRegalo.horcruxes) }}</span>
 						      					{{ form_widget(formRegalo.horcruxes, { 'attr': {'class': 'input_registro_novios'} }) }}
 						      				</div>
 						      				<div class="col-xs-2 tooltipAncho">

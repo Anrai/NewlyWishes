@@ -61,6 +61,7 @@
 			{{ form_start(formBoda) }}
 				<div class="row">
 					<div class="col-xs-5">
+						<span class="error-formulario">{{ form_errors(formBoda.ceremonia) }}</span>
 						{{ form_widget(formBoda.ceremonia, { 'attr': {'class': 'form-form invisible input_registro_novios', 'placeholder': 'Iglesia' } }) }}
 						<span class="texto-form">{{ formBoda.ceremonia.vars.value }}</span>
 					</div>
@@ -81,6 +82,7 @@
 				
 				<div class="row">
 					<div class="col-xs-5">
+						<span class="error-formulario">{{ form_errors(formBoda.recepcion) }}</span>
 						{{ form_widget(formBoda.recepcion, { 'attr': {'class': 'form-form invisible input_registro_novios', 'placeholder': 'Lugar' } }) }}
 						<span class="texto-form">{{ formBoda.recepcion.vars.value }}</span>	
 					</div>
@@ -139,9 +141,11 @@
 				<div class="row">
 				{{ form_start(formPadrinos) }}
 					<div class="col-xs-5">
+						<span class="error-formulario">{{ form_errors(formPadrinos.padrino) }}</span>
 						{{ form_widget(formPadrinos.padrino, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nuevo Padrino' } }) }}
 					</div>
 					<div class="col-xs-5">
+						<span class="error-formulario">{{ form_errors(formPadrinos.categoria) }}</span>
 						{{ form_widget(formPadrinos.categoria, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Padrino de...' } }) }}
 					</div>
 					<div class="col-xs-2">
@@ -195,9 +199,11 @@
 			<div class="row">
 			{{ form_start(formNotas) }}
 				<div class="col-xs-5">
+					<span class="error-formulario">{{ form_errors(formNotas.titulo) }}</span>
 					{{ form_widget(formNotas.titulo, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Título' } }) }}
 				</div>
 				<div class="col-xs-5">
+					<span class="error-formulario">{{ form_errors(formNotas.descripcion) }}</span>
 					{{ form_widget(formNotas.descripcion, { 'attr': {'class': 'textarea_registro', 'placeholder': 'Descripción' } }) }}
 				</div>
 				<div class="col-xs-2">

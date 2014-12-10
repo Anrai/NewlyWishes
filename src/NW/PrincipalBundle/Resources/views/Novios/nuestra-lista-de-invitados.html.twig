@@ -60,8 +60,10 @@
 						      		<div class="col-md-9">
 						      			<div class="row">
 						      			<div class="col-xs-12">
+						      				<span class="error-formulario">{{ form_errors(formAgregar.nombre) }}</span>
 						      				{{ form_widget(formAgregar.nombre, { 'attr': {'class': 'input_small', 'placeholder': 'Nombre del invitado' } }) }}
 							        		<br>
+							        			<span class="error-formulario">{{ form_errors(formAgregar.familia) }}</span>
 							        		{{ form_widget(formAgregar.familia, { 'attr': {'class': 'input_small', 'placeholder': 'Apellido de la familia' } }) }}
 							        		<br>
 							        		{{ form_widget(formAgregar.telefono, { 'attr': {'class': 'input_small', 'placeholder': 'Teléfono' } }) }}
