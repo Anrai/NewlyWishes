@@ -1,12 +1,18 @@
-Un usuario de tipo "novio" envió un correo desde su cuenta en NewlyWishes.com
+{% extends '::correo.html.twig' %}
 
-Asunto del mensaje: {{asunto}}
-Nombre de usuario: {{user.username}}
-Nombre del novio: {{user.novios.nombre}} {{user.novios.sNombre}} {{user.novios.aPaterno}} {{user.novios.aMaterno}}
-Nombre de la novia: {{user.novias.nombre}} {{user.novias.sNombre}} {{user.novias.aPaterno}} {{user.novias.aMaterno}}
+{% block subject %}
+	{{asunto}}
+{% endblock %}
 
-Email del novio: {{user.novios.eMail}}
-Email de la novia: {{user.novias.eMail}}
+{% block contenido %}
+	Un usuario de tipo "novio" envió un correo desde su cuenta en NewlyWishes.com<br><br>
+	Nombre de usuario: {{user.username}}<br>
+	Nombre del novio: {{user.novios.nombre}} {{user.novios.sNombre}} {{user.novios.aPaterno}} {{user.novios.aMaterno}}<br>
+	Nombre de la novia: {{user.novias.nombre}} {{user.novias.sNombre}} {{user.novias.aPaterno}} {{user.novias.aMaterno}}<br><br>
 
-Mensaje:
-{{mensaje}}
+	Email del novio: {{user.novios.eMail}}<br>
+	Email de la novia: {{user.novias.eMail}}
+	<br><br>
+	Mensaje:
+	{{mensaje}}
+{% endblock %}

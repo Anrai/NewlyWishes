@@ -1,5 +1,12 @@
-Te has registrado correctamente en NewlyWishes.com
+{% extends '::correo.html.twig' %}
 
-Guarda bien tus datos:
-Usuario: {{user.username}}
-Contraseña: {{contrasena}}
+{% block subject %}
+	Registro en NewlyWishes.com
+{% endblock %}
+
+{% block contenido %}
+	Te has registrado correctamente en NewlyWishes.com, guarda tu contraseña en un lugar seguro.<br>
+	Tus datos de acceso son:<br>
+	Usuario: {{user.username}}<br>
+	Contraseña: {{contrasena}}
+{% endblock %}
