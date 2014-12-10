@@ -57,6 +57,7 @@ class NoviosController extends Controller
             ->setSubject("Mensaje de usuario: ".$asunto)
             ->setFrom("info@newlywishes.com")
             ->setTo("atencion@newlywishes.com")
+            ->setContentType("text/html")
             ->setBody(
                 $this->renderView(
                     'NWPrincipalBundle:Novios:dudasNovios.html.twig', array(
@@ -781,6 +782,7 @@ class NoviosController extends Controller
                         ->setSubject("Cambio de contraseña en NewlyWishes.com")
                         ->setFrom("info@newlywishes.com")
                         ->setTo($novio->getEMail())
+                        ->setContentType("text/html")
                         ->setBody(
                             $this->renderView(
                                 'NWPrincipalBundle:Novios:cambioContrasena.html.twig', array(
@@ -796,6 +798,7 @@ class NoviosController extends Controller
                         ->setSubject("Cambio de contraseña en NewlyWishes.com")
                         ->setFrom("info@newlywishes.com")
                         ->setTo($novia->getEMail())
+                        ->setContentType("text/html")
                         ->setBody(
                             $this->renderView(
                                 'NWPrincipalBundle:Novios:cambioContrasena.html.twig', array(
@@ -883,6 +886,7 @@ class NoviosController extends Controller
                     ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
                     ->setFrom("info@newlywishes.com")
                     ->setTo($novio->getEMail())
+                    ->setContentType("text/html")
                     ->setBody(
                         $this->renderView(
                             'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(
@@ -897,6 +901,7 @@ class NoviosController extends Controller
                     ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
                     ->setFrom("info@newlywishes.com")
                     ->setTo($novia->getEMail())
+                    ->setContentType("text/html")
                     ->setBody(
                         $this->renderView(
                             'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(

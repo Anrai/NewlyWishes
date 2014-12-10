@@ -1,7 +1,13 @@
-{{details.FIRSTNAME}} {{details.LASTNAME}} ({{details.EMAIL}}) te acaba de regalar lo siguiente:
+{% extends '::correo.html.twig' %}
 
-{% for regalo in details.regalos %}
-	{{ regalo.cantidad }}  {{ regalo.nombre }}
-{% endfor %}
+{% block subject %}
+	{{details.FIRSTNAME}} {{details.LASTNAME}} ({{details.EMAIL}}) te acaba de regalar lo siguiente:
+{% endblock %}
 
-El saldo en tu cuenta ha sido incrementado para que compres tus regalos.
+{% block contenido %}
+	{% for regalo in details.regalos %}
+		{{ regalo.cantidad }}  {{ regalo.nombre }}<br>
+	{% endfor %}
+	<br><br>
+	El saldo en tu cuenta ha sido incrementado para que compres tus regalos.
+{% endblock %}

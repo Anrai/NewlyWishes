@@ -248,6 +248,7 @@ class UserController extends Controller
                     ->setSubject("Te registraste con éxito en NewlyWishes.com")
                     ->setFrom("info@newlywishes.com")
                     ->setTo($novios->getEMail())
+                    ->setContentType("text/html")
                     ->setBody(
                         $this->renderView(
                             'NWUserBundle:User:correoRegistroExitoso.html.twig', array(
@@ -262,6 +263,7 @@ class UserController extends Controller
                     ->setSubject("Te registraste con éxito en NewlyWishes.com")
                     ->setFrom("info@newlywishes.com")
                     ->setTo($novias->getEMail())
+                    ->setContentType("text/html")
                     ->setBody(
                         $this->renderView(
                             'NWUserBundle:User:correoRegistroExitoso.html.twig', array(

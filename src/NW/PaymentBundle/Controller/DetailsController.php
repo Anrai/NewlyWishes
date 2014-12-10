@@ -86,6 +86,7 @@ class DetailsController extends PayumController
             ->setSubject("Tu regalo ha sido entregado correctamente en NewlyWishes.com")
             ->setFrom("info@newlywishes.com")
             ->setTo($details["EMAIL"])
+            ->setContentType("text/html")
             ->setBody(
                 $this->renderView(
                     'NWPrincipalBundle:Novios:regalasteAlgo.html.twig', array(
@@ -102,6 +103,7 @@ class DetailsController extends PayumController
             ->setSubject("Un invitado te ha regalado algo en NewlyWishes.com")
             ->setFrom("info@newlywishes.com")
             ->setTo($usuarioObject->getNovios()->getEMail())
+            ->setContentType("text/html")
             ->setBody(
                 $this->renderView(
                     'NWPrincipalBundle:Novios:teRegalaronAlgo.html.twig', array(
@@ -115,6 +117,7 @@ class DetailsController extends PayumController
             ->setSubject("Un invitado te ha regalado algo en NewlyWishes.com")
             ->setFrom("info@newlywishes.com")
             ->setTo($usuarioObject->getNovias()->getEMail())
+            ->setContentType("text/html")
             ->setBody(
                 $this->renderView(
                     'NWPrincipalBundle:Novios:teRegalaronAlgo.html.twig', array(
