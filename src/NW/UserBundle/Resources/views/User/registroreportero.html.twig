@@ -35,6 +35,7 @@
 			<div class="row">
 				<div class="row">
 					<div class="col-md-4 puntosRosas">
+						<span class="error-formulario">{{ form_errors(formReportero.nombreRazon) }}</span>
 						<img src="{{ asset('img/punto.png') }}">
 						{{ form_widget(formReportero.nombreRazon, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre o razón social' } }) }}
 						<br/>
@@ -46,6 +47,7 @@
 						{{ form_widget(formReportero.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
 					</div>
 					<div class="col-md-4 puntosRosas">
+						<span class="error-formulario">{{ form_errors(formReportero.email) }}</span>
 						<img src="{{ asset('img/punto.png') }}">
 						{{ form_widget(formReportero.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
 						<div class="col-md-3" style="padding: 0 10px 0 0;">
@@ -63,12 +65,14 @@
 						</div>
 					</div>
 					<div class="col-md-4 puntosRosas">
+						<span class="error-formulario">{{ form_errors(formReportero.direccion) }}</span>
 						<img src="{{ asset('img/punto.png') }}">
 						{{ form_widget(formReportero.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
 						<br/>
 		<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 						{{ form_widget(formReportero.pais, { 'attr': {'class': 'input_registro_novios'} }) }}
 						<br />
+						<span class="error-formulario">{{ form_errors(formReportero.estadoId) }}</span>
 						<img src="{{ asset('img/punto.png') }}">
 						{{ form_widget(formReportero.estadoId, { 'attr': {'class': 'input_registro_novios'} }) }}
 						{{ form_widget(formReportero.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Ciudad' } }) }}
@@ -85,19 +89,23 @@
 				</div>
 				<div class="row">
 					<div class="col-md-4 puntosRosas">
+						<span class="error-formulario">{{ form_errors(formReportero.userName) }}</span>
 						<img src="{{ asset('img/punto.png') }}" alt="Registro">
 						{{ form_widget(formReportero.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
 						<br/>
-		<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+						<span class="error-formulario">{{ form_errors(formReportero.userPass) }}</span>
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 						{{ form_widget(formReportero.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
 					</div>
 					<div class="col-md-4 puntosRosas">
+						<span class="error-formulario">{{ form_errors(formReportero.terminosCondiciones) }}</span>
 						<img src="{{ asset('img/punto.png') }}" alt="Registro">
 						{{ form_widget(formReportero.terminosCondiciones) }} 
 						<a href="{{asset('documents/TerminosYCondicionesNWNovios.pdf')}}" target="_blank">
 							Acepto los términos y condiciones generales
 						</a>
 						<br />
+						<span class="error-formulario">{{ form_errors(formReportero.terminosPrivacidad) }}</span>
 						<img src="{{ asset('img/punto.png') }}" alt="Registro">
 						{{ form_widget(formReportero.terminosPrivacidad) }}
 						<a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesNovios.pdf')}}" target="_blank">

@@ -55,3 +55,34 @@ NW\UserBundle\Entity\Novios:
             - NotBlank: ~
         cp:
             - NotBlank: ~
+
+NW\UserBundle\Entity\registroproveedores:
+    properties:
+        tipoPersona:
+            - NotBlank: ~
+        nombreRazon:
+            - NotBlank: ~
+        apellidoPaterno:
+            - NotBlank: ~
+        apellidoMaterno:
+            - NotBlank: ~
+        rfc:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+            - Email:
+                checkMX: true
+        lada:
+            - NotBlank: ~
+        telefono:
+            - NotBlank: ~
+        celular:
+            - NotBlank: ~
+        direccion:
+            - NotBlank: ~
+        estado:
+            - NotBlank: ~
+        ciudad:
+            - NotBlank: ~
+        cp:
+            - NotBlank: ~
