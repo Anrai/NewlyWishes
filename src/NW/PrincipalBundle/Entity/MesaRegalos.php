@@ -320,4 +320,49 @@ class MesaRegalos
         'descripcion' => $this->getDescripcion(),
         );
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $cosasRegaladas;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cosasRegaladas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cosasRegaladas
+     *
+     * @param \NW\PrincipalBundle\Entity\cosasRegaladas $cosasRegaladas
+     * @return MesaRegalos
+     */
+    public function addCosasRegalada(\NW\PrincipalBundle\Entity\cosasRegaladas $cosasRegaladas)
+    {
+        $this->cosasRegaladas[] = $cosasRegaladas;
+
+        return $this;
+    }
+
+    /**
+     * Remove cosasRegaladas
+     *
+     * @param \NW\PrincipalBundle\Entity\cosasRegaladas $cosasRegaladas
+     */
+    public function removeCosasRegalada(\NW\PrincipalBundle\Entity\cosasRegaladas $cosasRegaladas)
+    {
+        $this->cosasRegaladas->removeElement($cosasRegaladas);
+    }
+
+    /**
+     * Get cosasRegaladas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCosasRegaladas()
+    {
+        return $this->cosasRegaladas;
+    }
 }

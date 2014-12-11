@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new NW\PaypalExpressCheckoutBundle\NWPaypalExpressCheckoutBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Payum\Bundle\PayumBundle\PayumBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
