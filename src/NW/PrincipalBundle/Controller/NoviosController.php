@@ -603,6 +603,7 @@ class NoviosController extends Controller
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
             'regalos' => $regalos,
+            'usuarioId' => $user->getId(),
             'formRegalo' => $formRegalo->createView(),
             'hayFechaBoda' => $BodaVieja->hayFechaBoda(),
             'contadorFechaBoda' => $BodaVieja->contadorFechaBoda(),
