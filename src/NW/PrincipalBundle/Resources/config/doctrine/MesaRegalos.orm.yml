@@ -15,6 +15,10 @@ NW\PrincipalBundle\Entity\MesaRegalos:
             joinColumn:
                 name: categoria
                 referencedColumnName: id
+    oneToMany:
+        cosasRegaladas:
+            targetEntity: cosasRegaladas
+            mappedBy: regalo
     id:
         id:
             type: integer
@@ -29,7 +33,7 @@ NW\PrincipalBundle\Entity\MesaRegalos:
             type: string
             length: 100
         precioTotal:  
-            type: integer
+            type: float
         cantidad:
             type: integer
         horcruxes:

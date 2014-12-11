@@ -27,11 +27,6 @@ class Reportero
     /**
      * @var string
      */
-    private $tipoPersona;
-
-    /**
-     * @var string
-     */
     private $nombreRazon;
 
     /**
@@ -149,29 +144,6 @@ class Reportero
     public function getEstadoId()
     {
         return $this->estadoId;
-    }
-
-    /**
-     * Set tipoPersona
-     *
-     * @param string $tipoPersona
-     * @return Reportero
-     */
-    public function setTipoPersona($tipoPersona)
-    {
-        $this->tipoPersona = $tipoPersona;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoPersona
-     *
-     * @return string 
-     */
-    public function getTipoPersona()
-    {
-        return $this->tipoPersona;
     }
 
     /**
@@ -478,10 +450,10 @@ class Reportero
     {
         return array(
             'id' => $this->getId(),
+            'saldo' => $this->getUser()->getSaldoFormat(),
             'nombreRazon' => $this->getNombreRazon(),
             'estadoId' => $this->getEstadoId(),
             'estado' => $this->getEstado()->getEstado(),
-            'tipoPersona' => $this->getTipoPersona(),
             'apellidoPaterno' => $this->getApellidoPaterno(),
             'apellidoMaterno' => $this->getApellidoMaterno(),
             'rfc' => $this->getRfc(),

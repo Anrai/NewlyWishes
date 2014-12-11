@@ -9,10 +9,15 @@ use Payum\Core\Request\Sync;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use NW\PrincipalBundle\Entity\cosasRegaladas;
+
 class DetailsController extends PayumController
 {
     public function viewAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        //$cosasRegaladasRepository = $em->getRepository('NWPrincipalBundle:cosasRegaladas');
+
         // Seguridad, token y estado
         $token = $this->getHttpRequestVerifier()->verify($request);
         
@@ -50,7 +55,6 @@ class DetailsController extends PayumController
 
                 // Se obtiene el usuario dueño del objeto
                 $itemId = $details["L_PAYMENTREQUEST_0_NUMBER".$i];
-
                 
                 $mesaRegalosEntity = $em->getRepository('NWPrincipalBundle:MesaRegalos');
                 $regaloObject = $mesaRegalosEntity->find($itemId);
@@ -65,9 +69,19 @@ class DetailsController extends PayumController
                 $saldoNuevo = $saldoViejo + $aumentoSaldo;
                 $usuarioObject->setSaldo($saldoNuevo);
 
-                // Se persiste el usuario y el regalo
+                // Registar cada regalo en cosas regaladas
+                $regaloRegaladoObject = new cosasRegaladas();
+                $regaloRegaladoObject->setRegaladorName($details["FIRSTNAME"]." ".$details["LASTNAME"]);
+                $regaloRegaladoObject->setRegaladorMail($details["EMAIL"]);
+                $regaloRegaladoObject->setCantidad($cantidad);
+                $regaloRegaladoObject->setAmount($aumentoSaldo);
+                $regaloRegaladoObject->setUser($usuarioObject);
+                $regaloRegaladoObject->setRegalo($regaloObject);
+
+                // Se persiste el usuario, el regalo y el regalo regalado
                 $em->persist($usuarioObject);
                 $em->persist($regaloObject);
+                $em->persist($regaloRegaladoObject);
                 $em->flush();
 
             }
@@ -127,11 +141,12 @@ class DetailsController extends PayumController
             );
             $this->get('mailer')->send($message);
 
-            /*return $this->render('NWPaymentBundle:Details:view.html.twig', array(
+            /* Comentar esto
+            return $this->render('NWPaymentBundle:Details:view.html.twig', array(
                 'status' => $status->getValue(),
                 'details' => $details,
                 'paymentTitle' => ucwords(str_replace(array('_', '-'), ' ', $token->getPaymentName()))
-            ));*/
+            )); // Comentar hasta aqui */
 
         } else if ($status->isPending()) {
             $this->get('session')->getFlashBag()->set(

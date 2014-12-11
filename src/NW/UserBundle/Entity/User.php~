@@ -563,4 +563,42 @@ class User extends BaseUser
     {
         return $this->tareasCalendario;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $solicitudesRetiro;
+
+
+    /**
+     * Add solicitudesRetiro
+     *
+     * @param \NW\PrincipalBundle\Entity\SolicitudRetiro $solicitudesRetiro
+     * @return User
+     */
+    public function addSolicitudesRetiro(\NW\PrincipalBundle\Entity\SolicitudRetiro $solicitudesRetiro)
+    {
+        $this->solicitudesRetiro[] = $solicitudesRetiro;
+
+        return $this;
+    }
+
+    /**
+     * Remove solicitudesRetiro
+     *
+     * @param \NW\PrincipalBundle\Entity\SolicitudRetiro $solicitudesRetiro
+     */
+    public function removeSolicitudesRetiro(\NW\PrincipalBundle\Entity\SolicitudRetiro $solicitudesRetiro)
+    {
+        $this->solicitudesRetiro->removeElement($solicitudesRetiro);
+    }
+
+    /**
+     * Get solicitudesRetiro
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSolicitudesRetiro()
+    {
+        return $this->solicitudesRetiro;
+    }
 }
