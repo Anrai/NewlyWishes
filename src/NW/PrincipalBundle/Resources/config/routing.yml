@@ -246,3 +246,14 @@ nw_principal_regalos_operaciones_descargar:
 nw_principal_regalos_generar_pdf:
     pattern:  /pdf/regalos/generar-pdf/{id}
     defaults: { _controller: NWPrincipalBundle:Default:generarPdfRegalos }
+
+nw_principal_invitados_operaciones:
+    pattern:  /invitados
+
+nw_principal_invitados_operaciones_descargar:
+    pattern:  /invitados/descargar/{id}
+    defaults: { _controller: NWPrincipalBundle:Default:descargarInvitados }
+
+nw_principal_invitados_generar_pdf:
+    pattern:  /pdf/invitados/generar-pdf/{id}
+    defaults: { _controller: NWPrincipalBundle:Default:generarPdfInvitados }

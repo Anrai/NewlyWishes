@@ -17,11 +17,9 @@
 						Total de invitados: <span class="rosa">{{ totalInvitados }}</span>
 						<br>Total de confirmados: <span class="rosa">{{ confirmadosInvitados }}</span>
 					</div>
-					{#
 					<div class="col-md-4 text-center">
-						<a href="#" class="linkVerde">Generar lista en PDF</a>
+						<a href="{{path('nw_principal_invitados_operaciones')}}/descargar/{{usuarioId}}" class="linkVerde">Generar lista en PDF</a>
 					</div>
-					#}
 			</div>
 			<div class="row" style="margin-top:20px;">
 					<div class="col-md-6"></div>
