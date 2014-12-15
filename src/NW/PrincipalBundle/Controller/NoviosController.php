@@ -681,6 +681,7 @@ class NoviosController extends Controller
             'formAgregar' => $formAgregar->createView(),
             'novia' => $novia->getNombre(),
             'novio' => $novio->getNombre(),
+            'usuarioId' => $user->getId(),
             'totalInvitados' => count($invitados),
             'confirmadosInvitados' => $confirmadosInvitados,
             'invitados'=>$invitados,
