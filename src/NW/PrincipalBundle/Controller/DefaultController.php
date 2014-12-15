@@ -393,4 +393,30 @@ class DefaultController extends Controller
         );
     }
 
+    public function generarPdfInvitadosAction($id) // Id del usuario tipo novio
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $usuariosRepository = $em->getRepository('NWUserBundle:User');
+        $userObject = $usuariosRepository->find($id);
+
+        return $this->render('NWPrincipalBundle:Default:invitadosPdf.pdf.twig', array(
+            'user' => $userObject,
+        ));
+    }
+
+    public function descargarInvitadosAction($id)// id del usuario tipo novio
+    {
+        $pageUrl = $this->generateUrl('nw_principal_invitados_generar_pdf', array('id' => $id), true);
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutput($pageUrl),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="invitados-'.$id.'.pdf"'
+            )
+        );
+    }
+
 }
