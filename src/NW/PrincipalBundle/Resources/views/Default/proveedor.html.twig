@@ -68,40 +68,40 @@
 	<!-- Inicio de artículo -->
 	<div class="articuloCompleto">
 		<div class="container">
-			<div class="col-md-10">
+			<div class="col-xs-10">
 				<h5 class="art articuloNombre">{{articulo.nombre}}</h5>	
 				<span class="articuloID" style="visibility:hidden">{{articulo.id}}</span>
 				<span class="articuloCategoria" style="visibility:hidden">{{articulo.categoria}}</span>
 			</div>
-			<div class="col-md-2">
+			<div class="col-xs-2">
 			</div>
 		</div>	
 		<hr />
 		<div class="container">
 			<p>Descripción: </p>
-			<div class="col-md-8">
+			<div class="col-xs-8">
 				<p class="articuloDescripcion">{{articulo.descripcion}}</p>
 			</div>
-			<div class="col-md-1">
+			<div class="col-xs-1">
 				Valor <br>
 				<p class="art2">$<span class="articuloPrecio">{{articulo.precio}}</span></p> <br>
 				Valor promoción <br>
 				<p class="art2">$<span class="articuloPrecioPromocion">{{articulo.precioPromocion}}</span></p> <br>
 			</div>
-			<div class="col-md-2">
+			<div class="col-xs-2">
 
 			</div>
-			<div class="col-md-4">
+			<div class="col-xs-4">
 				Tamaños:<br />
 				{% for tamano in articulo.tamanos %}
 					{{tamano}}<br />
 				{% endfor %}
 				<span style="visibility:hidden" class="articuloTamanos">{% for tamano in articulo.tamanos %}{{tamano}},{% endfor %}</span>
 			</div>
-			<div class="col-md-4">
+			<div class="col-xs-4">
 				<p>Inventario disponible: <span class="art articuloStock">{{articulo.stock}}</span></p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-xs-4">
 				<div id="fotos{{articulo.id}}" class="carousel slide">
 				    <ol class="carousel-indicators indicators-down">
 					    {% for foto in articulo.fotos %}
@@ -121,7 +121,7 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="col-md-8">
+			<div class="col-xs-8">
 				<p>ID: <span class="art articuloidInterno">{{articulo.idInterno}}</span></p> <br>
 				<p>Tipo: <span class="art articuloTipo">{{articulo.tipo}}</span></p>
 			</div>

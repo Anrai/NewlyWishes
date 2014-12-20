@@ -14,7 +14,7 @@
 
         <div class="row" style="margin-top:45px">
         {% if articulos %}
-        	<div class="col-md-4">
+        	<div class="col-xs-4">
                 <div class="caja-gris-filtro" style="height: 287px;">
             		<h3 style="font-weight: bold;">Filtrar regalos</h3>
             		<br />
@@ -30,11 +30,11 @@
             		{{ form_end(formFiltrar) }}
                 </div>
         	</div>
-        	<div class="col-md-8">
+        	<div class="col-xs-8">
 
         		{% for articulo in articulos %}
             		<div class="row simpleCart_shelfItem" style="border-top-color: rgb(214, 214, 214);border-top-width: 1px;border-top-style: solid;padding-top: 20px;">
-            			<div class="col-md-7">
+            			<div class="col-xs-7">
             				<h5><span class="esc" style="font-size:20px;"><span class="item_name">{{articulo.regalo}}</span> - {{articulo.categoriaName}}</span></h5>
             				<br />
             				<p class="item_description">{{articulo.descripcion}}</p>
@@ -51,7 +51,7 @@
                                 <a href="javascript:;" class="btn amarillo-boton item_add">Agregar</a>
                             </span>
             			</div>
-            			<div class="col-md-5">
+            			<div class="col-xs-5">
             				<b>Valor</b><br />
 
         					<span class="mesa-regalos-rosa-big">${{articulo.precioTotal}}</span><br /><br />

@@ -16,60 +16,63 @@
 </head>
 <body>
 
-{% block body %}
-{% endblock %}
+<div style="width:1434px; margin:auto;">
+	{% block body %}
+	{% endblock %}
 
-{# include ':plantillasParciales:footer.html.twig' #}
-{% block footer %}
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12" style="height:30px; background-color:rgba(255,255,255,1);"></div>
-		</div>
-	</div>
-	</div>
 
-	<div id="footer" class="container">
-		<div class="container" style="height:50px; background-color:rgba(200,200,200,1); text-align:center; color:rgba(0,0,0,1); font-weight:bold;">
-			<p style="margin-top:16px;">Newly Wishes &copy; 2014. Todos los derechos reservados. <a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesNovios.pdf')}}" target="_blank">
-				Aviso de privacidad
-			</a></p>
-		</div>
-		<div class="container" style="background-color:rgba(30,30,30,1); ">
+	{# include ':plantillasParciales:footer.html.twig' #}
+	{% block footer %}
+		<div class="container" style="width:1200px; margin:auto;">
 			<div class="row">
-				<div class="col-md-3">
-					<div style="margin-top:20px; margin-bottom:20px;">
-						<div class="row">
-							<div class="social">
-								<img src="{{asset('img/facebook.png')}}" alt="">
-								<img src="{{asset('img/pinterest.png')}}" alt="">
-								<img src="{{asset('img/twitter.png')}}" alt="">
-								<img src="{{asset('img/googleplus.png')}}" alt="">
-								<img src="{{asset('img/youtube.png')}}" alt="">
+				<div class="col-xs-12" style="height:30px; background-color:rgba(255,255,255,1);"></div>
+			</div>
+		</div>
+		</div>
+
+		<div id="footer" class="container">
+			<div class="container" style="height:50px; background-color:rgba(200,200,200,1); text-align:center; color:rgba(0,0,0,1); font-weight:bold;">
+				<p style="margin-top:16px;">Newly Wishes &copy; 2014. Todos los derechos reservados. <a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesNovios.pdf')}}" target="_blank">
+					Aviso de privacidad
+				</a></p>
+			</div>
+			<div class="container" style="background-color:rgba(30,30,30,1); width:1200px; margin:auto;">
+				<div class="row">
+					<div class="col-xs-3">
+						<div style="margin-top:20px; margin-bottom:20px;">
+							<div class="row">
+								<div class="social">
+									<img src="{{asset('img/facebook.png')}}" alt="">
+									<img src="{{asset('img/pinterest.png')}}" alt="">
+									<img src="{{asset('img/twitter.png')}}" alt="">
+									<img src="{{asset('img/googleplus.png')}}" alt="">
+									<img src="{{asset('img/youtube.png')}}" alt="">
+								</div>
 							</div>
+							<strong>Parejas que se van a casar</strong>
+							<br /><br />
+							NewlyWishes es una plataforma sobre la nube, con herramientas para administrar y llevar la planeación de tu boda. También, próximamente tendrás acceso a noticias e inclusive adquirir productos y servicios relacionados. Todo para tu boda en un mismo sitio, desde cualquier lugar y con cualquier dispositivo.
+							<br /><br />
+							<strong>Para proveedores de bodas</strong>
+							<br /><br />
+							NewlyWishes es una plataforma especializada donde podrás ofrecer y vender productos y servicios para bodas. También podrás administrar tus ventas desde cualquier lugar y con cualquier dispositivo. NewlyWishes te pondrá en contacto con una cartera de clientes especialmente dirigidos a lo que tu ofreces.
 						</div>
-						<strong>Parejas que se van a casar</strong>
-						<br /><br />
-						NewlyWishes es una plataforma sobre la nube, con herramientas para administrar y llevar la planeación de tu boda. También, próximamente tendrás acceso a noticias e inclusive adquirir productos y servicios relacionados. Todo para tu boda en un mismo sitio, desde cualquier lugar y con cualquier dispositivo.
-						<br /><br />
-						<strong>Para proveedores de bodas</strong>
-						<br /><br />
-						NewlyWishes es una plataforma especializada donde podrás ofrecer y vender productos y servicios para bodas. También podrás administrar tus ventas desde cualquier lugar y con cualquier dispositivo. NewlyWishes te pondrá en contacto con una cartera de clientes especialmente dirigidos a lo que tu ofreces.
 					</div>
-				</div>
-				<div class="col-md-6" style="margin-bottom:20px;">
+					<div class="col-xs-6" style="margin-bottom:20px;">
 
-				</div>
+					</div>
 
-				<div class="col-md-3" style="margin-top:20px; margin-bottom:20px; width:160px;">
-				<!--
-					<div class="fb-like-box" data-href="http://www.facebook.com/FacebookDevelopers" data-width="240" data-height="300" data-colorscheme="dark" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
-				-->
+					<div class="col-xs-3" style="margin-top:20px; margin-bottom:20px; width:160px;">
+					<!--
+						<div class="fb-like-box" data-href="http://www.facebook.com/FacebookDevelopers" data-width="240" data-height="300" data-colorscheme="dark" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true">
+					-->
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div><!-- FIN DEL FOOTER -->
-{% endblock %}
+		</div><!-- FIN DEL FOOTER -->
+	{% endblock %}
+</div>
 
 {% block javascripts %}
     <script type="text/javascript" src="{{asset('js/javascripts.min.js')}}"></script>

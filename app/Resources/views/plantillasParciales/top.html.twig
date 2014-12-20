@@ -27,17 +27,12 @@
 		</div>
 
 		<nav class="navbar navbar-default" role="navigation">
-  		<div class="navbar-header">
-   			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Cambiar Navegación</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-    		</button>
-  		</div>
 
-  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    		<ul class="nav navbar-nav nav-tabs">
+  		<div class="navbar">
+    		<ul class="nav navbar-nav nav-tabs" style="margin: 0 auto;
+display: table;
+table-layout: fixed;
+float: none;">
 				<li class="leftround"><a href="{{ url('nw_principal_funcionamiento') }}">¿Cómo funciona?</a></li>
 				<li class="dropdown">
 					<a href="#{#{ url('nw_principal_articulos') }#}" class="dropdown-toggle disabled" data-toggle="dropdown">Lo que necesitas</a>
@@ -46,7 +41,7 @@
 						<div class="globito hidden-xs">
 							{# <!--
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-xs-4">
 									<a href="{{url('nw_principal_articulos')}}Jardines">Jardines</a><br />
 									<a href="{{url('nw_principal_articulos')}}Salones">Salones</a><br />
 									<a href="{{url('nw_principal_articulos')}}Hoteles">Hoteles</a><br />
@@ -57,7 +52,7 @@
 									<a href="{{url('nw_principal_articulos')}}Promociones">Promociones</a><br />
 									<a href="{{url('nw_principal_articulos')}}Iglesias">Iglesias</a>
 								</div>
-              					<div class="col-md-4">
+              					<div class="col-xs-4">
 									<a href="{{url('nw_principal_articulos')}}Catering (Banquetes)">Catering (Banquetes)</a><br />
 									<a href="{{url('nw_principal_articulos')}}Flores">Flores</a><br />
 									<a href="{{url('nw_principal_articulos')}}Musica">Música</a><br />
@@ -68,7 +63,7 @@
 									<a href="{{url('nw_principal_articulos')}}Viajes">Viajes</a><br />
 									<a href="{{url('nw_principal_articulos')}}Spas">Spas</a>
               					</div>
-              					<div class="col-md-4">
+              					<div class="col-xs-4">
 									<a href="{{url('nw_principal_articulos')}}Maquillistas">Maquillistas</a><br />
 									<a href="{{url('nw_principal_articulos')}}Estilistas">Estilistas</a><br />
 									<a href="{{url('nw_principal_articulos')}}Fotografos">Fotógrafos</a><br />
@@ -91,8 +86,16 @@
 				<li><a href="{{ url('nw_user_loginnovios') }}">Ingreso a tu página</a></li>
 				<li><a href="{{ url('nw_principal_buscar_novios') }}">Búsqueda de novios</a></li>
 				<li><a href="{{ path('nw_user_registroproveedores') }}">Anúnciate aquí</a></li>
-				<li class="visible-md visible-lg rightround">
-        			<form class="navbar-form navbar-left" role="search" method="POST" action="{{url('nw_principal_busqueda')}}">
+				<li class="rightround">
+        			<form class="navbar-form navbar-left" role="search" method="POST" action="{{url('nw_principal_busqueda')}}" style="width: auto;
+border: 0;
+margin-left: 0;
+margin-right: 0;
+padding-top: 0;
+padding-bottom: 0;
+-webkit-box-shadow: none;
+box-shadow: none;
+height: 26px;">
             			<input type="text" id="buscador_top" name="busqueda" class="form-control lupa" placeholder="Buscar">
         			</form>
       			</li>

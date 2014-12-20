@@ -19,10 +19,10 @@
 					<div class="modal-body">
 						<div class="container contrata corrector minplanes">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-xs-6">
 									<h1>Contrata tu plan</h1>
 								</div>
-								<div class="col-md-6">
+								<div class="col-xs-6">
 									<img class="img-responsive logo" src="/web/img/nw.png"></div>
 								</div>
 							</div>
@@ -184,7 +184,7 @@
 					<p>Se de los primeros en pre-registrarte</p>
 				</div>
 				<div class="row">
-					<div class="col-md-4 columnaTemporal">
+					<div class="col-xs-4 columnaTemporal">
 						<div class="row">
 							<div class="imagenDiv1Temporal">
 								<img src="{{ asset('img/la_publicidad.png') }}">
@@ -196,7 +196,7 @@
 							<p>Con tu membresía, la publicidad ya está incluida.</p>
 						</div>
 					</div>
-					<div class="col-md-4 columnaTemporal">
+					<div class="col-xs-4 columnaTemporal">
 						<div class="row">
 							<div class="imagenDiv1Temporal">
 								<img src="{{ asset('img/la_venta_y_entrega.png') }}">
@@ -207,7 +207,7 @@
 							<p>Nosotros nos encargamos de la administración de la venta (cobrar y pagarte), a través de la red de pago más segura del mundo (PayPal). También nos encargamos de la logística de entrega (en caso de que se trate de un producto físico, que podemos lograr a través del servicio de entrega de DHL a nivel nacional).</p>
 						</div>
 					</div>
-					<div class="col-md-4 columnaTemporal">
+					<div class="col-xs-4 columnaTemporal">
 						<div class="row">
 							<div class="imagenDiv1Temporal">
 								<img src="{{ asset('img/la_facilidad.png') }}">
@@ -226,21 +226,21 @@
 
 				<div class="row">
 					<img src="{{ asset('img/user/registrate.jpg') }}">
-					<div class="col-md-12 paso-registro-proveedor">
+					<div class="col-xs-12 paso-registro-proveedor">
 						<br /><br />
 						<p>Si eres un proveedor nuevo y deseas anunciarte con nosotros, por favor regístrate.</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="row">
-						<div class="col-md-12 form-label puntosRosas">
+						<div class="col-xs-12 form-label puntosRosas">
 							
 					<span class="error-formulario">{{ form_errors(form.tipoPersona) }}</span>
 					<img src="{{ asset('img/punto.png') }}" style="top: 11px;left: 11px;position: absolute;">
 							{{ form_widget(form.tipoPersona) }}
 							<br />
 						</div>
-						<div class="col-md-4 puntosRosas">
+						<div class="col-xs-4 puntosRosas">
 							
 					<span class="error-formulario">{{ form_errors(form.nombreRazon) }}</span>
 					<img src="{{ asset('img/punto.png') }}">
@@ -257,22 +257,22 @@
 					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
 						</div>
-						<div class="col-md-4 puntosRosas">
+						<div class="col-xs-4 puntosRosas">
 							
 					<span class="error-formulario">{{ form_errors(form.email) }}</span>
 					<img src="{{ asset('img/punto.png') }}">
 							{{ form_widget(form.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
-							<div class="col-md-3" style="padding: 0 10px 0 0;">
+							<div class="col-xs-3" style="padding: 0 10px 0 0;">
 								
 			
 					<span class="error-formulario">{{ form_errors(form.lada) }}</span>
 					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 								{{ form_widget(form.lada, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'LADA'} }) }}
 							</div>
-							<div class="col-md-9" style="padding: 0;">
+							<div class="col-xs-9" style="padding: 0;">
 								{{ form_widget(form.telefono, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono de oficina'} }) }}
 							</div>
-							<div class="col-md-12" style="padding: 0;">
+							<div class="col-xs-12" style="padding: 0;">
 								
 			
 					<span class="error-formulario">{{ form_errors(form.celular) }}</span>
@@ -280,7 +280,7 @@
 								{{ form_widget(form.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
 							</div>
 						</div>
-						<div class="col-md-4 puntosRosas">
+						<div class="col-xs-4 puntosRosas">
 							
 					<span class="error-formulario">{{ form_errors(form.direccion) }}</span>
 					<img src="{{ asset('img/punto.png') }}">
@@ -308,12 +308,12 @@
 					</div>
 					<!-- DATOS DEL USUARIO -->
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<p>Define una contraseña segura</p>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-4 puntosRosas">
+						<div class="col-xs-4 puntosRosas">
 							
 					<span class="error-formulario">{{ form_errors(form.userName) }}</span>
 					<img src="{{ asset('img/punto.png') }}" alt="Registro">
@@ -324,7 +324,7 @@
 					<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(form.userPass, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
 						</div>
-						<div class="col-md-4 puntosRosas">
+						<div class="col-xs-4 puntosRosas">
 							
 					<span class="error-formulario">{{ form_errors(form.terminosCondiciones) }}</span>
 					<img src="{{ asset('img/punto.png') }}" alt="Registro">
@@ -342,12 +342,12 @@
 							</a>
 							<br />
 						</div>
-						<div class="col-md-4">
+						<div class="col-xs-4">
 
 						</div>
 					</div>
 					<div class="row" style="margin-top:40px">
-						<div class="col-md-12 puntosRosas">
+						<div class="col-xs-12 puntosRosas">
 							<p><img src="{{ asset('img/punto.png') }}" alt="Registro"> Datos obligatorios</p>
 						</div>
 					</div>
@@ -355,15 +355,15 @@
 				{# <!--
 				<div class="row" style="margin-top:50px;">
 					<img src="{{ asset('img/user/escogeplan.jpg') }}"><br />
-					<div class="col-md-12 paso-registro-proveedor">
+					<div class="col-xs-12 paso-registro-proveedor">
 						<div class="row">
-							<div class="col-md-8">
+							<div class="col-xs-8">
 								<p>Por favor selecciona el plan que más se ajuste a tus necesidades</p><br />
 								<button type="button" class="blue-button">
 									<a href="#" data-toggle="modal" data-target="#seleccionDePlan">Escoge tu plan aquí</a>
 								</button>
 							</div>
-							<div class="col-md-4">
+							<div class="col-xs-4">
 								<div id="planSeleccionado" style="visibility:hidden">
 									<p>Has seleccionado el plan:</p>
 									<span class="text-important" style="font-size:18px" id="planSeleccionadoSpan"></span>
@@ -375,14 +375,14 @@
 				-->#}
 				<div class="row" style="margin-top:50px;">
 					<img src="{{ asset('img/user/confirmar.jpg') }}">
-					<div class="col-md-12 paso-registro-proveedor">
+					<div class="col-xs-12 paso-registro-proveedor">
 						{{ form_widget(form.Aceptar, { 'attr': {'class': 'enviar_form' } }) }}
 					</div>
 				</div>
 
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12" style="height:30px; background-color:rgba(255,255,255,1);">
+						<div class="col-xs-12" style="height:30px; background-color:rgba(255,255,255,1);">
 						</div>
 					</div>
 				</div>

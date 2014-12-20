@@ -5,13 +5,13 @@
 {% block partederecha %}
 		
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-xs-6">
 			
 			</div>
-			<div class="col-md-1">
+			<div class="col-xs-1">
 				<img class="puntov" src="{{asset('img/puntov.png')}}">
 			</div>
-			<div class="col-md-3">
+			<div class="col-xs-3">
 				<h1>Mis Anuncios</h1>	
 			</div>
 			<div>
@@ -23,27 +23,27 @@
 				<br>
 				<p>Sitio vinculado al anuncio: <span class="art">{{anuncioWebpage}}</span></p>
 			</div>
-			<div class="col-md-5">
+			<div class="col-xs-5">
 				
 			</div>
-			<div class="col-md-4">
+			<div class="col-xs-4">
 				<img src="{{asset(anuncioImagePath)}}" alt="" width="200">
 			</div>
-			<div class="col-md-7">
+			<div class="col-xs-7">
 					
 			</div>
-			<div class="col-md-2">
+			<div class="col-xs-2">
 				<a class="art3" data-toggle="modal" data-target="#anuncio"><h5 class="art">Editar</h5></a>
 			</div>
 			{% if anuncioImagePath != 'img/anuncio.jpg' %}
-			<div class="col-md-6">
+			<div class="col-xs-6">
 				<br>
 				<p>Copia y pegar este código en tu página de internet, para redirigir a tus clientes a tu micrositio de NewlyWishes y para que puedan adquirir tus productos y servicios</p>
 			</div>
-			<div class="col-md-12">
+			<div class="col-xs-12">
 
 			</div>
-			<div class="col-md-12 cajatexto img-responsive">
+			<div class="col-xs-12 cajatexto img-responsive">
 				&lt;a href="{{url('nw_principal_proveedor', {'proveedor': nombreComercial})}}"&gt;<br />
 					&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="http://newlywishes.com{{asset(anuncioImagePath)}}" width="200" /&gt;<br />
 				&lt;/a&gt;

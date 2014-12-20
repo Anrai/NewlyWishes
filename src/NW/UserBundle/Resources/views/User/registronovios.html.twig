@@ -9,7 +9,7 @@
 	{{ form_start(form) }}
 
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-xs-10">
 			<h1><img src="{{ asset('img/registro.jpg') }}" alt="Registro" width="210"></h1>			
 			<p>Si son una pareja que quiere simplificar la planeación de su boda, por favor regístrense.</p>
 			{% for flashMessage in app.session.flashbag.get('notice') %}
@@ -19,13 +19,13 @@
 	</div>
 
 	<div class="row" style="margin-top:20px;">
-		<div class="col-md-8">
+		<div class="col-xs-8">
 			<h3>Datos de la Novia:</h3>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.novias.nombre) }}</span>
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.nombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre' } }) }}
 			{{ form_widget(form.novias.sNombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Segundo Nombre' } }) }}
@@ -36,26 +36,26 @@
 			<span class="error-formulario">{{ form_errors(form.novias.aMaterno) }}</span>
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210"> {{ form_widget(form.novias.aMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
 		</div>
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.novias.eMail) }}</span>
 			<img src="{{ asset('img/punto.png') }}">
 			{{ form_widget(form.novias.eMail, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
-			<div class="col-md-3" style="padding: 0 10px 0 0;">
+			<div class="col-xs-3" style="padding: 0 10px 0 0;">
 				<span class="error-formulario">{{ form_errors(form.novias.lada) }}</span>
 				<img src="{{ asset('img/punto.png') }}">
 				{{ form_widget(form.novias.lada, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'LADA'} }) }}
 			</div>
-			<div class="col-md-9" style="padding: 0;">
+			<div class="col-xs-9" style="padding: 0;">
 				<span class="error-formulario">{{ form_errors(form.novias.telefono) }}</span>
 				{{ form_widget(form.novias.telefono, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono de casa u oficina'} }) }}
 			</div>
-			<div class="col-md-12" style="padding: 0;">
+			<div class="col-xs-12" style="padding: 0;">
 				<span class="error-formulario">{{ form_errors(form.novias.celular) }}</span>
 				<img src="{{ asset('img/punto.png') }}">
 				{{ form_widget(form.novias.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
 			</div>
 		</div>
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.novias.direccion) }}</span>
 			<img src="{{ asset('img/punto.png') }}">
 			{{ form_widget(form.novias.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
@@ -78,19 +78,19 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-xs-12">
 			{{ form_widget(form.mismaDireccion) }} {{ form_label(form.mismaDireccion, '¿La dirección del novio es la misma que de la novia?') }}
 		</div>
 	</div>
 
 	<div class="row" style="margin-top:20px;">
-		<div class="col-md-8">
+		<div class="col-xs-8">
 			<h3>Datos del Novio:</h3>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.novios.nombre) }}</span>
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:15px;" width="210">{{ form_widget(form.novios.nombre, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Nombre' } }) }}
 			<br/>
@@ -102,25 +102,25 @@
 			<span class="error-formulario">{{ form_errors(form.novios.aMaterno) }}</span>
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:15px;" width="210">{{ form_widget(form.novios.aMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
 		</div>
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.novios.eMail) }}</span>
 			<img src="{{ asset('img/punto.png') }}">
 			{{ form_widget(form.novios.eMail, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
-			<div class="col-md-3" style="padding: 0 10px 0 0;">
+			<div class="col-xs-3" style="padding: 0 10px 0 0;">
 				<span class="error-formulario">{{ form_errors(form.novios.lada) }}</span>
 				<img src="{{ asset('img/punto.png') }}">
 				{{ form_widget(form.novios.lada, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'LADA'} }) }}
 			</div>
-			<div class="col-md-9" style="padding: 0;">
+			<div class="col-xs-9" style="padding: 0;">
 				{{ form_widget(form.novios.telefono, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono de casa u oficina'} }) }}
 			</div>
-			<div class="col-md-12" style="padding: 0;">
+			<div class="col-xs-12" style="padding: 0;">
 				<span class="error-formulario">{{ form_errors(form.novios.celular) }}</span>
 				<img src="{{ asset('img/punto.png') }}">
 				{{ form_widget(form.novios.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
 			</div>
 		</div>
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.novios.direccion) }}</span>
 			<img src="{{ asset('img/punto.png') }}">
 			{{ form_widget(form.novios.direccion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Dirección' } }) }}
@@ -143,13 +143,13 @@
 	</div>
 
 	<div class="row" style="margin-top:20px;">
-		<div class="col-md-10">
+		<div class="col-xs-10">
 			<h3>Datos de Usuario:</h3>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.userName) }}</span>
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.userName, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Usuario' } }) }}
 			<br/>
@@ -158,7 +158,7 @@
 			<br />
 			La contraseña debe tener mínimo 8 caracteres
 		</div>
-		<div class="col-md-4 puntosRosas">
+		<div class="col-xs-4 puntosRosas">
 			<span class="error-formulario">{{ form_errors(form.terminosCondiciones) }}</span>
 			<img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:7px;" width="210">{{ form_widget(form.terminosCondiciones) }} 
 			<a href="{{asset('documents/TerminosYCondicionesNWNovios.pdf')}}" target="_blank">
@@ -170,7 +170,7 @@
 				Acepto las Condiciones de Uso General y de Registro y Aviso de privacidad
 			</a><br />
 		</div>
-		<div class="col-md-4">
+		<div class="col-xs-4">
 			{{ form_widget(form.codigoPromocion, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código de promoción' } }) }}
 			<br />
 			{{ form_widget(form.aceptar, { 'attr': {'class': 'botoncitoRosa', 'style': 'width:100px; margin-top:2px; bottom:0px;' } }) }}
