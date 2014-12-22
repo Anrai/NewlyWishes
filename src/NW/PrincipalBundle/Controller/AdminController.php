@@ -57,6 +57,7 @@ class AdminController extends Controller
         ->setSubject("Tu solicitud de retiro ha sido aceptada en NewlyWishes.com")
         ->setFrom("info@newlywishes.com")
         ->setTo($usuario->getNovios()->getEMail())
+        ->setContentType("text/html")
         ->setBody(
             $this->renderView(
                 'NWPrincipalBundle:Admin:solicitudRetiroAceptada.html.twig', array(
@@ -73,6 +74,7 @@ class AdminController extends Controller
         ->setSubject("Tu solicitud de retiro ha sido aceptada en NewlyWishes.com")
         ->setFrom("info@newlywishes.com")
         ->setTo($usuario->getNovias()->getEMail())
+        ->setContentType("text/html")
         ->setBody(
             $this->renderView(
                 'NWPrincipalBundle:Admin:solicitudRetiroAceptada.html.twig', array(
