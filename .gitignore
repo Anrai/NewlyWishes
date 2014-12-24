@@ -1,3 +1,4 @@
+cat > .gitignore <<EOT
 /web/bundles/
 /web/uploads/
 /app/bootstrap.php.cache
@@ -13,4 +14,7 @@
 /composer.phar
 .DS_Store
 config.codekit
+EOT
+.elasticbeanstalk/config
+.elasticbeanstalkconfig.codekit
 .elasticbeanstalk
