@@ -16,3 +16,4 @@ cat > .gitignore <<EOT
 config.codekit
 EOT
 .elasticbeanstalk/config
+.elasticbeanstalk
