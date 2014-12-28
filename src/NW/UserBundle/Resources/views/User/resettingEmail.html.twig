@@ -8,20 +8,20 @@ Puedes resetear tu contraseña accediendo al siguiente enlace: {{ confirmationUr
 {% endblock %}
 
 {% block body_html %}
-<div style="border: 2px solid gray; width: 90%; margin: 28px auto; font-family: sans-serif;">
-	<div style="border-bottom: 2px solid gray; padding: 20px;">
+<div style="border: 2px solid gray; width: 94%; margin: 28px auto; font-family: sans-serif;">
+	<div style="border-bottom: 2px solid gray; padding: 16px;">
 		<div style="padding-bottom: 21px; margin-bottom: 36px; border-bottom: 2px solid #c09;">
-			<div style="width:49%; display: inline-block; line-height: 27px;">
-				<span style="color:rgb(79, 79, 79); font-size:19px;">Notificaciones</span>
+			<div style="width:38%; display: inline-block; line-height: 27px;">
+				<span style="color:rgb(79, 79, 79); font-size:14px;">Notificaciones</span>
 				<br>
-				<span style="color: #c09;">{{today()}}</span>
+				<span style="color: #c09; font-size:12px;">{{today()}}</span>
 			</div>
-			<div style="width:49%; display: inline-block;">
+			<div style="width:59%; display: inline-block;">
 				<img src="{{app.request.getSchemeAndHttpHost() ~ asset('img/logo_small.jpg')}}" style="width:90%">
 			</div>
 		</div>
 		<div>
-			<span style="color:rgb(79, 79, 79); font-size:19px;">Recuperación de Contraseña</span>
+			<span style="color:rgb(79, 79, 79); font-size:19px;">Recuperación de contraseña</span>
 			<p style="text-align: center;font-size: 15px; color:rgb(79, 79, 79); margin-top: 62px;">
 				Hola {{ user.getNovias.nombre }} y {{ user.getNovios.nombre }}<br>
 				Pueden resetear su contraseña accediendo al siguiente enlace: {{ confirmationUrl }}
