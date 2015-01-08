@@ -5,6 +5,9 @@ namespace NW\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
  
 class ReporteroType extends AbstractType
 {
@@ -58,12 +61,14 @@ class ReporteroType extends AbstractType
                     '31'   => 'Yucatán',
                     '32'   => 'Zacatecas',),
                 'multiple'  => false,));
-        $builder->add('ciudad', 'text');
+        $builder->add('ciudad', 'text', array('required' => true));
         $builder->add('cp', 'text', array('max_length' => 5));
-        $builder->add('userName', 'text', array('mapped' => false, 'required'  => true));
-        $builder->add('userPass', 'password', array('mapped' => false, 'required'  => true));
-        $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
-        $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));
+        
+        $builder->add('userName', 'text', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()));
+        $builder->add('userPass', 'password', array('mapped' => false, 'required'  => true, 'constraints' => array(new NotBlank(), new Length(array('min' => 8)))));
+        
+        $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()));
+        $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()));
         $builder->add('Aceptar', 'submit');
     }
 

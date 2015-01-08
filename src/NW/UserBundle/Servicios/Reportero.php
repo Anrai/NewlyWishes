@@ -34,13 +34,6 @@ class Reportero
         $reportero->setUser($user);
         $reportero->setEstado($estado);
 
-        // Quitar apellidos si es persona moral
-        if($reportero->getTipoPersona() == 'moral')
-        {
-            $reportero->setApellidoPaterno(null);
-            $reportero->setApellidoMaterno(null);
-        }
-
         // Persistiendo a base de datos
         $this->em->persist($user);
         $this->em->persist($reportero);
@@ -55,13 +48,6 @@ class Reportero
         $estadoEntity = $this->em->getRepository('NWPrincipalBundle:Estados');
         $estado = $estadoEntity->find($reportero->getEstadoId());
         $reportero->setEstado($estado);
-
-        // Quitar apellidos si es persona moral
-        if($reportero->getTipoPersona() == 'moral')
-        {
-            $reportero->setApellidoPaterno(null);
-            $reportero->setApellidoMaterno(null);
-        }
 
         // Persistiendo a base de datos
         $this->em->persist($reportero);
