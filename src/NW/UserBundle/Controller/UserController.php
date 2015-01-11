@@ -483,6 +483,9 @@ class UserController extends Controller
             $redirect = $this->generateUrl('nw_user_registro_exitoso');
             return $this->redirect($redirect);
         }
+        else{
+            return new Response('Formulario valido');
+        }
 
         // Generar página para el registro de nuevos reporteros
         return $this->render('NWUserBundle:User:registroreportero.html.twig', array(

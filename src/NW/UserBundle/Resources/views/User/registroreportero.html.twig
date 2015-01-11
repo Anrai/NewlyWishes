@@ -43,6 +43,7 @@
 						<br/>
 						{{ form_widget(formReportero.apellidoMaterno, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Apellido Materno' } }) }}
 						<br/>
+						<span class="error-formulario">{{ form_errors(formReportero.rfc) }}</span>
 						<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 						{{ form_widget(formReportero.rfc, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'RFC' } }) }}
 					</div>
@@ -51,16 +52,17 @@
 						<img src="{{ asset('img/punto.png') }}">
 						{{ form_widget(formReportero.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'E-Mail' } }) }}
 						<div class="col-xs-3" style="padding: 0 10px 0 0;">
-							
-		<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+							<span class="error-formulario">{{ form_errors(formReportero.lada) }}</span>
+							<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(formReportero.lada, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'LADA'} }) }}
 						</div>
 						<div class="col-xs-9" style="padding: 0;">
+							<span class="error-formulario">{{ form_errors(formReportero.telefono) }}</span>
 							{{ form_widget(formReportero.telefono, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Teléfono de oficina'} }) }}
 						</div>
 						<div class="col-xs-12" style="padding: 0;">
-							
-		<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+							<span class="error-formulario">{{ form_errors(formReportero.celular) }}</span>
+							<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 							{{ form_widget(formReportero.celular, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Celular' } }) }}
 						</div>
 					</div>
@@ -75,9 +77,12 @@
 						<span class="error-formulario">{{ form_errors(formReportero.estadoId) }}</span>
 						<img src="{{ asset('img/punto.png') }}">
 						{{ form_widget(formReportero.estadoId, { 'attr': {'class': 'input_registro_novios'} }) }}
+						<span class="error-formulario">{{ form_errors(formReportero.ciudad) }}</span>
+						<img src="{{ asset('img/punto.png') }}">
 						{{ form_widget(formReportero.ciudad, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Ciudad' } }) }}
 						<br/>
-		<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
+						<span class="error-formulario">{{ form_errors(formReportero.cp) }}</span>
+						<img src="{{ asset('img/punto.png') }}" alt="Registro" width="210">
 						{{ form_widget(formReportero.cp, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Código postal' } }) }}
 					</div>
 				</div>

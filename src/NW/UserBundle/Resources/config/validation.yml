@@ -56,6 +56,33 @@ NW\UserBundle\Entity\Novios:
         cp:
             - NotBlank: ~
 
+NW\UserBundle\Entity\Reportero:
+    properties:
+        nombreRazon:
+            - NotBlank: ~
+        apellidoPaterno:
+            - NotBlank: ~
+        apellidoMaterno:
+            - NotBlank: ~
+        rfc:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+            - Email:
+                checkMX: true
+        lada:
+            - NotBlank: ~
+        telefono:
+            - NotBlank: ~
+        celular:
+            - NotBlank: ~
+        direccion:
+            - NotBlank: ~
+        ciudad:
+            - NotBlank: ~
+        cp:
+            - NotBlank: ~
+
 NW\UserBundle\Entity\registroproveedores:
     properties:
         tipoPersona:
