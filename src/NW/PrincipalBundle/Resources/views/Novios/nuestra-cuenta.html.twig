@@ -168,10 +168,12 @@
 							        <br><br>
 							        <div class="row">
 	 														<div class="col-xs-9">
+	 									<span class="error-formulario">{{ form_errors(formNovios.terminosPrivacidad) }}</span>
 								       	{{ form_widget(formNovios.terminosCondiciones) }}
 								       	<a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesV2.pdf')}}">
 								       	Acepto los términos y condiciones</a>
 								       	<br />
+								       	<span class="error-formulario">{{ form_errors(formNovios.terminosPrivacidad) }}</span>
 										{{ form_widget(formNovios.terminosPrivacidad) }}
 										<a href="{{asset('documents/TerminosYCondicionesNWV4.pdf')}}">
 										Acepto los términos de privacidad</a>

@@ -6,6 +6,7 @@ use NW\UserBundle\Form\Type\NoviaType;
 use NW\UserBundle\Form\Type\NovioType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
  
 class EdicionNoviosType extends AbstractType
 {
@@ -16,8 +17,8 @@ class EdicionNoviosType extends AbstractType
         $builder->add('novios', new NovioType());
 
         // Se generan los nuevos campos de formulario
-        $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true));
-        $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true));
+        $builder->add('terminosCondiciones', 'checkbox', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()));
+        $builder->add('terminosPrivacidad', 'checkbox', array('mapped' => false, 'required'  => true, 'constraints' => new NotBlank()));
         $builder->add('Enviar', 'submit');
     }
 
