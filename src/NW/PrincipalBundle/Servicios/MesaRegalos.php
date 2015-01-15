@@ -86,10 +86,14 @@ class MesaRegalos
                 setlocale(LC_MONETARY,"en_US");
 
                 // Precio por parte obtener
-                $articulos[$key]['precioParte'] = number_format($articulos[$key]['precioTotal']/$articulos[$key]['horcruxes'], 2,'.', ',');
+                $precioParteTemporal = $articulos[$key]['precioTotal']/$articulos[$key]['horcruxes'];
+                $precioParteTemporal += $precioParteTemporal*.06 + 4;
+                $articulos[$key]['precioParte'] = number_format($precioParteTemporal, 2,'.', ',');
 
                 // Precio total poner comas y puntos
-                $articulos[$key]['precioTotal'] = number_format($articulos[$key]['precioTotal'], 2,'.', ',');
+                $precioTotalTemporal = $articulos[$key]['precioTotal'];
+                $precioTotalTemporal += $precioTotalTemporal*.06 + 4;
+                $articulos[$key]['precioTotal'] = number_format($precioTotalTemporal, 2,'.', ',');
             }
         }
         else
