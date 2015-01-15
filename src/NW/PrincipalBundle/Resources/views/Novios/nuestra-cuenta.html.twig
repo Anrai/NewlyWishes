@@ -122,7 +122,7 @@
 								        <input type="checkbox" name="opciones" id="opciones_1" value="opcion_1" checked>
 									    ¿La dirección del novio es la misma que de la novia?-->
 								        <br>
-							      	<label>
+							      	
 							      	<p>El novio</p>
 							      	<div class="row left">
 								        	<img src="{{asset('img/mini-punto.png')}}">
@@ -168,10 +168,12 @@
 							        <br><br>
 							        <div class="row">
 	 														<div class="col-xs-9">
+	 									<span class="error-formulario">{{ form_errors(formNovios.terminosPrivacidad) }}</span>
 								       	{{ form_widget(formNovios.terminosCondiciones) }}
 								       	<a href="{{asset('documents/CondicionesDeUsoGeneralYDeRegistroYAvisoDePrivacidadNewlyWishesV2.pdf')}}">
 								       	Acepto los términos y condiciones</a>
 								       	<br />
+								       	<span class="error-formulario">{{ form_errors(formNovios.terminosPrivacidad) }}</span>
 										{{ form_widget(formNovios.terminosPrivacidad) }}
 										<a href="{{asset('documents/TerminosYCondicionesNWV4.pdf')}}">
 										Acepto los términos de privacidad</a>
