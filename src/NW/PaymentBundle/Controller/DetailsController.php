@@ -50,7 +50,9 @@ class DetailsController extends PayumController
                 $details['regalos'][$i]['cantidad'] = $cantidad;
                 $details['regalos'][$i]['precio'] = $precio;
 
-                $aumentoSaldo = ($amount-4)/0.06;
+                // A ese dato se le resta el 3.5%
+                $aumentoSaldo = $amount * 0.965;
+                $aumentoSaldo = ($amount-4)*100/106;
 
                 // Se obtiene el usuario dueño del objeto
                 $itemId = $details["L_PAYMENTREQUEST_0_NUMBER".$i];
