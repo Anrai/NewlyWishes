@@ -873,6 +873,7 @@ class NoviosController extends Controller
                     if($userMail[0] || $userMail[1] || $userMail[2] || $userMail[3] || $userMail[4] || $userMail[5])
                     {
                         $this->get('session')->getFlashBag()->add('notice', 'Alguno de los correos ya está ocupado');
+                        return $this->redirect($this->generateUrl("nw_principal_novios_nuestra-cuenta"));
                     }
                     else{
 
