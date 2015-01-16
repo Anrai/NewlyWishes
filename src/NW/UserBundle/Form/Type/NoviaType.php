@@ -16,8 +16,8 @@ class NoviaType extends AbstractType
         $builder->add('aMaterno', 'text', array('required' => false));
         $builder->add('eMail', 'email');
         $builder->add('lada', 'integer', array('max_length' => 3));
-        $builder->add('telefono', 'integer', array('max_length' => 8));
-        $builder->add('celular', 'integer', array('max_length' => 10));
+        $builder->add('telefono', 'text', array('max_length' => 9));
+        $builder->add('celular', 'text', array('max_length' => 12));
         $builder->add('direccion', 'text');
         $builder->add('pais', 'choice', array(
                 'choices' => array(

@@ -20,8 +20,12 @@
 		</div>
 
 		<div class="row" style="margin-bottom: 12px;margin-right: 0px;text-align: right;">
-			<h2>Total</h2>
+			<h3>Subtotal</h3>
 			<!-- grand total, including tax and shipping (ex. $28.49) -->
+			<div class="simpleCart_total"></div>
+			<h3>Comisiones</h3>
+			<div class="simpleCart_shipping"></div>
+			<h2>Total</h2>
 			<div class="simpleCart_grandTotal"></div>
 		</div>
 
@@ -61,5 +65,9 @@
 		        { view: "remove" , text: "Remover" , label: false }
             ]
         });
+        simpleCart.shipping(function(){
+			return simpleCart.total()*.06+4;
+		});
+        
     </script>
 {% endblock %}

@@ -182,10 +182,11 @@ class UserController extends Controller
                     $userManager = $this->get('fos_user.user_manager'); 
                     $usuarioPorUsername = $userManager->findUserBy(array('username' => $form["userName"]->getData()));
                     $usuarioPorEmail = $userManager->findUserBy(array('email' => $form["novios"]["eMail"]->getData()));
+                    $usuariaPorEmail = $userManager->findUserBy(array('email' => $form["novias"]["eMail"]->getData()));
 
-                    if($usuarioPorUsername || $usuarioPorEmail)
+                    if($usuarioPorUsername || $usuarioPorEmail || $usuariaPorEmail)
                     {
-                        $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo del novio ya está ocupado');
+                        $this->get('session')->getFlashBag()->add('notice', 'El usuario y/o el correo ya está ocupado');
                         return $this->render('NWUserBundle:User:registronovios.html.twig', array(
                             'form' => $form->createView(),
                         ));
@@ -206,7 +207,7 @@ class UserController extends Controller
                     $user = $userManager->createUser();
 
                     $user->setUsername($form["userName"]->getData());
-                    $user->setEmail($form["novios"]["eMail"]->getData());
+                    $user->setEmail($form["novias"]["eMail"]->getData());
                     $user->setPlainPassword($form["userPass"]->getData());
                     $user->addRole('ROLE_NOVIO');
                     $user->setSaldo(0);

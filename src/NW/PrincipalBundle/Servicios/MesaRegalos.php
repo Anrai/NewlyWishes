@@ -87,12 +87,10 @@ class MesaRegalos
 
                 // Precio por parte obtener
                 $precioParteTemporal = $articulos[$key]['precioTotal']/$articulos[$key]['horcruxes'];
-                $precioParteTemporal += $precioParteTemporal*.06 + 4;
                 $articulos[$key]['precioParte'] = number_format($precioParteTemporal, 2,'.', ',');
 
                 // Precio total poner comas y puntos
                 $precioTotalTemporal = $articulos[$key]['precioTotal'];
-                $precioTotalTemporal += $precioTotalTemporal*.06 + 4;
                 $articulos[$key]['precioTotal'] = number_format($precioTotalTemporal, 2,'.', ',');
             }
         }
