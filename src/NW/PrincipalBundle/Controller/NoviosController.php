@@ -917,7 +917,6 @@ class NoviosController extends Controller
                         $em->persist($user);
                         $em->flush();
 
-                        /*
                         // Se mandan correos de los cambios hechos en los datos de la cuenta
                         // Novio
                         $message = \Swift_Message::newInstance()
@@ -948,11 +947,11 @@ class NoviosController extends Controller
                             )
                         );
                         $this->get('mailer')->send($message);
-                        */
                     }
                 }
                 else{
                     $this->get('session')->getFlashBag()->add('notice', 'Tienes que aceptar los términos y condiciones para poder editar los datos de tu cuenta.');
+                    return $this->redirect($this->generateUrl("nw_principal_novios_nuestra-cuenta"));
                 }
             }
             // Formulario de solicitud de retiro
