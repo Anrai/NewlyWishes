@@ -726,6 +726,8 @@ class NoviosController extends Controller
 	
 	public function nuestraCuentaAction(Request $request)
     {
+        $lastEmail = $this->getUser()->getNovios()->getEMail();
+        $lastEmailGirl = $this->getUser()->getNovias()->getEMail();
         // Manejador de Doctrine
         $em = $this->getDoctrine()->getManager();
 
@@ -747,8 +749,8 @@ class NoviosController extends Controller
             ->getForm();
 
         // No se ha actualizado la contraseña
-        $statusForm=false;
-        $tamanoContrasena=false; // El tamaño de la contraseña está bien
+        $statusForm = false;
+        $tamanoContrasena = false; // El tamaño de la contraseña está bien
 
         // Formulario de solicitud de retiro estableciendo el maximo que puede retirar
         $nuevaSolicitudRetiro = new SolicitudRetiro();
@@ -845,73 +847,112 @@ class NoviosController extends Controller
                     $noviasNew = $formNovios["novias"]->getData();
                     $noviosNew = $formNovios["novios"]->getData();
 
-                    // Agregando datos de la novia
-                    $estadoNoviaNew=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($formNovios["novias"]["estado"]->getData());
-                    
-                    $novia->setNombre($formNovios["novias"]["nombre"]->getData());
-                    $novia->setsNombre($formNovios["novias"]["sNombre"]->getData());
-                    $novia->setAPaterno($formNovios["novias"]["aPaterno"]->getData());
-                    $novia->setAMaterno($formNovios["novias"]["aMaterno"]->getData());
-                    $novia->setEMail($formNovios["novias"]["eMail"]->getData());
-                    $novia->setLada($formNovios["novias"]["lada"]->getData());
-                    $novia->setTelefono($formNovios["novias"]["telefono"]->getData());
-                    $novia->setCelular($formNovios["novias"]["celular"]->getData());
-                    $novia->setDireccion($formNovios["novias"]["direccion"]->getData());
-                    $novia->setEstados($estadoNoviaNew);
-                    $novia->setCiudad($formNovios["novias"]["ciudad"]->getData());
-                    $novia->setCp($formNovios["novias"]["cp"]->getData());
+                    // Checar que los correos no existan ya en la base de datos
+                    $userManager = $this->get('fos_user.user_manager');
 
-                    // Agregando datos del novio
-                    $estadoNovioNew =$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($formNovios["novios"]["estado"]->getData());
+                    // El correo del novio no tiene que estar ocupado por un usuario
+                    $userMail[0] = $userManager->findUserBy(array('email' => $formNovios["novios"]["eMail"]->getData()));
+                    // El correo del novio no tiene que estar ocupado por ninguna novia
+                    $userMail[1] = is_object($this->getDoctrine()->getRepository('NWUserBundle:Novias')->findOneBy(array('eMail' => $formNovios["novios"]["eMail"]->getData())));
+                    // El correo del novio no tiene que estar ocupado por otro novio a menos que ya sea del mismo novio
+                    $userMail[2] = is_object($this->getDoctrine()->getRepository("NWUserBundle:Novios")->findOneBy(array('eMail' => $formNovios["novios"]["eMail"]->getData())));
+                    if(($userMail[2] && $formNovios["novios"]["eMail"]->getData() == $lastEmail) || !$userMail[2])
+                    {$userMail[2] = false;}
+                    else{$userMail[2] = true;}
+                    // El correo de la novia no tiene que estar ocupado por ningun novio
+                    $userMail[3] = is_object($this->getDoctrine()->getRepository("NWUserBundle:Novios")->findOneBy(array('eMail' => $formNovios["novias"]["eMail"]->getData())));
+                    // El correo de la novia no tiene que estar ocupado por ninguna novia a menos que ya sea de la misma novia
+                    $userMail[4] = is_object($this->getDoctrine()->getRepository("NWUserBundle:Novias")->findOneBy(array('eMail' => $formNovios["novias"]["eMail"]->getData())));
+                    if(($userMail[4] && $formNovios["novias"]["eMail"]->getData() == $lastEmailGirl) || !$userMail[4])
+                    {$userMail[4] = false;}
+                    else{$userMail[4] = true;}
+                    // El correo de la novia no tiene que estar ocupado por un usuario a menos que ya sea del mismo usuario
+                    $userMail[5] = $userManager->findUserBy(array('email' => $formNovios["novias"]["eMail"]->getData()));
+                    if($userMail[5] == $user->getUsername()) {$userMail[5] = false;}
 
-                    $novio->setNombre($formNovios["novios"]["nombre"]->getData());
-                    $novio->setsNombre($formNovios["novios"]["sNombre"]->getData());
-                    $novio->setAPaterno($formNovios["novios"]["aPaterno"]->getData());
-                    $novio->setAMaterno($formNovios["novios"]["aMaterno"]->getData());
-                    $novio->setEMail($formNovios["novios"]["eMail"]->getData());
-                    $novio->setLada($formNovios["novios"]["lada"]->getData());
-                    $novio->setTelefono($formNovios["novios"]["telefono"]->getData());
-                    $novio->setCelular($formNovios["novios"]["celular"]->getData());
-                    $novio->setDireccion($formNovios["novios"]["direccion"]->getData());
-                    $novio->setEstados($estadoNovioNew);
-                    $novio->setCiudad($formNovios["novios"]["ciudad"]->getData());
-                    $novio->setCp($formNovios["novios"]["cp"]->getData());
+                    if($userMail[0] || $userMail[1] || $userMail[2] || $userMail[3] || $userMail[4] || $userMail[5])
+                    {
+                        $this->get('session')->getFlashBag()->add('notice', 'Alguno de los correos ya está ocupado');
+                    }
+                    else{
 
-                    // Persistiendo los datos en la base de datos
-                    $em->persist($novia);
-                    $em->persist($novio);
-                    $em->flush();
+                        // Agregando datos de la novia
+                        $estadoNoviaNew=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($formNovios["novias"]["estado"]->getData());
+                        
+                        $novia->setNombre($formNovios["novias"]["nombre"]->getData());
+                        $novia->setsNombre($formNovios["novias"]["sNombre"]->getData());
+                        $novia->setAPaterno($formNovios["novias"]["aPaterno"]->getData());
+                        $novia->setAMaterno($formNovios["novias"]["aMaterno"]->getData());
+                        $novia->setEMail($formNovios["novias"]["eMail"]->getData());
+                        $novia->setLada($formNovios["novias"]["lada"]->getData());
+                        $novia->setTelefono($formNovios["novias"]["telefono"]->getData());
+                        $novia->setCelular($formNovios["novias"]["celular"]->getData());
+                        $novia->setDireccion($formNovios["novias"]["direccion"]->getData());
+                        $novia->setEstados($estadoNoviaNew);
+                        $novia->setCiudad($formNovios["novias"]["ciudad"]->getData());
+                        $novia->setCp($formNovios["novias"]["cp"]->getData());
 
-                    // Se mandan correos de los cambios hechos en los datos de la cuenta
-                    // Novio
-                    $message = \Swift_Message::newInstance()
-                    ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
-                    ->setFrom("info@newlywishes.com")
-                    ->setTo($novio->getEMail())
-                    ->setContentType("text/html")
-                    ->setBody(
-                        $this->renderView(
-                            'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(
-                                
+                        // Agregando datos del novio
+                        $estadoNovioNew =$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($formNovios["novios"]["estado"]->getData());
+
+                        $novio->setNombre($formNovios["novios"]["nombre"]->getData());
+                        $novio->setsNombre($formNovios["novios"]["sNombre"]->getData());
+                        $novio->setAPaterno($formNovios["novios"]["aPaterno"]->getData());
+                        $novio->setAMaterno($formNovios["novios"]["aMaterno"]->getData());
+                        $novio->setEMail($formNovios["novios"]["eMail"]->getData());
+                        $novio->setLada($formNovios["novios"]["lada"]->getData());
+                        $novio->setTelefono($formNovios["novios"]["telefono"]->getData());
+                        $novio->setCelular($formNovios["novios"]["celular"]->getData());
+                        $novio->setDireccion($formNovios["novios"]["direccion"]->getData());
+                        $novio->setEstados($estadoNovioNew);
+                        $novio->setCiudad($formNovios["novios"]["ciudad"]->getData());
+                        $novio->setCp($formNovios["novios"]["cp"]->getData());
+
+                        // Cambio en el usuario novioa
+                        $user->setEmail($formNovios["novias"]["eMail"]->getData());
+
+                        // Persistiendo los datos en la base de datos
+                        $em->persist($novia);
+                        $em->persist($novio);
+                        $em->persist($user);
+                        $em->flush();
+
+                        /*
+                        // Se mandan correos de los cambios hechos en los datos de la cuenta
+                        // Novio
+                        $message = \Swift_Message::newInstance()
+                        ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
+                        ->setFrom("info@newlywishes.com")
+                        ->setTo($novio->getEMail())
+                        ->setContentType("text/html")
+                        ->setBody(
+                            $this->renderView(
+                                'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(
+                                    
+                                )
                             )
-                        )
-                    );
-                    $this->get('mailer')->send($message);
-                    
-                    // Novia
-                    $message = \Swift_Message::newInstance()
-                    ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
-                    ->setFrom("info@newlywishes.com")
-                    ->setTo($novia->getEMail())
-                    ->setContentType("text/html")
-                    ->setBody(
-                        $this->renderView(
-                            'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(
-                                
+                        );
+                        $this->get('mailer')->send($message);
+                        
+                        // Novia
+                        $message = \Swift_Message::newInstance()
+                        ->setSubject("Se han cambiado los datos de tu cuenta en NewlyWishes.com")
+                        ->setFrom("info@newlywishes.com")
+                        ->setTo($novia->getEMail())
+                        ->setContentType("text/html")
+                        ->setBody(
+                            $this->renderView(
+                                'NWPrincipalBundle:Novios:cambioDatosCuentaNovios.html.twig', array(
+                                    
+                                )
                             )
-                        )
-                    );
-                    $this->get('mailer')->send($message);
+                        );
+                        $this->get('mailer')->send($message);
+                        */
+                    }
+                }
+                else{
+                    $this->get('session')->getFlashBag()->add('notice', 'Tienes que aceptar los términos y condiciones para poder editar los datos de tu cuenta.');
                 }
             }
             // Formulario de solicitud de retiro

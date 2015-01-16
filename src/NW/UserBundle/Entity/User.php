@@ -38,6 +38,11 @@ class User extends BaseUser
         return $this->id;
     }
 
+    function getUsername()
+    {
+        return $this->username;
+    }
+
     /**
      * Get Saldo
      *
