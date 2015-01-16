@@ -305,6 +305,16 @@ class MesaRegalos
         return $this->cantidad;
     }
 
+    public function regaloregalado()
+    {
+        $contador = $this->getCosasRegaladas()->count();
+
+        if($contador > 0)
+            return false;
+        else
+            return true;
+    }
+
     // Método que regresa mis valores en forma de array
     public function getValues(){
         return array(
@@ -318,6 +328,7 @@ class MesaRegalos
         'horcruxesFaltantes' => $this->getCantidad()*$this->getHorcruxes()-$this->getHorcruxesPagados(),
         'completados' =>  floor($this->getHorcruxesPagados()/$this->getHorcruxes()),
         'descripcion' => $this->getDescripcion(),
+        'regaloregalado' => $this->regaloregalado()
         );
     }
     /**

@@ -177,9 +177,15 @@
 						</p>
 					</div>
 					<div class="col-xs-2 bote2">
-						<a href="{{url('nw_principal_novios_regalo_delete', {'id': regalo.id})}}">
-							<img class="img-responsive" src="{{asset('img/bote.png')}}">
-						</a>
+
+						{# if not regalo regalado #}
+						{% if regalo.regaloregalado %}
+							<a href="{{url('nw_principal_novios_regalo_delete', {'id': regalo.id})}}">
+								<img class="img-responsive" src="{{asset('img/bote.png')}}">
+							</a>
+						{% endif %}
+						{# endif #}
+
 					</div>
 				</div>
 				<div class="row">
