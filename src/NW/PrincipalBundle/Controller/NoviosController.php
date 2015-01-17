@@ -973,6 +973,52 @@ class NoviosController extends Controller
                         $em->persist($nuevaSolicitudRetiro);
                         $em->flush();
 
+                        // Enviar correo a la novia y al novio de que se cambió la contraseña
+                        // Novio
+                        $message = \Swift_Message::newInstance()
+                        ->setSubject("Solicitud de Retiro en NewlyWishes.com")
+                        ->setFrom("info@newlywishes.com")
+                        ->setTo($novio->getEMail())
+                        ->setContentType("text/html")
+                        ->setBody(
+                            $this->renderView(
+                                'NWPrincipalBundle:Novios:solicitudRetiro.html.twig', array(
+                                    'vacio' => "vacio",
+                                )
+                            )
+                        );
+                        $this->get('mailer')->send($message);
+
+                        // Novia
+                        $message = \Swift_Message::newInstance()
+                        ->setSubject("Solicitud de retiro en NewlyWishes.com")
+                        ->setFrom("info@newlywishes.com")
+                        ->setTo($novia->getEMail())
+                        ->setContentType("text/html")
+                        ->setBody(
+                            $this->renderView(
+                                'NWPrincipalBundle:Novios:solicitudRetiro.html.twig', array(
+                                    'vacio' => "vacio",
+                                )
+                            )
+                        );
+                        $this->get('mailer')->send($message);
+
+                        // Newlywishes finanzas o admin
+                        $message = \Swift_Message::newInstance()
+                        ->setSubject("Solicitud de Retiro en NewlyWishes.com")
+                        ->setFrom("info@newlywishes.com")
+                        ->setTo("admin@newlywishes.com")
+                        ->setContentType("text/html")
+                        ->setBody(
+                            $this->renderView(
+                                'NWPrincipalBundle:Novios:solicitudRetiro.html.twig', array(
+                                    'vacio' => "vacio",
+                                )
+                            )
+                        );
+                        $this->get('mailer')->send($message);
+
                         // Se manda un mensaje de travesura realizada
                         $this->get('session')->getFlashBag()->set(
                             'notice',
