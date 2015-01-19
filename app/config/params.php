@@ -20,10 +20,17 @@ if (getEnv("OPENSHIFT_APP_NAME")!='') {
 }
 else{
 	// Binario para crear pdfs es diferente en local que en servidor
-	$container->loadFromExtension('knp_snappy', array(
+	/*$container->loadFromExtension('knp_snappy', array(
 	    'pdf' => array(
 	    	'enabled' => true,
 	    	'binary' => '/usr/local/bin/wkhtmltopdf',
+	    	'options' => array(),
+	    ),
+	));*/
+	$container->loadFromExtension('knp_snappy', array(
+	    'pdf' => array(
+	    	'enabled' => true,
+	    	'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"',
 	    	'options' => array(),
 	    ),
 	));
