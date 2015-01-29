@@ -16,13 +16,26 @@ security:
                 id: fos_user.user_provider.username
 
     firewalls:
-        main:
+        secure_area:
             pattern: ^/
+            oauth:
+                failure_path: /secure_area/connect
+                login_path: /secure_area/connect
+                check_path: /secure_area/connect
+                provider: fos_userbundle
+                resource_owners:
+                    facebook:           "/secure_area/login/check-facebook"
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
+            anonymous:    true
+            #logout:
+            #    path:           /secure_area/logout
+            #    target:         /secure_area/connect
+
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
             logout:       true
-            anonymous:    true
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -34,3 +47,7 @@ security:
         - { path: ^/proveedores/, role: ROLE_PROVEEDOR }
         - { path: ^/novios/, role: ROLE_NOVIO }
         - { path: ^/reporteros/, role: ROLE_REPORTERO }
+        #...
+        - { path: ^/secure_area/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area, roles: ROLE_USER }

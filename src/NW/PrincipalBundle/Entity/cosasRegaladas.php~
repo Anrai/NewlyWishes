@@ -220,4 +220,32 @@ class cosasRegaladas
     {
         return $this->regalo;
     }
+    /**
+     * @var float
+     */
+    private $amount;
+
+
+    /**
+     * Set amount
+     *
+     * @param float $amount
+     * @return cosasRegaladas
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return float 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
 }

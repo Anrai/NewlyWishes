@@ -644,4 +644,32 @@ class User extends BaseUser
     {
         return $this->cosasRegaladas;
     }
+    /**
+     * @var string
+     */
+    private $facebookId;
+
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string 
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
 }
