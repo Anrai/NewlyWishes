@@ -12,32 +12,41 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_NOVIO, ROLE_REPORTERO, ROLE_PROVEEDOR_PLUS]
 
     providers:
-            fos_userbundle:
-                id: fos_user.user_provider.username
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     firewalls:
         secure_area:
             pattern: ^/
+
             oauth:
-                failure_path: /secure_area/connect
-                login_path: /secure_area/connect
-                check_path: /secure_area/connect
+                failure_path: /connect
+                login_path: /connect
+                check_path: /connect
                 provider: fos_userbundle
                 resource_owners:
-                    facebook:           "/secure_area/login/check-facebook"
+                    facebook: "/login/check-facebook"
                 oauth_user_provider:
                     service: hwi_oauth.user.provider.fosub_bridge
-            anonymous:    true
-            #logout:
-            #    path:           /secure_area/logout
-            #    target:         /secure_area/connect
 
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-            logout:       true
+                check_path: /login_check
+                login_path: /login
+                default_target_path: / #default location to redirect after successful login
+
+            anonymous: true
+            logout: true
 
     access_control:
+        - { path: ^/secure_area/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secure_area, roles: ROLE_USER }
+        #...
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -47,7 +56,3 @@ security:
         - { path: ^/proveedores/, role: ROLE_PROVEEDOR }
         - { path: ^/novios/, role: ROLE_NOVIO }
         - { path: ^/reporteros/, role: ROLE_REPORTERO }
-        #...
-        - { path: ^/secure_area/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/secure_area/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/secure_area, roles: ROLE_USER }
