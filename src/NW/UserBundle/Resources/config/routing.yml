@@ -26,6 +26,10 @@ nw_user_registro_exitoso:
     pattern:  /registroexitoso
     defaults: { _controller: NWUserBundle:User:registroExitoso }
 
+nw_user_postregistro_novios:
+    pattern:  /postregistronovios
+    defaults: { _controller: NWUserBundle:User:postregistronovios }
+
 nw_principal_changepass:
     pattern:  /changepass/{id}
     defaults: { _controller: NWUserBundle:User:changePass, id: false }

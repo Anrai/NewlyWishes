@@ -110,6 +110,11 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
 
+parameters:
+#   to override this service
+#   hwi_oauth.user.provider.fosub_bridge.class: NW\OAuthBundle\Security\Core\User\FOSUBUserProvider
+    hwi_oauth.registration.form.handler.fosub_bridge.class: NW\OAuthBundle\Form\FOSUBRegistrationFormHandler
+
 hwi_oauth:
     http_client:
         verify_peer: false

@@ -10,6 +10,7 @@ use NW\UserBundle\Entity\registroproveedores;
 use NW\UserBundle\Entity\Reportero;
 use NW\PrincipalBundle\Entity\Bodas;
 
+use NW\UserBundle\Form\Type\PostRegistroType;
 use NW\UserBundle\Form\Type\RegistroType;
 use NW\UserBundle\Form\Type\ReporteroType;
 
@@ -156,6 +157,119 @@ class UserController extends Controller
             'formCorreo' => $formCorreo->createView()
         ));
         
+    }
+
+    public function postregistronoviosAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager(); 
+
+        // Obtener usuario
+        $user = $this->getUser();
+
+        // Generando el formulario de registro de los novios y usuario
+        $formData['novias'] = new Novias();
+        $formData['novios'] = new Novios();
+        $form = $this->createForm(new PostRegistroType(), $formData); // Formulario de usuarios mezclado con el de novias y novios
+
+        // Recuperando formularios
+        if('POST' === $request->getMethod()) {
+            // Formulario de datos de la boda
+            if ($request->request->has($form->getName())) {
+                // Solicitando datos del formulario para ver si recuperar los datos, mostrar error o mostrar formulario
+                $form->handleRequest($request);
+                if ($form->isValid()) {
+                    // Recuperando datos de los novios
+                    $novias = $formData['novias'];
+                    $novios = $formData['novios'];
+
+                    // Agregando Estado de la novia
+                    $estadoNovia=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novias"]["estado"]->getData());
+                    $estadoNovia->addNovia($novias);
+                    $novias->setEstados($estadoNovia);
+
+                    // Agregando Estado del novio
+                    $estadoNovio=$this->getDoctrine()->getRepository('NWPrincipalBundle:Estados')->find($form["novios"]["estado"]->getData());
+                    $estadoNovio->addNovio($novios);
+                    $novios->setEstados($estadoNovio);
+
+                    // Agregando Usuario a los novios
+                    $novias->setUser($user);
+                    $novios->setUser($user);
+
+                    // Agregando Novia al Novio
+                    $novios->setNovia($novias);
+
+                    // Agregando objeto boda a los novios
+                    $boda = new Bodas();
+                    $boda->setUser($user);
+                    $boda->setCeremonia('');
+                    $boda->setCeremoniaDireccion('');
+                    $boda->setRecepcion('');
+                    $boda->setRecepcionDireccion('');
+                    $boda->setFechaBoda(\DateTime::createFromFormat('Y-m-d H:i:s', '2000-01-01 00:00:00'));
+
+                    // Setteando rol de novio en el usuario
+                    $user->addRole('ROLE_NOVIO');
+
+                    // Persistiendo los datos en la base de datos
+                    $em->persist($novias);
+                    $em->persist($novios);
+                    $em->persist($boda);
+                    $em->persist($user);
+                    $em->flush();
+
+                    // Enviar correo a los novios por el registro exitoso
+                    // Novio
+                    $message = \Swift_Message::newInstance()
+                    ->setSubject("Te registraste con éxito en NewlyWishes.com")
+                    ->setFrom("info@newlywishes.com")
+                    ->setTo($novios->getEMail())
+                    ->setContentType("text/html")
+                    ->setBody(
+                        $this->renderView(
+                            'NWUserBundle:User:correoRegistroExitoso.html.twig', array(
+                                'user' => $user,
+                                'contrasena' => 'La escogida con anterioridad'
+                            )
+                        )
+                    );
+                    $this->get('mailer')->send($message);
+                    // Novia
+                    $message = \Swift_Message::newInstance()
+                    ->setSubject("Te registraste con éxito en NewlyWishes.com")
+                    ->setFrom("info@newlywishes.com")
+                    ->setTo($novias->getEMail())
+                    ->setContentType("text/html")
+                    ->setBody(
+                        $this->renderView(
+                            'NWUserBundle:User:correoRegistroExitoso.html.twig', array(
+                                'user' => $user,
+                                'contrasena' => 'La escogida con anterioridad'
+                            )
+                        )
+                    );
+                    $this->get('mailer')->send($message);
+
+                    // Mensaje de travesura realizada
+                    $this->get('session')->getFlashBag()->set(
+                        'notice',
+                        'Registro exitoso. Ya puedes iniciar sesión con el botón de facebook.'
+                    );
+                    
+
+                    // Logout del usuario para que entre como cuenta de novio
+                    return $this->redirect($this->generateUrl('fos_user_security_logout'));
+
+                    // El registro del formulario fue exitoso y se muestra mensaje de felicitación
+                    return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));
+                }
+            }
+        }
+
+        // Si no se ha ocupado el formulario (o contiene errores) se le muestra al usuario
+        return $this->render('NWUserBundle:User:postregistronovios.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function registronoviosAction(Request $request)
