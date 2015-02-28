@@ -8,26 +8,38 @@
 
                 <div class="row" style="margin-top:20px;">
                     <div class="col-xs-12 text-center">
-                        <h3>Hola {{ userInformation.getRealname }}, por favor regístrate:</h3>
+                        <h3>Hola {{ userInformation.getRealname }}, por favor verifica tus datos:</h3>
                     </div>
                 </div>
+
+                {#
+                <div class="row">
+                    Username: {{ userInformation.getUsername }}<br />
+                    Nickname: {{ nickname }}<br />
+                    Real name: {{ userInformation.getRealname }}<br />
+                    Email: {{ userInformation.getEmail }}<br />
+                    Profilepicture: {{ userInformation.getProfilePicture }}<br />
+                </div>
+                #}
 
                 <div class="row">
                     <form action="{{ path('hwi_oauth_connect_registration', {'key': key}) }}" {{ form_enctype(form) }} method="POST" class="hwi_oauth_registration_register">
                         <div class="row">
                             <div class="col-xs-offset-4 col-xs-4 puntosRosas">
                                 <span class="error-formulario">{{ form_errors(form.username) }}</span>
-                                <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.username, { 'attr': {'class': 'input_registro_novios', 'value': '', 'placeholder': 'Nombre de usuario' } }) }}
+                                <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.username, { 'attr': {'class': 'input_registro_novios', 'value': nickname, 'placeholder': 'Nombre de usuario' } }) }}
                                 <br/>
                                 <span class="error-formulario">{{ form_errors(form.email) }}</span>
                                 <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.email, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Correo electrónico' } }) }}
                                 <br/>
-                                <span class="error-formulario">{{ form_errors(form.plainPassword.first) }}</span>
-                                <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.plainPassword.first, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Contraseña' } }) }}
-                                <br />
-                                <span class="error-formulario">{{ form_errors(form.plainPassword.second) }}</span>
-                                <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.plainPassword.second, { 'attr': {'class': 'input_registro_novios', 'placeholder': 'Confirmar contraseña' } }) }}
-                                <br />
+                                <div class="invisible">
+                                    <span class="error-formulario">{{ form_errors(form.plainPassword.first) }}</span>
+                                    <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.plainPassword.first, { 'attr': {'class': 'input_registro_novios', 'value': password, 'placeholder': 'Contraseña' } }) }}
+                                    <br />
+                                    <span class="error-formulario">{{ form_errors(form.plainPassword.second) }}</span>
+                                    <img src="{{ asset('img/punto.png') }}" alt="Registro" style="margin:5; float:left; margin-top:12px;" width="210">{{ form_widget(form.plainPassword.second, { 'attr': {'class': 'input_registro_novios', 'value': password, 'placeholder': 'Confirmar contraseña' } }) }}
+                                    <br />
+                                </div>
                                 <div class="row text-right">
                                     {{ form_widget(form) }}
                                     <button type="submit" class="botoncitoRosa" style="width:120px; margin-top:2px; bottom:0px; margin-right: 15px; margin-bottom:30px">{{ 'connect.registration.submit'|trans({}, 'HWIOAuthBundle') }}</button>

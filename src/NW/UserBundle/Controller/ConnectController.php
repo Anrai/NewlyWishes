@@ -82,10 +82,35 @@ class ConnectController extends BaseConnectController
         $key = time();
         $session->set('_hwi_oauth.registration_error.'.$key, $error);
 
+        $nickname = $this->quitarAcentos($userInformation->getNickname());
+
         return $this->container->get('templating')->renderResponse('HWIOAuthBundle:Connect:registration.html.' . $this->getTemplatingEngine(), array(
             'key' => $key,
             'form' => $form->createView(),
             'userInformation' => $userInformation,
+            'nickname' => $nickname,
+            'password' => $this->randomPassword(),
         ));
+    }
+
+    private function quitarAcentos($palabra)
+    {
+        $no_permitidas = array ('á','é','í','ó','ú','Á','É','Í','Ó','Ú','ñ','Ñ',' ');
+        $si_permitidas = array ('a','e','i','o','u','A','E','I','O','U','n','N', '');
+
+        $palabra = str_replace($no_permitidas, $si_permitidas, $palabra);
+
+        return $palabra;
+    }
+
+    private function randomPassword() {
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
     }
 }

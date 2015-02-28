@@ -132,6 +132,11 @@ hwi_oauth:
             client_secret:       8c766e6bf6adac1a9f21c311c4b39751
             #options:
             #    display: popup
+            scope:               "email"
+            infos_url:     "https://graph.facebook.com/me?fields=id,name,email,picture.type(square)"
+            paths:
+                email:           email
+                profilepicture:  picture.data.url
 
     fosub:
         # try 30 times to check if a username is available (foo, foo1, foo2 etc)
