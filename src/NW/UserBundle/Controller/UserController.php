@@ -227,9 +227,8 @@ class UserController extends Controller
                     ->setContentType("text/html")
                     ->setBody(
                         $this->renderView(
-                            'NWUserBundle:User:correoRegistroExitoso.html.twig', array(
-                                'user' => $user,
-                                'contrasena' => 'La escogida con anterioridad'
+                            'NWUserBundle:User:correoRegistroExitosoFacebook.html.twig', array(
+                                'user' => $user
                             )
                         )
                     );
@@ -242,9 +241,8 @@ class UserController extends Controller
                     ->setContentType("text/html")
                     ->setBody(
                         $this->renderView(
-                            'NWUserBundle:User:correoRegistroExitoso.html.twig', array(
-                                'user' => $user,
-                                'contrasena' => 'La escogida con anterioridad'
+                            'NWUserBundle:User:correoRegistroExitosoFacebook.html.twig', array(
+                                'user' => $user
                             )
                         )
                     );
