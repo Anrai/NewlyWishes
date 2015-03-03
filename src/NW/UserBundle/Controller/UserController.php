@@ -256,7 +256,7 @@ class UserController extends Controller
                     
 
                     // Logout del usuario para que entre como cuenta de novio
-                    return $this->redirect($this->generateUrl('fos_user_security_logout'));
+                    // return $this->redirect($this->generateUrl('fos_user_security_logout'));
 
                     // El registro del formulario fue exitoso y se muestra mensaje de felicitación
                     return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));
