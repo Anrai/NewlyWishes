@@ -2,6 +2,10 @@
 #    pattern:  /asignarRoles
 #    defaults: { _controller: NWUserBundle:User:asignarRoles }
 
+nw_user_pruebas:
+    pattern:  /pruebas
+    defaults: { _controller: NWUserBundle:User:pruebas }
+
 nw_user_registronovios:
     pattern:  /registronovios
     defaults: { _controller: NWUserBundle:User:registronovios }

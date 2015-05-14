@@ -25,6 +25,13 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class UserController extends Controller
 {
 
+    public function pruebasAction()
+    {
+        $this->get('security.context')->setToken(null);
+        $this->get('request')->getSession()->invalidate();
+        return new Response('Hola mundo');
+    }
+
     public function loginnoviosAction()
     {
         $request = $this->getRequest();
@@ -246,17 +253,11 @@ class UserController extends Controller
                             )
                         )
                     );
-                    $this->get('mailer')->send($message);
-
-                    // Mensaje de travesura realizada
-                    $this->get('session')->getFlashBag()->set(
-                        'notice',
-                        'Registro exitoso. Ya puedes iniciar sesión con el botón de facebook.'
-                    );
-                    
+                    $this->get('mailer')->send($message);                    
 
                     // Logout del usuario para que entre como cuenta de novio
-                    // return $this->redirect($this->generateUrl('fos_user_security_logout'));
+                    $this->get('security.context')->setToken(null);
+                    $this->get('request')->getSession()->invalidate();
 
                     // El registro del formulario fue exitoso y se muestra mensaje de felicitación
                     return $this->redirect($this->generateUrl('nw_user_registro_exitoso'));

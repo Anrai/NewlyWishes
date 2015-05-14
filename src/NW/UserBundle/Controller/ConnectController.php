@@ -82,7 +82,28 @@ class ConnectController extends BaseConnectController
         $key = time();
         $session->set('_hwi_oauth.registration_error.'.$key, $error);
 
-        $nickname = $this->quitarAcentos($userInformation->getNickname());
+        // Crear un nombre de usuario con base en el nombre de usuario de facebook
+        $nicknameOriginal = $this->quitarAcentos($userInformation->getNickname());
+
+        // Manejador de usuarios de fosuserbundle
+        $userManager = $this->container->get('fos_user.user_manager'); 
+        // Checando si ya existe el usuario o el correo
+        $usuarioPorUsername = $userManager->findUserBy(array('username' => $nicknameOriginal));
+        
+        // Si ya existe el usuario, se le suma 1 al final del nombre
+        $contador = 1;
+        if($usuarioPorUsername)
+        {
+            while ($usuarioPorUsername) {
+                $nickname = $nicknameOriginal.$contador;
+                $usuarioPorUsername = $userManager->findUserBy(array('username' => $nickname));
+                $contador++;
+            }
+        }
+        else
+        {
+            $nickname = $nicknameOriginal;
+        }
 
         return $this->container->get('templating')->renderResponse('HWIOAuthBundle:Connect:registration.html.' . $this->getTemplatingEngine(), array(
             'key' => $key,
